@@ -1,0 +1,20 @@
+{
+    "name": "php-stubs/acf-pro-stubs",
+    "description": "Advanced Custom Fields PRO stubs for static analysis.",
+    "keywords": [
+        "acf",
+        "wordpress",
+        "static analysis",
+        "phpstan"
+    ],
+    "homepage": "https://github.com/php-stubs/acf-pro-stubs",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "paulthewalton/acf-pro-stubs": "^5.8.9"
+    },
+    "suggest": {
+        "szepeviktor/phpstan-wordpress": "WordPress extensions for PHPStan",
+        "symfony/polyfill-php73": "Symfony polyfill backporting some PHP 7.3+ features to lower PHP versions"
+    },
+    "minimum-stability": "stable"
+}
