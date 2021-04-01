@@ -1,0 +1,7 @@
+/.gitattributes export-ignore
+/.editorconfig export-ignore
+/.gitignore export-ignore
+/README.md export-ignore
+/finder.php export-ignore
+/generate.sh export-ignore
+/release-latest-versions.sh export-ignore
