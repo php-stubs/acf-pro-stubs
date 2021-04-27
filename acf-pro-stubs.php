@@ -7,8 +7,10 @@
 
 class acf
 {
-    // vars
-    var $version = '5.6.2';
+    /** @var string The plugin version number */
+    var $version = '5.6.3';
+    /** @var array The plugin settings array */
+    var $settings = array();
     /**
      *  __construct
      *
@@ -1902,6 +1904,111 @@ class acf_field
      *  @return	array $l10n
      */
     function input_admin_l10n($l10n)
+    {
+    }
+}
+class acf_field_button_group extends \acf_field
+{
+    /**
+     *  initialize()
+     *
+     *  This function will setup the field type data
+     *
+     *  @date	18/9/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function initialize()
+    {
+    }
+    /**
+     *  render_field()
+     *
+     *  Creates the field's input HTML
+     *
+     *  @date	18/9/17
+     *  @since	5.6.3
+     *
+     *  @param	array $field The field settings array
+     *  @return	void
+     */
+    function render_field($field)
+    {
+    }
+    /**
+     *  render_field_settings()
+     *
+     *  Creates the field's settings HTML
+     *
+     *  @date	18/9/17
+     *  @since	5.6.3
+     *
+     *  @param	array $field The field settings array
+     *  @return	void
+     */
+    function render_field_settings($field)
+    {
+    }
+    /**
+     *  update_field()
+     *
+     *  This filter is appied to the $field before it is saved to the database
+     *
+     *  @date	18/9/17
+     *  @since	5.6.3
+     *
+     *  @param	array $field The field array holding all the field options
+     *  @return	$field
+     */
+    function update_field($field)
+    {
+    }
+    /**
+     *  load_value()
+     *
+     *  This filter is appied to the $value after it is loaded from the db
+     *
+     *  @date	18/9/17
+     *  @since	5.6.3
+     *
+     *  @param	mixed	$value		The value found in the database
+     *  @param	mixed	$post_id	The post ID from which the value was loaded from
+     *  @param	array	$field		The field array holding all the field options
+     *  @return	$value
+     */
+    function load_value($value, $post_id, $field)
+    {
+    }
+    /**
+     *  translate_field
+     *
+     *  This function will translate field settings
+     *
+     *  @date	18/9/17
+     *  @since	5.6.3
+     *
+     *  @param	array $field The field array holding all the field options
+     *  @return	$field
+     */
+    function translate_field($field)
+    {
+    }
+    /**
+     *  format_value()
+     *
+     *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
+     *
+     *  @date	18/9/17
+     *  @since	5.6.3
+     *
+     *  @param	mixed	$value		The value found in the database
+     *  @param	mixed	$post_id	The post ID from which the value was loaded from
+     *  @param	array	$field		The field array holding all the field options
+     *  @return	$value
+     */
+    function format_value($value, $post_id, $field)
     {
     }
 }
@@ -8579,7 +8686,7 @@ class acf_third_party
 class acf_updates
 {
     // vars
-    var $version = '2.1', $plugins = array(), $updates = \false, $dev = 0;
+    var $version = '2.2', $plugins = array(), $updates = \false, $dev = 0;
     /**
      *  __construct
      *
@@ -8623,7 +8730,7 @@ class acf_updates
      *  @param	array $body
      *  @return	mixed
      */
-    function request($query = 'index.php', $body = array())
+    function request($query = 'index.php', $body = \null)
     {
     }
     /**
@@ -11471,6 +11578,34 @@ function acf_render_field_wrap($field, $el = 'div', $instruction = 'label')
 {
 }
 /**
+*  acf_render_field_wrap_label
+*
+*  This function will maybe output the field's label
+*
+*  @date	19/9/17
+*  @since	5.6.3
+*
+*  @param	array $field
+*  @return	void
+*/
+function acf_the_field_wrap_label($field)
+{
+}
+/**
+*  acf_render_field_wrap_description
+*
+*  This function will maybe output the field's instructions
+*
+*  @date	19/9/17
+*  @since	5.6.3
+*
+*  @param	array $field
+*  @return	void
+*/
+function acf_the_field_wrap_instructions($field)
+{
+}
+/**
 *  acf_render_field_setting
 *
 *  This function will render a tr element containing a label and field cell, but also setting the tr data attribute for AJAX 
@@ -13524,6 +13659,61 @@ function acf_get_post_templates()
 function acf_esc_html($string = '')
 {
 }
+/**
+*  acf_clean_atts
+*
+*  This function will remove empty attributes
+*
+*  @date	3/10/17
+*  @since	5.6.3
+*
+*  @param	array $atts
+*  @return	array
+*/
+function acf_clean_atts($atts = array())
+{
+}
+/**
+*  acf_get_atts
+*
+*  This function will return an array of HTML attributes
+*
+*  @date	2/10/17
+*  @since	5.6.3
+*
+*  @param	void
+*  @return	void
+*/
+/**
+function acf_get_atts( $array, $keys ) {
+	
+	// vars
+	$atts = array();
+	
+	
+	// append attributes
+	foreach( $keys as $k ) {
+		if( isset($array[ $k ]) ) $atts[ $k ] = $array[ $k ];
+	}
+	
+	
+	// modify special attributes
+	foreach( array('readonly', 'disabled', 'required') as $k ) {
+		$atts[ $k ] = $atts[ $k ] ? $k : '';
+	}
+	
+	
+	// clean up blank attributes
+	foreach( $atts as $k => $v ) {
+		if( $v === '' ) unset( $atts[ $k ] );
+	}
+	
+	
+	// return
+	return $atts;
+	
+}
+*/
 /**
 *  acf_esc_atts
 *
