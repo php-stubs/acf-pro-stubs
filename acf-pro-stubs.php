@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.8.4';
+    var $version = '5.8.5';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -7617,99 +7617,6 @@ class acf_locations
     {
     }
 }
-class acf_location
-{
-    /** @var string Rule name */
-    var $name = '';
-    /** @var string Rule label */
-    var $label = '';
-    /** @var string Rule category */
-    var $category = 'post';
-    /** @var bool Rule availability */
-    var $public = \true;
-    /**
-     *  __construct
-     *
-     *  This function will setup the class functionality
-     *
-     *  @type	function
-     *  @date	5/03/2014
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function __construct()
-    {
-    }
-    /**
-     *  initialize
-     *
-     *  This function will initialize the location rule
-     *
-     *  @type	function
-     *  @date	27/6/17
-     *  @since	5.6.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function initialize()
-    {
-    }
-    /**
-     *  add_filter
-     *
-     *  This function checks if the function is_callable before adding the filter
-     *
-     *  @type	function
-     *  @date	5/03/2014
-     *  @since	5.0.0
-     *
-     *  @param	string $tag
-     *  @param	string $function_to_add
-     *  @param	int $priority
-     *  @param	int $accepted_args
-     *  @return	void
-     */
-    function add_filter($tag = '', $specific = \false, $function_to_add = '', $priority = 10, $accepted_args = 1)
-    {
-    }
-    /**
-     *  add_action
-     *
-     *  This function checks if the function is_callable before adding the action
-     *
-     *  @type	function
-     *  @date	5/03/2014
-     *  @since	5.0.0
-     *
-     *  @param	string $tag
-     *  @param	string $function_to_add
-     *  @param	int $priority
-     *  @param	int $accepted_args
-     *  @return	void
-     */
-    function add_action($tag = '', $specific = \false, $function_to_add = '', $priority = 10, $accepted_args = 1)
-    {
-    }
-    /**
-     *  compare
-     *
-     *  This function will compare a value to a location rule and return a boolean result
-     *
-     *  @type	function
-     *  @date	25/11/16
-     *  @since	5.5.0
-     *
-     *  @param	mixed $value
-     *  @param	rule (array)
-     *  @return	boolean
-     */
-    function compare($value, $rule)
-    {
-    }
-}
 class acf_location_attachment extends \acf_location
 {
     /**
@@ -8652,99 +8559,168 @@ class acf_location_taxonomy extends \acf_location
     {
     }
 }
-class acf_location_user_form extends \acf_location
+class ACF_Location
 {
+    /** @var string The location rule name. */
+    public $name = '';
+    /** @var string The location rule label. */
+    public $label = '';
+    /** @var string The location rule category. */
+    public $category = 'post';
+    /** @var string The location rule visibility. */
+    public $public = \true;
     /**
-     *  __construct
+     * __construct
      *
-     *  This function will setup the class functionality
+     * Sets up the class functionality.
      *
-     *  @type	function
-     *  @date	5/03/2014
-     *  @since	5.0.0
+     * @date	5/03/2014
+     * @since	5.0.0
      *
-     *  @param	void
-     *  @return	void
+     * @param	void
+     * @return	void
+     */
+    function __construct()
+    {
+    }
+    /**
+     * add_filter
+     *
+     * Maybe adds a filter callback.
+     *
+     * @date	17/9/19
+     * @since	5.8.1
+     *
+     * @param	string $tag The filter name.
+     * @param	callable $function_to_add The callback function.
+     * @param	int $priority The filter priority.
+     * @param	int $accepted_args The number of args to accept.
+     * @return	void
+     */
+    function add_filter($tag = '', $function_to_add = '', $priority = 10, $accepted_args = 1)
+    {
+    }
+    /**
+     * initialize
+     *
+     * Sets up the class functionality.
+     *
+     * @date	5/03/2014
+     * @since	5.0.0
+     *
+     * @param	void
+     * @return	void
      */
     function initialize()
     {
     }
     /**
-     *  rule_match
+     * compare
      *
-     *  This function is used to match this location $rule to the current $screen
+     * Compares the given value and rule params returning true when they match.
      *
-     *  @type	function
-     *  @date	3/01/13
-     *  @since	3.5.7
+     * @date	17/9/19
+     * @since	5.8.1
      *
-     *  @param	boolean $match 
-     *  @param	array $rule
-     *  @return	array $options
+     * @param	mixed $value The value to compare against.
+     * @param	array $rule The locatio rule data.
+     * @return	bool
+     */
+    function compare($value, $rule)
+    {
+    }
+}
+class ACF_Location_User_Form extends \ACF_Location
+{
+    /**
+     * initialize
+     *
+     * Sets up the class functionality.
+     *
+     * @date	5/03/2014
+     * @since	5.0.0
+     *
+     * @param	void
+     * @return	void
+     */
+    function initialize()
+    {
+    }
+    /**
+     * rule_match
+     *
+     * Determines if the given location $rule is a match for the current $screen.
+     *
+     * @date	17/9/19
+     * @since	5.8.1
+     *
+     * @param	bool $result Whether or not this location rule is a match.
+     * @param	array $rule The locatio rule data.
+     * @param	array $screen The current screen data.
+     * @return	bool
      */
     function rule_match($result, $rule, $screen)
     {
     }
     /**
-     *  rule_operators
+     * rule_values
      *
-     *  This function returns the available values for this rule type
+     * Returns an array of values for this location rule.
      *
-     *  @type	function
-     *  @date	30/5/17
-     *  @since	5.6.0
+     * @date	17/9/19
+     * @since	5.8.1
      *
-     *  @param	void
-     *  @return	array
+     * @param	array $choices An empty array.
+     * @param	array $rule The locatio rule data.
+     * @return	type Description.
      */
     function rule_values($choices, $rule)
     {
     }
 }
-class acf_location_user_role extends \acf_location
+class ACF_Location_User_Role extends \acf_location
 {
     /**
-     *  __construct
+     * initialize
      *
-     *  This function will setup the class functionality
+     * Sets up the class functionality.
      *
-     *  @type	function
-     *  @date	5/03/2014
-     *  @since	5.0.0
+     * @date	5/03/2014
+     * @since	5.0.0
      *
-     *  @param	void
-     *  @return	void
+     * @param	void
+     * @return	void
      */
     function initialize()
     {
     }
     /**
-     *  rule_match
+     * rule_match
      *
-     *  This function is used to match this location $rule to the current $screen
+     * Determines if the given location $rule is a match for the current $screen.
      *
-     *  @type	function
-     *  @date	3/01/13
-     *  @since	3.5.7
+     * @date	17/9/19
+     * @since	5.8.1
      *
-     *  @param	boolean $match 
-     *  @param	array $rule
-     *  @return	array $options
+     * @param	bool $result Whether or not this location rule is a match.
+     * @param	array $rule The locatio rule data.
+     * @param	array $screen The current screen data.
+     * @return	bool
      */
     function rule_match($result, $rule, $screen)
     {
     }
     /**
-     *  rule_operators
+     * rule_values
      *
-     *  This function returns the available values for this rule type
+     * Returns an array of values for this location rule.
      *
-     *  @type	function
-     *  @date	30/5/17
-     *  @since	5.6.0
+     * @date	17/9/19
+     * @since	5.8.1
      *
-     *  @param	void
-     *  @return	array
+     * @param	array $choices An empty array.
+     * @param	array $rule The locatio rule data.
+     * @return	array
      */
     function rule_values($choices, $rule)
     {
@@ -9266,18 +9242,18 @@ class ACF_Updates
     {
     }
     /**
-     *  request
+     * request
      *
-     *  Makes a request to the ACF connect server.
+     * Makes a request to the ACF connect server.
      *
-     *  @date	8/4/17
-     *  @since	5.5.10
+     * @date	8/4/17
+     * @since	5.5.10
      *
-     *  @param	string $query The api path. Defaults to 'index.php'
-     *  @param	array $body The body to post
-     *  @return	array|string|WP_Error
+     * @param	string $endpoint The API endpoint.
+     * @param	array $body The body to post.
+     * @return	array|string|WP_Error
      */
-    function request($query = 'index.php', $body = \null)
+    function request($endpoint = '', $body = \null)
     {
     }
     /**
