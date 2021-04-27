@@ -5,10 +5,10 @@
  * @see https://github.com/php-stubs/acf-pro-stubs
  */
 
-class acf
+class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.6.6';
+    var $version = '5.6.7';
     /** @var array The plugin settings array */
     var $settings = array();
     /**
@@ -2036,6 +2036,20 @@ class acf_deprecated
      *  @return	void
      */
     function acf_settings_l10n_field($setting)
+    {
+    }
+    /**
+     *  acf_settings_url
+     *
+     *  This function will add compatibility for previously named hooks
+     *
+     *  @date	12/12/17
+     *  @since	5.6.8
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function acf_settings_url($setting)
     {
     }
     /**
@@ -12655,22 +12669,35 @@ function acf_has_done($name)
 *  @param	string $path the relative path from the root of the ACF plugin folder
 *  @return	string
 */
-function acf_get_path($path)
+function acf_get_path($path = '')
+{
+}
+/**
+*  acf_get_url
+*
+*  This function will return the url to a file within the ACF plugin folder
+*
+*  @date	12/12/17
+*  @since	5.6.8
+*
+*  @param	string $path The relative path from the root of the ACF plugin folder
+*  @return	string
+*/
+function acf_get_url($path = '')
 {
 }
 /**
 *  acf_get_dir
 *
-*  This function will return the url to a file within the ACF plugin folder
+*  Deprecated in 5.6.8. Use acf_get_url() instead.
 *
-*  @type	function
 *  @date	28/09/13
 *  @since	5.0.0
 *
-*  @param	string $path the relative path from the root of the ACF plugin folder
+*  @param	string
 *  @return	string
 */
-function acf_get_dir($path)
+function acf_get_dir($path = '')
 {
 }
 /**
@@ -12718,6 +12745,21 @@ function acf_get_external_path($file, $path = '')
 *  @return	string
 */
 function acf_get_external_dir($file, $path = '')
+{
+}
+/**
+*  acf_plugin_dir_url
+*
+*  This function will calculate the url to a plugin folder.
+*  Different to the WP plugin_dir_url(), this function can calculate for urls outside of the plugins folder (theme include).
+*
+*  @date	13/12/17
+*  @since	5.6.8
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+function acf_plugin_dir_url($file)
 {
 }
 /**
