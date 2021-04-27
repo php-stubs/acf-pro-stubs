@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.7.7';
+    var $version = '5.7.8';
     /** @var array The plugin settings array */
     var $settings = array();
     /** @var array The plugin data array */
@@ -253,6 +253,21 @@ class acf_admin_field_group
      *  @return	void
      */
     function __construct()
+    {
+    }
+    /**
+     *  use_block_editor_for_post_type
+     *
+     *  Prevents the block editor from loading when editing an ACF field group.
+     *
+     *  @date	7/12/18
+     *  @since	5.8.0
+     *
+     *  @param	bool $use_block_editor Whether the post type can be edited or not. Default true.
+     *  @param	string $post_type The post type being checked.
+     *  @return	bool
+     */
+    function use_block_editor_for_post_type($use_block_editor, $post_type)
     {
     }
     /**
