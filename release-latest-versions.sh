@@ -15,30 +15,30 @@ Get_versions()
 mkdir -p advanced-custom-fields
 
 while read -r VERSION; do
-    # Process 5.* versions only
-    if [ "${VERSION#5.}" == "${VERSION}" ]; then
+    # Process 5.6+ versions only
+    if dpkg --compare-versions "${VERSION}" lt "5.6.0"; then
         continue
     fi
 
     # Download release
     RELEASE="advanced-custom-fields/acf-pro-${VERSION}.zip"
-#    wget -nv -O "${RELEASE}" \
-#        "https://connect.advancedcustomfields.com/index.php?p=pro&a=download&t=${VERSION}&k=${ACF_PRO_KEY}"
+    wget -nv -O "${RELEASE}" \
+        "https://connect.advancedcustomfields.com/index.php?p=pro&a=download&t=${VERSION}&k=${ACF_PRO_KEY}"
 
     if [ "$(file --brief --mime "${RELEASE}")" != "application/zip; charset=binary" ]; then
         echo "Skipping ${VERSION} ..."
-        continue;
+        continue
     fi
 
     # Extract release
     rm -f -r source/advanced-custom-fields-pro
-    unzip "${RELEASE}" -d source
+    unzip -q "${RELEASE}" -d source
 
     # Generate stubs
     echo "Generating stubs ..."
     ./generate.sh
 
     # Tag version
-    git commit --all -m "Generate stubs for ACF PRO ${LATEST}"
+    git commit --all -m "Generate stubs for ACF PRO ${VERSION}"
     git tag "v${VERSION}"
 done < <(Get_versions | tac)
