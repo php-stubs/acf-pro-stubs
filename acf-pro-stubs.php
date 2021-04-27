@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.7.3';
+    var $version = '5.7.4';
     /** @var array The plugin settings array */
     var $settings = array();
     /** @var array The plugin data array */
@@ -878,6 +878,135 @@ class acf_admin_tools
     {
     }
 }
+class ACF_Admin_Upgrade
+{
+    /**
+     *  __construct
+     *
+     *  Sets up the class functionality.
+     *
+     *  @date	31/7/18
+     *  @since	5.7.2
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function __construct()
+    {
+    }
+    /**
+     *  admin_menu
+     *
+     *  Setus up logic if DB Upgrade is needed on a single site.
+     *
+     *  @date	24/8/18
+     *  @since	5.7.4
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function admin_menu()
+    {
+    }
+    /**
+     *  network_admin_menu
+     *
+     *  Setus up logic if DB Upgrade is needed on a multi site.
+     *
+     *  @date	24/8/18
+     *  @since	5.7.4
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function network_admin_menu()
+    {
+    }
+    /**
+     *  admin_load
+     *
+     *  Runs during the loading of the admin page.
+     *
+     *  @date	24/8/18
+     *  @since	5.7.4
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function admin_load()
+    {
+    }
+    /**
+     *  network_admin_load
+     *
+     *  Runs during the loading of the network admin page.
+     *
+     *  @date	24/8/18
+     *  @since	5.7.4
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function network_admin_load()
+    {
+    }
+    /**
+     *  admin_notices
+     *
+     *  Displays the DB Upgrade prompt.
+     *
+     *  @date	23/8/18
+     *  @since	5.7.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function admin_notices()
+    {
+    }
+    /**
+     *  network_admin_notices
+     *
+     *  Displays the DB Upgrade prompt on a multi site.
+     *
+     *  @date	23/8/18
+     *  @since	5.7.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function network_admin_notices()
+    {
+    }
+    /**
+     *  admin_html
+     *
+     *  Displays the HTML for the admin page.
+     *
+     *  @date	24/8/18
+     *  @since	5.7.4
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function admin_html()
+    {
+    }
+    /**
+     *  network_admin_html
+     *
+     *  Displays the HTML for the network upgrade admin page.
+     *
+     *  @date	24/8/18
+     *  @since	5.7.4
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function network_admin_html()
+    {
+    }
+}
 class acf_admin
 {
     // vars
@@ -972,208 +1101,6 @@ class acf_admin
      *  @return	void
      */
     function admin_notices()
-    {
-    }
-}
-class acf_admin_install_network
-{
-    /**
-     *  __construct
-     *
-     *  A good place to add actions / filters
-     *
-     *  @type	function
-     *  @date	11/08/13
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function __construct()
-    {
-    }
-    /**
-     *  network_admin_menu
-     *
-     *  This function will chck for available updates and add actions if needed
-     *
-     *  @type	function
-     *  @date	2/04/2015
-     *  @since	5.1.5
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function network_admin_menu()
-    {
-    }
-    /**
-     *  load
-     *
-     *  This function will look at the $_POST data and run any functions if needed
-     *
-     *  @type	function
-     *  @date	7/01/2014
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function network_load()
-    {
-    }
-    /**
-     *  network_admin_notices
-     *
-     *  This function will render the update notice
-     *
-     *  @type	function
-     *  @date	2/04/2015
-     *  @since	5.1.5
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function network_admin_notices()
-    {
-    }
-    /**
-     *  network_html
-     *
-     *  This function will render the HTML for the network upgrade page
-     *
-     *  @type	function
-     *  @date	19/02/2014
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function network_html()
-    {
-    }
-}
-class acf_admin_install
-{
-    // vars
-    var $db_updates = array('5.0.0' => 'acf_update_500', '5.5.0' => 'acf_update_550');
-    /**
-     *  __construct
-     *
-     *  This function will setup the class functionality
-     *
-     *  @type	function
-     *  @date	5/03/2014
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function __construct()
-    {
-    }
-    /**
-     *  admin_menu
-     *
-     *  This function will chck for available updates and add actions if needed
-     *
-     *  @type	function
-     *  @date	19/02/2014
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function admin_menu()
-    {
-    }
-    /**
-     *  load
-     *
-     *  This function will look at the $_POST data and run any functions if needed
-     *
-     *  @type	function
-     *  @date	7/01/2014
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function load()
-    {
-    }
-    /**
-     *  admin_notices
-     *
-     *  This function will render the DB Upgrade notice
-     *
-     *  @type	function
-     *  @date	17/10/13
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function admin_notices()
-    {
-    }
-    /**
-     *  html
-     *
-     *  description
-     *
-     *  @type	function
-     *  @date	19/02/2014
-     *  @since	5.0.0
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
-     */
-    function html()
-    {
-    }
-    /**
-     *  ajax_db_update
-     *
-     *  description
-     *
-     *  @type	function
-     *  @date	24/10/13
-     *  @since	5.0.0
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
-     */
-    function ajax_db_update()
-    {
-    }
-    /**
-     *  run_db_update
-     *
-     *  This function will perform a db upgrade
-     *
-     *  @type	function
-     *  @date	10/09/2016
-     *  @since	5.4.0
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
-     */
-    function run_update($callback = '')
-    {
-    }
-    /**
-     *  wp_upgrade
-     *
-     *  This function will run when the WP database is updated
-     *
-     *  @type	function
-     *  @date	10/09/2016
-     *  @since	5.4.0
-     *
-     *  @param	string $wp_db_version The new $wp_db_version
-     *  @return	string $wp_current_db_version The old (current) $wp_db_version
-     */
-    function wp_upgrade($wp_db_version, $wp_current_db_version)
     {
     }
 }
@@ -1961,6 +1888,25 @@ class ACF_Ajax_Query_Terms extends \ACF_Ajax_Query
     {
     }
 }
+class ACF_Ajax_Upgrade extends \ACF_Ajax
+{
+    /** @var string The AJAX action name */
+    var $action = 'acf/ajax/upgrade';
+    /**
+     *  get_response
+     *
+     *  The actual logic for this AJAX request.
+     *
+     *  @date	31/7/18
+     *  @since	5.7.2
+     *
+     *  @param	void
+     *  @return	mixed The response data to send back or WP_Error.
+     */
+    function response()
+    {
+    }
+}
 class ACF_Ajax_User_Setting extends \ACF_Ajax
 {
     /** @var string The AJAX action name */
@@ -2301,19 +2247,18 @@ class acf_cache
     {
     }
 }
-class acf_compatibility
+class ACF_Compatibility
 {
     /**
      *  __construct
      *
-     *  description
+     *  Sets up the class functionality.
      *
-     *  @type	function
      *  @date	30/04/2014
      *  @since	5.0.0
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     *  @param	void
+     *  @return	void
      */
     function __construct()
     {
@@ -2321,59 +2266,55 @@ class acf_compatibility
     /**
      *  validate_field
      *
-     *  This function will provide compatibility with ACF4 fields
+     *  Adds compatibility with deprecated settings
      *
-     *  @type	function
      *  @date	23/04/2014
      *  @since	5.0.0
      *
-     *  @param	array $field
-     *  @return	$field
+     *  @param	array $field The field array.
+     *  @return	array $field
      */
     function validate_field($field)
     {
     }
     /**
-     *  validate_relationship_field
-     *
-     *  This function will provide compatibility with ACF4 fields
-     *
-     *  @type	function
-     *  @date	23/04/2014
-     *  @since	5.0.0
-     *
-     *  @param	array $field
-     *  @return	$field
-     */
-    function validate_relationship_field($field)
-    {
-    }
-    /**
      *  validate_textarea_field
      *
-     *  This function will provide compatibility with ACF4 fields
+     *  Adds compatibility with deprecated settings
      *
-     *  @type	function
      *  @date	23/04/2014
      *  @since	5.0.0
      *
-     *  @param	array $field
-     *  @return	$field
+     *  @param	array $field The field array.
+     *  @return	array $field
      */
     function validate_textarea_field($field)
     {
     }
     /**
-     *  validate_image_field
+     *  validate_relationship_field
      *
-     *  This function will provide compatibility with ACF4 fields
+     *  Adds compatibility with deprecated settings
      *
-     *  @type	function
      *  @date	23/04/2014
      *  @since	5.0.0
      *
-     *  @param	array $field
-     *  @return	$field
+     *  @param	array $field The field array.
+     *  @return	array $field
+     */
+    function validate_relationship_field($field)
+    {
+    }
+    /**
+     *  validate_image_field
+     *
+     *  Adds compatibility with deprecated settings
+     *
+     *  @date	23/04/2014
+     *  @since	5.0.0
+     *
+     *  @param	array $field The field array.
+     *  @return	array $field
      */
     function validate_image_field($field)
     {
@@ -2381,14 +2322,13 @@ class acf_compatibility
     /**
      *  validate_wysiwyg_field
      *
-     *  This function will provide compatibility with ACF4 fields
+     *  Adds compatibility with deprecated settings
      *
-     *  @type	function
      *  @date	23/04/2014
      *  @since	5.0.0
      *
-     *  @param	array $field
-     *  @return	$field
+     *  @param	array $field The field array.
+     *  @return	array $field
      */
     function validate_wysiwyg_field($field)
     {
@@ -2396,14 +2336,13 @@ class acf_compatibility
     /**
      *  validate_date_picker_field
      *
-     *  This function will provide compatibility with ACF4 fields
+     *  Adds compatibility with deprecated settings
      *
-     *  @type	function
      *  @date	23/04/2014
      *  @since	5.0.0
      *
-     *  @param	array $field
-     *  @return	$field
+     *  @param	array $field The field array.
+     *  @return	array $field
      */
     function validate_date_picker_field($field)
     {
@@ -2411,14 +2350,13 @@ class acf_compatibility
     /**
      *  validate_taxonomy_field
      *
-     *  This function will provide compatibility with ACF4 fields
+     *  Adds compatibility with deprecated settings
      *
-     *  @type	function
      *  @date	23/04/2014
-     *  @since	5.0.0
+     *  @since	5.2.7
      *
-     *  @param	array $field
-     *  @return	$field
+     *  @param	array $field The field array.
+     *  @return	array $field
      */
     function validate_taxonomy_field($field)
     {
@@ -2426,14 +2364,13 @@ class acf_compatibility
     /**
      *  validate_date_time_picker_field
      *
-     *  This function will provide compatibility with existing 3rd party fields
+     *  Adds compatibility with deprecated settings
      *
-     *  @type	function
      *  @date	23/04/2014
-     *  @since	5.0.0
+     *  @since	5.2.7
      *
-     *  @param	array $field
-     *  @return	$field
+     *  @param	array $field The field array.
+     *  @return	array $field
      */
     function validate_date_time_picker_field($field)
     {
@@ -2441,14 +2378,13 @@ class acf_compatibility
     /**
      *  validate_user_field
      *
-     *  This function will provide compatibility with ACF4 fields
+     *  Adds compatibility with deprecated settings
      *
-     *  @type	function
      *  @date	23/04/2014
-     *  @since	5.0.0
+     *  @since	5.2.7
      *
-     *  @param	array $field
-     *  @return	$field
+     *  @param	array $field The field array.
+     *  @return	array $field
      */
     function validate_user_field($field)
     {
@@ -2466,6 +2402,20 @@ class acf_compatibility
      *  @return	$field_group
      */
     function validate_field_group($field_group)
+    {
+    }
+    /**
+     *  validate_post_taxonomy_location_rule
+     *
+     *  description
+     *
+     *  @date	27/8/18
+     *  @since	5.7.4
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function validate_post_taxonomy_location_rule($rule)
     {
     }
 }
@@ -10136,7 +10086,7 @@ class acf_wpml_compatibility
     {
     }
     /**
-     *  update_500
+     *  upgrade_500
      *
      *  This function will update the WPML settings to allow 'acf-field-group' to be translatable
      *
@@ -10147,11 +10097,11 @@ class acf_wpml_compatibility
      *  @param	int $post_id
      *  @return	int $post_id
      */
-    function update_500()
+    function upgrade_500()
     {
     }
     /**
-     *  update_500_field_group
+     *  upgrade_500_field_group
      *
      *  This function will update the icl_translations table data when creating the fiedl groups
      *
@@ -10162,7 +10112,7 @@ class acf_wpml_compatibility
      *  @param	array $field_group
      *  @return	void
      */
-    function update_500_field_group($field_group, $ofg)
+    function upgrade_500_field_group($field_group, $ofg)
     {
     }
     /**
@@ -12208,138 +12158,6 @@ function acf_add_admin_notice($text, $class = '', $wrap = 'p')
 function acf_get_admin_notices()
 {
 }
-// class_exists check
-/**
-*  acf_get_sites
-*
-*  This function will return an array of site data
-*
-*  @type	function
-*  @date	29/08/2016
-*  @since	5.4.0
-*
-*  @param	void
-*  @return	array
-*/
-function acf_get_sites()
-{
-}
-// Exit if accessed directly
-/**
-*  acf_update_500
-*
-*  These functions will update the DB for ACF v5.0.0
-*
-*  @type	function
-*  @date	10/09/2016
-*  @since	5.4.0
-*
-*  @param	void
-*  @return	void
-*/
-function acf_update_500()
-{
-}
-function acf_update_500_field_groups()
-{
-}
-function acf_update_500_field_group($ofg)
-{
-}
-function acf_update_500_field($field)
-{
-}
-/**
-*  acf_update_550
-*
-*  These functions will update the DB for ACF v5.5.0
-*
-*  @type	function
-*  @date	10/09/2016
-*  @since	5.4.0
-*
-*  @param	void
-*  @return	void
-*/
-function acf_update_550()
-{
-}
-/**
-*  acf_update_550_termmeta
-*
-*  This function will migrate all term meta
-*
-*  @type	function
-*  @date	3/09/2016
-*  @since	5.4.0
-*
-*  @param	void
-*  @return	void
-*/
-function acf_update_550_termmeta()
-{
-}
-/**
-*  acf_update_550_taxonomy
-*
-*  This function will migrate term meta for a specific taxonomy
-*
-*  @type	function
-*  @date	3/09/2016
-*  @since	5.4.0
-*
-*  @param	string $taxonomy
-*  @return	void
-*/
-function acf_update_550_taxonomy($taxonomy)
-{
-}
-// class_exists check
-/**
-*  acf_get_db_version
-*
-*  This function will return the current ACF DB version
-*
-*  @type	function
-*  @date	10/09/2016
-*  @since	5.4.0
-*
-*  @param	int $post_id
-*  @return	int $post_id
-*/
-function acf_get_db_version()
-{
-}
-/**
-*  acf_update_db_version
-*
-*  This function will update the current ACF DB version
-*
-*  @type	function
-*  @date	10/09/2016
-*  @since	5.4.0
-*
-*  @param	int $post_id
-*  @return	int $post_id
-*/
-function acf_update_db_version($version = '')
-{
-}
-/**
-*  acf_get_db_updates
-*
-*  This function will return available db updates
-*
-*  @type	function
-*  @date	12/05/2014
-*  @since	5.0.0
-*
-*  @param	int $post_id
-*  @return	int $post_id
-*/
-function acf_get_db_updates()
-{
-}
 /**
 *  acf_is_field_group_key
 *
@@ -13511,6 +13329,20 @@ function acf_get_dir($path = '')
 *  @return	int $post_id
 */
 function acf_include($file)
+{
+}
+/**
+*  acf_include_once
+*
+*  Includes a file one time only.
+*
+*  @date	24/8/18
+*  @since	5.7.4
+*
+*  @param	string $file The relative file path.
+*  @return	void
+*/
+function acf_include_once($file = '')
 {
 }
 /**
@@ -14716,6 +14548,20 @@ function acf_log()
 {
 }
 /**
+*  acf_dev_log
+*
+*  Used to log variables only if ACF_DEV is defined
+*
+*  @date	25/8/18
+*  @since	5.7.4
+*
+*  @param	mixed
+*  @return	void
+*/
+function acf_dev_log()
+{
+}
+/**
 *  acf_doing
 *
 *  This function will tell ACF what task it is doing
@@ -15043,6 +14889,35 @@ function acf_get_post_templates()
 *  @return	string
 */
 function acf_parse_markdown($text = '')
+{
+}
+/**
+*  acf_get_sites
+*
+*  Returns an array of sites for a network.
+*
+*  @date	29/08/2016
+*  @since	5.4.0
+*
+*  @param	void
+*  @return	array
+*/
+function acf_get_sites()
+{
+}
+/**
+*  acf_convert_rules_to_groups
+*
+*  Converts an array of rules from ACF4 to an array of groups for ACF5
+*
+*  @date	25/8/18
+*  @since	5.7.4
+*
+*  @param	array $rules An array of rules.
+*  @param	string $anyorall The anyorall setting used in ACF4. Defaults to 'any'.
+*  @return	array
+*/
+function acf_convert_rules_to_groups($rules, $anyorall = 'any')
 {
 }
 /**
@@ -15980,11 +15855,39 @@ function acf_get_pretty_taxonomies($taxonomies = array())
 *  @date	19/8/18
 *  @since	5.7.3
 *
-*  @param	mixed $term_id The term ID or a string of "slug:taxonomy".
+*  @param	mixed $term_id The term ID or a string of "taxonomy:slug".
 *  @param	string $taxonomy The taxonomyname.
 *  @return	WP_Term
 */
 function acf_get_term($term_id, $taxonomy = '')
+{
+}
+/**
+*  acf_encode_term
+*
+*  Returns a "taxonomy:slug" string for a given WP_Term.
+*
+*  @date	27/8/18
+*  @since	5.7.4
+*
+*  @param	WP_Term $term The term object.
+*  @return	string
+*/
+function acf_encode_term($term)
+{
+}
+/**
+*  acf_decode_term
+*
+*  Decodes a "taxonomy:slug" string into an array of taxonomy and slug.
+*
+*  @date	27/8/18
+*  @since	5.7.4
+*
+*  @param	WP_Term $term The term object.
+*  @return	string
+*/
+function acf_decode_term($string)
 {
 }
 /**
@@ -16752,18 +16655,17 @@ function acf_get_location_rule_types()
 {
 }
 /**
-*  acf_get_valid_location_rule
+*  acf_validate_location_rule
 *
-*  This function will return a valid location rule array
+*  Returns a valid location rule array.
 *
-*  @type	function
-*  @date	30/5/17
-*  @since	5.6.0
+*  @date	28/8/18
+*  @since	5.7.4
 *
-*  @param	array $rule
+*  @param	$rule array The rule array.
 *  @return	array
 */
-function acf_get_valid_location_rule($rule)
+function acf_validate_location_rule($rule = \false)
 {
 }
 /**
@@ -16826,6 +16728,20 @@ function acf_match_location_rule($rule, $screen)
 *  @return	array
 */
 function acf_get_location_screen($screen, $field_group)
+{
+}
+/**
+*  acf_get_valid_location_rule
+*
+*  Deprecated in 5.7.4. Use acf_validate_location_rule() instead.
+*
+*  @date	30/5/17
+*  @since	5.6.0
+*
+*  @param	$rule array The rule array.
+*  @return	array
+*/
+function acf_get_valid_location_rule($rule)
 {
 }
 // class_exists check
@@ -16950,6 +16866,190 @@ function acf_updates()
 *  @return	void
 */
 function acf_register_plugin_update($plugin)
+{
+}
+/**
+*  acf_has_upgrade
+*
+*  Returns true if this site has an upgrade avaialble.
+*
+*  @date	24/8/18
+*  @since	5.7.4
+*
+*  @param	void
+*  @return	bool
+*/
+function acf_has_upgrade()
+{
+}
+/**
+*  acf_upgrade_all
+*
+*  Returns true if this site has an upgrade avaialble.
+*
+*  @date	24/8/18
+*  @since	5.7.4
+*
+*  @param	void
+*  @return	bool
+*/
+function acf_upgrade_all()
+{
+}
+/**
+*  acf_get_db_version
+*
+*  Returns the ACF DB version.
+*
+*  @date	10/09/2016
+*  @since	5.4.0
+*
+*  @param	void
+*  @return	string
+*/
+function acf_get_db_version()
+{
+}
+/**
+*  acf_update_db_version
+*
+*  Updates the ACF DB version.
+*
+*  @date	10/09/2016
+*  @since	5.4.0
+*
+*  @param	string $version The new version.
+*  @return	void
+*/
+function acf_update_db_version($version = '')
+{
+}
+/**
+*  acf_upgrade_500
+*
+*  Version 5 introduces new post types for field groups and fields.
+*
+*  @date	23/8/18
+*  @since	5.7.4
+*
+*  @param	void
+*  @return	void
+*/
+function acf_upgrade_500()
+{
+}
+/**
+*  acf_upgrade_500_field_groups
+*
+*  Upgrades all ACF4 field groups to ACF5
+*
+*  @date	23/8/18
+*  @since	5.7.4
+*
+*  @param	void
+*  @return	void
+*/
+function acf_upgrade_500_field_groups()
+{
+}
+/**
+*  acf_upgrade_500_field_group
+*
+*  Upgrades a ACF4 field group to ACF5
+*
+*  @date	23/8/18
+*  @since	5.7.4
+*
+*  @param	object $ofg	The old field group post object.
+*  @return	array $nfg	The new field group array.
+*/
+function acf_upgrade_500_field_group($ofg)
+{
+}
+/**
+*  acf_upgrade_500_fields
+*
+*  Upgrades all ACF4 fields to ACF5 from a specific field group 
+*
+*  @date	23/8/18
+*  @since	5.7.4
+*
+*  @param	object $ofg	The old field group post object.
+*  @param	array $nfg	The new field group array.
+*  @return	void
+*/
+function acf_upgrade_500_fields($ofg, $nfg)
+{
+}
+/**
+*  acf_upgrade_500_field
+*
+*  Upgrades a ACF4 field to ACF5
+*
+*  @date	23/8/18
+*  @since	5.7.4
+*
+*  @param	array $field The old field.
+*  @return	array $field The new field.
+*/
+function acf_upgrade_500_field($field)
+{
+}
+/**
+*  acf_upgrade_550
+*
+*  Version 5.5 adds support for the wp_termmeta table added in WP 4.4.
+*
+*  @date	23/8/18
+*  @since	5.7.4
+*
+*  @param	void
+*  @return	void
+*/
+function acf_upgrade_550()
+{
+}
+/**
+*  acf_upgrade_550_termmeta
+*
+*  Upgrades all ACF4 termmeta saved in wp_options to the wp_termmeta table.
+*
+*  @date	23/8/18
+*  @since	5.7.4
+*
+*  @param	void
+*  @return	void
+*/
+function acf_upgrade_550_termmeta()
+{
+}
+/**
+*  acf_wp_upgrade_550_termmeta
+*
+*  When the database is updated to support term meta, migrate ACF term meta data across.
+*
+*  @date	23/8/18
+*  @since	5.7.4
+*
+*  @param	string $wp_db_version The new $wp_db_version.
+*  @param	string $wp_current_db_version The old (current) $wp_db_version.
+*  @return	void
+*/
+function acf_wp_upgrade_550_termmeta($wp_db_version, $wp_current_db_version)
+{
+}
+/**
+*  acf_upgrade_550_taxonomy
+*
+*  Upgrades all ACF4 termmeta for a specific taxonomy.
+*
+*  @date	24/8/18
+*  @since	5.7.4
+*
+*  @param	string $taxonomy The taxonomy name.
+*  @return	void
+*/
+function acf_upgrade_550_taxonomy($taxonomy)
 {
 }
 // class_exists check
