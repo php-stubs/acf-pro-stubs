@@ -8,7 +8,7 @@
 class acf
 {
     /** @var string The plugin version number */
-    var $version = '5.6.3';
+    var $version = '5.6.4';
     /** @var array The plugin settings array */
     var $settings = array();
     /**
@@ -2843,6 +2843,22 @@ class acf_field__group extends \acf_field
      *  @return	int $post_id
      */
     function validate_value($valid, $value, $field, $input)
+    {
+    }
+    /**
+     *  duplicate_field()
+     *
+     *  This filter is appied to the $field before it is duplicated and saved to the database
+     *
+     *  @type	filter
+     *  @since	3.6
+     *  @date	23/01/13
+     *
+     *  @param	$field - the field array holding all the field options
+     *
+     *  @return	$field - the modified field
+     */
+    function duplicate_field($field)
     {
     }
     /**
@@ -8955,7 +8971,7 @@ class ACF_Walker_Nav_Menu_Edit extends \Walker_Nav_Menu_Edit
     {
     }
 }
-class acf_taxonomy_field_walker extends \Walker
+class ACF_Taxonomy_Field_Walker extends \Walker
 {
     var $field = \null, $tree_type = 'category', $db_fields = array('parent' => 'parent', 'id' => 'term_id');
     function __construct($field)
