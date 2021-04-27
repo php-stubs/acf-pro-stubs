@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.6.10';
+    var $version = '5.7.0';
     /** @var array The plugin settings array */
     var $settings = array();
     /** @var array The plugin data array */
@@ -103,21 +103,6 @@ class ACF
      *  @return	int $post_id
      */
     function register_post_status()
-    {
-    }
-    /**
-     *  register_assets
-     *
-     *  This function will register scripts and styles
-     *
-     *  @type	function
-     *  @date	22/10/2015
-     *  @since	5.3.2
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function register_assets()
     {
     }
     /**
@@ -1723,6 +1708,168 @@ class acf_ajax
     {
     }
 }
+class ACF_Assets
+{
+    /** @var array Storage for translations */
+    var $text = array();
+    /** @var array Storage for data */
+    var $data = array();
+    /**
+     *  __construct
+     *
+     *  description
+     *
+     *  @date	10/4/18
+     *  @since	5.6.9
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function __construct()
+    {
+    }
+    /**
+     *  add_text
+     *
+     *  description
+     *
+     *  @date	13/4/18
+     *  @since	5.6.9
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function add_text($text)
+    {
+    }
+    /**
+     *  add_data
+     *
+     *  description
+     *
+     *  @date	13/4/18
+     *  @since	5.6.9
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function add_data($data)
+    {
+    }
+    /**
+     *  register_scripts
+     *
+     *  description
+     *
+     *  @date	13/4/18
+     *  @since	5.6.9
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function register_scripts()
+    {
+    }
+    /**
+     *  enqueue_scripts
+     *
+     *  Enqueue scripts for input
+     *
+     *  @date	13/4/18
+     *  @since	5.6.9
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function enqueue_scripts($args = array())
+    {
+    }
+    /**
+     *  admin_enqueue_scripts
+     *
+     *  description
+     *
+     *  @date	16/4/18
+     *  @since	5.6.9
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function admin_enqueue_scripts()
+    {
+    }
+    /**
+     *  admin_print_scripts
+     *
+     *  description
+     *
+     *  @date	18/4/18
+     *  @since	5.6.9
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function admin_print_scripts()
+    {
+    }
+    /**
+     *  admin_head
+     *
+     *  description
+     *
+     *  @date	16/4/18
+     *  @since	5.6.9
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function admin_head()
+    {
+    }
+    /**
+     *  admin_footer
+     *
+     *  description
+     *
+     *  @date	16/4/18
+     *  @since	5.6.9
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function admin_footer()
+    {
+    }
+    /**
+     *  admin_print_footer_scripts
+     *
+     *  description
+     *
+     *  @date	18/4/18
+     *  @since	5.6.9
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function admin_print_footer_scripts()
+    {
+    }
+    /**
+     *  enqueue_uploader
+     *
+     *  This function will render a WP WYSIWYG and enqueue media
+     *
+     *  @type	function
+     *  @date	27/10/2014
+     *  @since	5.0.9
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function enqueue_uploader()
+    {
+    }
+}
 class acf_cache
 {
     // vars
@@ -2206,7 +2353,7 @@ class acf_fields
     /**
      *  register_field_type
      *
-     *  This function will store a field type class
+     *  This function will register a field type instance
      *
      *  @type	function
      *  @date	6/07/2016
@@ -2221,7 +2368,7 @@ class acf_fields
     /**
      *  get_field_type
      *
-     *  This function will return a field type class
+     *  This function will return a field type instance
      *
      *  @type	function
      *  @date	6/07/2016
@@ -2252,7 +2399,7 @@ class acf_fields
      *  register_field_type_info
      *
      *  This function will store a basic array of info about the field type
-     *  to later be overriden by the avbove register_field_type function
+     *  to later be overriden by the above register_field_type function
      *
      *  @type	function
      *  @date	29/5/17
@@ -2267,7 +2414,7 @@ class acf_fields
     /**
      *  get_field_types
      *
-     *  This function will return an array of all field type infos
+     *  This function will return an array of all field types
      *
      *  @type	function
      *  @date	6/07/2016
@@ -2830,21 +2977,6 @@ class acf_field_date_picker extends \acf_field
     {
     }
     /**
-     *  init
-     *
-     *  This function is run on the 'init' action to set the field's $l10n data. Before the init action, 
-     *  access to the $wp_locale variable is not possible.
-     *
-     *  @type	action (init)
-     *  @date	3/09/13
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function init()
-    {
-    }
-    /**
      *  input_admin_enqueue_scripts
      *
      *  description
@@ -3052,6 +3184,21 @@ class acf_field_file extends \acf_field
     {
     }
     /**
+     *  input_admin_enqueue_scripts
+     *
+     *  description
+     *
+     *  @type	function
+     *  @date	16/12/2015
+     *  @since	5.3.2
+     *
+     *  @param	int $post_id
+     *  @return	int $post_id
+     */
+    function input_admin_enqueue_scripts()
+    {
+    }
+    /**
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -3165,6 +3312,21 @@ class acf_field_google_map extends \acf_field
     {
     }
     /**
+     *  input_admin_enqueue_scripts
+     *
+     *  description
+     *
+     *  @type	function
+     *  @date	16/12/2015
+     *  @since	5.3.2
+     *
+     *  @param	int $post_id
+     *  @return	int $post_id
+     */
+    function input_admin_enqueue_scripts()
+    {
+    }
+    /**
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -3224,21 +3386,6 @@ class acf_field_google_map extends \acf_field
      *  @return	$value - the modified value
      */
     function update_value($value, $post_id, $field)
-    {
-    }
-    /**
-     *  input_admin_footer
-     *
-     *  description
-     *
-     *  @type	function
-     *  @date	6/03/2014
-     *  @since	5.0.0
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
-     */
-    function input_admin_footer()
     {
     }
 }
@@ -3479,6 +3626,21 @@ class acf_field_image extends \acf_field
      *  @return	void
      */
     function initialize()
+    {
+    }
+    /**
+     *  input_admin_enqueue_scripts
+     *
+     *  description
+     *
+     *  @type	function
+     *  @date	16/12/2015
+     *  @since	5.3.2
+     *
+     *  @param	int $post_id
+     *  @return	int $post_id
+     */
+    function input_admin_enqueue_scripts()
     {
     }
     /**
@@ -4596,6 +4758,21 @@ class acf_field_relationship extends \acf_field
      *  @return	void
      */
     function initialize()
+    {
+    }
+    /**
+     *  input_admin_enqueue_scripts
+     *
+     *  description
+     *
+     *  @type	function
+     *  @date	16/12/2015
+     *  @since	5.3.2
+     *
+     *  @param	int $post_id
+     *  @return	int $post_id
+     */
+    function input_admin_enqueue_scripts()
     {
     }
     /**
@@ -5803,18 +5980,18 @@ class acf_field_wysiwyg extends \acf_field
     {
     }
     /**
-     *  input_admin_footer
+     *  input_admin_enqueue_scripts
      *
      *  description
      *
      *  @type	function
-     *  @date	6/03/2014
-     *  @since	5.0.0
+     *  @date	16/12/2015
+     *  @since	5.3.2
      *
      *  @param	int $post_id
      *  @return	int $post_id
      */
-    function input_admin_footer()
+    function input_admin_enqueue_scripts()
     {
     }
     /**
@@ -5865,6 +6042,100 @@ class acf_field_wysiwyg extends \acf_field
     {
     }
 }
+class ACF_Form
+{
+    /** @var array Storage for data */
+    var $data = array();
+    /**
+     *  __construct
+     *
+     *  This function will setup the class functionality.
+     *
+     *  @type	function
+     *  @date	5/03/2014
+     *  @since	5.0.0
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function __construct()
+    {
+    }
+    /**
+     *  set_data
+     *
+     *  Sets data.
+     *
+     *  @type	function
+     *  @date	4/03/2016
+     *  @since	5.3.2
+     *
+     *  @param	array $data An array of data.
+     *  @return	array
+     */
+    function set_data($data = array())
+    {
+    }
+    /**
+     *  get_data
+     *
+     *  Returns data.
+     *
+     *  @type	function
+     *  @date	4/03/2016
+     *  @since	5.3.2
+     *
+     *  @param	string $name The data anme.
+     *  @return	mixed The data.
+     */
+    function get_data($name = \false)
+    {
+    }
+    /**
+     *  render_data
+     *
+     *  Renders the <div id="acf-form-data"> element with hidden "form data" inputs
+     *
+     *  @date	17/4/18
+     *  @since	5.6.9
+     *
+     *  @param	array $data An array of data.
+     *  @return	void
+     */
+    function render_data($data = array())
+    {
+    }
+    /**
+     *  save_post
+     *
+     *  Calls the 'acf/save_post' action allowing $_POST data to be saved
+     *
+     *  @date	17/4/18
+     *  @since	5.6.9
+     *
+     *  @param	mixed $post_id The $post_id used to save data to the DB
+     *  @param	array $values Optional. An optional array of data to be saved (modifies $_POST['acf'])
+     *  @return	boolean Returns true on success.
+     */
+    function save_post($post_id = 0, $values = \null)
+    {
+    }
+    /**
+     *  _save_post
+     *
+     *  Saves the actual $_POST['acf'] data.
+     *  Performing this logic within an action allows developers to hook in before and after data is saved.
+     *
+     *  @date	24/10/2014
+     *  @since	5.0.9
+     *
+     *  @param	mixed $post_id The $post_id used to save data to the DB
+     *  @return	void.
+     */
+    function _save_post($post_id)
+    {
+    }
+}
 class acf_form_attachment
 {
     /**
@@ -5880,21 +6151,6 @@ class acf_form_attachment
      *  @return	void
      */
     function __construct()
-    {
-    }
-    /**
-     *  validate_page
-     *
-     *  This function will check if the current page is for a post/page edit form
-     *
-     *  @type	function
-     *  @date	23/06/12
-     *  @since	3.1.8
-     *
-     *  @param	void
-     *  @return	boolean
-     */
-    function validate_page()
     {
     }
     /**
@@ -6098,7 +6354,7 @@ class acf_form_customizer
      *  @param	void
      *  @return	void
      */
-    function admin_enqueue_scripts()
+    function customize_controls_init()
     {
     }
     /**
@@ -6741,7 +6997,7 @@ class ACF_Form_Post
 }
 class acf_form_taxonomy
 {
-    var $form = '#addtag';
+    var $view = 'add';
     /**
      *  __construct
      *
@@ -6864,9 +7120,10 @@ class acf_form_taxonomy
     {
     }
 }
-class acf_form_user
+class ACF_Form_User
 {
-    var $form = '#createuser';
+    /** @var string The current view (new, edit, register) */
+    var $view = '';
     /**
      *  __construct
      *
@@ -6883,29 +7140,12 @@ class acf_form_user
     {
     }
     /**
-     *  validate_page
-     *
-     *  This function will check if the current page is for a post/page edit form
-     *
-     *  @type	function
-     *  @date	23/06/12
-     *  @since	3.1.8
-     *
-     *  @param	void
-     *  @return	boolean
-     */
-    function validate_page()
-    {
-    }
-    /**
      *  admin_enqueue_scripts
      *
-     *  This action is run after post query but before any admin script / head actions. 
-     *  It is a good place to register all actions.
+     *  Checks current screen and enqueues scripts
      *
-     *  @type	action (admin_enqueue_scripts)
-     *  @date	26/01/13
-     *  @since	3.6.0
+     *  @date	17/4/18
+     *  @since	5.6.9
      *
      *  @param	void
      *  @return	void
@@ -6914,33 +7154,47 @@ class acf_form_user
     {
     }
     /**
-     *  register_user
+     *  login_form_register
      *
-     *  description
+     *  Customizes and enqueues scripts
      *
-     *  @type	function
-     *  @date	8/10/13
-     *  @since	5.0.0
+     *  @date	17/4/18
+     *  @since	5.6.9
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     *  @param	void
+     *  @return	void
      */
-    function register_user()
+    function login_form_register()
     {
     }
     /**
-     *  edit_user
+     *  register_user
      *
-     *  description
+     *  Called during the user register form
      *
      *  @type	function
      *  @date	8/10/13
      *  @since	5.0.0
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     *  @param	void
+     *  @return	void
      */
-    function edit_user($user)
+    function render_register()
+    {
+    }
+    /**
+     *  render_edit
+     *
+     *  Called during the user edit form
+     *
+     *  @type	function
+     *  @date	8/10/13
+     *  @since	5.0.0
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function render_edit($user)
     {
     }
     /**
@@ -6955,7 +7209,7 @@ class acf_form_user
      *  @param	int $post_id
      *  @return	int $post_id
      */
-    function user_new_form()
+    function render_new()
     {
     }
     /**
@@ -6972,7 +7226,7 @@ class acf_form_user
      *  @param	string $el
      *  @return	void
      */
-    function render($user_id, $user_form, $el = 'tr')
+    function render($args = array())
     {
     }
     /**
@@ -7102,129 +7356,6 @@ class acf_form_widget
      *  @return	void
      */
     function admin_footer()
-    {
-    }
-}
-class acf_input
-{
-    /**
-     *  __construct
-     *
-     *  This function will setup the class functionality
-     *
-     *  @type	function
-     *  @date	5/03/2014
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function __construct()
-    {
-    }
-    /**
-     *  get_data
-     *
-     *  This function will return form data
-     *
-     *  @type	function
-     *  @date	4/03/2016
-     *  @since	5.3.2
-     *
-     *  @param	mixed $key
-     *  @return	mixed
-     */
-    function get_data($key = \false)
-    {
-    }
-    /**
-     *  set_data
-     *
-     *  This function will se the form data
-     *
-     *  @type	function
-     *  @date	4/03/2016
-     *  @since	5.3.2
-     *
-     *  @param	array $data
-     *  @return	array
-     */
-    function set_data($data)
-    {
-    }
-    /**
-     *  enqueue
-     *
-     *  This function will determin the actions to use for different pages
-     *
-     *  @type	function
-     *  @date	13/01/2016
-     *  @since	5.3.2
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function enqueue()
-    {
-    }
-    /**
-     *  admin_enqueue_scripts
-     *
-     *  The acf input screen admin_enqueue_scripts
-     *
-     *  @type	function
-     *  @date	4/03/2016
-     *  @since	5.3.2
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function admin_enqueue_scripts()
-    {
-    }
-    /**
-     *  admin_head
-     *
-     *  The acf input screen admin_head
-     *
-     *  @type	function
-     *  @date	4/03/2016
-     *  @since	5.3.2
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function admin_head()
-    {
-    }
-    /**
-     *  admin_footer
-     *
-     *  The acf input screen admin_footer
-     *
-     *  @type	function
-     *  @date	4/03/2016
-     *  @since	5.3.2
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function admin_footer()
-    {
-    }
-    /**
-     *  save_post
-     *
-     *  This function will save the $_POST data
-     *
-     *  @type	function
-     *  @date	24/10/2014
-     *  @since	5.0.9
-     *
-     *  @param	int $post_id
-     *  @return	void
-     */
-    function save_post($post_id)
     {
     }
 }
@@ -9056,7 +9187,7 @@ class acf_loop
     {
     }
 }
-class acf_media
+class ACF_Media
 {
     /**
      *  __construct
@@ -9074,18 +9205,17 @@ class acf_media
     {
     }
     /**
-     *  acf_input_admin_l10n
+     *  enqueue_scripts
      *
-     *  This function will append l10n strings for JS use
+     *  Localizes data
      *
-     *  @type	function
-     *  @date	11/04/2016
-     *  @since	5.3.8
+     *  @date	27/4/18
+     *  @since	5.6.9
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     *  @param	void
+     *  @return	void
      */
-    function acf_input_admin_l10n($l10n)
+    function enqueue_scripts()
     {
     }
     /**
@@ -9116,21 +9246,6 @@ class acf_media
      *  @return	int $post_id
      */
     function save_files($post_id = 0)
-    {
-    }
-    /**
-     *  admin_footer
-     *
-     *  description
-     *
-     *  @type	function
-     *  @date	19/02/2015
-     *  @since	5.1.5
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
-     */
-    function admin_footer()
     {
     }
     /**
@@ -9350,7 +9465,7 @@ class acf_third_party
 class acf_updates
 {
     // vars
-    var $version = '2.2', $plugins = array(), $updates = \false, $dev = 0;
+    var $version = '2.3', $plugins = array(), $force_check = \false, $dev = 0;
     /**
      *  __construct
      *
@@ -9410,6 +9525,36 @@ class acf_updates
      *  @return	mixed
      */
     function get_plugin_info($id = '')
+    {
+    }
+    /**
+     *  get_plugin_updates
+     *
+     *  description
+     *
+     *  @date	8/7/18
+     *  @since	5.6.9
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function get_plugin_updates()
+    {
+    }
+    /**
+     *  get_expiration
+     *
+     *  This function safely gets the expiration value from a response
+     *
+     *  @date	8/7/18
+     *  @since	5.6.9
+     *
+     *  @param	mixed $response The response from the server. Default false.
+     *  @param	int $min The minimum expiration limit. Default 0.
+     *  @param	int $max The maximum expiration limit. Default 0.
+     *  @return	int
+     */
+    function get_expiration($response = \false, $min = 0, $max = 0)
     {
     }
     /**
@@ -10133,6 +10278,21 @@ class acf_admin_settings_updates
     {
     }
     /**
+     *  refresh_plugins_transient
+     *
+     *  Checks the site transient 'update_plugins' and compares the cached new_version against the plugin-info version.
+     *  If the cached version is older, a new version is available, and the transient is refreshed.
+     *
+     *  @date	12/7/18
+     *  @since	5.6.9
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function refresh_plugins_transient()
+    {
+    }
+    /**
      *  activate_pro_licence
      *
      *  description
@@ -10544,6 +10704,21 @@ class acf_field_flexible_content extends \acf_field
     {
     }
     /**
+     *  input_admin_enqueue_scripts
+     *
+     *  description
+     *
+     *  @type	function
+     *  @date	16/12/2015
+     *  @since	5.3.2
+     *
+     *  @param	int $post_id
+     *  @return	int $post_id
+     */
+    function input_admin_enqueue_scripts()
+    {
+    }
+    /**
      *  get_valid_layout
      *
      *  This function will fill in the missing keys to create a valid layout
@@ -10932,6 +11107,21 @@ class acf_field_gallery extends \acf_field
     {
     }
     /**
+     *  input_admin_enqueue_scripts
+     *
+     *  description
+     *
+     *  @type	function
+     *  @date	16/12/2015
+     *  @since	5.3.2
+     *
+     *  @param	int $post_id
+     *  @return	int $post_id
+     */
+    function input_admin_enqueue_scripts()
+    {
+    }
+    /**
      *  ajax_get_attachment
      *
      *  description
@@ -11120,6 +11310,21 @@ class acf_field_repeater extends \acf_field
      *  @return	void
      */
     function initialize()
+    {
+    }
+    /**
+     *  input_admin_enqueue_scripts
+     *
+     *  description
+     *
+     *  @type	function
+     *  @date	16/12/2015
+     *  @since	5.3.2
+     *
+     *  @param	int $post_id
+     *  @return	int $post_id
+     */
+    function input_admin_enqueue_scripts()
     {
     }
     /**
@@ -12229,7 +12434,7 @@ function acf_is_sub_field($field)
 *  @param	array $field
 *  @return	string $label
 */
-function acf_get_field_label($field)
+function acf_get_field_label($field, $context = '')
 {
 }
 function acf_the_field_label($field)
@@ -12725,6 +12930,34 @@ function acf_is_array($array)
 *  @return	boolean
 */
 function acf_is_empty($value)
+{
+}
+/**
+*  acf_idify
+*
+*  Returns an id friendly string
+*
+*  @date	24/12/17
+*  @since	5.6.5
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+function acf_idify($str = '')
+{
+}
+/**
+*  acf_slugify
+*
+*  Returns a slug friendly string
+*
+*  @date	24/12/17
+*  @since	5.6.5
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+function acf_slugify($str = '')
 {
 }
 /**
@@ -15558,6 +15791,65 @@ function acf_preview_value($value, $post_id, $field)
 }
 // class_exists check
 /**
+*  acf_localize_text
+*
+*  description
+*
+*  @date	13/4/18
+*  @since	5.6.9
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+function acf_localize_text($text)
+{
+}
+/**
+*  acf_localize_data
+*
+*  description
+*
+*  @date	13/4/18
+*  @since	5.6.9
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+function acf_localize_data($data)
+{
+}
+/**
+*  acf_enqueue_scripts
+*
+*  
+*
+*  @type	function
+*  @date	6/10/13
+*  @since	5.0.0
+*
+*  @param	void
+*  @return	void
+*/
+function acf_enqueue_scripts($args = array())
+{
+}
+/**
+*  acf_enqueue_uploader
+*
+*  This function will render a WP WYSIWYG and enqueue media
+*
+*  @type	function
+*  @date	27/10/2014
+*  @since	5.0.9
+*
+*  @param	void
+*  @return	void
+*/
+function acf_enqueue_uploader()
+{
+}
+// class_exists check
+/**
 *  acf_is_cache_active
 *
 *  alias of acf()->cache->is_active()
@@ -15694,21 +15986,6 @@ function acf_register_field_type($class)
 {
 }
 /**
-*  acf_get_field_type
-*
-*  alias of acf()->fields->get_field_type()
-*
-*  @type	function
-*  @date	31/5/17
-*  @since	5.6.0
-*
-*  @param	void
-*  @return	void
-*/
-function acf_get_field_type($name)
-{
-}
-/**
 *  acf_register_field_type_info
 *
 *  alias of acf()->fields->register_field_type_info()
@@ -15724,6 +16001,21 @@ function acf_register_field_type_info($info)
 {
 }
 /**
+*  acf_get_field_type
+*
+*  alias of acf()->fields->get_field_type()
+*
+*  @type	function
+*  @date	31/5/17
+*  @since	5.6.0
+*
+*  @param	void
+*  @return	void
+*/
+function acf_get_field_type($name)
+{
+}
+/**
 *  acf_get_field_types
 *
 *  alias of acf()->fields->get_field_types()
@@ -15735,7 +16027,21 @@ function acf_register_field_type_info($info)
 *  @param	void
 *  @return	void
 */
-function acf_get_field_types()
+function acf_get_field_types($args = array())
+{
+}
+/**
+*  acf_get_field_types_info
+*
+*  Returns an array containing information about each field type
+*
+*  @date	18/6/18
+*  @since	5.6.9
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+function acf_get_field_types_info($args = array())
 {
 }
 /**
@@ -15799,9 +16105,9 @@ function acf_field_type_exists($type = '')
 {
 }
 /**
-*  acf_get_grouped_field_types (deprecated)
+*  acf_get_grouped_field_types
 *
-*  deprecated in favour of acf_get_field_types()
+*  Returns an multi-dimentional array of field types "name => label" grouped by category
 *
 *  @type	function
 *  @date	1/10/13
@@ -15811,6 +16117,67 @@ function acf_field_type_exists($type = '')
 *  @return	array
 */
 function acf_get_grouped_field_types()
+{
+}
+// class_exists check
+/**
+*  acf_get_form_data
+*
+*  alias of acf()->form->get_data()
+*
+*  @type	function
+*  @date	6/10/13
+*  @since	5.0.0
+*
+*  @param	void
+*  @return	void
+*/
+function acf_get_form_data($name = '')
+{
+}
+/**
+*  acf_set_form_data
+*
+*  alias of acf()->form->set_data()
+*
+*  @type	function
+*  @date	6/10/13
+*  @since	5.0.0
+*
+*  @param	void
+*  @return	void
+*/
+function acf_set_form_data($data = array())
+{
+}
+/**
+*  acf_form_data
+*
+*  description
+*
+*  @type	function
+*  @date	15/10/13
+*  @since	5.0.0
+*
+*  @param	int $post_id
+*  @return	int $post_id
+*/
+function acf_form_data($data = array())
+{
+}
+/**
+*  acf_save_post
+*
+*  description
+*
+*  @type	function
+*  @date	15/10/13
+*  @since	5.0.0
+*
+*  @param	int $post_id
+*  @return	int $post_id
+*/
+function acf_save_post($post_id = 0, $values = \null)
 {
 }
 // class_exists check
@@ -15836,97 +16203,6 @@ function acf_get_form($id = '')
 {
 }
 function acf_register_form($args)
-{
-}
-// class_exists check
-/**
-*  acf_enqueue_scripts
-*
-*  alias of acf()->form->enqueue()
-*
-*  @type	function
-*  @date	6/10/13
-*  @since	5.0.0
-*
-*  @param	void
-*  @return	void
-*/
-function acf_enqueue_scripts()
-{
-}
-/**
-*  acf_get_form_data
-*
-*  alias of acf()->form->get_data()
-*
-*  @type	function
-*  @date	6/10/13
-*  @since	5.0.0
-*
-*  @param	void
-*  @return	void
-*/
-function acf_get_form_data($key = \false)
-{
-}
-/**
-*  acf_set_form_data
-*
-*  alias of acf()->form->set_data()
-*
-*  @type	function
-*  @date	6/10/13
-*  @since	5.0.0
-*
-*  @param	void
-*  @return	void
-*/
-function acf_set_form_data($data = array())
-{
-}
-/**
-*  acf_enqueue_uploader
-*
-*  This function will render a WP WYSIWYG and enqueue media
-*
-*  @type	function
-*  @date	27/10/2014
-*  @since	5.0.9
-*
-*  @param	void
-*  @return	void
-*/
-function acf_enqueue_uploader()
-{
-}
-/**
-*  acf_form_data
-*
-*  description
-*
-*  @type	function
-*  @date	15/10/13
-*  @since	5.0.0
-*
-*  @param	int $post_id
-*  @return	int $post_id
-*/
-function acf_form_data($args = array())
-{
-}
-/**
-*  acf_save_post
-*
-*  description
-*
-*  @type	function
-*  @date	8/10/13
-*  @since	5.0.0
-*
-*  @param	int $post_id
-*  @return	int $post_id
-*/
-function acf_save_post($post_id = 0, $values = \null)
 {
 }
 // class_exists check
