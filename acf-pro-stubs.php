@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.8.6';
+    var $version = '5.8.7';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -1181,15 +1181,15 @@ class ACF_Admin_Upgrade
     {
     }
     /**
-     *  network_admin_menu
+     * network_admin_menu
      *
-     *  Setus up logic if DB Upgrade is needed on a multi site.
+     * Sets up admin logic if DB Upgrade is required on a multi site.
      *
-     *  @date	24/8/18
-     *  @since	5.7.4
+     * @date	24/8/18
+     * @since	5.7.4
      *
-     *  @param	void
-     *  @return	void
+     * @param	void
+     * @return	void
      */
     function network_admin_menu()
     {
@@ -1279,99 +1279,76 @@ class ACF_Admin_Upgrade
     {
     }
 }
-class acf_admin
+class ACF_Admin
 {
     /**
-     *  __construct
+     * __construct
      *
-     *  Initialize filters, action, variables and includes
+     * Sets up the class functionality.
      *
-     *  @type	function
-     *  @date	23/06/12
-     *  @since	5.0.0
+     * @date	23/06/12
+     * @since	5.0.0
      *
-     *  @param	void
-     *  @return	void
+     * @param	void
+     * @return	void
      */
     function __construct()
     {
     }
     /**
-     *  admin_menu
+     * admin_menu
      *
-     *  This function will add the ACF menu item to the WP admin
+     * Adds the ACF menu item.
      *
-     *  @type	action (admin_menu)
-     *  @date	28/09/13
-     *  @since	5.0.0
+     * @date	28/09/13
+     * @since	5.0.0
      *
-     *  @param	void
-     *  @return	void
+     * @param	void
+     * @return	void
      */
     function admin_menu()
     {
     }
     /**
-     *  admin_enqueue_scripts
+     * admin_enqueue_scripts
      *
-     *  This function will add the already registered css
+     * Enqueues global admin styling.
      *
-     *  @type	function
-     *  @date	28/09/13
-     *  @since	5.0.0
+     * @date	28/09/13
+     * @since	5.0.0
      *
-     *  @param	void
-     *  @return	void
+     * @param	void
+     * @return	void
      */
     function admin_enqueue_scripts()
     {
     }
-}
-class acf_settings_info
-{
     /**
-     *  __construct
+     * admin_body_class
      *
-     *  Initialize filters, action, variables and includes
+     * Appends the determined body_class.
      *
-     *  @type	function
-     *  @date	23/06/12
-     *  @since	5.0.0
+     * @date	5/11/19
+     * @since	5.8.7
      *
-     *  @param	void
-     *  @return	void
+     * @param	string $classes Space-separated list of CSS classes.
+     * @return	string
      */
-    function __construct()
+    function admin_body_class($classes)
     {
     }
     /**
-     *  admin_menu
+     * info_page_html
      *
-     *  This function will add the ACF menu item to the WP admin
+     * Renders the Info page HTML.
      *
-     *  @type	action (admin_menu)
-     *  @date	28/09/13
-     *  @since	5.0.0
+     * @date	5/11/19
+     * @since	5.8.7
      *
-     *  @param	void
-     *  @return	void
+     * @param	void
+     * @return	void
      */
-    function admin_menu()
-    {
-    }
-    /**
-     *  html
-     *
-     *  description
-     *
-     *  @type	function
-     *  @date	7/01/2014
-     *  @since	5.0.0
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
-     */
-    function html()
+    function info_page_html()
     {
     }
 }
@@ -17441,7 +17418,7 @@ function acf_validate_value($value, $field, $input)
 /**
  * acf_register_block_type
  *
- * Registeres a block type.
+ * Registers a block type.
  *
  * @date	18/2/19
  * @since	5.7.12
