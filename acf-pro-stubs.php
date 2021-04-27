@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.7.13';
+    var $version = '5.8.0';
     /** @var array The plugin settings array */
     var $settings = array();
     /** @var array The plugin data array */
@@ -6913,6 +6913,20 @@ class ACF_Form_Gutenberg
     {
     }
     /**
+     * filter_block_editor_meta_boxes
+     *
+     * description
+     *
+     * @date	5/4/19
+     * @since	5.7.14
+     *
+     * @param	type $var Description. Default.
+     * @return	type Description.
+     */
+    function filter_block_editor_meta_boxes($wp_meta_boxes)
+    {
+    }
+    /**
      *  acf_validate_save_post
      *
      *  Ignore errors during the Gutenberg "save metaboxes" AJAX request.
@@ -7618,6 +7632,153 @@ class acf_json
      *  @return	void
      */
     function include_json_folder($path = '')
+    {
+    }
+}
+class ACF_Local_Meta
+{
+    /** @var array Storage for meta data. */
+    var $meta = array();
+    /** @var mixed Storage for the current post_id. */
+    var $post_id = 0;
+    /**
+     * __construct
+     *
+     * Sets up the class functionality.
+     *
+     * @date	8/10/18
+     * @since	5.8.0
+     *
+     * @param	void
+     * @return	void
+     */
+    function __construct()
+    {
+    }
+    /**
+     * add
+     *
+     * Adds postmeta to storage.
+     * Accepts data in either raw or request format.
+     *
+     * @date	8/10/18
+     * @since	5.8.0
+     *
+     * @param	array $meta An array of metdata to store.
+     * @param	mixed $post_id The post_id for this data.
+     * @param	bool $is_main Makes this postmeta visible to get_field() without a $post_id value.
+     * @return	array
+     */
+    function add($meta = array(), $post_id = 0, $is_main = \false)
+    {
+    }
+    /**
+     * is_request
+     *
+     * Returns true if the supplied $meta is from a REQUEST (serialized <form> data).
+     *
+     * @date	11/3/19
+     * @since	5.7.14
+     *
+     * @param	array $meta An array of metdata to check.
+     * @return	bool
+     */
+    function is_request($meta = array())
+    {
+    }
+    /**
+     * capture
+     *
+     * Returns a flattened array of meta for the given postdata.
+     * This is achieved by simulating a save whilst capturing all meta changes.
+     *
+     * @date	26/2/19
+     * @since	5.7.13
+     *
+     * @param	array $values An array of raw values.
+     * @param	mixed $post_id The post_id for this data.
+     * @return	array
+     */
+    function capture($values = array(), $post_id = 0)
+    {
+    }
+    /**
+     * capture_update_metadata
+     *
+     * Records all meta activity and returns a non null value to bypass DB updates.
+     *
+     * @date	26/2/19
+     * @since	5.7.13
+     *
+     * @param	null $null .
+     * @param	int|string $post_id The post id.
+     * @param	string $name The meta name.
+     * @param	mixed $value The meta value.
+     * @param	bool $hidden If the meta is hidden (starts with an underscore).
+     * @return	false.
+     */
+    function capture_update_metadata($null, $post_id, $name, $value, $hidden)
+    {
+    }
+    /**
+     * remove
+     *
+     * Removes postmeta from storage.
+     *
+     * @date	8/10/18
+     * @since	5.8.0
+     *
+     * @param	mixed $post_id The post_id for this data.
+     * @return	void
+     */
+    function remove($post_id = 0)
+    {
+    }
+    /**
+     * pre_load_meta
+     *
+     * Injects the local meta.
+     *
+     * @date	8/10/18
+     * @since	5.8.0
+     *
+     * @param	null $null An empty parameter. Return a non null value to short-circuit the function.
+     * @param	mixed $post_id The post_id for this data.
+     * @return	mixed
+     */
+    function pre_load_meta($null, $post_id)
+    {
+    }
+    /**
+     * pre_load_metadata
+     *
+     * Injects the local meta.
+     *
+     * @date	8/10/18
+     * @since	5.8.0
+     *
+     * @param	null $null An empty parameter. Return a non null value to short-circuit the function.
+     * @param	int|string $post_id The post id.
+     * @param	string $name The meta name.
+     * @param	bool $hidden If the meta is hidden (starts with an underscore).
+     * @return	mixed
+     */
+    function pre_load_metadata($null, $post_id, $name, $hidden)
+    {
+    }
+    /**
+     * pre_load_post_id
+     *
+     * Injects the local post_id.
+     *
+     * @date	8/10/18
+     * @since	5.8.0
+     *
+     * @param	null $null An empty parameter. Return a non null value to short-circuit the function.
+     * @param	mixed $post_id The post_id for this data.
+     * @return	mixed
+     */
+    function pre_load_post_id($null, $post_id)
     {
     }
 }
@@ -11009,24 +11170,6 @@ class acf_field_gallery extends \acf_field
     function update_value($value, $post_id, $field)
     {
     }
-    /**
-     *  update_single_value()
-     *
-     *  This filter is appied to the $value before it is updated in the db
-     *
-     *  @type	filter
-     *  @since	3.6
-     *  @date	23/01/13
-     *
-     *  @param	$value - the value which will be saved in the database
-     *  @param	$post_id - the $post_id of which the value will be saved
-     *  @param	$field - the field array holding all the field options
-     *
-     *  @return	$value - the modified value
-     */
-    function update_single_value($value)
-    {
-    }
 }
 class acf_field_repeater extends \acf_field
 {
@@ -11328,6 +11471,55 @@ class acf_field_repeater extends \acf_field
      *  @return	int $post_id
      */
     function prepare_field_for_import($field)
+    {
+    }
+}
+class ACF_Location_Block extends \acf_location
+{
+    /**
+     *  __construct
+     *
+     *  This function will setup the class functionality
+     *
+     *  @type	function
+     *  @date	5/03/2014
+     *  @since	5.0.0
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function initialize()
+    {
+    }
+    /**
+     *  rule_match
+     *
+     *  This function is used to match this location $rule to the current $screen
+     *
+     *  @type	function
+     *  @date	3/01/13
+     *  @since	3.5.7
+     *
+     *  @param	boolean $match 
+     *  @param	array $rule
+     *  @return	array $options
+     */
+    function rule_match($result, $rule, $screen)
+    {
+    }
+    /**
+     *  rule_operators
+     *
+     *  This function returns the available values for this rule type
+     *
+     *  @type	function
+     *  @date	30/5/17
+     *  @since	5.6.0
+     *
+     *  @param	void
+     *  @return	array
+     */
+    function rule_values($choices, $rule)
     {
     }
 }
@@ -11815,7 +12007,7 @@ function acf_translate_field($field = array())
  * @date	30/09/13
  * @since	5.0.0
  *
- * @param	array $parent The field group or field array.
+ * @param	int|string|array $parent The field group or field settings. Also accepts the field group ID or key.
  * @return	array
  */
 function acf_get_fields($parent)
@@ -12791,6 +12983,48 @@ function acf_disable_filters()
  * @return	array
  */
 function acf_enable_filters($filters = array())
+{
+}
+/**
+ * acf_idval
+ *
+ * Parses the provided value for an ID.
+ *
+ * @date	29/3/19
+ * @since	5.7.14
+ *
+ * @param	mixed $value A value to parse.
+ * @return	int
+ */
+function acf_idval($value)
+{
+}
+/**
+ * acf_maybe_idval
+ *
+ * Checks value for potential id value.
+ *
+ * @date	6/4/19
+ * @since	5.7.14
+ *
+ * @param	mixed $value A value to parse.
+ * @return	mixed
+ */
+function acf_maybe_idval($value)
+{
+}
+/**
+ * acf_numericval
+ *
+ * Casts the provided value as eiter an int or float using a simple hack.
+ *
+ * @date	11/4/19
+ * @since	5.7.14
+ *
+ * @param	mixed $value A value to parse.
+ * @return	int|float
+ */
+function acf_numval($value)
 {
 }
 /**
@@ -13870,19 +14104,19 @@ function acf_get_image_size($s = '')
 {
 }
 /**
-*  acf_version_compare
-*
-*  This function will compare version left v right
-*
-*  @type	function
-*  @date	21/11/16
-*  @since	5.5.0
-*
-*  @param	string $compare
-*  @param	string $version
-*  @return	boolean
-*/
-function acf_version_compare($left = 'wp', $compare = '>', $right = '1')
+ * acf_version_compare
+ *
+ * Similar to the version_compare() function but with extra functionality.
+ *
+ * @date	21/11/16
+ * @since	5.5.0
+ *
+ * @param	string $left The left version number.
+ * @param	string $compare The compare operator.
+ * @param	string $right The right version number.
+ * @return	bool
+ */
+function acf_version_compare($left = '', $compare = '>', $right = '')
 {
 }
 /**
@@ -14005,17 +14239,16 @@ function acf_get_numeric($value = '')
 {
 }
 /**
-*  acf_get_posts
-*
-*  This function will return an array of posts making sure the order is correct
-*
-*  @type	function
-*  @date	3/03/2015
-*  @since	5.1.5
-*
-*  @param	array $args
-*  @return	array
-*/
+ * acf_get_posts
+ *
+ * Similar to the get_posts() function but with extra functionality.
+ *
+ * @date	3/03/15
+ * @since	5.1.5
+ *
+ * @param	array $args The query args.
+ * @return	array
+ */
 function acf_get_posts($args = array())
 {
 }
@@ -14092,17 +14325,16 @@ function acf_get_grouped_users($args = array())
 {
 }
 /**
-*  acf_json_encode
-*
-*  This function will return pretty JSON for all PHP versions
-*
-*  @type	function
-*  @date	6/03/2014
-*  @since	5.0.0
-*
-*  @param	array $json
-*  @return	string
-*/
+ * acf_json_encode
+ *
+ * Returns json_encode() ready for file / database use.
+ *
+ * @date	29/4/19
+ * @since	5.0.0
+ *
+ * @param	array $json The array of data to encode.
+ * @return	string
+ */
 function acf_json_encode($json)
 {
 }
@@ -16938,6 +17170,35 @@ function _acf_do_prepare_local_fields()
 }
 // class_exists check
 /**
+ * acf_setup_meta
+ *
+ * Adds postmeta to storage.
+ *
+ * @date	8/10/18
+ * @since	5.8.0
+ * @see		ACF_Local_Meta::add() for list of parameters.
+ *
+ * @return	array
+ */
+function acf_setup_meta($meta = array(), $post_id = 0, $is_main = \false)
+{
+}
+/**
+ * acf_reset_meta
+ *
+ * Removes postmeta to storage.
+ *
+ * @date	8/10/18
+ * @since	5.8.0
+ * @see		ACF_Local_Meta::remove() for list of parameters.
+ *
+ * @return	void
+ */
+function acf_reset_meta($post_id = 0)
+{
+}
+// class_exists check
+/**
 *  acf_register_location_rule
 *
 *  alias of acf()->locations->register_location()
@@ -17039,7 +17300,7 @@ function acf_get_location_rule_values($rule)
 *  @param	array $screen
 *  @return	boolean
 */
-function acf_match_location_rule($rule, $screen)
+function acf_match_location_rule($rule, $screen, $field_group)
 {
 }
 /**
@@ -17449,6 +17710,247 @@ function acf_validate_values($values, $input_prefix = '')
 *  @return	void
 */
 function acf_validate_value($value, $field, $input)
+{
+}
+/**
+ * acf_register_block_type
+ *
+ * Registeres a block type.
+ *
+ * @date	18/2/19
+ * @since	5.7.12
+ *
+ * @param	array $block The block settings.
+ * @return	array|false
+ */
+function acf_register_block_type($block)
+{
+}
+/**
+ * acf_register_block
+ *
+ * See acf_register_block_type().
+ *
+ * @date	18/2/19
+ * @since	5.7.12
+ *
+ * @param	array $block The block settings.
+ * @return	array|false
+ */
+function acf_register_block($block)
+{
+}
+/**
+ * acf_has_block_type
+ *
+ * Returns true if a block type exists for the given name.
+ *
+ * @date	18/2/19
+ * @since	5.7.12
+ *
+ * @param	string $name The block type name.
+ * @return	bool
+ */
+function acf_has_block_type($name)
+{
+}
+/**
+ * acf_get_block_types
+ *
+ * Returns an array of all registered block types.
+ *
+ * @date	18/2/19
+ * @since	5.7.12
+ *
+ * @param	void
+ * @return	array
+ */
+function acf_get_block_types()
+{
+}
+/**
+ * acf_get_block_types
+ *
+ * Returns a block type for the given name.
+ *
+ * @date	18/2/19
+ * @since	5.7.12
+ *
+ * @param	string $name The block type name.
+ * @return	array|null
+ */
+function acf_get_block_type($name)
+{
+}
+/**
+ * acf_remove_block_type
+ *
+ * Removes a block type for the given name.
+ *
+ * @date	18/2/19
+ * @since	5.7.12
+ *
+ * @param	string $name The block type name.
+ * @return	void
+ */
+function acf_remove_block_type($name)
+{
+}
+/**
+ * acf_get_block_type_default_attributes
+ *
+ * Returns an array of default attribute settings for a block type.
+ *
+ * @date	19/11/18
+ * @since	5.8.0
+ *
+ * @param	void
+ * @return	array
+ */
+function acf_get_block_type_default_attributes()
+{
+}
+/**
+ * acf_validate_block_type
+ *
+ * Validates a block type ensuring all settings exist.
+ *
+ * @date	10/4/18
+ * @since	5.8.0
+ *
+ * @param	array $block The block settings.
+ * @return	array
+ */
+function acf_validate_block_type($block)
+{
+}
+/**
+ * acf_prepare_block
+ *
+ * Prepares a block for use in render_callback by merging in all settings and attributes.
+ *
+ * @date	19/11/18
+ * @since	5.8.0
+ *
+ * @param	array $block The block props.
+ * @return	array
+ */
+function acf_prepare_block($block)
+{
+}
+/**
+ * acf_rendered_block
+ *
+ * Returns the HTML from acf_render_block().
+ *
+ * @date	28/2/19
+ * @since	5.7.13
+ * @see		acf_render_block() for list of parameters.
+ *
+ * @return	string
+ */
+function acf_rendered_block($block, $content = '', $is_preview = \false, $post_id = 0)
+{
+}
+/**
+ * acf_render_block
+ *
+ * Renders the block HTML.
+ *
+ * @date	19/2/19
+ * @since	5.7.12
+ *
+ * @param	array $block The block props.
+ * @param	string $content The block content (emtpy string).
+ * @param	bool $is_preview True during AJAX preview.
+ * @param	int $post_id The post being edited.
+ * @return	void
+ */
+function acf_render_block($block, $content = '', $is_preview = \false, $post_id = 0)
+{
+}
+/**
+ * acf_get_block_fields
+ *
+ * Returns an array of all fields for the given block.
+ *
+ * @date	24/10/18
+ * @since	5.8.0
+ *
+ * @param	array $block The block props.
+ * @return	array
+ */
+function acf_get_block_fields($block)
+{
+}
+/**
+ * acf_enqueue_block_assets
+ *
+ * Enqueues and localizes block scripts and styles.
+ *
+ * @date	28/2/19
+ * @since	5.7.13
+ *
+ * @param	void
+ * @return	void
+ */
+function acf_enqueue_block_assets()
+{
+}
+/**
+ * acf_enqueue_block_type_assets
+ *
+ * Enqueues scripts and styles for a specific block type.
+ *
+ * @date	28/2/19
+ * @since	5.7.13
+ *
+ * @param	array $block_type The block type settings.
+ * @return	void
+ */
+function acf_enqueue_block_type_assets($block_type)
+{
+}
+/**
+ * acf_ajax_fetch_block
+ *
+ * Handles the ajax request for block data.
+ *
+ * @date	28/2/19
+ * @since	5.7.13
+ *
+ * @param	void
+ * @return	void
+ */
+function acf_ajax_fetch_block()
+{
+}
+/**
+ * acf_parse_save_blocks
+ *
+ * Parse content that may contain HTML block comments and saves ACF block meta.
+ *
+ * @date	27/2/19
+ * @since	5.7.13
+ *
+ * @param	string $text Content that may contain HTML block comments.
+ * @return	string
+ */
+function acf_parse_save_blocks($text = '')
+{
+}
+/**
+ * acf_parse_save_blocks_callback
+ *
+ * Callback used in preg_replace to modify ACF Block comment.
+ *
+ * @date	1/3/19
+ * @since	5.7.13
+ *
+ * @param	array $matches The preg matches.
+ * @return	string
+ */
+function acf_parse_save_blocks_callback($matches)
 {
 }
 /**
