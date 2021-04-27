@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.8.5';
+    var $version = '5.8.6';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -3345,18 +3345,19 @@ class acf_field_google_map extends \acf_field
     {
     }
     /**
-     *  validate_value
+     * load_value
      *
-     *  description
+     * Filters the value loaded from the database.
      *
-     *  @type	function
-     *  @date	11/02/2014
-     *  @since	5.0.0
+     * @date	16/10/19
+     * @since	5.8.1
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     * @param	mixed $value The value loaded from the database.
+     * @param	mixed $post_id The post ID where the value is saved.
+     * @param	array $field The field settings array.
+     * @return	array|false
      */
-    function validate_value($valid, $value, $field, $input)
+    function load_value($value, $post_id, $field)
     {
     }
     /**
