@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.8.9';
+    var $version = '5.8.11';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -3839,15 +3839,13 @@ class acf_field_image extends \acf_field
     {
     }
     /**
-     *  render_field()
+     * Renders the field HTML.
      *
-     *  Create the HTML interface for your field
+     * @date	23/01/13
+     * @since	3.6.0
      *
-     *  @param	$field - an array holding all the field's data
-     *
-     *  @type	action
-     *  @since	3.6
-     *  @date	23/01/13
+     * @param	array $field The field settings.
+     * @return	void
      */
     function render_field($field)
     {
@@ -14438,6 +14436,18 @@ function acf_decode_taxonomy_term($value)
  * @return	array
  */
 function acf_array($val = array())
+{
+}
+/**
+ * Returns a non-array value.
+ *
+ * @date	11/05/2020
+ * @since	5.8.10
+ *
+ * @param	mixed $val The value to review.
+ * @return	mixed
+ */
+function acf_unarray($val)
 {
 }
 /**
