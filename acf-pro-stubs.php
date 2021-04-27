@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.7.2';
+    var $version = '5.7.3';
     /** @var array The plugin settings array */
     var $settings = array();
     /** @var array The plugin data array */
@@ -1810,6 +1810,27 @@ class ACF_Ajax
     {
     }
 }
+class ACF_Ajax_Check_Screen extends \ACF_Ajax
+{
+    /** @var string The AJAX action name */
+    var $action = 'acf/ajax/check_screen';
+    /** @var bool Prevents access for non-logged in users */
+    var $public = \false;
+    /**
+     *  get_response
+     *
+     *  The actual logic for this AJAX request.
+     *
+     *  @date	31/7/18
+     *  @since	5.7.2
+     *
+     *  @param	void
+     *  @return	mixed The response data to send back or WP_Error.
+     */
+    function response()
+    {
+    }
+}
 class ACF_Ajax_Query extends \ACF_Ajax
 {
     /** @var array The ACF field used for querying */
@@ -1943,7 +1964,7 @@ class ACF_Ajax_Query_Terms extends \ACF_Ajax_Query
 class ACF_Ajax_User_Setting extends \ACF_Ajax
 {
     /** @var string The AJAX action name */
-    var $action = 'acf/update_user_setting';
+    var $action = 'acf/ajax/user_setting';
     /** @var bool Prevents access for non-logged in users */
     var $public = \true;
     /**
@@ -6249,18 +6270,18 @@ class acf_field_wysiwyg extends \acf_field
     {
     }
     /**
-     *  input_admin_enqueue_scripts
+     *  acf_enqueue_uploader
      *
-     *  description
+     *  Registers toolbars data for the WYSIWYG field.
      *
      *  @type	function
      *  @date	16/12/2015
      *  @since	5.3.2
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     *  @param	void
+     *  @return	void
      */
-    function input_admin_enqueue_scripts()
+    function acf_enqueue_uploader()
     {
     }
     /**
@@ -7199,21 +7220,6 @@ class ACF_Form_Post
      *  @return	int $post_id
      */
     function admin_footer()
-    {
-    }
-    /**
-     *  get_field_groups
-     *
-     *  This function will return all the JSON data needed to render new metaboxes
-     *
-     *  @type	function
-     *  @date	21/10/13
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function get_field_groups()
     {
     }
     /**
@@ -9742,6 +9748,20 @@ class acf_third_party
      *  @return	$pages
      */
     function pts_allowed_pages($pages)
+    {
+    }
+    /**
+     *  doing_dark_mode
+     *
+     *  Runs during 'admin_enqueue_scripts' if dark mode is enabled
+     *
+     *  @date	13/8/18
+     *  @since	5.7.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function doing_dark_mode()
     {
     }
 }
@@ -15950,6 +15970,21 @@ function _acf_terms_clauses($pieces, $taxonomies, $args)
 *  @deprecated	5.7.2
 */
 function acf_get_pretty_taxonomies($taxonomies = array())
+{
+}
+/**
+*  acf_get_term
+*
+*  Similar to get_term() but with some extra functionality.
+*
+*  @date	19/8/18
+*  @since	5.7.3
+*
+*  @param	mixed $term_id The term ID or a string of "slug:taxonomy".
+*  @param	string $taxonomy The taxonomyname.
+*  @return	WP_Term
+*/
+function acf_get_term($term_id, $taxonomy = '')
 {
 }
 /**
