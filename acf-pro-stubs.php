@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.7.12';
+    var $version = '5.7.13';
     /** @var array The plugin settings array */
     var $settings = array();
     /** @var array The plugin data array */
@@ -12682,6 +12682,118 @@ function acf_cache_key($key = '')
 {
 }
 /**
+ * acf_request_args
+ *
+ * Returns an array of $_REQUEST values using the provided defaults.
+ *
+ * @date	28/2/19
+ * @since	5.7.13
+ *
+ * @param	array $args An array of args.
+ * @return	array
+ */
+function acf_request_args($args = array())
+{
+}
+/**
+ * acf_enable_filter
+ *
+ * Enables a filter with the given name.
+ *
+ * @date	14/7/16
+ * @since	5.4.0
+ *
+ * @param	string name The modifer name.
+ * @return	void
+ */
+function acf_enable_filter($name = '')
+{
+}
+/**
+ * acf_disable_filter
+ *
+ * Disables a filter with the given name.
+ *
+ * @date	14/7/16
+ * @since	5.4.0
+ *
+ * @param	string name The modifer name.
+ * @return	void
+ */
+function acf_disable_filter($name = '')
+{
+}
+/**
+ * acf_is_filter_enabled
+ *
+ * Returns the state of a filter for the given name.
+ *
+ * @date	14/7/16
+ * @since	5.4.0
+ *
+ * @param	string name The modifer name.
+ * @return	array
+ */
+function acf_is_filter_enabled($name = '')
+{
+}
+/**
+ * acf_get_filters
+ *
+ * Returns an array of filters in their current state.
+ *
+ * @date	14/7/16
+ * @since	5.4.0
+ *
+ * @param	void
+ * @return	array
+ */
+function acf_get_filters()
+{
+}
+/**
+ * acf_set_filters
+ *
+ * Sets an array of filter states.
+ *
+ * @date	14/7/16
+ * @since	5.4.0
+ *
+ * @param	array $filters An Array of modifers
+ * @return	array
+ */
+function acf_set_filters($filters = array())
+{
+}
+/**
+ * acf_disable_filters
+ *
+ * Disables all filters and returns the previous state.
+ *
+ * @date	14/7/16
+ * @since	5.4.0
+ *
+ * @param	void
+ * @return	array
+ */
+function acf_disable_filters()
+{
+}
+/**
+ * acf_enable_filters
+ *
+ * Enables all or an array of specific filters and returns the previous state.
+ *
+ * @date	14/7/16
+ * @since	5.4.0
+ *
+ * @param	array $filters An Array of modifers
+ * @return	array
+ */
+function acf_enable_filters($filters = array())
+{
+}
+/**
  * acf_add_filter_variations
  *
  * Registers variations for the given filter.
@@ -12912,6 +13024,38 @@ function acf_get_meta_field($key = 0, $post_id = 0)
 {
 }
 /**
+ * acf_get_metaref
+ *
+ * Retrieves reference metadata from the database.
+ *
+ * @date	16/10/2015
+ * @since	5.2.3
+ *
+ * @param	int|string $post_id The post id.
+ * @param	string type The reference type (fields|groups).
+ * @param	string $name An optional specific name
+ * @return	mixed
+ */
+function acf_get_metaref($post_id = 0, $type = 'fields', $name = '')
+{
+}
+/**
+ * acf_update_metaref
+ *
+ * Updates reference metadata in the database.
+ *
+ * @date	16/10/2015
+ * @since	5.2.3
+ *
+ * @param	int|string $post_id The post id.
+ * @param	string type The reference type (fields|groups).
+ * @param	array $references An array of references.
+ * @return	int|bool Meta ID if the key didn't exist, true on successful update, false on failure.
+ */
+function acf_update_metaref($post_id = 0, $type = 'fields', $references = array())
+{
+}
+/**
  * acf_get_post_templates
  *
  * Returns an array of post_type => templates data.
@@ -13013,6 +13157,21 @@ function acf_format_value($value, $post_id, $field)
  * @return	bool.
  */
 function acf_update_value($value = \null, $post_id = 0, $field)
+{
+}
+/**
+ * acf_update_values
+ *
+ * Updates an array of values.
+ *
+ * @date	26/2/19
+ * @since	5.7.13
+ *
+ * @param	array values The array of values.
+ * @param	int|string $post_id The post id.
+ * @return	void
+ */
+function acf_update_values($values = array(), $post_id = 0)
 {
 }
 /**
@@ -14731,112 +14890,6 @@ function acf_is_doing($event = '', $context = '')
 *  @return	int $post_id
 */
 function acf_is_plugin_active()
-{
-}
-/**
-*  acf_get_filters
-*
-*  Returns the registered filters
-*
-*  @date	2/2/18
-*  @since	5.6.5
-*
-*  @param	type $var Description. Default.
-*  @return	type Description.
-*/
-function acf_get_filters()
-{
-}
-/**
-*  acf_update_filters
-*
-*  Updates the registered filters
-*
-*  @date	2/2/18
-*  @since	5.6.5
-*
-*  @param	type $var Description. Default.
-*  @return	type Description.
-*/
-function acf_update_filters($filters)
-{
-}
-/**
-*  acf_enable_filter
-*
-*  This function will enable a filter
-*
-*  @type	function
-*  @date	15/07/2016
-*  @since	5.4.0
-*
-*  @param	int $post_id
-*  @return	int $post_id
-*/
-function acf_enable_filter($filter = '')
-{
-}
-/**
-*  acf_disable_filter
-*
-*  This function will disable a filter
-*
-*  @type	function
-*  @date	15/07/2016
-*  @since	5.4.0
-*
-*  @param	int $post_id
-*  @return	int $post_id
-*/
-function acf_disable_filter($filter = '')
-{
-}
-/**
-*  acf_enable_filters
-*
-*  ACF uses filters to modify field group and field data
-*  This function will enable them allowing ACF to interact with all data
-*
-*  @type	function
-*  @date	14/07/2016
-*  @since	5.4.0
-*
-*  @param	int $post_id
-*  @return	int $post_id
-*/
-function acf_enable_filters()
-{
-}
-/**
-*  acf_disable_filters
-*
-*  ACF uses filters to modify field group and field data
-*  This function will disable them allowing ACF to interact only with raw DB data
-*
-*  @type	function
-*  @date	14/07/2016
-*  @since	5.4.0
-*
-*  @param	int $post_id
-*  @return	int $post_id
-*/
-function acf_disable_filters()
-{
-}
-/**
-*  acf_is_filter_enabled
-*
-*  ACF uses filters to modify field group and field data
-*  This function will return true if they are enabled
-*
-*  @type	function
-*  @date	14/07/2016
-*  @since	5.4.0
-*
-*  @param	int $post_id
-*  @return	int $post_id
-*/
-function acf_is_filter_enabled($filter = '')
 {
 }
 /**
@@ -16753,6 +16806,20 @@ function acf_count_local_fields($parent = '')
  * @return	void
  */
 function acf_add_local_field($field, $prepared = \false)
+{
+}
+/**
+ * _acf_generate_local_key
+ *
+ * Generates a unique key based on the field's parent.
+ *
+ * @date	22/1/19
+ * @since	5.7.10
+ *
+ * @param	string $key The field key.
+ * @return	bool
+ */
+function _acf_generate_local_key($field)
 {
 }
 /**
