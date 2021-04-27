@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.8.0';
+    var $version = '5.8.1';
     /** @var array The plugin settings array */
     var $settings = array();
     /** @var array The plugin data array */
@@ -1771,134 +1771,135 @@ class ACF_Admin_Tool_Import extends \ACF_Admin_Tool
 }
 class ACF_Ajax
 {
-    /** @var string The AJAX action name */
+    /** @var string The AJAX action name. */
     var $action = '';
-    /** @var array The $_REQUEST data */
+    /** @var array The $_REQUEST data. */
     var $request;
-    /** @var bool Prevents access for non-logged in users */
+    /** @var bool Prevents access for non-logged in users. */
     var $public = \false;
     /**
-     *  __construct
+     * __construct
      *
-     *  Sets up the class functionality.
+     * Sets up the class functionality.
      *
-     *  @date	31/7/18
-     *  @since	5.7.2
+     * @date	31/7/18
+     * @since	5.7.2
      *
-     *  @param	void
-     *  @return	void
+     * @param	void
+     * @return	void
      */
     function __construct()
     {
     }
     /**
-     *  initialize
+     * has
      *
-     *  Allows easy access to modifying properties without changing constructor.
+     * Returns true if the request has data for the given key.
      *
-     *  @date	31/7/18
-     *  @since	5.7.2
+     * @date	31/7/18
+     * @since	5.7.2
      *
-     *  @param	void
-     *  @return	void
-     */
-    function initialize()
-    {
-    }
-    /**
-     *  has
-     *
-     *  Returns true if the request has data for the given key
-     *
-     *  @date	31/7/18
-     *  @since	5.7.2
-     *
-     *  @param	string $key The data key
-     *  @return	boolean
+     * @param	string $key The data key.
+     * @return	boolean
      */
     function has($key = '')
     {
     }
     /**
-     *  get
+     * get
      *
-     *  Returns request data for the given key
+     * Returns request data for the given key.
      *
-     *  @date	31/7/18
-     *  @since	5.7.2
+     * @date	31/7/18
+     * @since	5.7.2
      *
-     *  @param	string $key The data key
-     *  @return	mixed
+     * @param	string $key The data key.
+     * @return	mixed
      */
     function get($key = '')
     {
     }
     /**
-     *  set
+     * set
      *
-     *  Sets request data for the given key
+     * Sets request data for the given key.
      *
-     *  @date	31/7/18
-     *  @since	5.7.2
+     * @date	31/7/18
+     * @since	5.7.2
      *
-     *  @param	string $key The data key
-     *  @return	mixed
+     * @param	string $key The data key.
+     * @param	mixed $value The data value.
+     * @return	ACF_Ajax
      */
     function set($key = '', $value)
     {
     }
     /**
-     *  add_actions
+     * initialize
      *
-     *  Adds the ajax actions for this response.
+     * Allows easy access to modifying properties without changing constructor.
      *
-     *  @date	31/7/18
-     *  @since	5.7.2
+     * @date	31/7/18
+     * @since	5.7.2
      *
-     *  @param	void
-     *  @return	void
+     * @param	void
+     * @return	void
+     */
+    function initialize()
+    {
+    }
+    /**
+     * add_actions
+     *
+     * Adds the ajax actions for this response.
+     *
+     * @date	31/7/18
+     * @since	5.7.2
+     *
+     * @param	void
+     * @return	void
      */
     function add_actions()
     {
     }
     /**
-     *  request
+     * request
      *
-     *  Callback for ajax action. Sets up properties and calls the get_response() function.
+     * Callback for ajax action. Sets up properties and calls the get_response() function.
      *
-     *  @date	1/8/18
-     *  @since	5.7.2
+     * @date	1/8/18
+     * @since	5.7.2
      *
-     *  @param	void
-     *  @return	void
+     * @param	void
+     * @return	void
      */
     function request()
     {
     }
     /**
-     *  response
+     * get_response
      *
-     *  The actual logic for this AJAX request.
+     * Returns the response data to sent back.
      *
-     *  @date	31/7/18
-     *  @since	5.7.2
+     * @date	31/7/18
+     * @since	5.7.2
      *
-     *  @param	void
-     *  @return	mixed The response data to send back or WP_Error.
+     * @param	array $request The request args.
+     * @return	mixed The response data or WP_Error.
      */
-    function response()
+    function get_response($request)
     {
     }
     /**
-     *  send
+     * send
      *
-     *  Sends back JSON based on the $response as either success or failure.
+     * Sends back JSON based on the $response as either success or failure.
      *
-     *  @date	31/7/18
-     *  @since	5.7.2
+     * @date	31/7/18
+     * @since	5.7.2
      *
-     *  @param	mixed $response The response to send back.
-     *  @return	void
+     * @param	mixed $response The response to send back.
+     * @return	void
      */
     function send($response)
     {
@@ -1906,152 +1907,22 @@ class ACF_Ajax
 }
 class ACF_Ajax_Check_Screen extends \ACF_Ajax
 {
-    /** @var string The AJAX action name */
+    /** @var string The AJAX action name. */
     var $action = 'acf/ajax/check_screen';
-    /** @var bool Prevents access for non-logged in users */
+    /** @var bool Prevents access for non-logged in users. */
     var $public = \false;
     /**
-     *  get_response
+     * get_response
      *
-     *  The actual logic for this AJAX request.
+     * Returns the response data to sent back.
      *
-     *  @date	31/7/18
-     *  @since	5.7.2
+     * @date	31/7/18
+     * @since	5.7.2
      *
-     *  @param	void
-     *  @return	mixed The response data to send back or WP_Error.
+     * @param	array $request The request args.
+     * @return	mixed The response data or WP_Error.
      */
-    function response()
-    {
-    }
-}
-class ACF_Ajax_Query extends \ACF_Ajax
-{
-    /** @var array The ACF field used for querying */
-    var $field = \false;
-    /** @var int The page of results to return */
-    var $page = 1;
-    /** @var int The number of results per page */
-    var $per_page = 20;
-    /** @var string The searched term */
-    var $search = '';
-    /** @var int The number of results found */
-    var $count = 0;
-    /**
-     *  response
-     *
-     *  The actual logic for this AJAX request.
-     *
-     *  @date	31/7/18
-     *  @since	5.7.2
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function response()
-    {
-    }
-    /**
-     *  get_args
-     *
-     *  description
-     *
-     *  @date	31/7/18
-     *  @since	5.7.2
-     *
-     *  @param	type $var Description. Default.
-     *  @return	type Description.
-     */
-    function get_args()
-    {
-    }
-    /**
-     *  get_results
-     *
-     *  description
-     *
-     *  @date	31/7/18
-     *  @since	5.7.2
-     *
-     *  @param	type $var Description. Default.
-     *  @return	type Description.
-     */
-    function get_results($args)
-    {
-    }
-    /**
-     *  get_result
-     *
-     *  description
-     *
-     *  @date	31/7/18
-     *  @since	5.7.2
-     *
-     *  @param	type $var Description. Default.
-     *  @return	type Description.
-     */
-    function get_result($item)
-    {
-    }
-    /**
-     *  get_response
-     *
-     *  description
-     *
-     *  @date	31/7/18
-     *  @since	5.6.9
-     *
-     *  @param	type $var Description. Default.
-     *  @return	type Description.
-     */
-    function get_response($results, $args)
-    {
-    }
-}
-class ACF_Ajax_Query_Terms extends \ACF_Ajax_Query
-{
-    /** @var string The AJAX action name */
-    var $action = 'acf/ajax/query_terms';
-    /**
-     *  get_args
-     *
-     *  description
-     *
-     *  @date	31/7/18
-     *  @since	5.7.2
-     *
-     *  @param	type $var Description. Default.
-     *  @return	type Description.
-     */
-    function get_args()
-    {
-    }
-    /**
-     *  get_results
-     *
-     *  description
-     *
-     *  @date	31/7/18
-     *  @since	5.7.2
-     *
-     *  @param	type $var Description. Default.
-     *  @return	type Description.
-     */
-    function get_results($args)
-    {
-    }
-    /**
-     *  get_result
-     *
-     *  description
-     *
-     *  @date	31/7/18
-     *  @since	5.7.2
-     *
-     *  @param	type $var Description. Default.
-     *  @return	type Description.
-     */
-    function get_result($term)
+    function get_response($request)
     {
     }
 }
@@ -2060,38 +1931,38 @@ class ACF_Ajax_Upgrade extends \ACF_Ajax
     /** @var string The AJAX action name */
     var $action = 'acf/ajax/upgrade';
     /**
-     *  get_response
+     * get_response
      *
-     *  The actual logic for this AJAX request.
+     * Returns the response data to sent back.
      *
-     *  @date	31/7/18
-     *  @since	5.7.2
+     * @date	31/7/18
+     * @since	5.7.2
      *
-     *  @param	void
-     *  @return	mixed The response data to send back or WP_Error.
+     * @param	array $request The request args.
+     * @return	mixed The response data or WP_Error.
      */
-    function response()
+    function get_response($request)
     {
     }
 }
 class ACF_Ajax_User_Setting extends \ACF_Ajax
 {
-    /** @var string The AJAX action name */
+    /** @var string The AJAX action name. */
     var $action = 'acf/ajax/user_setting';
-    /** @var bool Prevents access for non-logged in users */
+    /** @var bool Prevents access for non-logged in users. */
     var $public = \true;
     /**
-     *  get_response
+     * get_response
      *
-     *  The actual logic for this AJAX request.
+     * Returns the response data to sent back.
      *
-     *  @date	31/7/18
-     *  @since	5.7.2
+     * @date	31/7/18
+     * @since	5.7.2
      *
-     *  @param	void
-     *  @return	mixed The response data to send back or WP_Error.
+     * @param	array $request The request args.
+     * @return	mixed The response data or WP_Error.
      */
-    function response()
+    function get_response($request)
     {
     }
 }
@@ -11076,21 +10947,6 @@ class acf_field_gallery extends \acf_field
     {
     }
     /**
-     *  get_attachments
-     *
-     *  This function will return an array of attachments for a given field value
-     *
-     *  @type	function
-     *  @date	13/06/2014
-     *  @since	5.0.0
-     *
-     *  @param	array $value
-     *  @return	$value
-     */
-    function get_attachments($value)
-    {
-    }
-    /**
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -13318,6 +13174,34 @@ function acf_get_users($args = array())
 {
 }
 /**
+ * acf_get_user_result
+ *
+ * Returns a result containing "id" and "text" for the given user.
+ *
+ * @date	21/5/19
+ * @since	5.8.1
+ *
+ * @param	WP_User $user The user object.
+ * @return	array
+ */
+function acf_get_user_result($user)
+{
+}
+/**
+ * acf_get_user_role_labels
+ *
+ * Returns an array of user roles in the format "name => label".
+ *
+ * @date	20/5/19
+ * @since	5.8.1
+ *
+ * @param	array $roles A specific array of roles.
+ * @return	array
+ */
+function acf_get_user_role_labels($roles = array())
+{
+}
+/**
  * acf_allow_unfiltered_html
  *
  * Returns true if the current user is allowed to save unfiltered HTML.
@@ -14989,17 +14873,16 @@ function acf_get_post_thumbnail($post = \null, $size = 'thumbnail')
 {
 }
 /**
-*  acf_get_browser
-*
-*  This functino will return the browser string for major browsers
-*
-*  @type	function
-*  @date	17/01/2014
-*  @since	5.0.0
-*
-*  @param	void
-*  @return	string
-*/
+ * acf_get_browser
+ *
+ * Returns the name of the current browser.
+ *
+ * @date	17/01/2014
+ * @since	5.0.0
+ *
+ * @param	void
+ * @return	string
+ */
 function acf_get_browser()
 {
 }
@@ -15361,15 +15244,16 @@ function acf_array_camel_case($array = array())
 {
 }
 /**
-*  acf_is_block_editor
-*
-*  Returns true if the current screen uses the block editor.
-*
-*  @date	13/12/18
-*  @since	5.8.0
-*
-*  @return	bool
-*/
+ * acf_is_block_editor
+ *
+ * Returns true if the current screen uses the block editor.
+ *
+ * @date	13/12/18
+ * @since	5.8.0
+ *
+ * @param	void
+ * @return	bool
+ */
 function acf_is_block_editor()
 {
 }
