@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.8.1';
+    var $version = '5.8.2';
     /** @var array The plugin settings array */
     var $settings = array();
     /** @var array The plugin data array */
@@ -2145,6 +2145,20 @@ class ACF_Compatibility
     {
     }
     /**
+     * init
+     *
+     * Adds compatibility for deprecated settings.
+     *
+     * @date	10/6/19
+     * @since	5.8.1
+     *
+     * @param	void
+     * @return	void
+     */
+    function init()
+    {
+    }
+    /**
      * field_wrapper_attributes
      *
      * Adds compatibility with deprecated field wrap attributes.
@@ -2311,142 +2325,6 @@ class ACF_Compatibility
      *  @return	type Description.
      */
     function validate_post_taxonomy_location_rule($rule)
-    {
-    }
-}
-class acf_deprecated
-{
-    /**
-     *  __construct
-     *
-     *  This function will setup the class functionality
-     *
-     *  @type	function
-     *  @date	30/1/17
-     *  @since	5.5.6
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function __construct()
-    {
-    }
-    /**
-     *  acf_settings_show_admin
-     *
-     *  This function will add compatibility for previously named hooks
-     *
-     *  @type	function
-     *  @date	19/05/2014
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function acf_settings_show_admin($setting)
-    {
-    }
-    /**
-     *  acf_settings_l10n_textdomain
-     *
-     *  This function will add compatibility for previously named hooks
-     *
-     *  @type	function
-     *  @date	19/05/2014
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function acf_settings_l10n_textdomain($setting)
-    {
-    }
-    /**
-     *  acf_settings_l10n_field
-     *
-     *  This function will add compatibility for previously named hooks
-     *
-     *  @type	function
-     *  @date	19/05/2014
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function acf_settings_l10n_field($setting)
-    {
-    }
-    /**
-     *  acf_settings_url
-     *
-     *  This function will add compatibility for previously named hooks
-     *
-     *  @date	12/12/17
-     *  @since	5.6.8
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function acf_settings_url($value)
-    {
-    }
-    /**
-     *  acf_validate_setting
-     *
-     *  description
-     *
-     *  @date	2/2/18
-     *  @since	5.6.5
-     *
-     *  @param	type $var Description. Default.
-     *  @return	type Description.
-     */
-    function acf_validate_setting($name)
-    {
-    }
-    /**
-     *  acf_validate_field
-     *
-     *  This function will add compatibility for previously named hooks
-     *
-     *  @type	function
-     *  @date	30/1/17
-     *  @since	5.5.6
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
-     */
-    function acf_validate_field($field)
-    {
-    }
-    /**
-     *  acf_validate_field_group
-     *
-     *  This function will add compatibility for previously named hooks
-     *
-     *  @type	function
-     *  @date	30/1/17
-     *  @since	5.5.6
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
-     */
-    function acf_validate_field_group($field_group)
-    {
-    }
-    /**
-     *  acf_validate_post_id
-     *
-     *  This function will add compatibility for previously named hooks
-     *
-     *  @type	function
-     *  @date	6/2/17
-     *  @since	5.5.6
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
-     */
-    function acf_validate_post_id($post_id, $_post_id)
     {
     }
 }
@@ -6798,6 +6676,21 @@ class ACF_Form_Gutenberg
     {
     }
     /**
+     * modify_user_option_meta_box_order
+     *
+     * Filters the `meta-box-order_{$post_type}` value by prepending "acf_after_title" data to "normal".
+     * Fixes a bug where metaboxes with position "acf_after_title" do not appear in the block editor.
+     *
+     * @date	11/7/19
+     * @since	5.8.2
+     *
+     * @param	array $stored_meta_box_order User's existing meta box order.
+     * @return	array Modified array with meta boxes moved around.
+     */
+    function modify_user_option_meta_box_order($locations)
+    {
+    }
+    /**
      *  acf_validate_save_post
      *
      *  Ignore errors during the Gutenberg "save metaboxes" AJAX request.
@@ -7338,6 +7231,38 @@ class ACF_Form_User
      *  @return	int $post_id
      */
     function save_user($user_id)
+    {
+    }
+    /**
+     * filter_registration_errors
+     *
+     * Validates $_POST data and appends any errors to prevent new user registration.
+     *
+     * @date	12/7/19
+     * @since	5.8.1
+     *
+     * @param	WP_Error $errors A WP_Error object containing any errors encountered during registration.
+     * @param	string $sanitized_user_login User's username after it has been sanitized.
+     * @param	string $user_email User's email.
+     * @return	WP_Error
+     */
+    function filter_registration_errors($errors, $sanitized_user_login, $user_email)
+    {
+    }
+    /**
+     * filter_pre_load_value
+     *
+     * Checks if a $_POST value exists for this field to allow persistent values.
+     *
+     * @date	12/7/19
+     * @since	5.8.2
+     *
+     * @param	null $null A null placeholder.
+     * @param	int|string $post_id The post id.
+     * @param	array $field The field array.
+     * @return	mixed
+     */
+    function filter_pre_load_value($null, $post_id, $field)
     {
     }
 }
@@ -11680,84 +11605,6 @@ function acf_switch_stores($site_id, $prev_site_id)
 {
 }
 /**
- * acf_render_field_wrap_label
- *
- * Renders the field's label.
- *
- * @date	19/9/17
- * @since	5.6.3
- * @deprecated 5.6.5
- *
- * @param	array $field The field array.
- * @return	void
- */
-function acf_render_field_wrap_label($field)
-{
-}
-/**
- * acf_render_field_wrap_description
- *
- * Renders the field's instructions.
- *
- * @date	19/9/17
- * @since	5.6.3
- * @deprecated 5.6.5
- *
- * @param	array $field The field array.
- * @return	void
- */
-function acf_render_field_wrap_description($field)
-{
-}
-/**
- * acf_get_fields_by_id
- *
- * Returns and array of fields for the given $parent_id.
- *
- * @date	27/02/2014
- * @since	5.0.0.
- * @deprecated	5.7.11
- *
- * @param	int $parent_id The parent ID.
- * @return	array
- */
-function acf_get_fields_by_id($parent_id = 0)
-{
-}
-/**
- * acf_update_option
- *
- * A wrapper for the WP update_option but provides logic for a 'no' autoload
- *
- * @date	4/01/2014
- * @since	5.0.0
- * @deprecated	5.7.11
- *
- * @param	string $option The option name.
- * @param	string $value The option value.
- * @param	string $autoload An optional autoload value.
- * @return	bool
- */
-function acf_update_option($option = '', $value = '', $autoload = \null)
-{
-}
-/**
- * acf_get_field_reference
- *
- * Finds the field key for a given field name and post_id.
- *
- * @date	26/1/18
- * @since	5.6.5
- * @deprecated	5.6.8
- *
- * @param	string	$field_name	The name of the field. eg 'sub_heading'
- * @param	mixed	$post_id	The post_id of which the value is saved against
- * @return	string	$reference	The field key
- */
-function acf_get_field_reference($field_name, $post_id)
-{
-}
-/**
  * acf_get_field
  *
  * Retrieves a field for the given identifier.
@@ -12976,6 +12823,347 @@ function _acf_apply_deprecated_hook()
 {
 }
 /**
+ * acf_filter_attrs
+ *
+ * Filters out empty attrs from the provided array.
+ *
+ * @date	11/6/19
+ * @since	5.8.1
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	array
+ */
+function acf_filter_attrs($attrs)
+{
+}
+/**
+ * acf_esc_attrs
+ *
+ * Generated valid HTML from an array of attrs.
+ *
+ * @date	11/6/19
+ * @since	5.8.1
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_esc_attrs($attrs)
+{
+}
+/**
+ * acf_esc_html
+ *
+ * Encodes <script> tags for safe HTML output.
+ *
+ * @date	12/6/19
+ * @since	5.8.1
+ *
+ * @param	string $string
+ * @return	string
+ */
+function acf_esc_html($string = '')
+{
+}
+/**
+ * acf_html_input
+ *
+ * Returns the HTML of an input.
+ *
+ * @date	13/6/19
+ * @since	5.8.1
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+//function acf_html_input( $attrs = array() ) {
+//	return sprintf( '<input %s/>', acf_esc_attrs($attrs) );
+//}
+/**
+ * acf_hidden_input
+ *
+ * Renders the HTML of a hidden input.
+ *
+ * @date	3/02/2014
+ * @since	5.0.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_hidden_input($attrs = array())
+{
+}
+/**
+ * acf_get_hidden_input
+ *
+ * Returns the HTML of a hidden input.
+ *
+ * @date	3/02/2014
+ * @since	5.0.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_get_hidden_input($attrs = array())
+{
+}
+/**
+ * acf_text_input
+ *
+ * Renders the HTML of a text input.
+ *
+ * @date	3/02/2014
+ * @since	5.0.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_text_input($attrs = array())
+{
+}
+/**
+ * acf_get_text_input
+ *
+ * Returns the HTML of a text input.
+ *
+ * @date	3/02/2014
+ * @since	5.0.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_get_text_input($attrs = array())
+{
+}
+/**
+ * acf_file_input
+ *
+ * Renders the HTML of a file input.
+ *
+ * @date	3/02/2014
+ * @since	5.0.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_file_input($attrs = array())
+{
+}
+/**
+ * acf_get_file_input
+ *
+ * Returns the HTML of a file input.
+ *
+ * @date	3/02/2014
+ * @since	5.0.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_get_file_input($attrs = array())
+{
+}
+/**
+ * acf_textarea_input
+ *
+ * Renders the HTML of a textarea input.
+ *
+ * @date	3/02/2014
+ * @since	5.0.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_textarea_input($attrs = array())
+{
+}
+/**
+ * acf_get_textarea_input
+ *
+ * Returns the HTML of a textarea input.
+ *
+ * @date	3/02/2014
+ * @since	5.0.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_get_textarea_input($attrs = array())
+{
+}
+/**
+ * acf_checkbox_input
+ *
+ * Renders the HTML of a checkbox input.
+ *
+ * @date	3/02/2014
+ * @since	5.0.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_checkbox_input($attrs = array())
+{
+}
+/**
+ * acf_get_checkbox_input
+ *
+ * Returns the HTML of a checkbox input.
+ *
+ * @date	3/02/2014
+ * @since	5.0.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_get_checkbox_input($attrs = array())
+{
+}
+/**
+ * acf_radio_input
+ *
+ * Renders the HTML of a radio input.
+ *
+ * @date	3/02/2014
+ * @since	5.0.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_radio_input($attrs = array())
+{
+}
+/**
+ * acf_get_radio_input
+ *
+ * Returns the HTML of a radio input.
+ *
+ * @date	3/02/2014
+ * @since	5.0.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_get_radio_input($attrs = array())
+{
+}
+/**
+ * acf_select_input
+ *
+ * Renders the HTML of a select input.
+ *
+ * @date	3/02/2014
+ * @since	5.0.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_select_input($attrs = array())
+{
+}
+/**
+ * acf_select_input
+ *
+ * Returns the HTML of a select input.
+ *
+ * @date	3/02/2014
+ * @since	5.0.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_get_select_input($attrs = array())
+{
+}
+/**
+ * acf_walk_select_input
+ *
+ * Returns the HTML of a select input's choices.
+ *
+ * @date	27/6/17
+ * @since	5.6.0
+ *
+ * @param	array $choices The choices to walk through.
+ * @param	array $values The selected choices.
+ * @param	array $depth The current walk depth.
+ * @return	string
+ */
+function acf_walk_select_input($choices = array(), $values = array(), $depth = 0)
+{
+}
+/**
+ * acf_clean_atts
+ *
+ * See acf_filter_attrs().
+ *
+ * @date	3/10/17
+ * @since	5.6.3
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_clean_atts($attrs)
+{
+}
+/**
+ * acf_esc_atts
+ *
+ * See acf_esc_attrs().
+ *
+ * @date	27/6/17
+ * @since	5.6.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_esc_atts($attrs)
+{
+}
+/**
+ * acf_esc_attr
+ *
+ * See acf_esc_attrs().
+ *
+ * @date	13/6/19
+ * @since	5.8.1
+ * @deprecated	5.6.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_esc_attr($attrs)
+{
+}
+/**
+ * acf_esc_attr_e
+ *
+ * See acf_esc_attrs().
+ *
+ * @date	13/6/19
+ * @since	5.8.1
+ * @deprecated	5.6.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_esc_attr_e($attrs)
+{
+}
+/**
+ * acf_esc_atts_e
+ *
+ * See acf_esc_attrs().
+ *
+ * @date	13/6/19
+ * @since	5.8.1
+ * @deprecated	5.6.0
+ *
+ * @param	array $attrs The array of attrs.
+ * @return	string
+ */
+function acf_esc_atts_e($attrs)
+{
+}
+/**
  * acf_decode_post_id
  *
  * Returns an array containing the object type and id for the given post_id string.
@@ -13459,6 +13647,20 @@ function acf_is_empty($value)
 {
 }
 /**
+ * acf_not_empty
+ *
+ * Returns true if the value provided is considered "not empty". Allows numbers such as 0.
+ *
+ * @date	15/7/19
+ * @since	5.8.1
+ *
+ * @param	mixed $var The value to check.
+ * @return	bool
+ */
+function acf_not_empty($var)
+{
+}
+/**
 *  acf_idify
 *
 *  Returns an id friendly string
@@ -13484,6 +13686,34 @@ function acf_idify($str = '')
 *  @return	type Description.
 */
 function acf_slugify($str = '')
+{
+}
+/**
+ * acf_punctify
+ *
+ * Returns a string with correct full stop puctuation.
+ *
+ * @date	12/7/19
+ * @since	5.8.2
+ *
+ * @param	string $str The string to format.
+ * @return	string
+ */
+function acf_punctify($str = '')
+{
+}
+/**
+ * acf_multi_explode
+ *
+ * Returns an array of strings created by splitting the $string by the given $delimiters.
+ *
+ * @date	12/7/19
+ * @since	5.8.2
+ *
+ * @param	array $delimiters An array of delimiters.
+ * @return	string $string The string to explode.
+ */
+function acf_multi_explode($delimiters, $string)
 {
 }
 /**
@@ -14618,22 +14848,6 @@ function acf_get_current_url()
 {
 }
 /**
-*  acf_str_join
-*
-*  Joins together 2 strings removing any overlapping characters.
-*  Useful for urls. Eg: 'test.local/foo/' + '/foo/bar/' = 'test.local/foo/bar/'
-*
-*  @date	19/11/18
-*  @since	5.8.0
-*
-*  @param	string $s1 The first string.
-*  @param	string $s2 The seccond string.
-*  @return	string
-*/
-function acf_str_join($s1 = '', $s2 = '')
-{
-}
-/**
 *  acf_current_user_can_admin
 *
 *  This function will return true if the current user can administrate the ACF field groups
@@ -15255,389 +15469,6 @@ function acf_array_camel_case($array = array())
  * @return	bool
  */
 function acf_is_block_editor()
-{
-}
-/**
-*  acf_esc_html
-*
-*  This function will encode <script> tags for safe output
-*
-*  @type	function
-*  @date	25/6/17
-*  @since	5.6.0
-*
-*  @param	string (string)
-*  @return	string
-*/
-function acf_esc_html($string = '')
-{
-}
-/**
-*  acf_clean_atts
-*
-*  This function will remove empty attributes
-*
-*  @date	3/10/17
-*  @since	5.6.3
-*
-*  @param	array $atts
-*  @return	array
-*/
-function acf_clean_atts($atts = array())
-{
-}
-/**
-*  acf_get_atts
-*
-*  This function will return an array of HTML attributes
-*
-*  @date	2/10/17
-*  @since	5.6.3
-*
-*  @param	void
-*  @return	void
-*/
-/**
-function acf_get_atts( $array, $keys ) {
-	
-	// vars
-	$atts = array();
-	
-	
-	// append attributes
-	foreach( $keys as $k ) {
-		if( isset($array[ $k ]) ) $atts[ $k ] = $array[ $k ];
-	}
-	
-	
-	// modify special attributes
-	foreach( array('readonly', 'disabled', 'required') as $k ) {
-		$atts[ $k ] = $atts[ $k ] ? $k : '';
-	}
-	
-	
-	// clean up blank attributes
-	foreach( $atts as $k => $v ) {
-		if( $v === '' ) unset( $atts[ $k ] );
-	}
-	
-	
-	// return
-	return $atts;
-	
-}
-*/
-/**
-*  acf_esc_atts
-*
-*  This function will escape an array of attributes and return as HTML
-*
-*  @type	function
-*  @date	27/6/17
-*  @since	5.6.0
-*
-*  @param	array $atts
-*  @return	string
-*/
-function acf_esc_atts($atts = array())
-{
-}
-/**
-*  acf_esc_atts_e
-*
-*  This function will echo acf_esc_atts
-*
-*  @type	function
-*  @date	27/6/17
-*  @since	5.6.0
-*
-*  @param	array $atts
-*  @return	void
-*/
-function acf_esc_atts_e($atts = array())
-{
-}
-/**
-*  acf_get_text_input
-*
-*  This function will return HTML for a text input
-*
-*  @type	function
-*  @date	3/02/2014
-*  @since	5.0.0
-*
-*  @param	$atts
-*  @return	string
-*/
-function acf_get_text_input($atts = array())
-{
-}
-/**
-*  acf_text_input
-*
-*  This function will output HTML for a text input
-*
-*  @type	function
-*  @date	3/02/2014
-*  @since	5.0.0
-*
-*  @param	$atts
-*  @return	void
-*/
-function acf_text_input($atts = array())
-{
-}
-/**
-*  acf_get_hidden_input
-*
-*  This function will return HTML for a hidden input
-*
-*  @type	function
-*  @date	3/02/2014
-*  @since	5.0.0
-*
-*  @param	$atts
-*  @return	string
-*/
-function acf_get_hidden_input($atts = array())
-{
-}
-/**
-*  acf_hidden_input
-*
-*  This function will output HTML for a generic input
-*
-*  @type	function
-*  @date	3/02/2014
-*  @since	5.0.0
-*
-*  @param	$atts
-*  @return	void
-*/
-function acf_hidden_input($atts = array())
-{
-}
-/**
-*  acf_get_textarea_input
-*
-*  This function will return HTML for a textarea input
-*
-*  @type	function
-*  @date	3/02/2014
-*  @since	5.0.0
-*
-*  @param	$atts
-*  @return	string
-*/
-function acf_get_textarea_input($atts = array())
-{
-}
-/**
-*  acf_textarea_input
-*
-*  This function will output HTML for a textarea input
-*
-*  @type	function
-*  @date	3/02/2014
-*  @since	5.0.0
-*
-*  @param	$atts
-*  @return	void
-*/
-function acf_textarea_input($atts = array())
-{
-}
-/**
-*  acf_get_checkbox_input
-*
-*  This function will return HTML for a checkbox input
-*
-*  @type	function
-*  @date	3/02/2014
-*  @since	5.0.0
-*
-*  @param	$atts
-*  @return	string
-*/
-function acf_get_checkbox_input($atts = array())
-{
-}
-/**
-*  acf_checkbox_input
-*
-*  This function will output HTML for a checkbox input
-*
-*  @type	function
-*  @date	3/02/2014
-*  @since	5.0.0
-*
-*  @param	$atts
-*  @return	void
-*/
-function acf_checkbox_input($atts = array())
-{
-}
-/**
-*  acf_get_radio_input
-*
-*  This function will return HTML for a radio input
-*
-*  @type	function
-*  @date	3/02/2014
-*  @since	5.0.0
-*
-*  @param	$atts
-*  @return	string
-*/
-function acf_get_radio_input($atts = array())
-{
-}
-/**
-*  acf_radio_input
-*
-*  This function will output HTML for a radio input
-*
-*  @type	function
-*  @date	3/02/2014
-*  @since	5.0.0
-*
-*  @param	$atts
-*  @return	void
-*/
-function acf_radio_input($atts = array())
-{
-}
-/**
-*  acf_get_select_input
-*
-*  This function will return HTML for a select input
-*
-*  @type	function
-*  @date	3/02/2014
-*  @since	5.0.0
-*
-*  @param	$atts
-*  @return	string
-*/
-function acf_get_select_input($atts = array())
-{
-}
-/**
-*  acf_walk_select_input
-*
-*  This function will return the HTML for a select input's choices
-*
-*  @type	function
-*  @date	27/6/17
-*  @since	5.6.0
-*
-*  @param	int $post_id
-*  @return	int $post_id
-*/
-function acf_walk_select_input($choices = array(), $values = array(), $depth = 0)
-{
-}
-/**
-*  acf_select_input
-*
-*  This function will output HTML for a select input
-*
-*  @type	function
-*  @date	3/02/2014
-*  @since	5.0.0
-*
-*  @param	$atts
-*  @return	void
-*/
-function acf_select_input($atts = array())
-{
-}
-/**
-function acf_test_esc_html( $string = '' ) {
-	
-	$s = '';
-	
-	
-	$time_start = microtime(true);
-	$s .= wp_kses_post( $string );
-	$s .= ' = ('. (microtime(true) - $time_start) .')';
-	
-	$s .= '-----';
-
-	
-	$time_start = microtime(true);
-	$s .= str_replace(array('<script', '</script'), array(htmlspecialchars('<script'), htmlspecialchars('</script')), $string);
-	$s .= ' = ('. (microtime(true) - $time_start) .')';
-	
-
-	$time_start = microtime(true);
-	if( strpos($string, '<script') ) {
-		$s .= str_replace(array('<script', '</script'), array(htmlspecialchars('<script'), htmlspecialchars('</script')), $string);
-	}
-	$s .= ' = ('. (microtime(true) - $time_start) .')';
-	
-	return $s;
-	
-}
-*/
-/**
-*  acf_get_file_input
-*
-*  This function will return HTML for a file input
-*
-*  @type	function
-*  @date	3/02/2014
-*  @since	5.0.0
-*
-*  @param	$atts
-*  @return	string
-*/
-function acf_get_file_input($atts = array())
-{
-}
-/**
-*  acf_file_input
-*
-*  This function will output HTML for a file input
-*
-*  @type	function
-*  @date	3/02/2014
-*  @since	5.0.0
-*
-*  @param	$atts
-*  @return	void
-*/
-function acf_file_input($atts = array())
-{
-}
-/**
-*  acf_esc_attr
-*
-*  Deprecated since 5.6.0
-*
-*  @type	function
-*  @date	1/10/13
-*  @since	5.0.0
-*
-*  @param	array $atts
-*  @return	void
-*/
-function acf_esc_attr($atts)
-{
-}
-/**
-*  acf_esc_attr_e
-*
-*  Deprecated since 5.6.0
-*
-*  @type	function
-*  @date	1/10/13
-*  @since	5.0.0
-*
-*  @param	array $atts
-*  @return	void
-*/
-function acf_esc_attr_e($atts)
 {
 }
 /**
@@ -16404,6 +16235,84 @@ function acf_enqueue_scripts($args = array())
 *  @return	void
 */
 function acf_enqueue_uploader()
+{
+}
+/**
+ * acf_render_field_wrap_label
+ *
+ * Renders the field's label.
+ *
+ * @date	19/9/17
+ * @since	5.6.3
+ * @deprecated 5.6.5
+ *
+ * @param	array $field The field array.
+ * @return	void
+ */
+function acf_render_field_wrap_label($field)
+{
+}
+/**
+ * acf_render_field_wrap_description
+ *
+ * Renders the field's instructions.
+ *
+ * @date	19/9/17
+ * @since	5.6.3
+ * @deprecated 5.6.5
+ *
+ * @param	array $field The field array.
+ * @return	void
+ */
+function acf_render_field_wrap_description($field)
+{
+}
+/**
+ * acf_get_fields_by_id
+ *
+ * Returns and array of fields for the given $parent_id.
+ *
+ * @date	27/02/2014
+ * @since	5.0.0.
+ * @deprecated	5.7.11
+ *
+ * @param	int $parent_id The parent ID.
+ * @return	array
+ */
+function acf_get_fields_by_id($parent_id = 0)
+{
+}
+/**
+ * acf_update_option
+ *
+ * A wrapper for the WP update_option but provides logic for a 'no' autoload
+ *
+ * @date	4/01/2014
+ * @since	5.0.0
+ * @deprecated	5.7.11
+ *
+ * @param	string $option The option name.
+ * @param	string $value The option value.
+ * @param	string $autoload An optional autoload value.
+ * @return	bool
+ */
+function acf_update_option($option = '', $value = '', $autoload = \null)
+{
+}
+/**
+ * acf_get_field_reference
+ *
+ * Finds the field key for a given field name and post_id.
+ *
+ * @date	26/1/18
+ * @since	5.6.5
+ * @deprecated	5.6.8
+ *
+ * @param	string	$field_name	The name of the field. eg 'sub_heading'
+ * @param	mixed	$post_id	The post_id of which the value is saved against
+ * @return	string	$reference	The field key
+ */
+function acf_get_field_reference($field_name, $post_id)
 {
 }
 // class_exists check
