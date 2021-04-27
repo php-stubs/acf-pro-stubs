@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.7.6';
+    var $version = '5.7.7';
     /** @var array The plugin settings array */
     var $settings = array();
     /** @var array The plugin data array */
@@ -543,6 +543,20 @@ class acf_admin_field_groups
      *  @return	void
      */
     function __construct()
+    {
+    }
+    /**
+     *  maybe_redirect_edit
+     *
+     *  Redirects the user from the old ACF4 edit page to the new ACF5 edit page
+     *
+     *  @date	17/9/18
+     *  @since	5.7.6
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function maybe_redirect_edit()
     {
     }
     /**
@@ -7066,13 +7080,15 @@ class acf_form_nav_menu
 }
 class ACF_Form_Post
 {
-    var $post_id = 0, $typenow = '', $style = '';
+    /** @var string The first field groups style CSS. */
+    var $style = '';
+    /** @var array An arry of postbox data. */
+    var $postboxes = array();
     /**
      *  __construct
      *
-     *  This function will setup the class functionality
+     *  Sets up the class functionality.
      *
-     *  @type	function
      *  @date	5/03/2014
      *  @since	5.0.0
      *
@@ -7083,58 +7099,41 @@ class ACF_Form_Post
     {
     }
     /**
-     *  validate_page
+     *  initialize
      *
-     *  This function will check if the current page is for a post/page edit form
+     *  Sets up Form functionality.
      *
-     *  @type	function
-     *  @date	23/06/12
-     *  @since	3.1.8
-     *
-     *  @param	void
-     *  @return	boolean
-     */
-    function validate_page()
-    {
-    }
-    /**
-     *  admin_enqueue_scripts
-     *
-     *  This action is run after post query but before any admin script / head actions. 
-     *  It is a good place to register all actions.
-     *
-     *  @type	action (admin_enqueue_scripts)
-     *  @date	26/01/13
-     *  @since	3.6.0
+     *  @date	19/9/18
+     *  @since	5.7.6
      *
      *  @param	void
      *  @return	void
      */
-    function admin_enqueue_scripts()
+    function initialize()
     {
     }
     /**
-     *  admin_head
+     *  add_meta_boxes
      *
-     *  This action will find and add field groups to the current edit page
+     *  Adds ACF metaboxes for the given $post_type and $post.
      *
-     *  @type	action (admin_head)
-     *  @date	23/06/12
-     *  @since	3.1.8
+     *  @date	19/9/18
+     *  @since	5.7.6
      *
-     *  @param	void
+     *  @param	string $post_type The post type.
+     *  @param	WP_Post $post The post being edited.
      *  @return	void
      */
-    function admin_head()
+    function add_meta_boxes($post_type, $post)
     {
     }
     /**
      *  edit_form_after_title
      *
-     *  This action will allow ACF to render metaboxes after the title
+     *  Called after the title adn before the content editor.
      *
-     *  @type	action
-     *  @date	17/08/13
+     *  @date	19/9/18
+     *  @since	5.7.6
      *
      *  @param	void
      *  @return	void
@@ -7143,47 +7142,47 @@ class ACF_Form_Post
     {
     }
     /**
-     *  render_meta_box
+     *  hidden_meta_boxes
      *
-     *  description
+     *  Appends the id of all metaboxes that are not visible for WP to hide.
      *
-     *  @type	function
-     *  @date	20/10/13
-     *  @since	5.0.0
+     *  @date	21/9/18
+     *  @since	5.7.6
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     *  @param	array     $hidden       An array of hidden meta boxes.
+     *  @param 	WP_Screen $screen       WP_Screen object of the current screen.
+     *  @param 	bool      $use_defaults Whether to show the default meta boxes.
+     *  @return	array
      */
-    function render_meta_box($post, $args)
+    function hidden_meta_boxes($hidden, $screen, $use_defaults)
     {
     }
     /**
-     *  admin_footer
+     *  render_meta_box
      *
-     *  description
+     *  Renders the ACF metabox HTML.
      *
-     *  @type	function
-     *  @date	21/10/13
-     *  @since	5.0.0
+     *  @date	19/9/18
+     *  @since	5.7.6
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     *  @param	WP_Post $post The post being edited.
+     *  @param	array metabox The add_meta_box() args.
+     *  @return	void
      */
-    function admin_footer()
+    function render_meta_box($post, $metabox)
     {
     }
     /**
      *  wp_insert_post_empty_content
      *
-     *  This function will allow WP to insert a new post without title / content if ACF data exists
+     *  Allows WP to insert a new post without title or post_content if ACF data exists.
      *
-     *  @type	function
      *  @date	16/07/2014
      *  @since	5.0.1
      *
-     *  @param	bool $maybe_empty whether the post should be considered "empty"
-     *  @param	array $postarr Array of post data
-     *  @return	$maybe_empty
+     *  @param	bool $maybe_empty Whether the post should be considered "empty".
+     *  @param	array $postarr Array of post data.
+     *  @return	bool
      */
     function wp_insert_post_empty_content($maybe_empty, $postarr)
     {
@@ -7191,14 +7190,15 @@ class ACF_Form_Post
     /**
      *  allow_save_post
      *
-     *  This function will return true if the post is allowed to be saved
+     *  Checks if the $post is allowed to be saved.
+     *  Used to avoid triggering "acf/save_post" on dynamically created posts during save.
      *
      *  @type	function
      *  @date	26/06/2016
      *  @since	5.3.8
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     *  @param	WP_Post $post The post to check.
+     *  @return	bool
      */
     function allow_save_post($post)
     {
@@ -7206,31 +7206,17 @@ class ACF_Form_Post
     /**
      *  save_post
      *
-     *  This function will validate and save the $_POST data
+     *  Triggers during the 'save_post' action to save the $_POST data.
      *
      *  @type	function
      *  @date	23/06/12
      *  @since	1.0.0
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     *  @param	int $post_id The post ID
+     *  @param	WP_POST $post the post object.
+     *  @return	int
      */
     function save_post($post_id, $post)
-    {
-    }
-    /**
-     *  is_protected_meta
-     *
-     *  This function will remove any ACF meta from showing in the meta postbox
-     *
-     *  @type	function
-     *  @date	12/04/2014
-     *  @since	5.0.0
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
-     */
-    function is_protected_meta($protected, $meta_key, $meta_type)
     {
     }
 }
@@ -12386,6 +12372,20 @@ function acf_import_field_group($field_group)
 *  @return	int $post_id
 */
 function acf_prepare_field_group_for_export($field_group)
+{
+}
+/**
+*  acf_get_field_group_edit_link
+*
+*  Checks if the current user can edit the field group and returns the edit url.
+*
+*  @date	23/9/18
+*  @since	5.7.7
+*
+*  @param	int $post_id The field group ID.
+*  @return	string
+*/
+function acf_get_field_group_edit_link($post_id)
 {
 }
 /**
