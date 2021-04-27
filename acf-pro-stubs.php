@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.7.4';
+    var $version = '5.7.5';
     /** @var array The plugin settings array */
     var $settings = array();
     /** @var array The plugin data array */
@@ -10052,15 +10052,13 @@ class ACF_Taxonomy_Field_Walker extends \Walker
     {
     }
 }
-class acf_wpml_compatibility
+class ACF_WPML_Compatibility
 {
-    var $lang = '';
     /**
-     *  Constructor
+     *  __construct
      *
-     *  This function will construct all the neccessary actions and filters
+     *  Sets up the class functionality.
      *
-     *  @type	function
      *  @date	23/06/12
      *  @since	3.1.8
      *
@@ -10073,74 +10071,43 @@ class acf_wpml_compatibility
     /**
      *  is_translatable
      *
-     *  This fucntion will return true if the acf-field-group post type is translatable
+     *  Returns true if the acf-field-group post type is translatable.
+     *  Also adds compatibility with ACF4 settings
      *
-     *  @type	function
      *  @date	10/04/2015
      *  @since	5.2.3
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     *  @param	void
+     *  @return	bool
      */
     function is_translatable()
     {
     }
     /**
-     *  upgrade_500
-     *
-     *  This function will update the WPML settings to allow 'acf-field-group' to be translatable
-     *
-     *  @type	function
-     *  @date	10/04/2015
-     *  @since	5.2.3
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
-     */
-    function upgrade_500()
-    {
-    }
-    /**
      *  upgrade_500_field_group
      *
-     *  This function will update the icl_translations table data when creating the fiedl groups
+     *  Update the icl_translations table data when creating the field groups.
      *
-     *  @type	function
      *  @date	10/04/2015
      *  @since	5.2.3
      *
-     *  @param	array $field_group
+     *  @param	array $field_group The new field group array.
+     *  @param	object $ofg The old field group WP_Post object.
      *  @return	void
      */
     function upgrade_500_field_group($field_group, $ofg)
     {
     }
     /**
-     *  update_field_group
-     *
-     *  This function will update the lang when saving a field group
-     *
-     *  @type	function
-     *  @date	10/03/2014
-     *  @since	5.0.0
-     *
-     *  @param	array $field_group
-     *  @return	void
-     */
-    function update_field_group($field_group)
-    {
-    }
-    /**
      *  settings_save_json
      *
-     *  This function is hooked into the acf/update_field_group action and will save all field group data to a .json file 
+     *  Modifies the json path.
      *
-     *  @type	function
      *  @date	19/05/2014
      *  @since	5.0.0
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     *  @param	string $path The json save path.
+     *  @return	string
      */
     function settings_save_json($path)
     {
@@ -10148,14 +10115,13 @@ class acf_wpml_compatibility
     /**
      *  settings_load_json
      *
-     *  description
+     *  Modifies the json path.
      *
-     *  @type	function
      *  @date	19/05/2014
      *  @since	5.0.0
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     *  @param	string $path The json save path.
+     *  @return	string
      */
     function settings_load_json($paths)
     {
@@ -10165,35 +10131,19 @@ class acf_wpml_compatibility
      *
      *  description
      *
-     *  @type	function
      *  @date	26/02/2014
      *  @since	5.0.0
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     *  @param	void
+     *  @return	void
      */
     function icl_make_duplicate($master_post_id, $lang, $postarr, $id)
     {
     }
     /**
-     *  admin_footer
-     *
-     *  description
-     *
-     *  @type	function
-     *  @date	27/02/2014
-     *  @since	5.0.0
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
-     */
-    function admin_footer()
-    {
-    }
-    /**
      *  verify_ajax
      *
-     *  This function will help avoid WPML conflicts when performing an ACF ajax request
+     *  Sets the correct language during AJAX requests.
      *
      *  @type	function
      *  @date	7/08/2015
@@ -10206,31 +10156,16 @@ class acf_wpml_compatibility
     {
     }
     /**
-     *  acf_input_form_data
-     *
-     *  description
-     *
-     *  @type	function
-     *  @date	16/12/16
-     *  @since	5.5.0
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
-     */
-    function acf_input_form_data($data)
-    {
-    }
-    /**
      *  get_translatable_documents
      *
-     *  This filter will remove 'acf-field' from the available post types for translation
+     *  Removes 'acf-field' from the available post types for translation.
      *
      *  @type	function
      *  @date	17/8/17
      *  @since	5.6.0
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     *  @param	array $icl_post_types The array of post types.
+     *  @return	array
      */
     function get_translatable_documents($icl_post_types)
     {
