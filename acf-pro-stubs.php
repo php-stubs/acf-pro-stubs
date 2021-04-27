@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.9.1';
+    var $version = '5.9.2';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -5671,18 +5671,15 @@ class acf_field_taxonomy extends \acf_field
     {
     }
     /**
-     *  get_term_title
+     * Returns the Term's title displayed in the field UI.
      *
-     *  This function returns the HTML for a result
+     * @date	1/11/2013
+     * @since	5.0.0
      *
-     *  @type	function
-     *  @date	1/11/2013
-     *  @since	5.0.0
-     *
-     *  @param	object $post
-     *  @param	array $field
-     *  @param	int $post_id the post_id to which this value is saved to
-     *  @return	string
+     * @param	WP_Term $term The term object.
+     * @param	array $field The field settings.
+     * @param	mixed $post_id The post_id being edited.
+     * @return	string
      */
     function get_term_title($term, $field, $post_id = 0)
     {
@@ -12924,6 +12921,19 @@ function acf_request_args($args = array())
 {
 }
 /**
+ * Returns a single $_REQUEST arg with fallback.
+ *
+ * @date	23/10/20
+ * @since	5.9.2
+ *
+ * @param	string $key The property name.
+ * @param	mixed $default The default value to fallback to.
+ * @return	mixed
+ */
+function acf_request_arg($name = '', $default = \null)
+{
+}
+/**
  * acf_enable_filter
  *
  * Enables a filter with the given name.
@@ -13597,20 +13607,6 @@ function acf_esc_atts_e($attrs)
 {
 }
 /**
- * acf_decode_post_id
- *
- * Returns an array containing the object type and id for the given post_id string.
- *
- * @date	25/1/19
- * @since	5.7.11
- *
- * @param	int|string $post_id The post id.
- * @return	array()
- */
-function acf_decode_post_id($post_id = 0)
-{
-}
-/**
  * acf_get_meta
  *
  * Returns an array of "ACF only" meta for the given post_id.
@@ -14083,6 +14079,18 @@ function acf_preview_value($value, $post_id, $field)
  * @return	object
  */
 function acf_get_object_type($object_type, $object_subtype = '')
+{
+}
+/**
+ * Decodes a post_id value such as 1 or "user_1" into an array containing the type and ID.
+ *
+ * @date	25/1/19
+ * @since	5.7.11
+ *
+ * @param	int|string $post_id The post id.
+ * @return	array
+ */
+function acf_decode_post_id($post_id = 0)
 {
 }
 // class_exists check
@@ -15110,22 +15118,6 @@ acf_log( acf_get_post_id_info('options') );
 *  @return	int $post_id
 */
 function acf_isset_termmeta($taxonomy = '')
-{
-}
-/**
-*  acf_get_term_post_id
-*
-*  This function will return a valid post_id string for a given term and taxonomy
-*
-*  @type	function
-*  @date	6/2/17
-*  @since	5.5.6
-*
-*  @param	string $taxonomy
-*  @param	int $term_id
-*  @return	string
-*/
-function acf_get_term_post_id($taxonomy, $term_id)
 {
 }
 /**
@@ -16583,6 +16575,21 @@ function acf_get_choices_from_grouped_terms($value, $format = 'term_id')
 *  @return	array
 */
 function acf_get_choice_from_term($term, $format = 'term_id')
+{
+}
+/**
+ * Returns a valid post_id string for a given term and taxonomy.
+ * No longer needed since WP introduced the termmeta table in WP 4.4.
+ *
+ * @date	6/2/17
+ * @since	5.5.6
+ * @deprecated 5.9.2
+ *
+ * @param	string $taxonomy The taxonomy type.
+ * @param	int $term_id The term ID.
+ * @return	string
+ */
+function acf_get_term_post_id($taxonomy, $term_id)
 {
 }
 // class_exists check
@@ -18088,34 +18095,49 @@ function acf_prepare_block($block)
 {
 }
 /**
- * acf_rendered_block
+ * The render callback for all ACF blocks.
  *
- * Returns the HTML from acf_render_block().
+ * @date	28/10/20
+ * @since	5.9.2
  *
- * @date	28/2/19
- * @since	5.7.13
- * @see		acf_render_block() for list of parameters.
- *
- * @return	string
+ * @param	array  $attributes The block attributes.
+ * @param	string $content The block content.
+ * @param	WP_Block $wp_block The block instance (since WP 5.5).
+ * @return	string The block HTML.
  */
-function acf_rendered_block($block, $content = '', $is_preview = \false, $post_id = 0)
+function acf_render_block_callback($attributes, $content = '', $wp_block = \null)
 {
 }
 /**
- * acf_render_block
+ * Returns the rendered block HTML.
  *
+ * @date	28/2/19
+ * @since	5.7.13
+ *
+ * @param	array  $attributes The block attributes.
+ * @param	string $content The block content.
+ * @param	bool $is_preview Whether or not the block is being rendered for editing preview.
+ * @param	int $post_id The current post being edited or viewed.
+ * @param	WP_Block $wp_block The block instance (since WP 5.5).
+ * @return	string The block HTML.
+ */
+function acf_rendered_block($attributes, $content = '', $is_preview = \false, $post_id = 0, $wp_block = \null)
+{
+}
+/**
  * Renders the block HTML.
  *
  * @date	19/2/19
  * @since	5.7.12
  *
- * @param	array $block The block props.
- * @param	string $content The block content (emtpy string).
- * @param	bool $is_preview True during AJAX preview.
- * @param	int $post_id The post being edited.
+ * @param	array  $attributes The block attributes.
+ * @param	string $content The block content.
+ * @param	bool $is_preview Whether or not the block is being rendered for editing preview.
+ * @param	int $post_id The current post being edited or viewed.
+ * @param	WP_Block $wp_block The block instance (since WP 5.5).
  * @return	void
  */
-function acf_render_block($block, $content = '', $is_preview = \false, $post_id = 0)
+function acf_render_block($attributes, $content = '', $is_preview = \false, $post_id = 0, $wp_block = \null)
 {
 }
 /**
