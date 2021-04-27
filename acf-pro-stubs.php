@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.6.7';
+    var $version = '5.6.8';
     /** @var array The plugin settings array */
     var $settings = array();
     /**
@@ -149,27 +149,38 @@ class ACF
     {
     }
     /**
+     *  has_setting
+     *
+     *  Returns true if has setting.
+     *
+     *  @date	2/2/18
+     *  @since	5.6.5
+     *
+     *  @param	string $name
+     *  @return	boolean
+     */
+    function has_setting($name)
+    {
+    }
+    /**
      *  get_setting
      *
-     *  This function will return a value from the settings array found in the acf object
+     *  Returns a setting.
      *
-     *  @type	function
      *  @date	28/09/13
      *  @since	5.0.0
      *
-     *  @param	string $name the setting name to return
-     *  @param	mixed $value default value
-     *  @return	$value
+     *  @param	string $name
+     *  @return	mixed
      */
-    function get_setting($name, $value = \null)
+    function get_setting($name)
     {
     }
     /**
      *  update_setting
      *
-     *  This function will update a value into the settings array found in the acf object
+     *  Updates a setting.
      *
-     *  @type	function
      *  @date	28/09/13
      *  @since	5.0.0
      *
@@ -2049,7 +2060,21 @@ class acf_deprecated
      *  @param	void
      *  @return	void
      */
-    function acf_settings_url($setting)
+    function acf_settings_url($value)
+    {
+    }
+    /**
+     *  acf_validate_setting
+     *
+     *  description
+     *
+     *  @date	2/2/18
+     *  @since	5.6.5
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function acf_validate_setting($name)
     {
     }
     /**
@@ -6062,21 +6087,31 @@ class acf_form_customizer
     {
     }
     /**
-     *  get_field_reference
+     *  pre_load_value
      *
-     *  This function will return a field_key for a given field name + post_id
-     *  Normally, ACF would lookup the DB fro this connection, but a new preview widget has not yet saved anything to the DB
+     *  Used to inject preview value
      *
-     *  @type	function
-     *  @date	12/05/2016
-     *  @since	5.3.8
+     *  @date	2/2/18
+     *  @since	5.6.5
      *
-     *  @param	string $field_key
-     *  @param	string $field_name
-     *  @param	mixed $post_id
-     *  @return	$field_key
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
      */
-    function get_field_reference($field_key, $field_name, $post_id)
+    function pre_load_value($value, $post_id, $field)
+    {
+    }
+    /**
+     *  pre_load_reference
+     *
+     *  Used to inject preview value
+     *
+     *  @date	2/2/18
+     *  @since	5.6.5
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function pre_load_reference($field_key, $field_name, $post_id)
     {
     }
     /**
@@ -12566,18 +12601,31 @@ function acf_is_empty($value)
 {
 }
 /**
-*  acf_get_setting
+*  acf_has_setting
 *
-*  alias of acf()->get_setting()
+*  alias of acf()->has_setting()
 *
-*  @type	function
-*  @date	28/09/13
-*  @since	5.0.0
+*  @date	2/2/18
+*  @since	5.6.5
 *
 *  @param	void
 *  @return	void
 */
-function acf_get_setting($name, $value = \null)
+function acf_has_setting($name = '')
+{
+}
+/**
+*  acf_raw_setting
+*
+*  alias of acf()->get_setting()
+*
+*  @date	2/2/18
+*  @since	5.6.5
+*
+*  @param	void
+*  @return	void
+*/
+function acf_raw_setting($name = '')
 {
 }
 /**
@@ -12597,9 +12645,23 @@ function acf_update_setting($name, $value)
 {
 }
 /**
-*  acf_init
+*  acf_validate_setting
 *
-*  alias of acf()->init()
+*  Returns the changed setting name if available.
+*
+*  @date	2/2/18
+*  @since	5.6.5
+*
+*  @param	void
+*  @return	void
+*/
+function acf_validate_setting($name = '')
+{
+}
+/**
+*  acf_get_setting
+*
+*  alias of acf()->get_setting()
 *
 *  @type	function
 *  @date	28/09/13
@@ -12608,7 +12670,7 @@ function acf_update_setting($name, $value)
 *  @param	void
 *  @return	void
 */
-function acf_init()
+function acf_get_setting($name, $value = \null)
 {
 }
 /**
@@ -12625,6 +12687,21 @@ function acf_init()
 *  @return	void
 */
 function acf_append_setting($name, $value)
+{
+}
+/**
+*  acf_init
+*
+*  alias of acf()->init()
+*
+*  @type	function
+*  @date	28/09/13
+*  @since	5.0.0
+*
+*  @param	void
+*  @return	void
+*/
+function acf_init()
 {
 }
 /**
@@ -13986,6 +14063,34 @@ function acf_is_plugin_active()
 {
 }
 /**
+*  acf_get_filters
+*
+*  Returns the registered filters
+*
+*  @date	2/2/18
+*  @since	5.6.5
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+function acf_get_filters()
+{
+}
+/**
+*  acf_update_filters
+*
+*  Updates the registered filters
+*
+*  @date	2/2/18
+*  @since	5.6.5
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+function acf_update_filters($filters)
+{
+}
+/**
 *  acf_enable_filter
 *
 *  This function will enable a filter
@@ -14612,23 +14717,6 @@ function acf_esc_attr_e($atts)
 {
 }
 /**
-*  acf_get_field_reference()
-*
-*  This function will find the $field_key that is related to the $field_name.
-*  This is know as the field value reference
-*
-*  @type	function
-*  @since	3.6
-*  @date	29/01/13
-*
-*  @param	mixed $field_name the name of the field. eg 'sub_heading'
-*  @param	int $post_id the post_id of which the value is saved against
-*  @return	string $reference	a string containing the field_key
-*/
-function acf_get_field_reference($field_name, $post_id)
-{
-}
-/**
 *  get_field()
 *
 *  This function will return a custom field value for a specific field name/key + post_id.
@@ -15169,6 +15257,25 @@ function acf_delete_metadata($post_id = 0, $name = '', $hidden = \false)
 *  @return	boolean
 */
 function acf_update_option($option = '', $value = '', $autoload = \null)
+{
+}
+/**
+*  acf_get_reference
+*
+*  Finds the field key for a given field name and post_id.
+*
+*  @date	26/1/18
+*  @since	5.6.5
+*
+*  @param	string	$field_name	The name of the field. eg 'sub_heading'
+*  @param	mixed	$post_id	The post_id of which the value is saved against
+*  @return	string	$reference	The field key
+*/
+function acf_get_reference($field_name, $post_id)
+{
+}
+// deprecated in 5.6.8
+function acf_get_field_reference($field_name, $post_id)
 {
 }
 /**
