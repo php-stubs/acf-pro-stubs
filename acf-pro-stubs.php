@@ -8,7 +8,7 @@
 class acf
 {
     // vars
-    var $version = '5.6.1';
+    var $version = '5.6.2';
     /**
      *  __construct
      *
@@ -3839,6 +3839,53 @@ class acf_field_radio extends \acf_field
     {
     }
 }
+class acf_field_range extends \acf_field_number
+{
+    /**
+     *  initialize
+     *
+     *  This function will setup the field type data
+     *
+     *  @type	function
+     *  @date	5/03/2014
+     *  @since	5.0.0
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function initialize()
+    {
+    }
+    /**
+     *  render_field()
+     *
+     *  Create the HTML interface for your field
+     *
+     *  @param	$field - an array holding all the field's data
+     *
+     *  @type	action
+     *  @since	3.6
+     *  @date	23/01/13
+     */
+    function render_field($field)
+    {
+    }
+    /**
+     *  render_field_settings()
+     *
+     *  Create extra options for your field. This is rendered when editing a field.
+     *  The value of $field['name'] can be used (like bellow) to save extra data to the $field
+     *
+     *  @type	action
+     *  @since	3.6
+     *  @date	23/01/13
+     *
+     *  @param	$field	- an array holding all the field's data
+     */
+    function render_field_settings($field)
+    {
+    }
+}
 class acf_field_relationship extends \acf_field
 {
     /**
@@ -5375,9 +5422,10 @@ class acf_form_customizer
     {
     }
     /**
-     *  get_customizer_widgets
+     *  settings
      *
-     *  This function will return an array of widget settings
+     *  This function will return an array of cutomizer settings that include ACF data
+     *  similar to `$customizer->settings();`
      *
      *  @type	function
      *  @date	22/03/2016
@@ -5386,7 +5434,7 @@ class acf_form_customizer
      *  @param	object $customizer
      *  @return	mixed $value
      */
-    function get_customizer_widgets($customizer)
+    function settings($customizer)
     {
     }
     /**
@@ -8531,7 +8579,7 @@ class acf_third_party
 class acf_updates
 {
     // vars
-    var $version = '2.0', $plugins = array(), $updates = \false, $dev = 0;
+    var $version = '2.1', $plugins = array(), $updates = \false, $dev = 0;
     /**
      *  __construct
      *
@@ -8985,6 +9033,21 @@ class acf_wpml_compatibility
      *  @return	int $post_id
      */
     function acf_input_form_data($data)
+    {
+    }
+    /**
+     *  get_translatable_documents
+     *
+     *  This filter will remove 'acf-field' from the available post types for translation
+     *
+     *  @type	function
+     *  @date	17/8/17
+     *  @since	5.6.0
+     *
+     *  @param	int $post_id
+     *  @return	int $post_id
+     */
+    function get_translatable_documents($icl_post_types)
     {
     }
 }
@@ -9445,7 +9508,8 @@ class acf_field_clone extends \acf_field
      *  acf_clone_clone_field
      *
      *  This function is run when cloning a clone field
-     *  Important to run the acf_clone_field function on sub fields to pass on settings such as 'parent_layout' 
+     *  Important to run the acf_clone_field function on sub fields to pass on settings such as 'parent_layout'
+     *  Do not delete! Removing this logic causes major issues with cloned clone fields within a flexible content layout.
      *
      *  @type	function
      *  @date	28/06/2016
@@ -11765,6 +11829,22 @@ function acf_maybe_get_sub_field($selectors, $post_id = \false, $strict = \true)
 {
 }
 /**
+*  acf_prefix_fields
+*
+*  This funtion will safely change the prefix for an array of fields
+*  Needed to allow clone field to continue working on nave menu item and widget forms
+*
+*  @type	function
+*  @date	5/9/17
+*  @since	5.6.0
+*
+*  @param	int $post_id
+*  @return	int $post_id
+*/
+function acf_prefix_fields(&$fields, $prefix = 'acf')
+{
+}
+/**
 *  acf_is_array
 *
 *  This function will return true for a non empty array
@@ -12512,7 +12592,7 @@ function acf_decode_choices($string = '', $array_keys = \false)
 *  @param	int $post_id
 *  @return	int $post_id
 */
-function acf_str_replace($string, $search_replace)
+function acf_str_replace($string = '', $search_replace = array())
 {
 }
 /**
@@ -13415,6 +13495,21 @@ function acf_decrypt($data = '')
 {
 }
 /**
+*  acf_get_post_templates
+*
+*  This function will return an array of all post templates (including parent theme templates)
+*
+*  @type	function
+*  @date	29/8/17
+*  @since	5.6.2
+*
+*  @param	void
+*  @return	array
+*/
+function acf_get_post_templates()
+{
+}
+/**
 *  acf_esc_html
 *
 *  This function will encode <script> tags for safe output
@@ -13682,6 +13777,36 @@ function acf_test_esc_html( $string = '' ) {
 	
 }
 */
+/**
+*  acf_get_file_input
+*
+*  This function will return HTML for a file input
+*
+*  @type	function
+*  @date	3/02/2014
+*  @since	5.0.0
+*
+*  @param	$atts
+*  @return	string
+*/
+function acf_get_file_input($atts = array())
+{
+}
+/**
+*  acf_file_input
+*
+*  This function will output HTML for a file input
+*
+*  @type	function
+*  @date	3/02/2014
+*  @since	5.0.0
+*
+*  @param	$atts
+*  @return	void
+*/
+function acf_file_input($atts = array())
+{
+}
 /**
 *  acf_esc_attr
 *
