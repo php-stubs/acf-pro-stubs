@@ -8,7 +8,7 @@
 class acf
 {
     /** @var string The plugin version number */
-    var $version = '5.6.4';
+    var $version = '5.6.5';
     /** @var array The plugin settings array */
     var $settings = array();
     /**
@@ -673,6 +673,154 @@ class acf_admin_field_groups
     {
     }
 }
+class acf_admin_tools
+{
+    /** @var array Contains an array of admin tool instances */
+    var $tools = array();
+    /** @var string The active tool */
+    var $active = '';
+    /**
+     *  __construct
+     *
+     *  This function will setup the class functionality
+     *
+     *  @date	10/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function __construct()
+    {
+    }
+    /**
+     *  register_tool
+     *
+     *  This function will store a tool tool class
+     *
+     *  @date	10/10/17
+     *  @since	5.6.3
+     *
+     *  @param	string $class
+     *  @return	void
+     */
+    function register_tool($class)
+    {
+    }
+    /**
+     *  get_tool
+     *
+     *  This function will return a tool tool class
+     *
+     *  @date	10/10/17
+     *  @since	5.6.3
+     *
+     *  @param	string $name
+     *  @return	void
+     */
+    function get_tool($name)
+    {
+    }
+    /**
+     *  get_tools
+     *
+     *  This function will return an array of all tools
+     *
+     *  @date	10/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	array
+     */
+    function get_tools()
+    {
+    }
+    /**
+     *  admin_menu
+     *
+     *  This function will add the ACF menu item to the WP admin
+     *
+     *  @type	action (admin_menu)
+     *  @date	28/09/13
+     *  @since	5.0.0
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function admin_menu()
+    {
+    }
+    /**
+     *  load
+     *
+     *  description
+     *
+     *  @date	10/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function load()
+    {
+    }
+    /**
+     *  include_tools
+     *
+     *  description
+     *
+     *  @date	10/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function include_tools()
+    {
+    }
+    /**
+     *  check_submit
+     *
+     *  description
+     *
+     *  @date	10/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function check_submit()
+    {
+    }
+    /**
+     *  html
+     *
+     *  description
+     *
+     *  @date	10/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function html()
+    {
+    }
+    /**
+     *  meta_box_html
+     *
+     *  description
+     *
+     *  @date	10/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function metabox_html($post, $metabox)
+    {
+    }
+}
 class acf_admin
 {
     // vars
@@ -1084,17 +1232,80 @@ class acf_settings_info
     {
     }
 }
-class acf_settings_tools
+class ACF_Admin_Tool
 {
-    var $view = 'settings-tools', $data = array();
+    /** @var string Tool name */
+    var $name = '';
+    /** @var string Tool title */
+    var $title = '';
+    /** @var string Dashicon slug */
+    //var $icon = '';
+    /** @var boolean Redirect form to single */
+    //var $redirect = false;
+    /**
+     *  get_name
+     *
+     *  This function will return the Tool's name
+     *
+     *  @date	19/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function get_name()
+    {
+    }
+    /**
+     *  get_title
+     *
+     *  This function will return the Tool's title
+     *
+     *  @date	19/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function get_title()
+    {
+    }
+    /**
+     *  get_url
+     *
+     *  This function will return the Tool's title
+     *
+     *  @date	19/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function get_url()
+    {
+    }
+    /**
+     *  is_active
+     *
+     *  This function will return true if the tool is active
+     *
+     *  @date	19/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	bool
+     */
+    function is_active()
+    {
+    }
     /**
      *  __construct
      *
-     *  Initialize filters, action, variables and includes
+     *  This function will setup the class functionality
      *
      *  @type	function
-     *  @date	23/06/12
-     *  @since	5.0.0
+     *  @date	27/6/17
+     *  @since	5.6.0
      *
      *  @param	void
      *  @return	void
@@ -1103,28 +1314,26 @@ class acf_settings_tools
     {
     }
     /**
-     *  admin_menu
+     *  initialize
      *
-     *  This function will add the ACF menu item to the WP admin
+     *  This function will initialize the admin tool
      *
-     *  @type	action (admin_menu)
-     *  @date	28/09/13
-     *  @since	5.0.0
+     *  @date	10/10/17
+     *  @since	5.6.3
      *
      *  @param	void
      *  @return	void
      */
-    function admin_menu()
+    function initialize()
     {
     }
     /**
      *  load
      *
-     *  This function will look at the $_POST data and run any functions if needed
+     *  This function is called during the admin page load
      *
-     *  @type	function
-     *  @date	7/01/2014
-     *  @since	5.0.0
+     *  @date	10/10/17
+     *  @since	5.6.3
      *
      *  @param	void
      *  @return	void
@@ -1135,11 +1344,10 @@ class acf_settings_tools
     /**
      *  html
      *
-     *  This function will render the view
+     *  This function will output the metabox HTML
      *
-     *  @type	function
-     *  @date	7/01/2014
-     *  @since	5.0.0
+     *  @date	10/10/17
+     *  @since	5.6.3
      *
      *  @param	void
      *  @return	void
@@ -1148,63 +1356,265 @@ class acf_settings_tools
     {
     }
     /**
-     *  export
+     *  submit
      *
-     *  This function will export field groups to a .json file
+     *  This function will run when the tool's form has been submit
      *
-     *  @type	function
-     *  @date	11/03/2014
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function export()
-    {
-    }
-    /**
-     *  import
-     *
-     *  This function will import a .json file of field groups
-     *
-     *  @type	function
-     *  @date	11/03/2014
-     *  @since	5.0.0
+     *  @date	10/10/17
+     *  @since	5.6.3
      *
      *  @param	void
      *  @return	void
      */
-    function import()
+    function submit()
     {
     }
+}
+class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
+{
+    /** @var string View context */
+    var $view = '';
+    /** @var array Export data */
+    var $json = '';
     /**
-     *  generate
+     *  initialize
      *
-     *  This function will generate PHP code to include in your theme
+     *  This function will initialize the admin tool
      *
-     *  @type	function
-     *  @date	11/03/2014
-     *  @since	5.0.0
+     *  @date	10/10/17
+     *  @since	5.6.3
      *
      *  @param	void
      *  @return	void
      */
-    function generate()
+    function initialize()
     {
     }
     /**
-     *  get_json
+     *  submit
+     *
+     *  This function will run when the tool's form has been submit
+     *
+     *  @date	10/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function submit()
+    {
+    }
+    /**
+     *  submit_download
+     *
+     *  description
+     *
+     *  @date	17/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function submit_download()
+    {
+    }
+    /**
+     *  submit_generate
+     *
+     *  description
+     *
+     *  @date	17/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function submit_generate()
+    {
+    }
+    /**
+     *  load
+     *
+     *  description
+     *
+     *  @date	21/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function load()
+    {
+    }
+    /**
+     *  html
+     *
+     *  This function will output the metabox HTML
+     *
+     *  @date	10/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function html()
+    {
+    }
+    /**
+     *  html_field_selection
+     *
+     *  description
+     *
+     *  @date	24/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function html_field_selection()
+    {
+    }
+    /**
+     *  html_panel_selection
+     *
+     *  description
+     *
+     *  @date	21/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function html_panel_selection()
+    {
+    }
+    /**
+     *  html_panel_settings
+     *
+     *  description
+     *
+     *  @date	21/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function html_panel_settings()
+    {
+    }
+    /**
+     *  html_archive
+     *
+     *  description
+     *
+     *  @date	20/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function html_archive()
+    {
+    }
+    /**
+     *  html_single
+     *
+     *  description
+     *
+     *  @date	20/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function html_single()
+    {
+    }
+    /**
+     *  html_generate
+     *
+     *  description
+     *
+     *  @date	17/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function html_generate()
+    {
+    }
+    /**
+     *  get_selected_keys
+     *
+     *  This function will return an array of field group keys that have been selected
+     *
+     *  @date	20/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function get_selected_keys()
+    {
+    }
+    /**
+     *  get_selected
      *
      *  This function will return the JSON data for given $_POST args
      *
-     *  @type	function
-     *  @date	3/02/2015
-     *  @since	5.1.5
+     *  @date	17/10/17
+     *  @since	5.6.3
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     *  @param	void
+     *  @return	array
      */
-    function get_json()
+    function get_selected()
+    {
+    }
+}
+class ACF_Admin_Tool_Import extends \ACF_Admin_Tool
+{
+    /**
+     *  initialize
+     *
+     *  This function will initialize the admin tool
+     *
+     *  @date	10/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function initialize()
+    {
+    }
+    /**
+     *  html
+     *
+     *  This function will output the metabox HTML
+     *
+     *  @date	10/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function html()
+    {
+    }
+    /**
+     *  submit
+     *
+     *  This function will run when the tool's form has been submit
+     *
+     *  @date	10/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function submit()
     {
     }
 }
@@ -5779,7 +6189,7 @@ class acf_form_front
      *  @param	void
      *  @return	void
      */
-    function submit_form()
+    function submit_form($form)
     {
     }
     /**
@@ -10975,6 +11385,52 @@ function acf()
 }
 // class_exists check
 /**
+*  acf_register_admin_tool
+*
+*  alias of acf()->admin_tools->register_tool()
+*
+*  @type	function
+*  @date	31/5/17
+*  @since	5.6.0
+*
+*  @param	void
+*  @return	void
+*/
+function acf_register_admin_tool($class)
+{
+}
+/**
+*  acf_get_admin_tools_url
+*
+*  This function will return the admin URL to the tools page
+*
+*  @type	function
+*  @date	31/5/17
+*  @since	5.6.0
+*
+*  @param	void
+*  @return	void
+*/
+function acf_get_admin_tools_url()
+{
+}
+/**
+*  acf_get_admin_tool_url
+*
+*  This function will return the admin URL to the tools page
+*
+*  @type	function
+*  @date	31/5/17
+*  @since	5.6.0
+*
+*  @param	void
+*  @return	void
+*/
+function acf_get_admin_tool_url($tool = '')
+{
+}
+// class_exists check
+/**
 *  acf_add_admin_notice
 *
 *  This function will add the notice data to a setting in the acf object for the admin_notices action to use
@@ -11594,7 +12050,7 @@ function acf_render_field_wrap($field, $el = 'div', $instruction = 'label')
 {
 }
 /**
-*  acf_render_field_wrap_label
+*  acf_render_field_label
 *
 *  This function will maybe output the field's label
 *
@@ -11604,11 +12060,15 @@ function acf_render_field_wrap($field, $el = 'div', $instruction = 'label')
 *  @param	array $field
 *  @return	void
 */
-function acf_the_field_wrap_label($field)
+function acf_render_field_label($field)
+{
+}
+/* depreciated since 5.6.5 */
+function acf_render_field_wrap_label($field)
 {
 }
 /**
-*  acf_render_field_wrap_description
+*  acf_render_field_instructions
 *
 *  This function will maybe output the field's instructions
 *
@@ -11618,7 +12078,11 @@ function acf_the_field_wrap_label($field)
 *  @param	array $field
 *  @return	void
 */
-function acf_the_field_wrap_instructions($field)
+function acf_render_field_instructions($field)
+{
+}
+/* depreciated since 5.6.5 */
+function acf_render_field_wrap_description($field)
 {
 }
 /**
