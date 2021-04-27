@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.7.9';
+    var $version = '5.7.10';
     /** @var array The plugin settings array */
     var $settings = array();
     /** @var array The plugin data array */
@@ -58,21 +58,6 @@ class ACF
      *  @return	void
      */
     function init()
-    {
-    }
-    /**
-     *  load_plugin_textdomain
-     *
-     *  This function will load the textdomain file
-     *
-     *  @type	function
-     *  @date	3/5/17
-     *  @since	5.5.13
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function load_plugin_textdomain()
     {
     }
     /**
@@ -759,6 +744,140 @@ class acf_admin_field_groups
     {
     }
 }
+class ACF_Data
+{
+    /** @var string Unique identifier. */
+    var $cid = '';
+    /** @var array Storage for data. */
+    var $data = array();
+    /**
+     * __construct
+     *
+     * Sets up the class functionality.
+     *
+     * @date	9/1/19
+     * @since	5.7.10
+     *
+     * @param	array $data Optional data to set.
+     * @return	void
+     */
+    function __construct($data = \false)
+    {
+    }
+    /**
+     * initialize
+     *
+     * Called during constructor to setup class functionality.
+     *
+     * @date	9/1/19
+     * @since	5.7.10
+     *
+     * @param	void
+     * @return	void
+     */
+    function initialize()
+    {
+    }
+    /**
+     * has
+     *
+     * Returns true if this has data for the given name.
+     *
+     * @date	9/1/19
+     * @since	5.7.10
+     *
+     * @param	string $name The data name.
+     * @return	boolean
+     */
+    function has($name = '')
+    {
+    }
+    /**
+     * get
+     *
+     * Returns data for the given name of null if doesn't exist.
+     *
+     * @date	9/1/19
+     * @since	5.7.10
+     *
+     * @param	string $name The data name.
+     * @return	mixed
+     */
+    function get($name = '')
+    {
+    }
+    /**
+     * get_data
+     *
+     * Returns an array of all data.
+     *
+     * @date	9/1/19
+     * @since	5.7.10
+     *
+     * @param	void
+     * @return	array
+     */
+    function get_data()
+    {
+    }
+    /**
+     * set
+     *
+     * Sets data for the given name and returns $this for chaining.
+     *
+     * @date	9/1/19
+     * @since	5.7.10
+     *
+     * @param	string|array $name The data name or an array of data.
+     * @param	mixed $value The data value.
+     * @return	ACF_Data
+     */
+    function set($name = '', $value)
+    {
+    }
+    /**
+     * remove
+     *
+     * Removes data for the given name.
+     *
+     * @date	9/1/19
+     * @since	5.7.10
+     *
+     * @param	string $name The data name.
+     * @return	ACF_Data
+     */
+    function remove($name = '')
+    {
+    }
+}
+class ACF_Admin_Notice extends \ACF_Data
+{
+    /** @var array Storage for data. */
+    var $data = array(
+        /** @type string Text displayed in notice. */
+        'text' => '',
+        /** @type string Optional HTML alternative to text. 
+        		'html' => '', */
+        /** @type string The type of notice (warning, error, success, info). */
+        'type' => 'info',
+        /** @type bool If the notice can be dismissed. */
+        'dismissible' => \true,
+    );
+    /**
+     *  render
+     *
+     *  Renders the notice HTML.
+     *
+     *  @date	27/12/18
+     *  @since	5.8.0
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function render()
+    {
+    }
+}
 class acf_admin_tools
 {
     /** @var array Contains an array of admin tool instances */
@@ -1038,8 +1157,6 @@ class ACF_Admin_Upgrade
 }
 class acf_admin
 {
-    // vars
-    var $notices = array();
     /**
      *  __construct
      *
@@ -1053,38 +1170,6 @@ class acf_admin
      *  @return	void
      */
     function __construct()
-    {
-    }
-    /**
-     *  add_notice
-     *
-     *  This function will add the notice data to a setting in the acf object for the admin_notices action to use
-     *
-     *  @type	function
-     *  @date	17/10/13
-     *  @since	5.0.0
-     *
-     *  @param	string $text
-     *  @param	string $class
-     *  @param	wrap (string)
-     *  @return	void
-     */
-    function add_notice($text = '', $class = '', $wrap = 'p')
-    {
-    }
-    /**
-     *  get_notices
-     *
-     *  This function will return an array of admin notices
-     *
-     *  @type	function
-     *  @date	17/10/13
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	array
-     */
-    function get_notices()
     {
     }
     /**
@@ -1115,85 +1200,6 @@ class acf_admin
      *  @return	void
      */
     function admin_enqueue_scripts()
-    {
-    }
-    /**
-     *  admin_notices
-     *
-     *  This function will render any admin notices
-     *
-     *  @type	function
-     *  @date	17/10/13
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function admin_notices()
-    {
-    }
-}
-class acf_settings_addons
-{
-    var $view;
-    /**
-     *  __construct
-     *
-     *  Initialize filters, action, variables and includes
-     *
-     *  @type	function
-     *  @date	23/06/12
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function __construct()
-    {
-    }
-    /**
-     *  admin_menu
-     *
-     *  This function will add the ACF menu item to the WP admin
-     *
-     *  @type	action (admin_menu)
-     *  @date	28/09/13
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function admin_menu()
-    {
-    }
-    /**
-     *  load
-     *
-     *  description
-     *
-     *  @type	function
-     *  @date	7/01/2014
-     *  @since	5.0.0
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
-     */
-    function load()
-    {
-    }
-    /**
-     *  html
-     *
-     *  description
-     *
-     *  @type	function
-     *  @date	7/01/2014
-     *  @since	5.0.0
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
-     */
-    function html()
     {
     }
 }
@@ -6211,9 +6217,6 @@ class acf_field_user extends \acf_field
     function format_value($value, $post_id, $field)
     {
     }
-    function format_value_single($value, $post_id, $field)
-    {
-    }
 }
 class acf_field_wysiwyg extends \acf_field
 {
@@ -6322,100 +6325,6 @@ class acf_field_wysiwyg extends \acf_field
      *  @return	mixed $value the modified value
      */
     function format_value($value, $post_id, $field)
-    {
-    }
-}
-class ACF_Form
-{
-    /** @var array Storage for data */
-    var $data = array();
-    /**
-     *  __construct
-     *
-     *  This function will setup the class functionality.
-     *
-     *  @type	function
-     *  @date	5/03/2014
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function __construct()
-    {
-    }
-    /**
-     *  set_data
-     *
-     *  Sets data.
-     *
-     *  @type	function
-     *  @date	4/03/2016
-     *  @since	5.3.2
-     *
-     *  @param	array $data An array of data.
-     *  @return	array
-     */
-    function set_data($data = array())
-    {
-    }
-    /**
-     *  get_data
-     *
-     *  Returns data.
-     *
-     *  @type	function
-     *  @date	4/03/2016
-     *  @since	5.3.2
-     *
-     *  @param	string $name The data anme.
-     *  @return	mixed The data.
-     */
-    function get_data($name = \false)
-    {
-    }
-    /**
-     *  render_data
-     *
-     *  Renders the <div id="acf-form-data"> element with hidden "form data" inputs
-     *
-     *  @date	17/4/18
-     *  @since	5.6.9
-     *
-     *  @param	array $data An array of data.
-     *  @return	void
-     */
-    function render_data($data = array())
-    {
-    }
-    /**
-     *  save_post
-     *
-     *  Calls the 'acf/save_post' action allowing $_POST data to be saved
-     *
-     *  @date	17/4/18
-     *  @since	5.6.9
-     *
-     *  @param	mixed $post_id The $post_id used to save data to the DB
-     *  @param	array $values Optional. An optional array of data to be saved (modifies $_POST['acf'])
-     *  @return	boolean Returns true on success.
-     */
-    function save_post($post_id = 0, $values = \null)
-    {
-    }
-    /**
-     *  _save_post
-     *
-     *  Saves the actual $_POST['acf'] data.
-     *  Performing this logic within an action allows developers to hook in before and after data is saved.
-     *
-     *  @date	24/10/2014
-     *  @since	5.0.9
-     *
-     *  @param	mixed $post_id The $post_id used to save data to the DB
-     *  @return	void.
-     */
-    function _save_post($post_id)
     {
     }
 }
@@ -7139,8 +7048,6 @@ class ACF_Form_Post
 {
     /** @var string The first field groups style CSS. */
     var $style = '';
-    /** @var array An arry of postbox data. */
-    var $postboxes = array();
     /**
      *  __construct
      *
@@ -7196,22 +7103,6 @@ class ACF_Form_Post
      *  @return	void
      */
     function edit_form_after_title()
-    {
-    }
-    /**
-     *  hidden_meta_boxes
-     *
-     *  Appends the id of all metaboxes that are not visible for WP to hide.
-     *
-     *  @date	21/9/18
-     *  @since	5.7.6
-     *
-     *  @param	array     $hidden       An array of hidden meta boxes.
-     *  @param 	WP_Screen $screen       WP_Screen object of the current screen.
-     *  @param 	bool      $use_defaults Whether to show the default meta boxes.
-     *  @return	array
-     */
-    function hidden_meta_boxes($hidden, $screen, $use_defaults)
     {
     }
     /**
@@ -10428,143 +10319,119 @@ class acf_admin_options_page
     {
     }
 }
-class acf_admin_settings_updates
+class ACF_Admin_Updates
 {
-    // vars
+    /** @var array Data used in the view. */
     var $view = array();
     /**
-     *  __construct
+     * __construct
      *
-     *  Initialize filters, action, variables and includes
+     * Sets up the class functionality.
      *
-     *  @type	function
-     *  @date	23/06/12
-     *  @since	5.0.0
+     * @date	23/06/12
+     * @since	5.0.0
      *
-     *  @param	void
-     *  @return	void
+     * @param	void
+     * @return	void
      */
     function __construct()
     {
     }
     /**
-     *  show_notice
+     * display_wp_error
      *
-     *  This function will show a notice (only once)
+     * Adds an admin notice using the provided WP_Error.
      *
-     *  @type	function
-     *  @date	11/4/17
-     *  @since	5.5.10
+     * @date	14/1/19
+     * @since	5.7.10
      *
-     *  @param	string $message
-     *  @param	class (string)
-     *  @return	void
+     * @param	WP_Error $wp_error The error to display.
+     * @return	void
      */
-    function show_notice($message = '', $class = '')
+    function display_wp_error($wp_error)
     {
     }
     /**
-     *  show_error
+     * get_changelog_changes
      *
-     *  This function will show an error notice (only once)
+     * Finds the specific changes for a given version from the provided changelog snippet.
      *
-     *  @type	function
-     *  @date	11/4/17
-     *  @since	5.5.10
+     * @date	14/1/19
+     * @since	5.7.10
      *
-     *  @param	mixed $error
-     *  @return	void
+     * @param	string $changelog The changelog text.
+     * @param	string $version The version to find.
+     * @return	string
      */
-    function show_error($error = '')
+    function get_changelog_changes($changelog = '', $version = '')
     {
     }
     /**
-     *  get_changelog_section
+     * admin_menu
      *
-     *  This function will find and return a section of content from a plugin changelog
+     * Adds the admin menu subpage.
      *
-     *  @type	function
-     *  @date	11/4/17
-     *  @since	5.5.10
+     * @date	28/09/13
+     * @since	5.0.0
      *
-     *  @param	string $changelog
-     *  @param	string $h4
-     *  @return	string
-     */
-    function get_changelog_section($changelog, $h4 = '')
-    {
-    }
-    /**
-     *  admin_menu
-     *
-     *  This function will add the ACF menu item to the WP admin
-     *
-     *  @type	action (admin_menu)
-     *  @date	28/09/13
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
+     * @param	void
+     * @return	void
      */
     function admin_menu()
     {
     }
     /**
-     *  load
+     * load
      *
-     *  description
+     * Runs when loading the submenu page.
      *
-     *  @type	function
-     *  @date	7/01/2014
-     *  @since	5.0.0
+     * @date	7/01/2014
+     * @since	5.0.0
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     * @param	void
+     * @return	void
      */
     function load()
     {
     }
     /**
-     *  activate_pro_licence
+     * activate_pro_licence
      *
-     *  description
+     * Activates the submitted license key.
      *
-     *  @type	function
-     *  @date	16/01/2014
-     *  @since	5.0.0
+     * @date	16/01/2014
+     * @since	5.0.0
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     * @param	void
+     * @return	void
      */
     function activate_pro_licence()
     {
     }
     /**
-     *  deactivate_pro_licence
+     * activate_pro_licence
      *
-     *  description
+     * Deactivates the registered license key.
      *
-     *  @type	function
-     *  @date	16/01/2014
-     *  @since	5.0.0
+     * @date	16/01/2014
+     * @since	5.0.0
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     * @param	void
+     * @return	void
      */
     function deactivate_pro_licence()
     {
     }
     /**
-     *  html
+     * html
      *
-     *  description
+     * Displays the submenu page's HTML.
      *
-     *  @type	function
-     *  @date	7/01/2014
-     *  @since	5.0.0
+     * @date	7/01/2014
+     * @since	5.0.0
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     * @param	void
+     * @return	void
      */
     function html()
     {
@@ -12058,6 +11925,236 @@ class acf_pro_updates
 function acf()
 {
 }
+/**
+ * acf_instances
+ *
+ * Initialize $acf_instances if it has not been set.
+ *
+ * @date	9/1/19
+ * @since	5.7.10
+ *
+ * @param	void
+ * @return	ACF_Data
+ */
+function acf_instances()
+{
+}
+/**
+ * acf_new_instance
+ *
+ * Creates a new instance of the given class and stores it in the instances data store.
+ *
+ * @date	9/1/19
+ * @since	5.7.10
+ *
+ * @param	string $class The class name.
+ * @return	object The instance.
+ */
+function acf_new_instance($class = '')
+{
+}
+/**
+ * acf_get_instance
+ *
+ * Returns an instance for the given class.
+ *
+ * @date	9/1/19
+ * @since	5.7.10
+ *
+ * @param	string $class The class name.
+ * @return	object The instance.
+ */
+function acf_get_instance($class = '')
+{
+}
+/**
+ * acf_register_store
+ *
+ * Registers a data store.
+ *
+ * @date	9/1/19
+ * @since	5.7.10
+ *
+ * @param	string $name The store name.
+ * @param	array $data Array of data to start the store with.
+ * @return	ACF_Data
+ */
+function acf_register_store($name = '', $data = \false)
+{
+}
+/**
+ * acf_get_store
+ *
+ * Returns a data store.
+ *
+ * @date	9/1/19
+ * @since	5.7.10
+ *
+ * @param	string $name The store name.
+ * @return	ACF_Data
+ */
+function acf_get_store($name = '')
+{
+}
+/**
+ * acf_set_form_data
+ *
+ * Sets data about the current form.
+ *
+ * @date	6/10/13
+ * @since	5.0.0
+ *
+ * @param	string $name The store name.
+ * @param	array $data Array of data to start the store with.
+ * @return	ACF_Data
+ */
+function acf_set_form_data($name = '', $data = \false)
+{
+}
+/**
+ * acf_get_form_data
+ *
+ * Gets data about the current form.
+ *
+ * @date	6/10/13
+ * @since	5.0.0
+ *
+ * @param	string $name The store name.
+ * @return	mixed
+ */
+function acf_get_form_data($name = '')
+{
+}
+/**
+ * acf_form_data
+ *
+ * Called within a form to set important information and render hidden inputs.
+ *
+ * @date	15/10/13
+ * @since	5.0.0
+ *
+ * @param	void
+ * @return	void
+ */
+function acf_form_data($data = array())
+{
+}
+/**
+ * acf_save_post
+ *
+ * Saves the $_POST data.
+ *
+ * @date	15/10/13
+ * @since	5.0.0
+ *
+ * @param	int|string $post_id The post id.
+ * @param	array $values An array of values to override $_POST.
+ * @return	bool True if save was successful.
+ */
+function acf_save_post($post_id = 0, $values = \null)
+{
+}
+/**
+ * _acf_do_save_post
+ *
+ * Private function hooked into 'acf/save_post' to actually save the $_POST data.
+ * This allows developers to hook in before and after ACF has actually saved the data.
+ *
+ * @date	11/1/19
+ * @since	5.7.10
+ *
+ * @param	int|string $post_id The post id.
+ * @return	void
+ */
+function _acf_do_save_post($post_id = 0)
+{
+}
+/**
+ * acf_uniqid
+ *
+ * Returns a unique numeric based id.
+ *
+ * @date	9/1/19
+ * @since	5.7.10
+ *
+ * @param	string $prefix The id prefix. Defaults to 'acf'.
+ * @return	string
+ */
+function acf_uniqid($prefix = 'acf')
+{
+}
+/**
+ * acf_get_users
+ *
+ * Similar to the get_users() function but with extra functionality.
+ *
+ * @date	9/1/19
+ * @since	5.7.10
+ *
+ * @param	array $args The query args.
+ * @return	array
+ */
+function acf_get_users($args = array())
+{
+}
+/**
+ * acf_allow_unfiltered_html
+ *
+ * Returns true if the current user is allowed to save unfiltered HTML.
+ *
+ * @date	9/1/19
+ * @since	5.7.10
+ *
+ * @param	void
+ * @return	bool
+ */
+function acf_allow_unfiltered_html()
+{
+}
+// class_exists check
+/**
+*  acf_new_admin_notice
+*
+*  Instantiates and returns a new model.
+*
+*  @date	23/12/18
+*  @since	5.8.0
+*
+*  @param	array $data Optional data to set.
+*  @return	ACF_Admin_Notice
+*/
+function acf_new_admin_notice($data = \false)
+{
+}
+/**
+ * acf_render_admin_notices
+ *
+ * Renders all admin notices HTML.
+ *
+ * @date	10/1/19
+ * @since	5.7.10
+ *
+ * @param	void
+ * @return	void
+ */
+function acf_render_admin_notices()
+{
+}
+/**
+ * acf_add_admin_notice
+ *
+ * Creates and returns a new notice.
+ *
+ * @date		17/10/13
+ * @since		5.0.0
+ *
+ * @param	string $text The admin notice text.
+ * @param	string $class The type of notice (warning, error, success, info).
+ * @return	ACF_Admin_Notice
+ */
+function acf_add_admin_notice($text = '', $type = 'info')
+{
+}
 // class_exists check
 /**
 *  acf_register_admin_tool
@@ -12102,38 +12199,6 @@ function acf_get_admin_tools_url()
 *  @return	void
 */
 function acf_get_admin_tool_url($tool = '')
-{
-}
-// class_exists check
-/**
-*  acf_add_admin_notice
-*
-*  This function will add the notice data to a setting in the acf object for the admin_notices action to use
-*
-*  @type	function
-*  @date	17/10/13
-*  @since	5.0.0
-*
-*  @param	string $text
-*  @param	string $class
-*  @return	int message ID (array position)
-*/
-function acf_add_admin_notice($text, $class = '', $wrap = 'p')
-{
-}
-/**
-*  acf_get_admin_notices
-*
-*  This function will return an array containing any admin notices
-*
-*  @type	function
-*  @date	17/10/13
-*  @since	5.0.0
-*
-*  @param	void
-*  @return	array
-*/
-function acf_get_admin_notices()
 {
 }
 /**
@@ -13193,34 +13258,6 @@ function acf_set_data($name, $value)
 {
 }
 /**
-*  acf_new_instance
-*
-*  description
-*
-*  @date	13/2/18
-*  @since	5.6.5
-*
-*  @param	type $var Description. Default.
-*  @return	type Description.
-*/
-function acf_new_instance($class)
-{
-}
-/**
-*  acf_get_instance
-*
-*  description
-*
-*  @date	13/2/18
-*  @since	5.6.5
-*
-*  @param	type $var Description. Default.
-*  @return	type Description.
-*/
-function acf_get_instance($class)
-{
-}
-/**
 *  acf_init
 *
 *  alias of acf()->init()
@@ -13635,21 +13672,6 @@ function acf_get_full_version($version = '1')
 {
 }
 /**
-*  acf_get_locale
-*
-*  This function is a wrapper for the get_locale() function
-*
-*  @type	function
-*  @date	16/12/16
-*  @since	5.5.0
-*
-*  @param	void
-*  @return	string
-*/
-function acf_get_locale()
-{
-}
-/**
 *  acf_get_terms
 *
 *  This function is a wrapper for the get_terms() function
@@ -13707,6 +13729,20 @@ function acf_decode_taxonomy_terms($strings = \false)
 *  @return	array
 */
 function acf_decode_taxonomy_term($value)
+{
+}
+/**
+ * acf_array
+ *
+ * Casts the value into an array.
+ *
+ * @date	9/1/19
+ * @since	5.7.10
+ *
+ * @param	mixed $val The value to cast.
+ * @return	array
+ */
+function acf_array($val = array())
 {
 }
 /**
@@ -14225,9 +14261,8 @@ function acf_get_truncated($text, $length = 64)
 /**
 *  acf_get_current_url
 *
-*  This function will return the current URL
+*  This function will return the current URL.
 *
-*  @type	function
 *  @date	23/01/2015
 *  @since	5.1.5
 *
@@ -14570,6 +14605,20 @@ function acf_log()
 *  @return	void
 */
 function acf_dev_log()
+{
+}
+/**
+*  acf_test
+*
+*  Tests a function against an expected result and logs the pass/fail.
+*
+*  @date	19/11/18
+*  @since	5.8.0
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+function acf_test($result, $expected_result)
 {
 }
 /**
@@ -14930,6 +14979,64 @@ function acf_get_sites()
 *  @return	array
 */
 function acf_convert_rules_to_groups($rules, $anyorall = 'any')
+{
+}
+/**
+*  acf_register_ajax
+*
+*  Regsiters an ajax callback.
+*
+*  @date	5/10/18
+*  @since	5.7.7
+*
+*  @param	string $name The ajax action name.
+*  @param	array $callback The callback function or array.
+*  @param	bool $public Whether to allow access to non logged in users.
+*  @return	void
+*/
+function acf_register_ajax($name = '', $callback = \false, $public = \false)
+{
+}
+/**
+*  acf_str_camel_case
+*
+*  Converts a string into camelCase.
+*  Thanks to https://stackoverflow.com/questions/31274782/convert-array-keys-from-underscore-case-to-camelcase-recursively
+*
+*  @date	24/10/18
+*  @since	5.8.0
+*
+*  @param	string $string The string ot convert.
+*  @return	string
+*/
+function acf_str_camel_case($string = '')
+{
+}
+/**
+*  acf_array_camel_case
+*
+*  Converts all aray keys to camelCase.
+*
+*  @date	24/10/18
+*  @since	5.8.0
+*
+*  @param	array $array The array to convert.
+*  @return	array
+*/
+function acf_array_camel_case($array = array())
+{
+}
+/**
+*  acf_is_block_editor
+*
+*  Returns true if the current screen uses the block editor.
+*
+*  @date	13/12/18
+*  @since	5.8.0
+*
+*  @return	bool
+*/
+function acf_is_block_editor()
 {
 }
 /**
@@ -16176,6 +16283,34 @@ function acf_copy_postmeta($from_post_id, $to_post_id)
 function acf_preview_value($value, $post_id, $field)
 {
 }
+/**
+*  acf_get_option_meta
+*
+*  Returns an array of meta for the given wp_option name prefix.
+*
+*  @date	9/10/18
+*  @since	5.8.0
+*
+*  @param	string $prefix The wp_option name prefix.
+*  @return	array
+*/
+function acf_get_option_meta($prefix = '')
+{
+}
+/**
+*  acf_get_meta
+*
+*  Returns an array of "ACF only" meta for the given post_id.
+*
+*  @date	9/10/18
+*  @since	5.8.0
+*
+*  @param	mixed $post_id The post_id for this data.
+*  @return	array
+*/
+function acf_get_meta($post_id = 0)
+{
+}
 // class_exists check
 /**
 *  acf_localize_text
@@ -16508,67 +16643,6 @@ function acf_get_grouped_field_types()
 }
 // class_exists check
 /**
-*  acf_get_form_data
-*
-*  alias of acf()->form->get_data()
-*
-*  @type	function
-*  @date	6/10/13
-*  @since	5.0.0
-*
-*  @param	void
-*  @return	void
-*/
-function acf_get_form_data($name = '')
-{
-}
-/**
-*  acf_set_form_data
-*
-*  alias of acf()->form->set_data()
-*
-*  @type	function
-*  @date	6/10/13
-*  @since	5.0.0
-*
-*  @param	void
-*  @return	void
-*/
-function acf_set_form_data($data = array())
-{
-}
-/**
-*  acf_form_data
-*
-*  description
-*
-*  @type	function
-*  @date	15/10/13
-*  @since	5.0.0
-*
-*  @param	int $post_id
-*  @return	int $post_id
-*/
-function acf_form_data($data = array())
-{
-}
-/**
-*  acf_save_post
-*
-*  description
-*
-*  @type	function
-*  @date	15/10/13
-*  @since	5.0.0
-*
-*  @param	int $post_id
-*  @return	int $post_id
-*/
-function acf_save_post($post_id = 0, $values = \null)
-{
-}
-// class_exists check
-/**
 *  Functions
 *
 *  alias of acf()->form->functions
@@ -16621,6 +16695,37 @@ function acf_write_json_field_group($field_group)
 *  @return	boolean
 */
 function acf_delete_json_field_group($key)
+{
+}
+//function determine_locale()
+{
+}
+/**
+ * acf_get_locale
+ *
+ * Returns the current locale.
+ *
+ * @date	16/12/16
+ * @since	5.5.0
+ *
+ * @param	void
+ * @return	string
+ */
+function acf_get_locale()
+{
+}
+/**
+ * acf_load_textdomain
+ *
+ * Loads the plugin's translated strings similar to load_plugin_textdomain().
+ *
+ * @date	8/1/19
+ * @since	5.7.10
+ *
+ * @param	string $locale The plugin's current locale.
+ * @return	void
+ */
+function acf_load_textdomain($domain = 'acf')
 {
 }
 // class_exists check
