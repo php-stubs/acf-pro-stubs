@@ -8,7 +8,7 @@
 class acf
 {
     /** @var string The plugin version number */
-    var $version = '5.6.5';
+    var $version = '5.6.6';
     /** @var array The plugin settings array */
     var $settings = array();
     /**
@@ -2314,6 +2314,68 @@ class acf_field
      *  @return	array $l10n
      */
     function input_admin_l10n($l10n)
+    {
+    }
+}
+class acf_field__accordion extends \acf_field
+{
+    /**
+     *  initialize
+     *
+     *  This function will setup the field type data
+     *
+     *  @date	30/10/17
+     *  @since	5.6.3
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function initialize()
+    {
+    }
+    /**
+     *  render_field
+     *
+     *  Create the HTML interface for your field
+     *
+     *  @date	30/10/17
+     *  @since	5.6.3
+     *
+     *  @param	array $field
+     *  @return	void
+     */
+    function render_field($field)
+    {
+    }
+    /**
+     *  render_field_settings()
+     *
+     *  Create extra options for your field. This is rendered when editing a field.
+     *  The value of $field['name'] can be used (like bellow) to save extra data to the $field
+     *
+     *  @param	$field	- an array holding all the field's data
+     *
+     *  @type	action
+     *  @since	3.6
+     *  @date	23/01/13
+     */
+    function render_field_settings($field)
+    {
+    }
+    /**
+     *  load_field()
+     *
+     *  This filter is appied to the $field after it is loaded from the database
+     *
+     *  @type	filter
+     *  @since	3.6
+     *  @date	23/01/13
+     *
+     *  @param	$field - the field array holding all the field options
+     *
+     *  @return	$field - the field array holding all the field options
+     */
+    function load_field($field)
     {
     }
 }
