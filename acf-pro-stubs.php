@@ -8,9 +8,13 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.6.8';
+    var $version = '5.6.9';
     /** @var array The plugin settings array */
     var $settings = array();
+    /** @var array The plugin data array */
+    var $data = array();
+    /** @var array Storage for class instances */
+    var $instances = array();
     /**
      *  __construct
      *
@@ -189,6 +193,63 @@ class ACF
      *  @return	void
      */
     function update_setting($name, $value)
+    {
+    }
+    /**
+     *  get_data
+     *
+     *  Returns data.
+     *
+     *  @date	28/09/13
+     *  @since	5.0.0
+     *
+     *  @param	string $name
+     *  @return	mixed
+     */
+    function get_data($name)
+    {
+    }
+    /**
+     *  set_data
+     *
+     *  Sets data.
+     *
+     *  @date	28/09/13
+     *  @since	5.0.0
+     *
+     *  @param	string $name
+     *  @param	mixed $value
+     *  @return	void
+     */
+    function set_data($name, $value)
+    {
+    }
+    /**
+     *  get_instance
+     *
+     *  Returns an instance.
+     *
+     *  @date	13/2/18
+     *  @since	5.6.9
+     *
+     *  @param	string $class The instance class name.
+     *  @return	object
+     */
+    function get_instance($class)
+    {
+    }
+    /**
+     *  new_instance
+     *
+     *  Creates and stores an instance.
+     *
+     *  @date	13/2/18
+     *  @since	5.6.9
+     *
+     *  @param	string $class The instance class name.
+     *  @return	object
+     */
+    function new_instance($class)
     {
     }
 }
@@ -5690,6 +5751,9 @@ class acf_field_user extends \acf_field
     function format_value($value, $post_id, $field)
     {
     }
+    function format_value_single($value, $post_id, $field)
+    {
+    }
 }
 class acf_field_wysiwyg extends \acf_field
 {
@@ -6319,6 +6383,52 @@ class acf_form_front
     {
     }
 }
+class ACF_Form_Gutenberg
+{
+    /**
+     *  __construct
+     *
+     *  Setup for class functionality.
+     *
+     *  @date	13/2/18
+     *  @since	5.6.9
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function __construct()
+    {
+    }
+    /**
+     *  replace_editor
+     *
+     *  Check if Gutenberg is replacing the editor.
+     *
+     *  @date	13/2/18
+     *  @since	5.6.9
+     *
+     *  @param	boolean $replace True if the editor is being replaced by Gutenberg.
+     *  @param	object $post The WP_Post being edited.
+     *  @return	boolean
+     */
+    function replace_editor($replace, $post)
+    {
+    }
+    /**
+     *  admin_footer
+     *
+     *  Append missing HTML to Gutenberg editor.
+     *
+     *  @date	13/2/18
+     *  @since	5.6.9
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function admin_footer()
+    {
+    }
+}
 class acf_form_nav_menu
 {
     /**
@@ -6383,6 +6493,22 @@ class acf_form_nav_menu
     {
     }
     /**
+     *  wp_get_nav_menu_items
+     *
+     *  WordPress does not provide an easy way to find the current menu being edited.
+     *  This function listens to when a menu's items are loaded and stores the menu.
+     *  Needed on nav-menus.php page for new menu with no items
+     *
+     *  @date	23/2/18
+     *  @since	5.6.9
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function wp_get_nav_menu_items($items, $menu, $args)
+    {
+    }
+    /**
      *  wp_edit_nav_menu_walker
      *
      *  description
@@ -6428,7 +6554,7 @@ class acf_form_nav_menu
     {
     }
 }
-class acf_form_post
+class ACF_Form_Post
 {
     var $post_id = 0, $typenow = '', $style = '';
     /**
@@ -9160,18 +9286,19 @@ class acf_third_party
     {
     }
     /**
-     *  admin_head_tabify
+     *  acf_get_post_types
      *
-     *  description
+     *  EE post types do not use the native post.php edit page, but instead render their own.
+     *  Show the EE post types in lists where 'show_ui' is used.
      *
-     *  @type	action (admin_head)
-     *  @date	9/10/12
-     *  @since	3.5.1
+     *  @date	24/2/18
+     *  @since	5.6.9
      *
-     *  @param	void
-     *  @return	void
+     *  @param	array $post_types
+     *  @param	array $args
+     *  @return	array
      */
-    function admin_head_tabify()
+    function ee_get_post_types($post_types, $args)
     {
     }
     /**
@@ -12124,7 +12251,7 @@ function acf_the_field_label($field)
 *  @param	int $instruction the instructions position
 *  @return	void
 */
-function acf_render_fields($post_id = 0, $fields, $el = 'div', $instruction = 'label')
+function acf_render_fields($fields, $post_id = 0, $el = 'div', $instruction = 'label')
 {
 }
 /**
@@ -12690,6 +12817,63 @@ function acf_append_setting($name, $value)
 {
 }
 /**
+*  acf_get_data
+*
+*  Returns data.
+*
+*  @date	28/09/13
+*  @since	5.0.0
+*
+*  @param	string $name
+*  @return	mixed
+*/
+function acf_get_data($name)
+{
+}
+/**
+*  acf_set_data
+*
+*  Sets data.
+*
+*  @date	28/09/13
+*  @since	5.0.0
+*
+*  @param	string $name
+*  @param	mixed $value
+*  @return	void
+*/
+function acf_set_data($name, $value)
+{
+}
+/**
+*  acf_new_instance
+*
+*  description
+*
+*  @date	13/2/18
+*  @since	5.6.5
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+function acf_new_instance($class)
+{
+}
+/**
+*  acf_get_instance
+*
+*  description
+*
+*  @date	13/2/18
+*  @since	5.6.5
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+function acf_get_instance($class)
+{
+}
+/**
 *  acf_init
 *
 *  alias of acf()->init()
@@ -12980,15 +13164,13 @@ function acf_get_sub_array($array, $keys)
 /**
 *  acf_get_post_types
 *
-*  This function will return an array of available post types
+*  Returns an array of post type names.
 *
-*  @type	function
 *  @date	7/10/13
 *  @since	5.0.0
 *
-*  @param	array $exclude
-*  @param	array $include
-*  @return	array
+*  @param	array $args Optional. An array of key => value arguments to match against the post type objects. Default empty array.
+*  @return	array A list of post type names.
 */
 function acf_get_post_types($args = array())
 {
