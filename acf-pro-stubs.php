@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.9.2';
+    var $version = '5.9.3';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -5281,7 +5281,7 @@ class acf_field_relationship extends \acf_field
     /**
      *  format_value()
      *
-     *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
+     *  This filter is applied to the $value after it is loaded from the db and before it is returned to the template
      *
      *  @type	filter
      *  @since	3.6
@@ -5314,7 +5314,7 @@ class acf_field_relationship extends \acf_field
     /**
      *  update_value()
      *
-     *  This filter is appied to the $value before it is updated in the db
+     *  This filter is applied to the $value before it is updated in the db
      *
      *  @type	filter
      *  @since	3.6
