@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.9.4';
+    var $version = '5.9.5';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -12241,6 +12241,21 @@ function acf_untrash_field($id = 0)
 {
 }
 /**
+ * Filter callback which returns the previous post_status instead of "draft" for the "acf-field" post type.
+ *
+ * Prior to WordPress 5.6.0, this filter was not needed as restored posts were always assigned their original status.
+ *
+ * @since 5.9.5
+ *
+ * @param string $new_status      The new status of the post being restored.
+ * @param int    $post_id         The ID of the post being restored.
+ * @param string $previous_status The status of the post at the point where it was trashed.
+ * @return string.
+ */
+function _acf_untrash_field_post_status($new_status, $post_id, $previous_status)
+{
+}
+/**
  * acf_prefix_fields
  *
  * Changes the prefix for an array of fields by reference.
@@ -12643,6 +12658,21 @@ function acf_trash_field_group($id = 0)
  * @return	bool True if field_group was trashed.
  */
 function acf_untrash_field_group($id = 0)
+{
+}
+/**
+ * Filter callback which returns the previous post_status instead of "draft" for the "acf-field-group" post type.
+ *
+ * Prior to WordPress 5.6.0, this filter was not needed as restored posts were always assigned their original status.
+ *
+ * @since 5.9.5
+ *
+ * @param string $new_status      The new status of the post being restored.
+ * @param int    $post_id         The ID of the post being restored.
+ * @param string $previous_status The status of the post at the point where it was trashed.
+ * @return string.
+ */
+function _acf_untrash_field_group_post_status($new_status, $post_id, $previous_status)
 {
 }
 /**
@@ -13985,7 +14015,7 @@ function acf_format_value($value, $post_id, $field)
  * @param	array $field The field array.
  * @return	bool.
  */
-function acf_update_value($value = \null, $post_id = 0, $field)
+function acf_update_value($value, $post_id, $field)
 {
 }
 /**
@@ -14000,7 +14030,7 @@ function acf_update_value($value = \null, $post_id = 0, $field)
  * @param	int|string $post_id The post id.
  * @return	void
  */
-function acf_update_values($values = array(), $post_id = 0)
+function acf_update_values($values, $post_id)
 {
 }
 /**
@@ -15839,15 +15869,12 @@ function acf_array_camel_case($array = array())
 {
 }
 /**
- * acf_is_block_editor
+ * Returns true if the current screen is using the block editor.
  *
- * Returns true if the current screen uses the block editor.
+ * @date 13/12/18
+ * @since 5.8.0
  *
- * @date	13/12/18
- * @since	5.8.0
- *
- * @param	void
- * @return	bool
+ * @return bool
  */
 function acf_is_block_editor()
 {
