@@ -8,7 +8,7 @@
 class acf
 {
     // vars
-    var $version = '5.6.0';
+    var $version = '5.6.1';
     /**
      *  __construct
      *
@@ -2736,6 +2736,36 @@ class acf_field__group extends \acf_field
      *  @return	int $post_id
      */
     function validate_value($valid, $value, $field, $input)
+    {
+    }
+    /**
+     *  prepare_field_for_export
+     *
+     *  description
+     *
+     *  @type	function
+     *  @date	11/03/2014
+     *  @since	5.0.0
+     *
+     *  @param	int $post_id
+     *  @return	int $post_id
+     */
+    function prepare_field_for_export($field)
+    {
+    }
+    /**
+     *  prepare_field_for_import
+     *
+     *  description
+     *
+     *  @type	function
+     *  @date	11/03/2014
+     *  @since	5.0.0
+     *
+     *  @param	int $post_id
+     *  @return	int $post_id
+     */
+    function prepare_field_for_import($field)
     {
     }
 }
@@ -10483,6 +10513,21 @@ class acf_field_repeater extends \acf_field
     {
     }
     /**
+     *  validate_any_field
+     *
+     *  This function will add compatibility for the 'column_width' setting
+     *
+     *  @type	function
+     *  @date	30/1/17
+     *  @since	5.5.6
+     *
+     *  @param	array $field
+     *  @return	$field
+     */
+    function validate_any_field($field)
+    {
+    }
+    /**
      *  prepare_field_for_export
      *
      *  description
@@ -10510,21 +10555,6 @@ class acf_field_repeater extends \acf_field
      *  @return	int $post_id
      */
     function prepare_field_for_import($field)
-    {
-    }
-    /**
-     *  validate_any_field
-     *
-     *  This function will add compatibility for the 'column_width' setting
-     *
-     *  @type	function
-     *  @date	30/1/17
-     *  @since	5.5.6
-     *
-     *  @param	array $field
-     *  @return	$field
-     */
-    function validate_any_field($field)
     {
     }
 }
