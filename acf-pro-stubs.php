@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.8.8';
+    var $version = '5.8.9';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -1846,6 +1846,18 @@ class ACF_Ajax
     {
     }
     /**
+     * Verifies the request.
+     *
+     * @date	9/3/20
+     * @since	5.8.8
+     *
+     * @param	array $request The request args.
+     * @return	bool|WP_Error True on success, WP_Error on fail.
+     */
+    function verify_request($request)
+    {
+    }
+    /**
      * get_response
      *
      * Returns the response data to sent back.
@@ -1873,6 +1885,18 @@ class ACF_Ajax
     function send($response)
     {
     }
+    /**
+     * Sends a JSON response for the given WP_Error object.
+     *
+     * @date	8/3/20
+     * @since	5.8.8
+     *
+     * @param	WP_Error error The error object.
+     * @return	void
+     */
+    function send_error($error)
+    {
+    }
 }
 class ACF_Ajax_Check_Screen extends \ACF_Ajax
 {
@@ -1892,6 +1916,182 @@ class ACF_Ajax_Check_Screen extends \ACF_Ajax
      * @return	mixed The response data or WP_Error.
      */
     function get_response($request)
+    {
+    }
+}
+class ACF_Ajax_Query extends \ACF_Ajax
+{
+    /** @var bool Prevents access for non-logged in users. */
+    var $public = \true;
+    /** @var int The page of results to return. */
+    var $page = 1;
+    /** @var int The number of results per page. */
+    var $per_page = 20;
+    /** @var bool Signifies whether or not this AJAX query has more pages to load. */
+    var $more = \false;
+    /** @var string The searched term. */
+    var $search = '';
+    /** @var bool Signifies whether the current query is a search. */
+    var $is_search = \false;
+    /** @var (int|string) The post_id being edited. */
+    var $post_id = 0;
+    /** @var array The ACF field related to this query. */
+    var $field = \false;
+    /**
+     * get_response
+     *
+     * Returns the response data to sent back.
+     *
+     * @date	31/7/18
+     * @since	5.7.2
+     *
+     * @param	array $request The request args.
+     * @return	array|WP_Error The response data or WP_Error.
+     */
+    function get_response($request)
+    {
+    }
+    /**
+     * init_request
+     *
+     * Called at the beginning of a request to setup properties.
+     *
+     * @date	23/5/19
+     * @since	5.8.1
+     *
+     * @param	array $request The request args.
+     * @return	void
+     */
+    function init_request($request)
+    {
+    }
+    /**
+     * get_args
+     *
+     * Returns an array of args for this query.
+     *
+     * @date	31/7/18
+     * @since	5.7.2
+     *
+     * @param	array $request The request args.
+     * @return	array
+     */
+    function get_args($request)
+    {
+    }
+    /**
+     * get_items
+     *
+     * Returns an array of results for the given args.
+     *
+     * @date	31/7/18
+     * @since	5.7.2
+     *
+     * @param	array args The query args.
+     * @return	array
+     */
+    function get_results($args)
+    {
+    }
+    /**
+     * get_item
+     *
+     * Returns a single result for the given item object.
+     *
+     * @date	31/7/18
+     * @since	5.7.2
+     *
+     * @param	mixed $item A single item from the queried results.
+     * @return	array An array containing "id" and "text".
+     */
+    function get_result($item)
+    {
+    }
+}
+class ACF_Ajax_Query_Users extends \ACF_Ajax_Query
+{
+    /** @var string The AJAX action name. */
+    var $action = 'acf/ajax/query_users';
+    /**
+     * init_request
+     *
+     * Called at the beginning of a request to setup properties.
+     *
+     * @date	23/5/19
+     * @since	5.8.1
+     *
+     * @param	array $request The request args.
+     * @return	void
+     */
+    function init_request($request)
+    {
+    }
+    /**
+     * get_args
+     *
+     * Returns an array of args for this query.
+     *
+     * @date	31/7/18
+     * @since	5.7.2
+     *
+     * @param	array $request The request args.
+     * @return	array
+     */
+    function get_args($request)
+    {
+    }
+    /**
+     * Prepares args for the get_results() method.
+     *
+     * @date	23/3/20
+     * @since	5.8.9
+     *
+     * @param	array args The query args.
+     * @return	array
+     */
+    function prepare_args($args)
+    {
+    }
+    /**
+     * get_results
+     *
+     * Returns an array of results for the given args.
+     *
+     * @date	31/7/18
+     * @since	5.7.2
+     *
+     * @param	array args The query args.
+     * @return	array
+     */
+    function get_results($args)
+    {
+    }
+    /**
+     * get_result
+     *
+     * Returns a single result for the given item object.
+     *
+     * @date	31/7/18
+     * @since	5.7.2
+     *
+     * @param	mixed $item A single item from the queried results.
+     * @return	string
+     */
+    function get_result($user)
+    {
+    }
+    /**
+     * Filters the WP_User_Query search columns.
+     *
+     * @date	9/3/20
+     * @since	5.8.8
+     *
+     * @param	array $columns An array of column names to be searched.
+     * @param	string $search The search term.
+     * @param	WP_User_Query $WP_User_Query The WP_User_Query instance.
+     * @return	array
+     */
+    function filter_search_columns($columns, $search, $WP_User_Query)
     {
     }
 }
@@ -5778,165 +5978,193 @@ class acf_field_url extends \acf_field
     {
     }
 }
-class acf_field_user extends \acf_field
+class ACF_Field_User extends \ACF_Field
 {
     /**
-     *  __construct
+     * Initializes the field type.
      *
-     *  This function will setup the field type data
+     * @date	5/03/2014
+     * @since	5.0.0
      *
-     *  @type	function
-     *  @date	5/03/2014
-     *  @since	5.0.0
-     *
-     *  @param	void
-     *  @return	void
+     * @param	void
+     * @return	void
      */
     function initialize()
     {
     }
     /**
-     *  ajax_query
+     * Renders the field settings HTML.
      *
-     *  description
+     * @date	23/01/13
+     * @since	3.6.0
      *
-     *  @type	function
-     *  @date	24/10/13
-     *  @since	5.0.0
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
-     */
-    function ajax_query()
-    {
-    }
-    /**
-     *  get_ajax_query
-     *
-     *  This function will return an array of data formatted for use in a select2 AJAX response
-     *
-     *  @type	function
-     *  @date	15/10/2014
-     *  @since	5.0.9
-     *
-     *  @param	array $options
-     *  @return	array
-     */
-    function get_ajax_query($options = array())
-    {
-    }
-    /**
-     *  get_result
-     *
-     *  This function returns the HTML for a result
-     *
-     *  @type	function
-     *  @date	1/11/2013
-     *  @since	5.0.0
-     *
-     *  @param	object $post
-     *  @param	array $field
-     *  @param	int $post_id the post_id to which this value is saved to
-     *  @return	string
-     */
-    function get_result($user, $field, $post_id = 0)
-    {
-    }
-    /**
-     *  user_search_columns
-     *
-     *  This function will modify the columns which the user AJAX search looks in
-     *
-     *  @type	function
-     *  @date	17/06/2014
-     *  @since	5.0.0
-     *
-     *  @param	array $columns
-     *  @return	$columns
-     */
-    function user_search_columns($columns, $search, $WP_User_Query)
-    {
-    }
-    /**
-     *  render_field()
-     *
-     *  Create the HTML interface for your field
-     *
-     *  @type	action
-     *  @since	3.6
-     *  @date	23/01/13
-     *
-     *  @param	$field - an array holding all the field's data
-     */
-    function render_field($field)
-    {
-    }
-    /**
-     *  render_field_settings()
-     *
-     *  Create extra options for your field. This is rendered when editing a field.
-     *  The value of $field['name'] can be used (like bellow) to save extra data to the $field
-     *
-     *  @type	action
-     *  @since	3.6
-     *  @date	23/01/13
-     *
-     *  @param	$field	- an array holding all the field's data
+     * @param	array $field The ACF field.
+     * @return	void
      */
     function render_field_settings($field)
     {
     }
     /**
-     *  update_value()
+     * Renders the field input HTML.
      *
-     *  This filter is appied to the $value before it is updated in the db
+     * @date	23/01/13
+     * @since	3.6.0
      *
-     *  @type	filter
-     *  @since	3.6
-     *  @date	23/01/13
-     *
-     *  @param	$value - the value which will be saved in the database
-     *  @param	$post_id - the $post_id of which the value will be saved
-     *  @param	$field - the field array holding all the field options
-     *
-     *  @return	$value - the modified value
+     * @param	array $field The ACF field.
+     * @return	void
      */
-    function update_value($value, $post_id, $field)
+    function render_field($field)
     {
     }
     /**
-     *  load_value()
+     * Returns the result text for a fiven WP_User object.
      *
-     *  This filter is applied to the $value after it is loaded from the db
+     * @date	1/11/2013
+     * @since	5.0.0
      *
-     *  @type	filter
-     *  @since	3.6
-     *  @date	23/01/13
+     * @param	WP_User $user The WP_User object.
+     * @param	array $field The ACF field related to this query.
+     * @param	int|string $post_id The post_id being edited.
+     * @return	string
+     */
+    function get_result($user, $field, $post_id = 0)
+    {
+    }
+    /**
+     * Filters the field value after it is loaded from the database.
      *
-     *  @param	mixed $value the value found in the database
-     *  @param	mixed $post_id the $post_id from which the value was loaded
-     *  @param	array $field the field array holding all the field options
-     *  @return	$value
+     * @date	23/01/13
+     * @since	3.6.0
+     *
+     * @param	mixed $value The field value.
+     * @param	mixed $post_id The post ID where the value is saved.
+     * @param	array $field The field array containing all settings.
+     * @return	mixed
      */
     function load_value($value, $post_id, $field)
     {
     }
     /**
-     *  format_value()
+     * Filters the field value after it is loaded from the database but before it is returned to the front-end API.
      *
-     *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
+     * @date	23/01/13
+     * @since	3.6.0
      *
-     *  @type	filter
-     *  @since	3.6
-     *  @date	23/01/13
-     *
-     *  @param	mixed $value the value which was loaded from the database
-     *  @param	mixed $post_id the $post_id from which the value was loaded
-     *  @param	array $field the field array holding all the field options
-     *
-     *  @return	mixed $value the modified value
+     * @param	mixed $value The field value.
+     * @param	mixed $post_id The post ID where the value is saved.
+     * @param	array $field The field array containing all settings.
+     * @return	mixed
      */
     function format_value($value, $post_id, $field)
+    {
+    }
+    /**
+     * Filters the field value before it is saved into the database.
+     *
+     * @date	23/01/13
+     * @since	3.6.0
+     *
+     * @param	mixed $value The field value.
+     * @param	mixed $post_id The post ID where the value is saved.
+     * @param	array $field The field array containing all settings.
+     * @return	mixed
+     */
+    function update_value($value, $post_id, $field)
+    {
+    }
+    /**
+     * Callback for the AJAX query request.
+     *
+     * @date	24/10/13
+     * @since	5.0.0
+     *
+     * @param	void
+     * @return	void
+     */
+    function ajax_query()
+    {
+    }
+    /**
+     * Runs during the AJAX query initialization.
+     *
+     * @date	9/3/20
+     * @since	5.8.8
+     *
+     * @param	array $request The query request.
+     * @param	ACF_Ajax_Query $query The query object.
+     * @return	void
+     */
+    function ajax_query_init($request, $query)
+    {
+    }
+    /**
+     * Filters the AJAX query args.
+     *
+     * @date	9/3/20
+     * @since	5.8.8
+     *
+     * @param	array $args The query args.
+     * @param	array $request The query request.
+     * @param	ACF_Ajax_Query $query The query object.
+     * @return	array
+     */
+    function ajax_query_args($args, $request, $query)
+    {
+    }
+    /**
+     * Filters the WP_User_Query search columns.
+     *
+     * @date	9/3/20
+     * @since	5.8.8
+     *
+     * @param	array $columns An array of column names to be searched.
+     * @param	string $search The search term.
+     * @param	WP_User_Query $WP_User_Query The WP_User_Query instance.
+     * @return	array
+     */
+    function ajax_query_search_columns($columns, $search, $WP_User_Query, $query)
+    {
+    }
+    /**
+     * Filters the AJAX Query result.
+     *
+     * @date	9/3/20
+     * @since	5.8.8
+     *
+     * @param	array $item The choice id and text.
+     * @param	WP_User $user The user object.
+     * @param	ACF_Ajax_Query $query The query object.
+     * @return	array
+     */
+    function ajax_query_result($item, $user, $query)
+    {
+    }
+    /**
+     * Return an array of data formatted for use in a select2 AJAX response.
+     *
+     * @date	15/10/2014
+     * @since	5.0.9
+     * @deprecated 5.8.9
+     *
+     * @param	array $args An array of query args.
+     * @return	array
+     */
+    function get_ajax_query($options = array())
+    {
+    }
+    /**
+     * Filters the WP_User_Query search columns.
+     *
+     * @date	15/10/2014
+     * @since	5.0.9
+     * @deprecated 5.8.9
+     *
+     * @param	array $columns An array of column names to be searched.
+     * @param	string $search The search term.
+     * @param	WP_User_Query $WP_User_Query The WP_User_Query instance.
+     * @return	array
+     */
+    function user_search_columns($columns, $search, $WP_User_Query)
     {
     }
 }
@@ -17430,7 +17658,7 @@ function acf_validate_value($value, $field, $input)
  * Registers a block type.
  *
  * @date	18/2/19
- * @since	5.7.12
+ * @since	5.8.0
  *
  * @param	array $block The block settings.
  * @return	array|false
