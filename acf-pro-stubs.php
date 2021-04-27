@@ -7,217 +7,209 @@
 
 class ACF
 {
-    /** @var string The plugin version number */
-    var $version = '5.8.3';
-    /** @var array The plugin settings array */
+    /** @var string The plugin version number. */
+    var $version = '5.8.4';
+    /** @var array The plugin settings array. */
     var $settings = array();
-    /** @var array The plugin data array */
+    /** @var array The plugin data array. */
     var $data = array();
-    /** @var array Storage for class instances */
+    /** @var array Storage for class instances. */
     var $instances = array();
     /**
-     *  __construct
+     * __construct
      *
-     *  A dummy constructor to ensure ACF is only initialized once
+     * A dummy constructor to ensure ACF is only setup once.
      *
-     *  @type	function
-     *  @date	23/06/12
-     *  @since	5.0.0
+     * @date	23/06/12
+     * @since	5.0.0
      *
-     *  @param	void
-     *  @return	void
+     * @param	void
+     * @return	void
      */
     function __construct()
     {
     }
     /**
-     *  initialize
+     * initialize
      *
-     *  The real constructor to initialize ACF
+     * Sets up the ACF plugin.
      *
-     *  @type	function
-     *  @date	28/09/13
-     *  @since	5.0.0
+     * @date	28/09/13
+     * @since	5.0.0
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     * @param	void
+     * @return	void
      */
     function initialize()
     {
     }
     /**
-     *  init
+     * init
      *
-     *  This function will run after all plugins and theme functions have been included
+     * Completes the setup process on "init" of earlier.
      *
-     *  @type	action (init)
-     *  @date	28/09/13
-     *  @since	5.0.0
+     * @date	28/09/13
+     * @since	5.0.0
      *
-     *  @param	void
-     *  @return	void
+     * @param	void
+     * @return	void
      */
     function init()
     {
     }
     /**
-     *  register_post_types
+     * register_post_types
      *
-     *  This function will register post types and statuses
+     * Registers the ACF post types.
      *
-     *  @type	function
-     *  @date	22/10/2015
-     *  @since	5.3.2
+     * @date	22/10/2015
+     * @since	5.3.2
      *
-     *  @param	void
-     *  @return	void
+     * @param	void
+     * @return	void
      */
     function register_post_types()
     {
     }
     /**
-     *  register_post_status
+     * register_post_status
      *
-     *  This function will register custom post statuses
+     * Registers the ACF post statuses.
      *
-     *  @type	function
-     *  @date	22/10/2015
-     *  @since	5.3.2
+     * @date	22/10/2015
+     * @since	5.3.2
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     * @param	void
+     * @return	void
      */
     function register_post_status()
     {
     }
     /**
-     *  posts_where
+     * posts_where
      *
-     *  This function will add in some new parameters to the WP_Query args allowing fields to be found via key / name
+     * Filters the $where clause allowing for custom WP_Query args.
      *
-     *  @type	filter
-     *  @date	5/12/2013
-     *  @since	5.0.0
+     * @date	31/8/19
+     * @since	5.8.1
      *
-     *  @param	string $where
-     *  @param	object $wp_query
-     *  @return	string $where
+     * @param	string $where The WHERE clause.
+     * @return	WP_Query $wp_query The query object.
      */
     function posts_where($where, $wp_query)
     {
     }
     /**
-     *  define
+     * define
      *
-     *  This function will safely define a constant
+     * Defines a constant if doesnt already exist.
      *
-     *  @type	function
-     *  @date	3/5/17
-     *  @since	5.5.13
+     * @date	3/5/17
+     * @since	5.5.13
      *
-     *  @param	string $name
-     *  @param	mixed $value
-     *  @return	void
+     * @param	string $name The constant name.
+     * @param	mixed $value The constant value.
+     * @return	void
      */
     function define($name, $value = \true)
     {
     }
     /**
-     *  has_setting
+     * has_setting
      *
-     *  Returns true if has setting.
+     * Returns true if a setting exists for this name.
      *
-     *  @date	2/2/18
-     *  @since	5.6.5
+     * @date	2/2/18
+     * @since	5.6.5
      *
-     *  @param	string $name
-     *  @return	boolean
+     * @param	string $name The setting name.
+     * @return	boolean
      */
     function has_setting($name)
     {
     }
     /**
-     *  get_setting
+     * get_setting
      *
-     *  Returns a setting.
+     * Returns a setting or null if doesn't exist.
      *
-     *  @date	28/09/13
-     *  @since	5.0.0
+     * @date	28/09/13
+     * @since	5.0.0
      *
-     *  @param	string $name
-     *  @return	mixed
+     * @param	string $name The setting name.
+     * @return	mixed
      */
     function get_setting($name)
     {
     }
     /**
-     *  update_setting
+     * update_setting
      *
-     *  Updates a setting.
+     * Updates a setting for the given name and value.
      *
-     *  @date	28/09/13
-     *  @since	5.0.0
+     * @date	28/09/13
+     * @since	5.0.0
      *
-     *  @param	string $name
-     *  @param	mixed $value
-     *  @return	void
+     * @param	string $name The setting name.
+     * @param	mixed $value The setting value.
+     * @return	true
      */
     function update_setting($name, $value)
     {
     }
     /**
-     *  get_data
+     * get_data
      *
-     *  Returns data.
+     * Returns data or null if doesn't exist.
      *
-     *  @date	28/09/13
-     *  @since	5.0.0
+     * @date	28/09/13
+     * @since	5.0.0
      *
-     *  @param	string $name
-     *  @return	mixed
+     * @param	string $name The data name.
+     * @return	mixed
      */
     function get_data($name)
     {
     }
     /**
-     *  set_data
+     * set_data
      *
-     *  Sets data.
+     * Sets data for the given name and value.
      *
-     *  @date	28/09/13
-     *  @since	5.0.0
+     * @date	28/09/13
+     * @since	5.0.0
      *
-     *  @param	string $name
-     *  @param	mixed $value
-     *  @return	void
+     * @param	string $name The data name.
+     * @param	mixed $value The data value.
+     * @return	void
      */
     function set_data($name, $value)
     {
     }
     /**
-     *  get_instance
+     * get_instance
      *
-     *  Returns an instance.
+     * Returns an instance or null if doesn't exist.
      *
-     *  @date	13/2/18
-     *  @since	5.6.9
+     * @date	13/2/18
+     * @since	5.6.9
      *
-     *  @param	string $class The instance class name.
-     *  @return	object
+     * @param	string $class The instance class name.
+     * @return	object
      */
     function get_instance($class)
     {
     }
     /**
-     *  new_instance
+     * new_instance
      *
-     *  Creates and stores an instance.
+     * Creates and stores an instance of the given class.
      *
-     *  @date	13/2/18
-     *  @since	5.6.9
+     * @date	13/2/18
+     * @since	5.6.9
      *
-     *  @param	string $class The instance class name.
-     *  @return	object
+     * @param	string $class The instance class name.
+     * @return	object
      */
     function new_instance($class)
     {
@@ -9228,8 +9220,6 @@ class ACF_Updates
     var $version = '2.4';
     /** @var array The array of registered plugins */
     var $plugins = array();
-    /** @var boolean Dev mode */
-    var $dev = \false;
     /** @var int Counts the number of plugin update checks */
     var $checked = 0;
     /**
@@ -11497,20 +11487,19 @@ class acf_pro_updates
     }
 }
 /**
-*  acf
-*
-*  The main function responsible for returning the one true acf Instance to functions everywhere.
-*  Use this function like you would a global variable, except without needing to declare the global.
-*
-*  Example: <?php $acf = acf(); ?>
-*
-*  @type	function
-*  @date	4/09/13
-*  @since	4.3.0
-*
-*  @param	void
-*  @return	object
-*/
+ * acf
+ *
+ * The main function responsible for returning the one true acf Instance to functions everywhere.
+ * Use this function like you would a global variable, except without needing to declare the global.
+ *
+ * Example: <?php $acf = acf(); ?>
+ *
+ * @date	4/09/13
+ * @since	4.3.0
+ *
+ * @param	void
+ * @return	ACF
+ */
 function acf()
 {
 }
@@ -12708,6 +12697,20 @@ function acf_slugify($str = '')
  * @return	string
  */
 function acf_punctify($str = '')
+{
+}
+/**
+ * acf_did
+ *
+ * Returns true if ACF already did an event.
+ *
+ * @date	30/8/19
+ * @since	5.8.1
+ *
+ * @param	string $name The name of the event.
+ * @return	bool
+ */
+function acf_did($name)
 {
 }
 /**
