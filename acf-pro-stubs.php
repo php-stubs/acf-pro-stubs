@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.7.1';
+    var $version = '5.7.2';
     /** @var array The plugin settings array */
     var $settings = array();
     /** @var array The plugin data array */
@@ -1675,16 +1675,21 @@ class ACF_Admin_Tool_Import extends \ACF_Admin_Tool
     {
     }
 }
-class acf_ajax
+class ACF_Ajax
 {
+    /** @var string The AJAX action name */
+    var $action = '';
+    /** @var array The $_REQUEST data */
+    var $request;
+    /** @var bool Prevents access for non-logged in users */
+    var $public = \false;
     /**
      *  __construct
      *
-     *  This function will setup the class functionality
+     *  Sets up the class functionality.
      *
-     *  @type	function
-     *  @date	5/03/2014
-     *  @since	5.0.0
+     *  @date	31/7/18
+     *  @since	5.7.2
      *
      *  @param	void
      *  @return	void
@@ -1693,18 +1698,266 @@ class acf_ajax
     {
     }
     /**
-     *  update_user_setting
+     *  initialize
      *
-     *  This function will update a user setting
+     *  Allows easy access to modifying properties without changing constructor.
      *
-     *  @type	function
-     *  @date	15/07/2014
-     *  @since	5.0.0
+     *  @date	31/7/18
+     *  @since	5.7.2
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     *  @param	void
+     *  @return	void
      */
-    function update_user_setting()
+    function initialize()
+    {
+    }
+    /**
+     *  has
+     *
+     *  Returns true if the request has data for the given key
+     *
+     *  @date	31/7/18
+     *  @since	5.7.2
+     *
+     *  @param	string $key The data key
+     *  @return	boolean
+     */
+    function has($key = '')
+    {
+    }
+    /**
+     *  get
+     *
+     *  Returns request data for the given key
+     *
+     *  @date	31/7/18
+     *  @since	5.7.2
+     *
+     *  @param	string $key The data key
+     *  @return	mixed
+     */
+    function get($key = '')
+    {
+    }
+    /**
+     *  set
+     *
+     *  Sets request data for the given key
+     *
+     *  @date	31/7/18
+     *  @since	5.7.2
+     *
+     *  @param	string $key The data key
+     *  @return	mixed
+     */
+    function set($key = '', $value)
+    {
+    }
+    /**
+     *  add_actions
+     *
+     *  Adds the ajax actions for this response.
+     *
+     *  @date	31/7/18
+     *  @since	5.7.2
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function add_actions()
+    {
+    }
+    /**
+     *  request
+     *
+     *  Callback for ajax action. Sets up properties and calls the get_response() function.
+     *
+     *  @date	1/8/18
+     *  @since	5.7.2
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function request()
+    {
+    }
+    /**
+     *  response
+     *
+     *  The actual logic for this AJAX request.
+     *
+     *  @date	31/7/18
+     *  @since	5.7.2
+     *
+     *  @param	void
+     *  @return	mixed The response data to send back or WP_Error.
+     */
+    function response()
+    {
+    }
+    /**
+     *  send
+     *
+     *  Sends back JSON based on the $response as either success or failure.
+     *
+     *  @date	31/7/18
+     *  @since	5.7.2
+     *
+     *  @param	mixed $response The response to send back.
+     *  @return	void
+     */
+    function send($response)
+    {
+    }
+}
+class ACF_Ajax_Query extends \ACF_Ajax
+{
+    /** @var array The ACF field used for querying */
+    var $field = \false;
+    /** @var int The page of results to return */
+    var $page = 1;
+    /** @var int The number of results per page */
+    var $per_page = 20;
+    /** @var string The searched term */
+    var $search = '';
+    /** @var int The number of results found */
+    var $count = 0;
+    /**
+     *  response
+     *
+     *  The actual logic for this AJAX request.
+     *
+     *  @date	31/7/18
+     *  @since	5.7.2
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function response()
+    {
+    }
+    /**
+     *  get_args
+     *
+     *  description
+     *
+     *  @date	31/7/18
+     *  @since	5.7.2
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function get_args()
+    {
+    }
+    /**
+     *  get_results
+     *
+     *  description
+     *
+     *  @date	31/7/18
+     *  @since	5.7.2
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function get_results($args)
+    {
+    }
+    /**
+     *  get_result
+     *
+     *  description
+     *
+     *  @date	31/7/18
+     *  @since	5.7.2
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function get_result($item)
+    {
+    }
+    /**
+     *  get_response
+     *
+     *  description
+     *
+     *  @date	31/7/18
+     *  @since	5.6.9
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function get_response($results, $args)
+    {
+    }
+}
+class ACF_Ajax_Query_Terms extends \ACF_Ajax_Query
+{
+    /** @var string The AJAX action name */
+    var $action = 'acf/ajax/query_terms';
+    /**
+     *  get_args
+     *
+     *  description
+     *
+     *  @date	31/7/18
+     *  @since	5.7.2
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function get_args()
+    {
+    }
+    /**
+     *  get_results
+     *
+     *  description
+     *
+     *  @date	31/7/18
+     *  @since	5.7.2
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function get_results($args)
+    {
+    }
+    /**
+     *  get_result
+     *
+     *  description
+     *
+     *  @date	31/7/18
+     *  @since	5.7.2
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function get_result($term)
+    {
+    }
+}
+class ACF_Ajax_User_Setting extends \ACF_Ajax
+{
+    /** @var string The AJAX action name */
+    var $action = 'acf/update_user_setting';
+    /** @var bool Prevents access for non-logged in users */
+    var $public = \true;
+    /**
+     *  get_response
+     *
+     *  The actual logic for this AJAX request.
+     *
+     *  @date	31/7/18
+     *  @since	5.7.2
+     *
+     *  @param	void
+     *  @return	mixed The response data to send back or WP_Error.
+     */
+    function response()
     {
     }
 }
@@ -3608,6 +3861,22 @@ class acf_field__group extends \acf_field
      *  @return	int $post_id
      */
     function prepare_field_for_import($field)
+    {
+    }
+    /**
+     *  delete_value
+     *
+     *  Called when deleting this field's value.
+     *
+     *  @date	1/07/2015
+     *  @since	5.2.3
+     *
+     *  @param	mixed $post_id The post ID being saved
+     *  @param	string $meta_key The field name as seen by the DB
+     *  @param	array $field The field settings
+     *  @return	void
+     */
+    function delete_value($post_id, $meta_key, $field)
     {
     }
 }
@@ -6719,6 +6988,20 @@ class acf_form_nav_menu
     {
     }
     /**
+     *  wp_nav_menu_item_custom_fields
+     *
+     *  description
+     *
+     *  @date	30/7/18
+     *  @since	5.6.9
+     *
+     *  @param	type $var Description. Default.
+     *  @return	type Description.
+     */
+    function wp_nav_menu_item_custom_fields($item_id, $item, $depth, $args, $id = '')
+    {
+    }
+    /**
      *  update_nav_menu
      *
      *  description
@@ -9462,16 +9745,21 @@ class acf_third_party
     {
     }
 }
-class acf_updates
+class ACF_Updates
 {
-    // vars
-    var $version = '2.3', $plugins = array(), $force_check = \false, $dev = 0;
+    /** @var string The ACF_Updates version */
+    var $version = '2.4';
+    /** @var array The array of registered plugins */
+    var $plugins = array();
+    /** @var boolean Dev mode */
+    var $dev = \false;
+    /** @var int Counts the number of plugin update checks */
+    var $checked = 0;
     /**
      *  __construct
      *
-     *  This function will setup the class functionality
+     *  Sets up the class functionality.
      *
-     *  @type	function
      *  @date	5/03/2014
      *  @since	5.0.0
      *
@@ -9484,30 +9772,43 @@ class acf_updates
     /**
      *  add_plugin
      *
-     *  This function will register a plugin
+     *  Registeres a plugin for updates.
      *
-     *  @type	function
      *  @date	8/4/17
      *  @since	5.5.10
      *
-     *  @param	array $plugin
+     *  @param	array $plugin The plugin array.
      *  @return	void
      */
     function add_plugin($plugin)
     {
     }
     /**
+     *  get_plugin_by
+     *
+     *  Returns a registered plugin for the give key and value.
+     *
+     *  @date	3/8/18
+     *  @since	5.7.2
+     *
+     *  @param	string $key The array key to compare
+     *  @param	string $value The value to compare against
+     *  @return	array|false
+     */
+    function get_plugin_by($key = '', $value = \null)
+    {
+    }
+    /**
      *  request
      *
-     *  This function will make a request to the ACF update server
+     *  Makes a request to the ACF connect server.
      *
-     *  @type	function
      *  @date	8/4/17
      *  @since	5.5.10
      *
-     *  @param	string $query
-     *  @param	array $body
-     *  @return	mixed
+     *  @param	string $query The api path. Defaults to 'index.php'
+     *  @param	array $body The body to post
+     *  @return	array|string|WP_Error
      */
     function request($query = 'index.php', $body = \null)
     {
@@ -9515,36 +9816,52 @@ class acf_updates
     /**
      *  get_plugin_info
      *
-     *  This function will get plugin info and save as transient
+     *  Returns update information for the given plugin id.
      *
-     *  @type	function
      *  @date	9/4/17
      *  @since	5.5.10
      *
-     *  @param	string $id
-     *  @return	mixed
+     *  @param	string $id The plugin id such as 'pro'.
+     *  @param	boolean $force_check Bypasses cached result. Defaults to false.
+     *  @return	array|WP_Error
      */
-    function get_plugin_info($id = '')
+    function get_plugin_info($id = '', $force_check = \false)
+    {
+    }
+    /**
+     *  get_plugin_update
+     *
+     *  Returns specific data from the 'update-check' response.
+     *
+     *  @date	3/8/18
+     *  @since	5.7.2
+     *
+     *  @param	string $basename The plugin basename.
+     *  @param	boolean $force_check Bypasses cached result. Defaults to false
+     *  @return	array
+     */
+    function get_plugin_update($basename = '', $force_check = \false)
     {
     }
     /**
      *  get_plugin_updates
      *
-     *  description
+     *  Checks for plugin updates.
      *
      *  @date	8/7/18
      *  @since	5.6.9
+     *  @since	5.7.2 Added 'checked' comparison
      *
-     *  @param	type $var Description. Default.
-     *  @return	type Description.
+     *  @param	boolean $force_check Bypasses cached result. Defaults to false.
+     *  @return	array|WP_Error.
      */
-    function get_plugin_updates()
+    function get_plugin_updates($force_check = \false)
     {
     }
     /**
      *  get_expiration
      *
-     *  This function safely gets the expiration value from a response
+     *  This function safely gets the expiration value from a response.
      *
      *  @date	8/7/18
      *  @since	5.6.9
@@ -9560,9 +9877,8 @@ class acf_updates
     /**
      *  refresh_plugins_transient
      *
-     *  This function will refresh plugin update info to the transient
+     *  Deletes transients and allows a fresh lookup.
      *
-     *  @type	function
      *  @date	11/4/17
      *  @since	5.5.10
      *
@@ -9575,9 +9891,8 @@ class acf_updates
     /**
      *  modify_plugins_transient
      *
-     *  This function will connect to the ACF website and find update information
+     *  Called when WP updates the 'update_plugins' site transient. Used to inject ACF plugin update info.
      *
-     *  @type	function
      *  @date	16/01/2014
      *  @since	5.0.0
      *
@@ -9590,13 +9905,12 @@ class acf_updates
     /**
      *  modify_plugin_details
      *
-     *  This function will populate the plugin data visible in the 'View details' popup
+     *  Returns the plugin data visible in the 'View details' popup
      *
-     *  @type	function
      *  @date	17/01/2014
      *  @since	5.0.0
      *
-     *  @param	bool|object $result
+     *  @param	object $result
      *  @param	string $action
      *  @param	object $args
      *  @return	$result
@@ -9717,50 +10031,35 @@ class acf_validation
 class ACF_Walker_Nav_Menu_Edit extends \Walker_Nav_Menu_Edit
 {
     /**
-     *  __construct
+     * Starts the element output.
      *
-     *  This function will setup the class functionality
+     * Calls the Walker_Nav_Menu_Edit start_el function and then injects the custom field HTML  
      *
-     *  @type	function
-     *  @date	5/03/2014
-     *  @since	5.0.0
+     * @since 5.0.0
+     * @since 5.7.2 Added preg_replace based on https://github.com/ineagu/wp-menu-item-custom-fields
      *
-     *  @param	void
-     *  @return	void
-     */
-    function __construct()
-    {
-    }
-    /**
-     * Start the element output.
-     *
-     * @see Walker_Nav_Menu::start_el()
-     * @since 3.0.0
-     *
-     * @global int $_wp_nav_menu_max_depth
-     *
-     * @param string $output Passed by reference. Used to append additional content.
-     * @param object $item   Menu item data object.
-     * @param int    $depth  Depth of menu item. Used for padding.
-     * @param array  $args   Not used.
-     * @param int    $id     Not used.
+     * @param string   $output Used to append additional content (passed by reference).
+     * @param WP_Post  $item   Menu item data object.
+     * @param int      $depth  Depth of menu item. Used for padding.
+     * @param stdClass $args   An object of wp_nav_menu() arguments.
+     * @param int      $id     Current item ID.
      */
     function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0)
     {
     }
     /**
-     *  get_fields
+     * Get custom fields HTML
      *
-     *  description
+     * @since 5.0.0
+     * @since 5.7.2 Added action based on https://github.com/ineagu/wp-menu-item-custom-fields
      *
-     *  @type	function
-     *  @date	26/5/17
-     *  @since	5.6.0
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     * @param object $item   Menu item data object.
+     * @param int    $depth  Depth of menu item. Used for padding.
+     * @param array  $args   Menu item args.
+     * @param int    $id     Nav menu ID.
+     * @return string
      */
-    function get_fields($item)
+    function get_fields($item, $depth, $args = array(), $id = 0)
     {
     }
 }
@@ -10275,21 +10574,6 @@ class acf_admin_settings_updates
      *  @return	int $post_id
      */
     function load()
-    {
-    }
-    /**
-     *  refresh_plugins_transient
-     *
-     *  Checks the site transient 'update_plugins' and compares the cached new_version against the plugin-info version.
-     *  If the cached version is older, a new version is available, and the transient is refreshed.
-     *
-     *  @date	12/7/18
-     *  @since	5.6.9
-     *
-     *  @param	void
-     *  @return	void
-     */
-    function refresh_plugins_transient()
     {
     }
     /**
@@ -13537,24 +13821,6 @@ function acf_get_terms($args)
 {
 }
 /**
-*  acf_get_taxonomies
-*
-*  This function will return an array of available taxonomies
-*
-*  @type	function
-*  @date	7/10/13
-*  @since	5.0.0
-*
-*  @param	void
-*  @return	array
-*/
-function acf_get_taxonomies()
-{
-}
-function acf_get_pretty_taxonomies($taxonomies = array())
-{
-}
-/**
 *  acf_get_taxonomy_terms
 *
 *  This function will return an array of available taxonomy terms
@@ -14746,6 +15012,20 @@ function acf_get_post_templates()
 {
 }
 /**
+*  acf_parse_markdown
+*
+*  A very basic regex-based Markdown parser function based off [slimdown](https://gist.github.com/jbroadway/2836900).
+*
+*  @date	6/8/18
+*  @since	5.7.2
+*
+*  @param	string $text The string to parse.
+*  @return	string
+*/
+function acf_parse_markdown($text = '')
+{
+}
+/**
 *  acf_esc_html
 *
 *  This function will encode <script> tags for safe output
@@ -15600,6 +15880,76 @@ function the_flexible_field($field_name, $post_id = \false)
 {
 }
 function acf_filter_post_id($post_id)
+{
+}
+/**
+*  acf_get_taxonomies
+*
+*  Returns an array of taxonomy names.
+*
+*  @date	7/10/13
+*  @since	5.0.0
+*
+*  @param	array $args An array of args used in the get_taxonomies() function.
+*  @return	array An array of taxonomy names.
+*/
+function acf_get_taxonomies($args = array())
+{
+}
+/**
+*  acf_get_taxonomy_labels
+*
+*  Returns an array of taxonomies in the format "name => label" for use in a select field.
+*
+*  @date	3/8/18
+*  @since	5.7.2
+*
+*  @param	array $taxonomies Optional. An array of specific taxonomies to return.
+*  @return	array
+*/
+function acf_get_taxonomy_labels($taxonomies = array())
+{
+}
+/**
+*  acf_get_grouped_terms
+*
+*  Returns an array of terms for the given query $args and groups by taxonomy name.
+*
+*  @date	2/8/18
+*  @since	5.7.2
+*
+*  @param	array $args An array of args used in the get_terms() function.
+*  @return	array
+*/
+function acf_get_grouped_terms($args)
+{
+}
+/**
+*  _acf_terms_clauses
+*
+*  Used in the 'terms_clauses' filter to order terms by taxonomy name.
+*
+*  @date	2/8/18
+*  @since	5.7.2
+*
+*  @param	array $pieces     Terms query SQL clauses.
+*  @param	array $taxonomies An array of taxonomies.
+*  @param	array $args       An array of terms query arguments.
+*  @return	array $pieces
+*/
+function _acf_terms_clauses($pieces, $taxonomies, $args)
+{
+}
+/**
+*  acf_get_pretty_taxonomies
+*
+*  Deprecated in favor of acf_get_taxonomy_labels() function.
+*
+*  @date		7/10/13
+*  @since		5.0.0
+*  @deprecated	5.7.2
+*/
+function acf_get_pretty_taxonomies($taxonomies = array())
 {
 }
 /**
@@ -16543,7 +16893,6 @@ function acf_get_post_latest_revision($post_id)
 *
 *  Example: <?php $acf_updates = acf_updates(); ?>
 *
-*  @type	function
 *  @date	9/4/17
 *  @since	5.5.12
 *
@@ -16556,14 +16905,14 @@ function acf_updates()
 /**
 *  acf_register_plugin_update
 *
-*  alias of acf_updates()->add_plugin()
+*  Alias of acf_updates()->add_plugin().
 *
 *  @type	function
 *  @date	12/4/17
 *  @since	5.5.10
 *
-*  @param	int $post_id
-*  @return	int $post_id
+*  @param	array $plugin
+*  @return	void
 */
 function acf_register_plugin_update($plugin)
 {
