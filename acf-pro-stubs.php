@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.7.5';
+    var $version = '5.7.6';
     /** @var array The plugin settings array */
     var $settings = array();
     /** @var array The plugin data array */
@@ -13622,9 +13622,6 @@ function acf_get_terms($args)
 function acf_get_taxonomy_terms($taxonomies = array())
 {
 }
-function acf_get_term_title($term)
-{
-}
 /**
 *  acf_decode_taxonomy_terms
 *
@@ -15727,6 +15724,20 @@ function acf_get_taxonomies($args = array())
 {
 }
 /**
+*  acf_get_taxonomies_for_post_type
+*
+*  Returns an array of taxonomies for a given post type(s)
+*
+*  @date	7/9/18
+*  @since	5.7.5
+*
+*  @param	string|array $post_types The post types to compare against.
+*  @return	array
+*/
+function acf_get_taxonomies_for_post_type($post_types = 'post')
+{
+}
+/**
 *  acf_get_taxonomy_labels
 *
 *  Returns an array of taxonomies in the format "name => label" for use in a select field.
@@ -15738,6 +15749,20 @@ function acf_get_taxonomies($args = array())
 *  @return	array
 */
 function acf_get_taxonomy_labels($taxonomies = array())
+{
+}
+/**
+*  acf_get_term_title
+*
+*  Returns the title for this term object.
+*
+*  @date	10/9/18
+*  @since	5.0.0
+*
+*  @param	object $term The WP_Term object.
+*  @return	string
+*/
+function acf_get_term_title($term)
 {
 }
 /**
@@ -15823,6 +15848,65 @@ function acf_encode_term($term)
 *  @return	string
 */
 function acf_decode_term($string)
+{
+}
+/**
+*  acf_get_encoded_terms
+*
+*  Returns an array of WP_Term objects from an array of encoded strings
+*
+*  @date	9/9/18
+*  @since	5.7.5
+*
+*  @param	array $values The array of encoded strings.
+*  @return	array
+*/
+function acf_get_encoded_terms($values)
+{
+}
+/**
+*  acf_get_choices_from_terms
+*
+*  Returns an array of choices from the terms provided.
+*
+*  @date	8/9/18
+*  @since	5.7.5
+*
+*  @param	array $values and array of WP_Terms objects or encoded strings.
+*  @param	string $format The value format (term_id, slug).
+*  @return	array
+*/
+function acf_get_choices_from_terms($terms, $format = 'term_id')
+{
+}
+/**
+*  acf_get_choices_from_grouped_terms
+*
+*  Returns an array of choices from the grouped terms provided.
+*
+*  @date	8/9/18
+*  @since	5.7.5
+*
+*  @param	array $value A grouped array of WP_Terms objects.
+*  @param	string $format The value format (term_id, slug).
+*  @return	array
+*/
+function acf_get_choices_from_grouped_terms($value, $format = 'term_id')
+{
+}
+/**
+*  acf_get_choice_from_term
+*
+*  Returns an array containing the id and text for this item.
+*
+*  @date	10/9/18
+*  @since	5.7.6
+*
+*  @param	object $item The item object such as WP_Post or WP_Term.
+*  @param	string $format The value format (term_id, slug)
+*  @return	array
+*/
+function acf_get_choice_from_term($term, $format = 'term_id')
 {
 }
 /**
