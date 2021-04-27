@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.8.7';
+    var $version = '5.8.8';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -3548,31 +3548,29 @@ class acf_field__group extends \acf_field
     {
     }
     /**
-     *  prepare_field_for_export
+     * prepare_field_for_export
      *
-     *  description
+     * Prepares the field for export.
      *
-     *  @type	function
-     *  @date	11/03/2014
-     *  @since	5.0.0
+     * @date	11/03/2014
+     * @since	5.0.0
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     * @param	array $field The field settings.
+     * @return	array
      */
     function prepare_field_for_export($field)
     {
     }
     /**
-     *  prepare_field_for_import
+     * prepare_field_for_import
      *
-     *  description
+     * Returns a flat array of fields containing all sub fields ready for import.
      *
-     *  @type	function
-     *  @date	11/03/2014
-     *  @since	5.0.0
+     * @date	11/03/2014
+     * @since	5.0.0
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     * @param	array $field The field settings.
+     * @return	array
      */
     function prepare_field_for_import($field)
     {
@@ -6752,16 +6750,15 @@ class acf_form_nav_menu
     {
     }
     /**
-     *  wp_edit_nav_menu_walker
+     * Called when WP renders a menu edit form.
+     * Used to set global data and customize the Walker class.
      *
-     *  description
+     * @date	26/5/17
+     * @since	5.6.0
      *
-     *  @type	function
-     *  @date	26/5/17
-     *  @since	5.6.0
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     * @param 	string $class The walker class to use. Default 'Walker_Nav_Menu_Edit'.
+     * @param 	int $menu_id ID of the menu being rendered.
+     * @return	string
      */
     function wp_edit_nav_menu_walker($class, $menu_id = 0)
     {
@@ -11151,31 +11148,29 @@ class acf_field_repeater extends \acf_field
     {
     }
     /**
-     *  prepare_field_for_export
+     * prepare_field_for_export
      *
-     *  description
+     * Prepares the field for export.
      *
-     *  @type	function
-     *  @date	11/03/2014
-     *  @since	5.0.0
+     * @date	11/03/2014
+     * @since	5.0.0
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     * @param	array $field The field settings.
+     * @return	array
      */
     function prepare_field_for_export($field)
     {
     }
     /**
-     *  prepare_field_for_import
+     * prepare_field_for_import
      *
-     *  description
+     * Returns a flat array of fields containing all sub fields ready for import.
      *
-     *  @type	function
-     *  @date	11/03/2014
-     *  @since	5.0.0
+     * @date	11/03/2014
+     * @since	5.0.0
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     * @param	array $field The field settings.
+     * @return	array
      */
     function prepare_field_for_import($field)
     {
@@ -12300,6 +12295,20 @@ function acf_prepare_field_group_for_export($field_group = array())
 {
 }
 /**
+ * acf_prepare_field_group_for_import
+ *
+ * Prepares a field group for the import process.
+ *
+ * @date	21/11/19
+ * @since	5.8.8
+ *
+ * @param	array $field_group The field group array.
+ * @return	array
+ */
+function acf_prepare_field_group_for_import($field_group)
+{
+}
+/**
  * acf_import_field_group
  *
  * Imports a field group into the databse.
@@ -12598,7 +12607,7 @@ function acf_maybe_idval($value)
 {
 }
 /**
- * acf_numericval
+ * acf_numval
  *
  * Casts the provided value as eiter an int or float using a simple hack.
  *
@@ -12634,9 +12643,10 @@ function acf_idify($str = '')
  * @since	5.6.5
  *
  * @param	string $str The string to convert.
+ * @param	string $glue The glue between each slug piece.
  * @return	string
  */
-function acf_slugify($str = '')
+function acf_slugify($str = '', $glue = '-')
 {
 }
 /**
@@ -15473,19 +15483,18 @@ function get_field_objects($post_id = \false, $format_value = \true, $load_value
 {
 }
 /**
-*  have_rows
-*
-*  This function will instantiate a global variable containing the rows of a repeater or flexible content field,
-*  after which, it will determine if another row exists to loop through
-*
-*  @type	function
-*  @date	2/09/13
-*  @since	4.3.0
-*
-*  @param	string $field_name the field name
-*  @param	mixed $post_id the post_id of which the value is saved against
-*  @return	boolean
-*/
+ * have_rows
+ *
+ * Checks if a field (such as Repeater or Flexible Content) has any rows of data to loop over.
+ * This function is intended to be used in conjunction with the_row() to step through available values.
+ *
+ * @date	2/09/13
+ * @since	4.3.0
+ *
+ * @param	string $selector The field name or field key.
+ * @param	mixed $post_id The post ID where the value is saved. Defaults to the current post.
+ * @return	bool
+ */
 function have_rows($selector, $post_id = \false)
 {
 }
@@ -16597,7 +16606,7 @@ function acf_count_local_field_groups()
  * @since	5.7.10
  *
  * @param	array $field_group The field group array.
- * @return	void
+ * @return	bool
  */
 function acf_add_local_field_group($field_group)
 {
