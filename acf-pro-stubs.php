@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.9.3';
+    var $version = '5.9.4';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -389,21 +389,6 @@ class acf_admin_field_group
      *  @return	int $post_id
      */
     function admin_footer()
-    {
-    }
-    /**
-     *  admin_footer_js
-     *
-     *  description
-     *
-     *  @type	function
-     *  @date	31/05/2016
-     *  @since	5.3.8
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
-     */
-    function admin_footer_js()
     {
     }
     /**
@@ -1954,8 +1939,6 @@ class ACF_Ajax
     {
     }
     /**
-     * set
-     *
      * Sets request data for the given key.
      *
      * @date	31/7/18
@@ -1965,7 +1948,7 @@ class ACF_Ajax
      * @param	mixed $value The data value.
      * @return	ACF_Ajax
      */
-    function set($key = '', $value)
+    function set($key = '', $value = \null)
     {
     }
     /**
@@ -3565,6 +3548,21 @@ class acf_field_email extends \acf_field
      *  @param	$field	- an array holding all the field's data
      */
     function render_field_settings($field)
+    {
+    }
+    /**
+     * Validate the email value. If this method returns TRUE, the input value is valid. If
+     * FALSE or a string is returned, the input value is invalid and the user is shown a
+     * notice. If a string is returned, the string is show as the message text.
+     *
+     * @param bool   $valid Whether the value is valid.
+     * @param mixed  $value The field value.
+     * @param array  $field The field array.
+     * @param string $input The request variable name for the inbound field.
+     *
+     * @return bool|string
+     */
+    public function validate_value($valid, $value, $field, $input)
     {
     }
 }
@@ -10930,53 +10928,45 @@ class acf_field_flexible_content extends \acf_field
     {
     }
     /**
-     *  get_layout
+     * This function will return a specific layout by name from a field
      *
-     *  This function will return a specific layout by name from a field
+     * @date	15/2/17
+     * @since	5.5.8
      *
-     *  @type	function
-     *  @date	15/2/17
-     *  @since	5.5.8
-     *
-     *  @param	string $name
-     *  @param	array $field
-     *  @return	array
+     * @param	string $name
+     * @param	array $field
+     * @return	array|false
      */
-    function get_layout($name = '', $field)
+    function get_layout($name, $field)
     {
     }
     /**
-     *  delete_row
+     * This function will delete a value row
      *
-     *  This function will delete a value row
+     * @date	15/2/17
+     * @since	5.5.8
      *
-     *  @type	function
-     *  @date	15/2/17
-     *  @since	5.5.8
-     *
-     *  @param	int $i
-     *  @param	array $field
-     *  @param	mixed $post_id
-     *  @return	boolean
+     * @param	int $i
+     * @param	array $field
+     * @param	mixed $post_id
+     * @return	bool
      */
-    function delete_row($i = 0, $field, $post_id)
+    function delete_row($i, $field, $post_id)
     {
     }
     /**
-     *  update_row
+     * This function will update a value row
      *
-     *  This function will update a value row
+     * @date	15/2/17
+     * @since	5.5.8
      *
-     *  @type	function
-     *  @date	15/2/17
-     *  @since	5.5.8
-     *
-     *  @param	int $i
-     *  @param	array $field
-     *  @param	mixed $post_id
-     *  @return	boolean
+     * @param	array $row
+     * @param	int $i
+     * @param	array $field
+     * @param	mixed $post_id
+     * @return	bool
      */
-    function update_row($row, $i = 0, $field, $post_id)
+    function update_row($row, $i, $field, $post_id)
     {
     }
     /**
@@ -11236,8 +11226,6 @@ class acf_field_gallery extends \acf_field
     {
     }
     /**
-     * render_attachment
-     *
      * Renders the sidebar HTML shown when selecting an attachmemnt.
      *
      * @date	13/12/2013
@@ -11247,7 +11235,7 @@ class acf_field_gallery extends \acf_field
      * @param	array $field The field array.
      * @return	void
      */
-    function render_attachment($id = 0, $field)
+    function render_attachment($id, $field)
     {
     }
     /**
@@ -11459,37 +11447,32 @@ class acf_field_repeater extends \acf_field
     {
     }
     /**
-     *  update_row
+     * This function will update a value row.
      *
-     *  This function will update a value row
+     * @date	15/2/17
+     * @since	5.5.8
      *
-     *  @type	function
-     *  @date	15/2/17
-     *  @since	5.5.8
-     *
-     *  @param	int $i
-     *  @param	array $field
-     *  @param	mixed $post_id
-     *  @return	boolean
+     * @param	array $row
+     * @param	int $i
+     * @param	array $field
+     * @param	mixed $post_id
+     * @return	boolean
      */
-    function update_row($row, $i = 0, $field, $post_id)
+    function update_row($row, $i, $field, $post_id)
     {
     }
     /**
-     *  delete_row
+     * This function will delete a value row.
      *
-     *  This function will delete a value row
+     * @date	15/2/17
+     * @since	5.5.8
      *
-     *  @type	function
-     *  @date	15/2/17
-     *  @since	5.5.8
-     *
-     *  @param	int $i
-     *  @param	array $field
-     *  @param	mixed $post_id
-     *  @return	boolean
+     * @param	int $i
+     * @param	array $field
+     * @param	mixed $post_id
+     * @return	boolean
      */
-    function delete_row($i = 0, $field, $post_id)
+    function delete_row($i, $field, $post_id)
     {
     }
     /**
@@ -13961,8 +13944,6 @@ function acf_get_reference($field_name, $post_id)
 {
 }
 /**
- * acf_get_value
- *
  * Retrieves the value for a given field and post_id.
  *
  * @date	28/09/13
@@ -13970,9 +13951,9 @@ function acf_get_reference($field_name, $post_id)
  *
  * @param	int|string $post_id The post id.
  * @param	array $field The field array.
- * @return	mixed.
+ * @return	mixed
  */
-function acf_get_value($post_id = 0, $field)
+function acf_get_value($post_id, $field)
 {
 }
 /**
