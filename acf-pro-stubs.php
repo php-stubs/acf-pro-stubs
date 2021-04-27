@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.7.8';
+    var $version = '5.7.9';
     /** @var array The plugin settings array */
     var $settings = array();
     /** @var array The plugin data array */
@@ -3879,6 +3879,20 @@ class acf_field__group extends \acf_field
     function delete_value($post_id, $meta_key, $field)
     {
     }
+    /**
+     *  delete_field
+     *
+     *  Called when deleting a field of this type.
+     *
+     *  @date	8/11/18
+     *  @since	5.8.0
+     *
+     *  @param	arra $field The field settings.
+     *  @return	void
+     */
+    function delete_field($field)
+    {
+    }
 }
 class acf_field_image extends \acf_field
 {
@@ -6915,8 +6929,8 @@ class ACF_Form_Gutenberg
      *
      *  Setup for class functionality.
      *
-     *  @date	13/2/18
-     *  @since	5.6.9
+     *  @date	13/12/18
+     *  @since	5.8.0
      *
      *  @param	void
      *  @return	void
@@ -6925,32 +6939,60 @@ class ACF_Form_Gutenberg
     {
     }
     /**
-     *  replace_editor
+     *  enqueue_block_editor_assets
      *
-     *  Check if Gutenberg is replacing the editor.
+     *  Allows a safe way to customize Guten-only functionality.
      *
-     *  @date	13/2/18
-     *  @since	5.6.9
-     *
-     *  @param	boolean $replace True if the editor is being replaced by Gutenberg.
-     *  @param	object $post The WP_Post being edited.
-     *  @return	boolean
-     */
-    function replace_editor($replace, $post)
-    {
-    }
-    /**
-     *  admin_footer
-     *
-     *  Append missing HTML to Gutenberg editor.
-     *
-     *  @date	13/2/18
-     *  @since	5.6.9
+     *  @date	14/12/18
+     *  @since	5.8.0
      *
      *  @param	void
      *  @return	void
      */
-    function admin_footer()
+    function enqueue_block_editor_assets()
+    {
+    }
+    /**
+     *  add_meta_boxes
+     *
+     *  Modify screen for Gutenberg.
+     *
+     *  @date	13/12/18
+     *  @since	5.8.0
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function add_meta_boxes()
+    {
+    }
+    /**
+     *  block_editor_meta_box_hidden_fields
+     *
+     *  Modify screen for Gutenberg.
+     *
+     *  @date	13/12/18
+     *  @since	5.8.0
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function block_editor_meta_box_hidden_fields()
+    {
+    }
+    /**
+     *  acf_validate_save_post
+     *
+     *  Ignore errors during the Gutenberg "save metaboxes" AJAX request.
+     *  Allows data to save and prevent UX issues.
+     *
+     *  @date	16/12/18
+     *  @since	5.8.0
+     *
+     *  @param	void
+     *  @return	void
+     */
+    function acf_validate_save_post()
     {
     }
 }
@@ -14196,6 +14238,28 @@ function acf_get_current_url()
 {
 }
 /**
+*  acf_str_join
+*
+*  Joins together 2 strings removing any overlapping characters.
+*  Useful for urls. Eg: 'test.local/foo/' + '/foo/bar/' = 'test.local/foo/bar/'
+*
+*  @date	19/11/18
+*  @since	5.8.0
+*
+*  @param	string $s1 The first string.
+*  @param	string $s2 The seccond string.
+*  @return	string
+*/
+function acf_str_join($s1 = '', $s2 = '')
+{
+}
+// Tests.
+//acf_test( acf_str_join('http://multisite.local/sub1/', '/sample-page/'), 'http://multisite.local/sub1/sample-page/' );
+//acf_test( acf_str_join('http://multisite.local/sub1/', 'sample-page/'), 'http://multisite.local/sub1/sample-page/' );
+//acf_test( acf_str_join('http://multisite.local/sub1/', '/sub1'), 'http://multisite.local/sub1/sub1' );
+//acf_test( acf_str_join('http://multisite.local/sub1/', '/sub1/sample-page/'), 'http://multisite.local/sub1/sample-page/' );
+//acf_test( acf_str_join('http://multisite.local/', '/sub1/sample-page/'), 'http://multisite.local/sub1/sample-page/' );
+/**
 *  acf_current_user_can_admin
 *
 *  This function will return true if the current user can administrate the ACF field groups
@@ -14768,11 +14832,12 @@ function acf_strip_protocol($url)
 *
 *  @type	function
 *  @date	11/01/2017
+*  @since	5.8.0 Added filter to prevent connection.
 *  @since	5.5.4
 *
-*  @param	int $attachment_id
-*  @param	int $post_id
-*  @return	boolean 
+*  @param	int $attachment_id The attachment ID.
+*  @param	int $post_id The post ID.
+*  @return	bool True if attachment was connected.
 */
 function acf_connect_attachment_to_post($attachment_id = 0, $post_id = 0)
 {
