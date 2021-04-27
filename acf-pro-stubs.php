@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.8.2';
+    var $version = '5.8.3';
     /** @var array The plugin settings array */
     var $settings = array();
     /** @var array The plugin data array */
@@ -3730,24 +3730,6 @@ class acf_field_image extends \acf_field
      *  @return	$vars
      */
     function get_media_item_args($vars)
-    {
-    }
-    /**
-     *  wp_prepare_attachment_for_js
-     *
-     *  this filter allows ACF to add in extra data to an attachment JS object
-     *  This sneaky hook adds the missing sizes to each attachment in the 3.5 uploader. 
-     *  It would be a lot easier to add all the sizes to the 'image_size_names_choose' filter but 
-     *  then it will show up on the normal the_content editor
-     *
-     *  @type	function
-     *  @since:	3.5.7
-     *  @date	13/01/13
-     *
-     *  @param	{int}	$post_id
-     *  @return	{int}	$post_id
-     */
-    function wp_prepare_attachment_for_js($response, $attachment, $meta)
     {
     }
     /**
@@ -10857,16 +10839,16 @@ class acf_field_gallery extends \acf_field
     {
     }
     /**
-     *  render_attachment
+     * render_attachment
      *
-     *  description
+     * Renders the sidebar HTML shown when selecting an attachmemnt.
      *
-     *  @type	function
-     *  @date	13/12/2013
-     *  @since	5.0.0
+     * @date	13/12/2013
+     * @since	5.0.0
      *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     * @param	int $id The attachment ID.
+     * @param	array $field The field array.
+     * @return	void
      */
     function render_attachment($id = 0, $field)
     {
@@ -11530,78 +11512,6 @@ class acf_pro_updates
 *  @return	object
 */
 function acf()
-{
-}
-/**
- * acf_new_instance
- *
- * Creates a new instance of the given class and stores it in the instances data store.
- *
- * @date	9/1/19
- * @since	5.7.10
- *
- * @param	string $class The class name.
- * @return	object The instance.
- */
-function acf_new_instance($class = '')
-{
-}
-/**
- * acf_get_instance
- *
- * Returns an instance for the given class.
- *
- * @date	9/1/19
- * @since	5.7.10
- *
- * @param	string $class The class name.
- * @return	object The instance.
- */
-function acf_get_instance($class = '')
-{
-}
-/**
- * acf_register_store
- *
- * Registers a data store.
- *
- * @date	9/1/19
- * @since	5.7.10
- *
- * @param	string $name The store name.
- * @param	array $data Array of data to start the store with.
- * @return	ACF_Data
- */
-function acf_register_store($name = '', $data = \false)
-{
-}
-/**
- * acf_get_store
- *
- * Returns a data store.
- *
- * @date	9/1/19
- * @since	5.7.10
- *
- * @param	string $name The store name.
- * @return	ACF_Data
- */
-function acf_get_store($name = '')
-{
-}
-/**
- * acf_switch_stores
- *
- * Triggered when switching between sites on a multisite installation.
- *
- * @date	13/2/19
- * @since	5.7.11
- *
- * @param	int $site_id New blog ID.
- * @param	int prev_blog_id Prev blog ID.
- * @return	void
- */
-function acf_switch_stores($site_id, $prev_site_id)
 {
 }
 /**
@@ -12534,6 +12444,34 @@ function _acf_do_save_post($post_id = 0)
 {
 }
 /**
+ * acf_is_empty
+ *
+ * Returns true if the value provided is considered "empty". Allows numbers such as 0.
+ *
+ * @date	6/7/16
+ * @since	5.4.0
+ *
+ * @param	mixed $var The value to check.
+ * @return	bool
+ */
+function acf_is_empty($var)
+{
+}
+/**
+ * acf_not_empty
+ *
+ * Returns true if the value provided is considered "not empty". Allows numbers such as 0.
+ *
+ * @date	15/7/19
+ * @since	5.8.1
+ *
+ * @param	mixed $var The value to check.
+ * @return	bool
+ */
+function acf_not_empty($var)
+{
+}
+/**
  * acf_uniqid
  *
  * Returns a unique numeric based id.
@@ -12728,6 +12666,48 @@ function acf_maybe_idval($value)
  * @return	int|float
  */
 function acf_numval($value)
+{
+}
+/**
+ * acf_idify
+ *
+ * Returns an id attribute friendly string.
+ *
+ * @date	24/12/17
+ * @since	5.6.5
+ *
+ * @param	string $str The string to convert.
+ * @return	string
+ */
+function acf_idify($str = '')
+{
+}
+/**
+ * acf_slugify
+ *
+ * Returns a slug friendly string.
+ *
+ * @date	24/12/17
+ * @since	5.6.5
+ *
+ * @param	string $str The string to convert.
+ * @return	string
+ */
+function acf_slugify($str = '')
+{
+}
+/**
+ * acf_punctify
+ *
+ * Returns a string with correct full stop puctuation.
+ *
+ * @date	12/7/19
+ * @since	5.8.2
+ *
+ * @param	string $str The string to format.
+ * @return	string
+ */
+function acf_punctify($str = '')
 {
 }
 /**
@@ -13404,6 +13384,121 @@ function acf_allow_unfiltered_html()
 {
 }
 /**
+ * acf_new_instance
+ *
+ * Creates a new instance of the given class and stores it in the instances data store.
+ *
+ * @date	9/1/19
+ * @since	5.7.10
+ *
+ * @param	string $class The class name.
+ * @return	object The instance.
+ */
+function acf_new_instance($class = '')
+{
+}
+/**
+ * acf_get_instance
+ *
+ * Returns an instance for the given class.
+ *
+ * @date	9/1/19
+ * @since	5.7.10
+ *
+ * @param	string $class The class name.
+ * @return	object The instance.
+ */
+function acf_get_instance($class = '')
+{
+}
+/**
+ * acf_register_store
+ *
+ * Registers a data store.
+ *
+ * @date	9/1/19
+ * @since	5.7.10
+ *
+ * @param	string $name The store name.
+ * @param	array $data Array of data to start the store with.
+ * @return	ACF_Data
+ */
+function acf_register_store($name = '', $data = \false)
+{
+}
+/**
+ * acf_get_store
+ *
+ * Returns a data store.
+ *
+ * @date	9/1/19
+ * @since	5.7.10
+ *
+ * @param	string $name The store name.
+ * @return	ACF_Data
+ */
+function acf_get_store($name = '')
+{
+}
+/**
+ * acf_switch_stores
+ *
+ * Triggered when switching between sites on a multisite installation.
+ *
+ * @date	13/2/19
+ * @since	5.7.11
+ *
+ * @param	int $site_id New blog ID.
+ * @param	int prev_blog_id Prev blog ID.
+ * @return	void
+ */
+function acf_switch_stores($site_id, $prev_site_id)
+{
+}
+/**
+ * acf_get_path
+ *
+ * Returns the plugin path to a specified file.
+ *
+ * @date	28/9/13
+ * @since	5.0.0
+ *
+ * @param	string $filename The specified file.
+ * @return	string
+ */
+function acf_get_path($filename = '')
+{
+}
+/**
+ * acf_get_url
+ *
+ * Returns the plugin url to a specified file.
+ * This function also defines the ACF_URL constant.
+ *
+ * @date	12/12/17
+ * @since	5.6.8
+ *
+ * @param	string $filename The specified file.
+ * @return	string
+ */
+function acf_get_url($filename = '')
+{
+}
+/**
+ * acf_include
+ *
+ * Includes a file within the ACF plugin.
+ *
+ * @date	10/3/14
+ * @since	5.0.0
+ *
+ * @param	string $filename The specified file.
+ * @return	void
+ */
+function acf_include($filename = '')
+{
+}
+/**
  * acf_get_reference
  *
  * Retrieves the field key for a given field name and post_id.
@@ -13632,91 +13727,6 @@ function acf_is_array($array)
 {
 }
 /**
-*  acf_is_empty
-*
-*  This function will return true for an empty var (allows 0 as true)
-*
-*  @type	function
-*  @date	6/07/2016
-*  @since	5.4.0
-*
-*  @param	mixed $value
-*  @return	boolean
-*/
-function acf_is_empty($value)
-{
-}
-/**
- * acf_not_empty
- *
- * Returns true if the value provided is considered "not empty". Allows numbers such as 0.
- *
- * @date	15/7/19
- * @since	5.8.1
- *
- * @param	mixed $var The value to check.
- * @return	bool
- */
-function acf_not_empty($var)
-{
-}
-/**
-*  acf_idify
-*
-*  Returns an id friendly string
-*
-*  @date	24/12/17
-*  @since	5.6.5
-*
-*  @param	type $var Description. Default.
-*  @return	type Description.
-*/
-function acf_idify($str = '')
-{
-}
-/**
-*  acf_slugify
-*
-*  Returns a slug friendly string
-*
-*  @date	24/12/17
-*  @since	5.6.5
-*
-*  @param	type $var Description. Default.
-*  @return	type Description.
-*/
-function acf_slugify($str = '')
-{
-}
-/**
- * acf_punctify
- *
- * Returns a string with correct full stop puctuation.
- *
- * @date	12/7/19
- * @since	5.8.2
- *
- * @param	string $str The string to format.
- * @return	string
- */
-function acf_punctify($str = '')
-{
-}
-/**
- * acf_multi_explode
- *
- * Returns an array of strings created by splitting the $string by the given $delimiters.
- *
- * @date	12/7/19
- * @since	5.8.2
- *
- * @param	array $delimiters An array of delimiters.
- * @return	string $string The string to explode.
- */
-function acf_multi_explode($delimiters, $string)
-{
-}
-/**
 *  acf_has_setting
 *
 *  alias of acf()->has_setting()
@@ -13850,21 +13860,6 @@ function acf_init()
 {
 }
 /**
-*  acf_get_compatibility
-*
-*  This function will return true or false for a given compatibility setting
-*
-*  @type	function
-*  @date	20/01/2015
-*  @since	5.1.5
-*
-*  @param	string $name
-*  @return	boolean
-*/
-function acf_get_compatibility($name)
-{
-}
-/**
 *  acf_has_done
 *
 *  This function will return true if this action has already been done
@@ -13877,78 +13872,6 @@ function acf_get_compatibility($name)
 *  @return	boolean
 */
 function acf_has_done($name)
-{
-}
-/**
-*  acf_get_path
-*
-*  This function will return the path to a file within the ACF plugin folder
-*
-*  @type	function
-*  @date	28/09/13
-*  @since	5.0.0
-*
-*  @param	string $path the relative path from the root of the ACF plugin folder
-*  @return	string
-*/
-function acf_get_path($path = '')
-{
-}
-/**
-*  acf_get_url
-*
-*  This function will return the url to a file within the ACF plugin folder
-*
-*  @date	12/12/17
-*  @since	5.6.8
-*
-*  @param	string $path The relative path from the root of the ACF plugin folder
-*  @return	string
-*/
-function acf_get_url($path = '')
-{
-}
-/**
-*  acf_get_dir
-*
-*  Deprecated in 5.6.8. Use acf_get_url() instead.
-*
-*  @date	28/09/13
-*  @since	5.0.0
-*
-*  @param	string
-*  @return	string
-*/
-function acf_get_dir($path = '')
-{
-}
-/**
-*  acf_include
-*
-*  This function will include a file
-*
-*  @type	function
-*  @date	10/03/2014
-*  @since	5.0.0
-*
-*  @param	int $post_id
-*  @return	int $post_id
-*/
-function acf_include($file)
-{
-}
-/**
-*  acf_include_once
-*
-*  Includes a file one time only.
-*
-*  @date	24/8/18
-*  @since	5.7.4
-*
-*  @param	string $file The relative file path.
-*  @return	void
-*/
-function acf_include_once($file = '')
 {
 }
 /**
@@ -16237,6 +16160,21 @@ function acf_enqueue_scripts($args = array())
 function acf_enqueue_uploader()
 {
 }
+// class_exists check
+/**
+ * acf_get_compatibility
+ *
+ * Returns true if compatibility is enabled for the given component.
+ *
+ * @date	20/1/15
+ * @since	5.1.5
+ *
+ * @param	string $name The name of the component to check.
+ * @return	bool
+ */
+function acf_get_compatibility($name)
+{
+}
 /**
  * acf_render_field_wrap_label
  *
@@ -16313,6 +16251,21 @@ function acf_update_option($option = '', $value = '', $autoload = \null)
  * @return	string	$reference	The field key
  */
 function acf_get_field_reference($field_name, $post_id)
+{
+}
+/**
+ * acf_get_dir
+ *
+ * Returns the plugin url to a specified file.
+ *
+ * @date	28/09/13
+ * @since	5.0.0
+ * @deprecated	5.6.8
+ *
+ * @param	string $filename The specified file.
+ * @return	string
+ */
+function acf_get_dir($filename = '')
 {
 }
 // class_exists check
