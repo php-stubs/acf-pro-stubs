@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number */
-    var $version = '5.6.9';
+    var $version = '5.6.10';
     /** @var array The plugin settings array */
     var $settings = array();
     /** @var array The plugin data array */
@@ -13863,7 +13863,7 @@ function acf_maybe_get_GET($key = '', $default = \null)
 *  @param	mixed $post either post ID or post object
 *  @return	array
 */
-function acf_get_attachment($post)
+function acf_get_attachment($attachment)
 {
 }
 /**
@@ -14429,9 +14429,6 @@ function acf_add_array_key_prefix($array, $prefix)
 *  @return	array
 */
 function acf_remove_array_key_prefix($array, $prefix)
-{
-}
-function _acf_settings_slug($v)
 {
 }
 /**
