@@ -2,10 +2,13 @@
 #
 # Download ACF PRO releases and generate stubs for each one.
 #
+# apt-get install wget xmlstarlet unzip git
+#
 # Start: ACF_PRO_KEY="Your ACF PRO license key here" ./release-latest-versions.sh
 
 Get_versions()
 {
+echo 5.9.6;return;
     # Download page, convert to XML, parse release versions
     wget -q -O- "https://www.advancedcustomfields.com/changelog/" \
         | xmlstarlet fo --html --recover 2>/dev/null \

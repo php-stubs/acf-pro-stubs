@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.9.5';
+    var $version = '5.9.6';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -1104,8 +1104,6 @@ class ACF_Admin_Notice extends \ACF_Data
     var $data = array(
         /** @type string Text displayed in notice. */
         'text' => '',
-        /** @type string Optional HTML alternative to text. 
-        		'html' => '', */
         /** @type string The type of notice (warning, error, success, info). */
         'type' => 'info',
         /** @type bool If the notice can be dismissed. */
@@ -9937,20 +9935,96 @@ class ACF_Walker_Nav_Menu_Edit extends \Walker_Nav_Menu_Edit
 }
 class ACF_Taxonomy_Field_Walker extends \Walker
 {
-    var $field = \null, $tree_type = 'category', $db_fields = array('parent' => 'parent', 'id' => 'term_id');
+    /**
+     * What the class handles.
+     *
+     * @since 2.1.0
+     * @var string
+     */
+    public $tree_type = 'category';
+    /**
+     * DB fields to use.
+     *
+     * @since 2.1.0
+     * @var array
+     */
+    public $db_fields = array('parent' => 'parent', 'id' => 'term_id');
+    /**
+     * The field being rendered.
+     *
+     * @since 1.0.0
+     * @var array
+     */
+    public $field;
+    /**
+     * Constructor
+     *
+     * @date	20/4/21
+     * @since 	1.0.0
+     *
+     * @param	array $field The field being rendered.
+     * @return	void
+     */
     function __construct($field)
     {
     }
-    function start_el(&$output, $term, $depth = 0, $args = array(), $current_object_id = 0)
+    /**
+     * Starts the list before the elements are added.
+     *
+     * @see Walker:start_lvl()
+     *
+     * @since 1.0.0
+     *
+     * @param string $output Used to append additional content (passed by reference).
+     * @param int    $depth  Depth of category. Used for tab indentation.
+     * @param array  $args   An array of arguments. @see wp_terms_checklist()
+     */
+    public function start_lvl(&$output, $depth = 0, $args = array())
     {
     }
-    function end_el(&$output, $term, $depth = 0, $args = array())
+    /**
+     * Ends the list of after the elements are added.
+     *
+     * @see Walker::end_lvl()
+     *
+     * @since 1.0.0
+     *
+     * @param string $output Used to append additional content (passed by reference).
+     * @param int    $depth  Depth of category. Used for tab indentation.
+     * @param array  $args   An array of arguments. @see wp_terms_checklist()
+     */
+    public function end_lvl(&$output, $depth = 0, $args = array())
     {
     }
-    function start_lvl(&$output, $depth = 0, $args = array())
+    /**
+     * Start the element output.
+     *
+     * @see Walker::start_el()
+     *
+     * @since 1.0.0
+     *
+     * @param string  $output   Used to append additional content (passed by reference).
+     * @param WP_Term $term 	The current term object.
+     * @param int     $depth    Depth of the term in reference to parents. Default 0.
+     * @param array   $args     An array of arguments. @see wp_terms_checklist()
+     * @param int     $id       ID of the current term.
+     */
+    public function start_el(&$output, $term, $depth = 0, $args = array(), $id = 0)
     {
     }
-    function end_lvl(&$output, $depth = 0, $args = array())
+    /**
+     * Ends the element output, if needed.
+     *
+     * @see Walker::end_el()
+     *
+     * @since 1.0.0
+     *
+     * @param string  $output   Used to append additional content (passed by reference).
+     * @param WP_Term $category The current term object.
+     * @param int     $depth    Depth of the term in reference to parents. Default 0.
+     * @param array   $args     An array of arguments. @see wp_terms_checklist()
+     */
+    public function end_el(&$output, $category, $depth = 0, $args = array())
     {
     }
 }
@@ -11699,7 +11773,7 @@ class ACF_Location_Options_Page extends \ACF_Location
 }
 class acf_options_page
 {
-    /** @var array Contains an array of optiions page settings */
+    /** @var array Contains an array of options page settings */
     var $pages = array();
     /**
      *  __construct
@@ -11717,16 +11791,13 @@ class acf_options_page
     {
     }
     /**
-     *  validate_page
+     * Validates an Options Page settings array.
      *
-     *  description
+     * @date	28/2/17
+     * @since	5.5.8
      *
-     *  @type	function
-     *  @date	28/2/17
-     *  @since	5.5.8
-     *
-     *  @param	int $post_id
-     *  @return	int $post_id
+     * @param	array|string $page The Options Page settings array or name.
+     * @return	array
      */
     function validate_page($page)
     {
@@ -13116,9 +13187,7 @@ function acf_slugify($str = '', $glue = '-')
 {
 }
 /**
- * acf_punctify
- *
- * Returns a string with correct full stop puctuation.
+ * Returns a string with correct full stop punctuation.
  *
  * @date	12/7/19
  * @since	5.8.2
@@ -13184,6 +13253,18 @@ function acf_with_default($value, $default_value)
  * @return	int|bool
  */
 function acf_doing_action($action)
+{
+}
+/**
+ * Returns the current URL.
+ *
+ * @date	23/01/2015
+ * @since	5.1.5
+ *
+ * @param	void
+ * @return	string
+ */
+function acf_get_current_url()
 {
 }
 /**
@@ -13307,17 +13388,30 @@ function acf_esc_attrs($attrs)
 {
 }
 /**
- * acf_esc_html
+ * Sanitizes text content and strips out disallowed HTML.
  *
- * Encodes <script> tags for safe HTML output.
+ * This function emulates `wp_kses_post()` with a context of "acf" for extensibility.
  *
- * @date	12/6/19
- * @since	5.8.1
+ * @date	16/4/21
+ * @since	5.9.6
  *
  * @param	string $string
  * @return	string
  */
 function acf_esc_html($string = '')
+{
+}
+/**
+ * Private callback for the "wp_kses_allowed_html" filter used to return allowed HTML for "acf" context.
+ *
+ * @date	16/4/21
+ * @since	5.9.6
+ *
+ * @param	array $tags An array of allowed tags.
+ * @param	string $context The context name.
+ * @return	array.
+ */
+function _acf_kses_allowed_html($tags, $context)
 {
 }
 /**
@@ -15245,20 +15339,6 @@ function acf_get_truncated($text, $length = 64)
 {
 }
 /**
-*  acf_get_current_url
-*
-*  This function will return the current URL.
-*
-*  @date	23/01/2015
-*  @since	5.1.5
-*
-*  @param	void
-*  @return	string
-*/
-function acf_get_current_url()
-{
-}
-/**
 *  acf_current_user_can_admin
 *
 *  This function will return true if the current user can administrate the ACF field groups
@@ -15319,50 +15399,6 @@ function acf_format_filesize($size = 1)
 function acf_get_valid_terms($terms = \false, $taxonomy = 'category')
 {
 }
-/**
-*  acf_esc_html_deep
-*
-*  Navigates through an array and escapes html from the values.
-*
-*  @type	function
-*  @date	10/06/2015
-*  @since	5.2.7
-*
-*  @param	mixed $value
-*  @return	$value
-*/
-/**
-function acf_esc_html_deep( $value ) {
-	
-	// array
-	if( is_array($value) ) {
-		
-		$value = array_map('acf_esc_html_deep', $value);
-	
-	// object
-	} elseif( is_object($value) ) {
-		
-		$vars = get_object_vars( $value );
-		
-		foreach( $vars as $k => $v ) {
-			
-			$value->{$k} = acf_esc_html_deep( $v );
-		
-		}
-		
-	// string
-	} elseif( is_string($value) ) {
-
-		$value = esc_html($value);
-
-	}
-	
-	
-	// return
-	return $value;
-
-}
-*/
 /**
 *  acf_validate_attachment
 *
