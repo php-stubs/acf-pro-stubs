@@ -8,7 +8,6 @@
 
 Get_versions()
 {
-echo 5.9.6;return;
     # Download page, convert to XML, parse release versions
     wget -q -O- "https://www.advancedcustomfields.com/changelog/" \
         | xmlstarlet fo --html --recover 2>/dev/null \
@@ -21,6 +20,11 @@ while read -r VERSION; do
     # Process 5.6+ versions only
     if dpkg --compare-versions "${VERSION}" lt "5.6.0"; then
         continue
+    fi
+
+    if git rev-parse "refs/tags/v${VERSION}" >/dev/null 2>&1; then
+        echo "Tag exists!"
+        continue;
     fi
 
     # Download release
