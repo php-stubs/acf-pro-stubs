@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.10.1';
+    var $version = '5.10.2';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -9428,6 +9428,20 @@ class ACF_Media
      * @return  void
      */
     function wp_ajax_query_attachments()
+    {
+    }
+    /**
+     * Append acf_errors false for non-acf media library calls to prevent media library caching.
+     *
+     * @date    31/8/21
+     * @since   5.10.2
+     *
+     * @param   array       $response Array of prepared attachment data.
+     * @param   WP_Post     $attachment Attachment object.
+     * @param   array|false $meta Array of attachment meta data, or false if there is none.
+     * @return  array
+     */
+    function clear_acf_errors_for_core_requests($response, $attachment, $meta)
     {
     }
     /**
