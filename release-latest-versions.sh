@@ -26,7 +26,7 @@ while read -r VERSION; do
 
     if git rev-parse "refs/tags/v${VERSION}" >/dev/null 2>&1; then
         echo "Tag exists!"
-        continue;
+        continue
     fi
 
     # Download release
