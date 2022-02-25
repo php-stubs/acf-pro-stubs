@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.11';
+    var $version = '5.11.1';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -1497,6 +1497,16 @@ class ACF_Admin
      * @return  string
      */
     function admin_footer_text($text)
+    {
+    }
+    /**
+     * Displays the notice that can be shown when calling `get_field()`, etc. before `acf/init`.
+     *
+     * @since 5.11.1
+     *
+     * @return void
+     */
+    function maybe_show_early_init_notice()
     {
     }
 }
@@ -7083,16 +7093,14 @@ class acf_field_wysiwyg extends \acf_field
     function acf_enqueue_uploader()
     {
     }
-    /*
-     *  render_field()
+    /**
+     * Create the HTML interface for your field
      *
-     *  Create the HTML interface for your field
+     * @param array $field An array holding all the field's data
      *
-     *  @param   $field - an array holding all the field's data
-     *
-     *  @type    action
-     *  @since   3.6
-     *  @date    23/01/13
+     * @type    action
+     * @since   3.6
+     * @date    23/01/13
      */
     function render_field($field)
     {
@@ -7112,20 +7120,18 @@ class acf_field_wysiwyg extends \acf_field
     function render_field_settings($field)
     {
     }
-    /*
-     *  format_value()
+    /**
+     * This filter is applied to the $value after it is loaded from the db, and before it is returned to the template
      *
-     *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
+     * @type    filter
+     * @since   3.6
+     * @date    23/01/13
      *
-     *  @type    filter
-     *  @since   3.6
-     *  @date    23/01/13
+     * @param mixed $value   The value which was loaded from the database
+     * @param mixed $post_id The $post_id from which the value was loaded
+     * @param array $field   The field array holding all the field options
      *
-     *  @param   $value (mixed) the value which was loaded from the database
-     *  @param   $post_id (mixed) the $post_id from which the value was loaded
-     *  @param   $field (array) the field array holding all the field options
-     *
-     *  @return  $value (mixed) the modified value
+     * @return mixed $value The modified value
      */
     function format_value($value, $post_id, $field)
     {
