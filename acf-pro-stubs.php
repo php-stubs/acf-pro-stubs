@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.11.1';
+    var $version = '5.11.2';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -1497,16 +1497,6 @@ class ACF_Admin
      * @return  string
      */
     function admin_footer_text($text)
-    {
-    }
-    /**
-     * Displays the notice that can be shown when calling `get_field()`, etc. before `acf/init`.
-     *
-     * @since 5.11.1
-     *
-     * @return void
-     */
-    function maybe_show_early_init_notice()
     {
     }
 }
@@ -15208,6 +15198,17 @@ function acf_delete_value($post_id, $field)
  * @return  bool.
  */
 function acf_preview_value($value, $post_id, $field)
+{
+}
+/**
+ * Potentially log an error if a field doesn't exist when we expect it to.
+ *
+ * @param array  $field    An array representing the field that a value was requested for.
+ * @param string $function The function that noticed the problem.
+ *
+ * @return void
+ */
+function acf_log_invalid_field_notice($field, $function)
 {
 }
 /**
