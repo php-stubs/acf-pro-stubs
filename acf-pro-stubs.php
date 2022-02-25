@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.11.4';
+    var $version = '5.12';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -83,6 +83,21 @@ class ACF
      * @return  void
      */
     function register_post_status()
+    {
+    }
+    /**
+     * Checks if another version of ACF/ACF PRO is active and deactivates it.
+     * Hooked on `activated_plugin` so other plugin is deactivated when current plugin is activated.
+     *
+     * @param string $plugin The plugin being activated.
+     */
+    public function deactivate_other_instances($plugin)
+    {
+    }
+    /**
+     * Displays a notice when either ACF or ACF PRO is automatically deactivated.
+     */
+    public function plugin_deactivated_notice()
     {
     }
     /**
@@ -10074,7 +10089,7 @@ class ACF_Rest_Api
     public function __construct()
     {
     }
-    public function initialize()
+    public function initialize($response, $handler, $request)
     {
     }
     /**
@@ -10269,7 +10284,7 @@ class ACF_Rest_Request
     /**
      * Determine all required information from the current request.
      */
-    public function parse_request()
+    public function parse_request($request)
     {
     }
     /**
@@ -10299,7 +10314,7 @@ class ACF_Rest_Request
     /**
      * Get the current REST route as determined by WordPress.
      */
-    private function set_current_route()
+    private function set_current_route($request)
     {
     }
     /**
@@ -16378,19 +16393,17 @@ function acf_maybe_get_GET($key = '', $default = \null)
 function acf_get_attachment($attachment)
 {
 }
-/*
-*  acf_get_truncated
-*
-*  This function will truncate and return a string
-*
-*  @type    function
-*  @date    8/08/2014
-*  @since   5.0.0
-*
-*  @param   $text (string)
-*  @param   $length (int)
-*  @return  (string)
-*/
+/**
+ *  This function will truncate and return a string
+ *
+ *  @date    8/08/2014
+ *  @since   5.0.0
+ *
+ *  @param string $text   The text to truncate.
+ *  @param int    $length The number of characters to allow in the string.
+ *
+ *  @return  string
+ */
 function acf_get_truncated($text, $length = 64)
 {
 }
@@ -19249,9 +19262,10 @@ function acf_render_block_callback($attributes, $content = '', $wp_block = \null
  * @param   bool     $is_preview Whether or not the block is being rendered for editing preview.
  * @param   int      $post_id The current post being edited or viewed.
  * @param   WP_Block $wp_block The block instance (since WP 5.5).
- * @return  string The block HTML.
+ * @param   array    $context The block context array.
+ * @return  string   The block HTML.
  */
-function acf_rendered_block($attributes, $content = '', $is_preview = \false, $post_id = 0, $wp_block = \null)
+function acf_rendered_block($attributes, $content = '', $is_preview = \false, $post_id = 0, $wp_block = \null, $context = \false)
 {
 }
 /**
@@ -19265,9 +19279,10 @@ function acf_rendered_block($attributes, $content = '', $is_preview = \false, $p
  * @param   bool     $is_preview Whether or not the block is being rendered for editing preview.
  * @param   int      $post_id The current post being edited or viewed.
  * @param   WP_Block $wp_block The block instance (since WP 5.5).
+ * @param   array    $context The block context array.
  * @return  void
  */
-function acf_render_block($attributes, $content = '', $is_preview = \false, $post_id = 0, $wp_block = \null)
+function acf_render_block($attributes, $content = '', $is_preview = \false, $post_id = 0, $wp_block = \null, $context = \false)
 {
 }
 /**
@@ -19352,6 +19367,25 @@ function acf_parse_save_blocks($text = '')
  * @return  string
  */
 function acf_parse_save_blocks_callback($matches)
+{
+}
+/**
+ * This directly copied from the WordPress core `serialize_block_attributes()` function.
+ *
+ * We need this in order to make sure that block attributes are stored in a way that is
+ * consistent with how Gutenberg sends them over from JS, and so that things like wp_kses()
+ * work as expected. Copied from core to get around a bug that was fixed in 5.8.1 or on the off chance
+ * that folks are still using WP 5.3 or below.
+ *
+ * TODO: Remove this when we refactor `acf_parse_save_blocks_callback()` to use `serialize_block()`,
+ * or when we're confident that folks aren't using WP versions prior to 5.8.
+ *
+ * @since 5.12
+ *
+ * @param array $block_attributes Attributes object.
+ * @return string Serialized attributes.
+ */
+function acf_serialize_block_attributes($block_attributes)
 {
 }
 /*
@@ -19477,6 +19511,14 @@ function acf_pro_get_license_key($skip_url_check = \false)
  *  @return  bool           The result of the update_option call
  */
 function acf_pro_update_license($key = '')
+{
+}
+/**
+ * Get count of registered ACF Blocks
+ *
+ * @return int
+ */
+function acf_pro_get_registered_block_count()
 {
 }
 /**
