@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.10.2';
+    var $version = '5.11';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -2814,6 +2814,7 @@ class acf_field
 {
     // vars
     var $name = '', $label = '', $category = 'basic', $defaults = array(), $l10n = array(), $public = \true;
+    public $show_in_rest = \true;
     /**
      *  __construct
      *
@@ -2946,9 +2947,70 @@ class acf_field
     function input_admin_l10n($l10n)
     {
     }
+    /**
+     * Add additional validation for fields being updated via the REST API.
+     *
+     * @param bool  $valid
+     * @param mixed $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Return an array of links for addition to the REST API response. Each link is an array and must have both `rel` and
+     * `href` keys. The `href` key must be a REST API resource URL. If a link is marked as `embeddable`, the `_embed` URL
+     * parameter will trigger WordPress to dispatch an internal sub request and load the object within the same request
+     * under the `_embedded` response property.
+     *
+     * e.g;
+     *    [
+     *        [
+     *            'rel' => 'acf:post',
+     *            'href' => 'https://example.com/wp-json/wp/v2/posts/497',
+     *            'embeddable' => true,
+     *        ],
+     *        [
+     *            'rel' => 'acf:user',
+     *            'href' => 'https://example.com/wp-json/wp/v2/users/2',
+     *            'embeddable' => true,
+     *        ],
+     *    ]
+     *
+     * @param mixed      $value The raw (unformatted) field value.
+     * @param string|int $post_id
+     * @param array      $field
+     * @return array
+     */
+    public function get_rest_links($value, $post_id, array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field__accordion extends \acf_field
 {
+    public $show_in_rest = \false;
     /**
      *  initialize
      *
@@ -3111,6 +3173,15 @@ class acf_field_button_group extends \acf_field
      *  @return  $value
      */
     function format_value($value, $post_id, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    function get_rest_schema(array $field)
     {
     }
 }
@@ -3277,6 +3348,15 @@ class acf_field_checkbox extends \acf_field
      *  @return  mixed $value the modified value
      */
     function format_value($value, $post_id, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
     {
     }
 }
@@ -3449,6 +3529,41 @@ class acf_field_date_picker extends \acf_field
     function format_value($value, $post_id, $field)
     {
     }
+    /**
+     *  This filter is applied to the $field after it is loaded from the database
+     *  and ensures the return and display values are set.
+     *
+     *  @type    filter
+     *  @since   5.11.0
+     *  @date    28/09/21
+     *
+     *  @param array $field The field array holding all the field options.
+     *
+     *  @return array
+     */
+    function load_field($field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_date_and_time_picker extends \acf_field
 {
@@ -3529,6 +3644,30 @@ class acf_field_date_and_time_picker extends \acf_field
     function format_value($value, $post_id, $field)
     {
     }
+    /**
+     *  This filter is applied to the $field after it is loaded from the database
+     *  and ensures the return and display values are set.
+     *
+     *  @type    filter
+     *  @since   5.11.0
+     *  @date    28/09/21
+     *
+     *  @param array $field The field array holding all the field options.
+     *
+     *  @return array
+     */
+    function load_field($field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
 }
 class acf_field_email extends \acf_field
 {
@@ -3589,6 +3728,15 @@ class acf_field_email extends \acf_field
      * @return bool|string
      */
     public function validate_value($valid, $value, $field, $input)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
     {
     }
 }
@@ -3719,6 +3867,38 @@ class acf_field_file extends \acf_field
     function validate_value($valid, $value, $field, $input)
     {
     }
+    /**
+     * Validates file fields updated via the REST API.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_google_map extends \acf_field
 {
@@ -3813,6 +3993,26 @@ class acf_field_google_map extends \acf_field
      *  @return  $value - the modified value
      */
     function update_value($value, $post_id, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
     {
     }
 }
@@ -4065,6 +4265,26 @@ class acf_field__group extends \acf_field
     function delete_field($field)
     {
     }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array|mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_image extends \acf_field
 {
@@ -4191,6 +4411,38 @@ class acf_field_image extends \acf_field
     function validate_value($valid, $value, $field, $input)
     {
     }
+    /**
+     * Additional validation for the image field when submitted via REST.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_link extends \acf_field
 {
@@ -4304,9 +4556,19 @@ class acf_field_link extends \acf_field
     function update_value($value, $post_id, $field)
     {
     }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
 }
 class acf_field_message extends \acf_field
 {
+    public $show_in_rest = \false;
     /**
      *  __construct
      *
@@ -4462,6 +4724,26 @@ class acf_field_number extends \acf_field
     function update_value($value, $post_id, $field)
     {
     }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_oembed extends \acf_field
 {
@@ -4585,6 +4867,15 @@ class acf_field_oembed extends \acf_field
      *  @return  mixed $value the modified value
      */
     function format_value($value, $post_id, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
     {
     }
 }
@@ -4766,6 +5057,48 @@ class acf_field_page_link extends \acf_field
      *  @return  $value - the modified value
      */
     function update_value($value, $post_id, $field)
+    {
+    }
+    /**
+     * Validates page link fields updated via the REST API.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * @see \acf_field::get_rest_links()
+     * @param mixed      $value The raw (unformatted) field value.
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array
+     */
+    public function get_rest_links($value, $post_id, array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
     {
     }
 }
@@ -4993,6 +5326,48 @@ class acf_field_post_object extends \acf_field
     function get_posts($value, $field)
     {
     }
+    /**
+     * Validates post object fields updated via the REST API.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * @see \acf_field::get_rest_links()
+     * @param mixed      $value The raw (unformatted) field value.
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array
+     */
+    public function get_rest_links($value, $post_id, array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_radio extends \acf_field
 {
@@ -5130,6 +5505,15 @@ class acf_field_radio extends \acf_field
     function format_value($value, $post_id, $field)
     {
     }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    function get_rest_schema(array $field)
+    {
+    }
 }
 class acf_field_range extends \acf_field_number
 {
@@ -5175,6 +5559,26 @@ class acf_field_range extends \acf_field_number
      *  @param   $field  - an array holding all the field's data
      */
     function render_field_settings($field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
     {
     }
 }
@@ -5351,6 +5755,48 @@ class acf_field_relationship extends \acf_field
      *  @return  $value - the modified value
      */
     function update_value($value, $post_id, $field)
+    {
+    }
+    /**
+     * Validates relationship fields updated via the REST API.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * @see \acf_field::get_rest_links()
+     * @param mixed      $value The raw (unformatted) field value.
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array
+     */
+    public function get_rest_links($value, $post_id, array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
     {
     }
 }
@@ -5533,6 +5979,27 @@ class acf_field_select extends \acf_field
     function format_value_single($value, $post_id, $field)
     {
     }
+    /**
+     * Validates select fields updated via the REST API.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
 }
 class acf_field_separator extends \acf_field
 {
@@ -5584,6 +6051,7 @@ class acf_field_separator extends \acf_field
 }
 class acf_field_tab extends \acf_field
 {
+    public $show_in_rest = \false;
     /**
      *  __construct
      *
@@ -5760,16 +6228,14 @@ class acf_field_taxonomy extends \acf_field
     {
     }
     /**
-     *  save_post
+     * This function will save any terms in the save_post_terms array
      *
-     *  This function will save any terms in the save_post_terms array
+     * @date    26/11/2014
+     * @since   5.0.9
      *
-     *  @type    function
-     *  @date    26/11/2014
-     *  @since   5.0.9
+     * @param int $post_id
      *
-     *  @param   int $post_id
-     *  @return  void
+     * @return void
      */
     function save_post($post_id)
     {
@@ -5864,6 +6330,25 @@ class acf_field_taxonomy extends \acf_field
     function ajax_add_term()
     {
     }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * @see \acf_field::get_rest_links()
+     * @param mixed      $value The raw (unformatted) field value.
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array
+     */
+    public function get_rest_links($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_text extends \acf_field
 {
@@ -5926,6 +6411,15 @@ class acf_field_text extends \acf_field
      * @return  bool|string
      */
     function validate_value($valid, $value, $field, $input)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    function get_rest_schema(array $field)
     {
     }
 }
@@ -6010,6 +6504,15 @@ class acf_field_textarea extends \acf_field
     function validate_value($valid, $value, $field, $input)
     {
     }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    function get_rest_schema(array $field)
+    {
+    }
 }
 class acf_field_time_picker extends \acf_field
 {
@@ -6073,6 +6576,30 @@ class acf_field_time_picker extends \acf_field
      *  @return  mixed $value the modified value
      */
     function format_value($value, $post_id, $field)
+    {
+    }
+    /**
+     *  This filter is applied to the $field after it is loaded from the database
+     *  and ensures the return and display values are set.
+     *
+     *  @type    filter
+     *  @since   5.11.0
+     *  @date    28/09/21
+     *
+     *  @param array $field The field array holding all the field options.
+     *
+     *  @return array
+     */
+    function load_field($field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
     {
     }
 }
@@ -6170,6 +6697,26 @@ class acf_field_true_false extends \acf_field
     function translate_field($field)
     {
     }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_url extends \acf_field
 {
@@ -6230,6 +6777,15 @@ class acf_field_url extends \acf_field
      *  @return  int $post_id
      */
     function validate_value($valid, $value, $field, $input)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
     {
     }
 }
@@ -6420,6 +6976,48 @@ class ACF_Field_User extends \ACF_Field
      * @return  array
      */
     function user_search_columns($columns, $search, $WP_User_Query)
+    {
+    }
+    /**
+     * Validates user fields updated via the REST API.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * @see \acf_field::get_rest_links()
+     * @param mixed      $value The raw (unformatted) field value.
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array
+     */
+    public function get_rest_links($value, $post_id, array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
     {
     }
 }
@@ -9471,6 +10069,282 @@ class ACF_Media
     {
     }
 }
+class ACF_Rest_Api
+{
+    /** @var ACF_Rest_Request */
+    private $request;
+    /** @var ACF_Rest_Embed_Links */
+    private $embed_links;
+    public function __construct()
+    {
+    }
+    public function initialize()
+    {
+    }
+    /**
+     * Register our custom property as a REST field.
+     */
+    private function register_field()
+    {
+    }
+    /**
+     * Dynamically generate the schema for the current request.
+     *
+     * @return array
+     */
+    private function get_schema()
+    {
+    }
+    /**
+     * Validate the request args. Mostly a wrapper for `rest_validate_request_arg()`, but also
+     * fires off a filter, so we can add some custom validation for specific fields.
+     *
+     * This will likely no longer be needed once WordPress implements something like `validate_callback`
+     * and `sanitize_callback` for nested schema properties, see:
+     * https://core.trac.wordpress.org/ticket/49960
+     *
+     * @param mixed            $value
+     * @param \WP_REST_Request $request
+     * @param string           $param
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_arg($value, $request, $param)
+    {
+    }
+    /**
+     * Load field values into the requested object. This method is not a part of any public API and is only public as
+     * it is required by WordPress.
+     *
+     * @param array           $object An array representation of the post, term, or user object.
+     * @param string          $field_name
+     * @param WP_REST_Request $request
+     * @param string          $object_sub_type Note that this isn't the same as $this->object_type. This variable is
+     *                                           more specific and can be a post type or taxonomy.
+     * @return array
+     */
+    public function load_fields($object, $field_name, $request, $object_sub_type)
+    {
+    }
+    /**
+     * Update any incoming field values for the given object. This method is not a part of any public API and is only
+     * public as it is required by WordPress.
+     *
+     * @param array                   $data
+     * @param WP_Post|WP_Term|WP_User $object
+     * @param string                  $property 'acf'
+     * @param WP_REST_Request         $request
+     * @param string                  $object_sub_type This will be the post type, the taxonomy, or 'user'.
+     * @return bool|WP_Error
+     */
+    public function update_fields($data, $object, $property, $request, $object_sub_type)
+    {
+    }
+    // todo - this should check for a flag and validate a nonce to ensure we are in admin mode.
+    // todo - consider/discuss handling this in the request object instead.
+    private function is_admin_mode($data)
+    {
+    }
+    /**
+     * Make the ACF identifier string for the given object.
+     *
+     * @param int    $object_id
+     * @param string $object_type 'user', 'term', or 'post'
+     * @return string
+     */
+    private function make_identifier($object_id, $object_type)
+    {
+    }
+    /**
+     * Gets an array of the location types that a field group is configured to use.
+     *
+     * @param string $object_type    'user', 'term', or 'post'
+     * @param array  $field_group    The field group to check.
+     * @param array  $location_types An array of location types.
+     *
+     * @return bool
+     */
+    private function object_type_has_field_group($object_type, $field_group, $location_types = array())
+    {
+    }
+    /**
+     * Get all field groups for the provided object type.
+     *
+     * @param string $object_type  'user', 'term', or 'post'
+     *
+     * @return array An array of field groups that display for that location type.
+     */
+    private function get_field_groups_by_object_type($object_type)
+    {
+    }
+    /**
+     * Get all field groups for a given object.
+     *
+     * @param int         $object_id
+     * @param string      $object_type 'user', 'term', or 'post'
+     * @param string|null $object_sub_type The post type or taxonomy. When an $object_type of 'user' is in play, this can be ignored.
+     * @param array       $scope Field group keys to limit the returned set of field groups to. This is used to scope field lookups to specific groups.
+     * @return array An array of matching field groups.
+     */
+    private function get_field_groups_by_id($object_id, $object_type, $object_sub_type = \null, $scope = array())
+    {
+    }
+    /**
+     * Get all ACF fields for a given field group and allow third party filtering.
+     *
+     * @param array    $field_group This could technically be other possible values supported by acf_get_fields() but in this
+     *                           context, we're only using the field group arrays.
+     * @param null|int $object_id The ID of the object being prepared.
+     * @return array
+     */
+    private function get_fields($field_group, $object_id = \null)
+    {
+    }
+}
+/**
+ * Class ACF_Rest_Embed_Links
+ *
+ * Manage the addition of embed links on supported REST endpoints.
+ */
+class ACF_Rest_Embed_Links
+{
+    /** @var array Links to add to the response. These can be flagged as embeddable and expanded when _embed is passed with the request. */
+    private $links = array();
+    public function initialize()
+    {
+    }
+    /**
+     * Hook into all REST-enabled post type, taxonomy, and the user controllers in order to prepare links.
+     */
+    private function hook_link_handlers()
+    {
+    }
+    /**
+     * Add links to internal property for subsequent use in \ACF_Rest_Embed_Links::load_item_links().
+     *
+     * @param       $post_id
+     * @param array   $field
+     */
+    public function prepare_links($post_id, array $field)
+    {
+    }
+    /**
+     * Hook into the rest_prepare_{$type} filters and add links for the object being prepared.
+     *
+     * @param WP_REST_Response        $response
+     * @param WP_Post|WP_User|WP_Term $item
+     * @param WP_REST_Request         $request
+     * @return WP_REST_Response
+     */
+    public function load_item_links($response, $item, $request)
+    {
+    }
+}
+/**
+ * Class ACF_Rest_Request
+ *
+ * @property-read string $object_sub_type
+ * @property-read string $object_type
+ * @property-read string $http_method
+ */
+class ACF_Rest_Request
+{
+    /**
+     * Define which private/protected class properties are allowed read access. Access to these is controlled in
+     * \ACF_Rest_Request::__get();
+     *
+     * @var string[]
+     */
+    private $readonly_props = array('object_type', 'object_sub_type', 'child_object_type', 'http_method');
+    /** @var string The HTTP request method for the current request. i.e; GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD */
+    private $http_method;
+    /** @var string The current route being requested. */
+    private $current_route;
+    /** @var array Route URL patterns we support. */
+    private $supported_routes = array();
+    /** @var array Parameters matched from the URL. e.g; object IDs. */
+    private $url_params = array();
+    /** @var string The underlying object type. e.g; post, term, user, etc. */
+    private $object_type;
+    /** @var string The requested object type. */
+    private $object_sub_type;
+    /** @var string The object type for a child object. e.g. post-revision, autosaves, etc. */
+    private $child_object_type;
+    /**
+     * Determine all required information from the current request.
+     */
+    public function parse_request()
+    {
+    }
+    /**
+     * Magic getter for accessing read-only properties. Should we ever need to enforce a getter method, we can do so here.
+     *
+     * @param string $name The desired property name.
+     * @return string|null
+     */
+    public function __get($name)
+    {
+    }
+    /**
+     * Get a URL parameter if found on the request URL.
+     *
+     * @param $param
+     * @return mixed|null
+     */
+    public function get_url_param($param)
+    {
+    }
+    /**
+     * Determine the HTTP method of the current request.
+     */
+    private function set_http_method()
+    {
+    }
+    /**
+     * Get the current REST route as determined by WordPress.
+     */
+    private function set_current_route()
+    {
+    }
+    /**
+     * Build an array of route match patterns that we handle. These are the same as WordPress' core patterns except
+     * we are also matching the object type here as well.
+     */
+    private function build_supported_routes()
+    {
+    }
+    /**
+     * Loop through supported routes to find matching pattern. Use matching pattern to determine any URL parameters.
+     */
+    private function set_url_params()
+    {
+    }
+    /**
+     * Determine the object type and sub type from the requested route. We need to know both the underlying WordPress
+     * object type as well as post type or taxonomy in order to provide the right context when getting/updating fields.
+     */
+    private function set_object_types()
+    {
+    }
+    /**
+     * Find the REST enabled post type object that matches the given REST base.
+     *
+     * @param string $rest_base
+     * @return WP_Post_Type|null
+     */
+    private function get_post_type_by_rest_base($rest_base)
+    {
+    }
+    /**
+     * Find the REST enabled taxonomy object that matches the given REST base.
+     *
+     * @param $rest_base
+     * @return WP_Taxonomy|null
+     */
+    private function get_taxonomy_by_rest_base($rest_base)
+    {
+    }
+}
 class acf_revisions
 {
     // vars
@@ -10398,17 +11272,15 @@ class acf_admin_options_page
     {
     }
     /**
-     *  render_meta_box
+     * Renders a postbox on an ACF options page.
      *
-     *  description
+     * @date    24/02/2014
+     * @since   5.0.0
      *
-     *  @type    function
-     *  @date    24/02/2014
-     *  @since   5.0.0
+     * @param object $post
+     * @param array  $args
      *
-     *  @param   object $post
-     *  @param   array $args
-     *  @return  void
+     * @return void
      */
     function postbox_acf($post, $args)
     {
@@ -10497,34 +11369,6 @@ class ACF_Admin_Updates
      * @return  void
      */
     function load()
-    {
-    }
-    /**
-     * activate_pro_licence
-     *
-     * Activates the submitted license key.
-     *
-     * @date    16/01/2014
-     * @since   5.0.0
-     *
-     * @param   void
-     * @return  void
-     */
-    function activate_pro_licence()
-    {
-    }
-    /**
-     * activate_pro_licence
-     *
-     * Deactivates the registered license key.
-     *
-     * @date    16/01/2014
-     * @since   5.0.0
-     *
-     * @param   void
-     * @return  void
-     */
-    function deactivate_pro_licence()
     {
     }
     /**
@@ -10708,6 +11552,17 @@ class acf_field_clone extends \acf_field
     {
     }
     /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
+    /**
      *  update_value()
      *
      *  This filter is appied to the $value before it is updated in the db
@@ -10887,6 +11742,15 @@ class acf_field_clone extends \acf_field
      *  @return  int $post_id
      */
     function validate_value($valid, $value, $field, $input)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
     {
     }
 }
@@ -11284,6 +12148,38 @@ class acf_field_flexible_content extends \acf_field
     function translate_field($field)
     {
     }
+    /**
+     * Additional validation for the flexible content field when submitted via REST.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array|mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_gallery extends \acf_field
 {
@@ -11453,6 +12349,48 @@ class acf_field_gallery extends \acf_field
      *  @return  $value - the modified value
      */
     function update_value($value, $post_id, $field)
+    {
+    }
+    /**
+     * Validates file fields updated via the REST API.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * @see \acf_field::get_rest_links()
+     * @param mixed      $value The raw (unformatted) field value.
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array
+     */
+    public function get_rest_links($value, $post_id, array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
     {
     }
 }
@@ -11751,6 +12689,38 @@ class acf_field_repeater extends \acf_field
     function prepare_field_for_import($field)
     {
     }
+    /**
+     * Additional validation for the repeater field when submitted via REST.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array|mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class ACF_Location_Block extends \ACF_Location
 {
@@ -11952,9 +12922,6 @@ class acf_pro_updates
      *  @type    function
      *  @date    23/06/12
      *  @since   5.0.0
-     *
-     *  @param   void
-     *  @return  void
      */
     function __construct()
     {
@@ -11967,9 +12934,6 @@ class acf_pro_updates
      *  @type    function
      *  @date    10/4/17
      *  @since   5.5.10
-     *
-     *  @param   int $post_id
-     *  @return  int $post_id
      */
     function init()
     {
@@ -13207,6 +14171,16 @@ function acf_maybe_idval($value)
 {
 }
 /**
+ * Convert any numeric strings into their equivalent numeric type. This function will
+ * work with both single values and arrays.
+ *
+ * @param mixed $value Either a single value or an array of values.
+ * @return mixed
+ */
+function acf_format_numerics($value)
+{
+}
+/**
  * acf_numval
  *
  * Casts the provided value as eiter an int or float using a simple hack.
@@ -13365,7 +14339,7 @@ function acf_add_action_variations($action = '', $variations = array(), $index =
 /**
  * _acf_apply_hook_variations
  *
- * Applys hook variations during apply_filters() or do_action().
+ * Applies hook variations during apply_filters() or do_action().
  *
  * @date    25/1/19
  * @since   5.7.11
@@ -13409,9 +14383,7 @@ function acf_add_deprecated_action($deprecated, $version, $replacement)
 {
 }
 /**
- * _acf_apply_deprecated_hook
- *
- * Applys a deprecated filter during apply_filters() or do_action().
+ * Applies a deprecated filter during apply_filters() or do_action().
  *
  * @date    25/1/19
  * @since   5.7.11
@@ -13777,15 +14749,14 @@ function acf_esc_atts_e($attrs)
 {
 }
 /**
- * acf_get_meta
- *
  * Returns an array of "ACF only" meta for the given post_id.
  *
  * @date    9/10/18
  * @since   5.8.0
  *
- * @param   mixed $post_id The post_id for this data.
- * @return  array
+ * @param mixed $post_id The post_id for this data.
+ *
+ * @return array
  */
 function acf_get_meta($post_id = 0)
 {
@@ -13805,49 +14776,46 @@ function acf_get_option_meta($prefix = '')
 {
 }
 /**
- * acf_get_metadata
- *
  * Retrieves specific metadata from the database.
  *
  * @date    16/10/2015
  * @since   5.2.3
  *
  * @param   int|string $post_id The post id.
- * @param   string       $name The meta name.
- * @param   bool         $hidden If the meta is hidden (starts with an underscore).
+ * @param   string     $name    The meta name.
+ * @param   bool       $hidden  If the meta is hidden (starts with an underscore).
+ *
  * @return  mixed
  */
 function acf_get_metadata($post_id = 0, $name = '', $hidden = \false)
 {
 }
 /**
- * acf_update_metadata
- *
  * Updates metadata in the database.
  *
  * @date    16/10/2015
  * @since   5.2.3
  *
  * @param   int|string $post_id The post id.
- * @param   string       $name The meta name.
- * @param   mixed        $value The meta value.
- * @param   bool         $hidden If the meta is hidden (starts with an underscore).
+ * @param   string     $name    The meta name.
+ * @param   mixed      $value   The meta value.
+ * @param   bool       $hidden  If the meta is hidden (starts with an underscore).
+ *
  * @return  int|bool Meta ID if the key didn't exist, true on successful update, false on failure.
  */
 function acf_update_metadata($post_id = 0, $name = '', $value = '', $hidden = \false)
 {
 }
 /**
- * acf_delete_metadata
- *
  * Deletes metadata from the database.
  *
  * @date    16/10/2015
  * @since   5.2.3
  *
  * @param   int|string $post_id The post id.
- * @param   string       $name The meta name.
- * @param   bool         $hidden If the meta is hidden (starts with an underscore).
+ * @param   string     $name The meta name.
+ * @param   bool       $hidden If the meta is hidden (starts with an underscore).
+ *
  * @return  bool
  */
 function acf_delete_metadata($post_id = 0, $name = '', $hidden = \false)
@@ -14261,6 +15229,27 @@ function acf_get_object_type($object_type, $object_subtype = '')
 function acf_decode_post_id($post_id = 0)
 {
 }
+/**
+ * Determine the REST base for a post type or taxonomy object. Note that this is not intended for use
+ * with term or post objects but is, instead, to be used with the underlying WP_Post_Type and WP_Taxonomy
+ * instances.
+ *
+ * @param WP_Post_Type|WP_Taxonomy $type_object
+ * @return string|null
+ */
+function acf_get_object_type_rest_base($type_object)
+{
+}
+/**
+ * Extract the ID of a given object/array. This supports all expected types handled by our update_fields() and
+ * load_fields() callbacks.
+ *
+ * @param WP_Post|WP_User|WP_Term|array $object
+ * @return int|mixed|null
+ */
+function acf_get_object_id($object)
+{
+}
 // class_exists check
 /**
  *  acf_new_admin_notice
@@ -14300,9 +15289,10 @@ function acf_render_admin_notices()
  *
  * @param   string $text The admin notice text.
  * @param   string $class The type of notice (warning, error, success, info).
+ * @param   string $dismissable Is this notification dismissible (default true) (since 5.11.0)
  * @return  ACF_Admin_Notice
  */
-function acf_add_admin_notice($text = '', $type = 'info')
+function acf_add_admin_notice($text = '', $type = 'info', $dismissible = \true)
 {
 }
 // class_exists check
@@ -14620,19 +15610,17 @@ function acf_parse_type($v)
 {
 }
 /**
-*  acf_get_view
-*
-*  This function will load in a file from the 'admin/views' folder and allow variables to be passed through
-*
-*  @type    function
-*  @date    28/09/13
-*  @since   5.0.0
-*
-*  @param   string $view_name
-*  @param   array $args
-*  @return  void
-*/
-function acf_get_view($path = '', $args = array())
+ *  This function will load in a file from the 'admin/views' folder and allow variables to be passed through
+ *
+ *  @date    28/09/13
+ *  @since   5.0.0
+ *
+ *  @param string $view_path
+ *  @param array  $view_args
+ *
+ *  @return void
+ */
+function acf_get_view($view_path = '', $view_args = array())
 {
 }
 /**
@@ -15816,7 +16804,7 @@ function acf_remove_array_key_prefix($array, $prefix)
 *  acf_strip_protocol
 *
 *  This function will remove the proticol from a url
-*  Used to allow licences to remain active if a site is switched to https
+*  Used to allow licenses to remain active if a site is switched to https
 *
 *  @type    function
 *  @date    10/01/2017
@@ -16014,20 +17002,18 @@ function the_field($selector, $post_id = \false, $format_value = \true)
 {
 }
 /**
-*  get_field_object()
-*
-*  This function will return an array containing all the field data for a given field_name
-*
-*  @type    function
-*  @since   3.6
-*  @date    3/02/13
-*
-*  @param   string $selector the field name or key
-*  @param   mixed $post_id the post_id of which the value is saved against
-*  @param   boolean $format_value whether or not to format the field value
-*  @param   boolean $load_value whether or not to load the field value
-*  @return  array $field
-*/
+ * This function will return an array containing all the field data for a given field_name.
+ *
+ * @since 3.6
+ * @date  3/02/13
+ *
+ * @param string $selector     The field name or key.
+ * @param mixed  $post_id      The post_id of which the value is saved against.
+ * @param bool   $format_value Whether to format the field value.
+ * @param bool   $load_value   Whether to load the field value.
+ *
+ * @return array $field
+ */
 function get_field_object($selector, $post_id = \false, $format_value = \true, $load_value = \true)
 {
 }
@@ -16267,20 +17253,16 @@ function get_row_layout()
 {
 }
 /**
-*  acf_shortcode()
-*
-*  This function is used to add basic shortcode support for the ACF plugin
-*  eg. [acf field="heading" post_id="123" format_value="1"]
-*
-*  @type    function
-*  @since   1.1.1
-*  @date    29/01/13
-*
-*  @param   string $field the field name or key
-*  @param   mixed $post_id the post_id of which the value is saved against
-*  @param   boolean $format_value whether or not to format the field value
-*  @return  string
-*/
+ * This function is used to add basic shortcode support for the ACF plugin
+ * eg. [acf field="heading" post_id="123" format_value="1"]
+ *
+ * @since 1.1.1
+ * @date  29/01/13
+ *
+ * @param array $atts The shortcode attributes.
+ *
+ * @return string
+ */
 function acf_shortcode($atts)
 {
 }
@@ -17757,6 +18739,42 @@ function acf_get_loop($i = 'active', $key = \null)
 function acf_remove_loop($i = 'active')
 {
 }
+/**
+ * Get the REST API schema for a given field.
+ *
+ * @param array $field
+ * @return array
+ */
+function acf_get_field_rest_schema(array $field)
+{
+}
+/**
+ * Get the REST API field links for a given field. The links are appended to the REST response under the _links property
+ * and provide API resource links to related objects. If a link is marked as 'embeddable', WordPress can load the resource
+ * in the main request under the _embedded property when the request contains the _embed URL parameter.
+ *
+ * @see \acf_field::get_rest_links()
+ * @see https://developer.wordpress.org/rest-api/using-the-rest-api/linking-and-embedding/
+ *
+ * @param string|int $post_id
+ * @param array      $field
+ * @return array
+ */
+function acf_get_field_rest_links($post_id, array $field)
+{
+}
+/**
+ * Format a given field's value for output in the REST API.
+ *
+ * @param        $value
+ * @param        $post_id
+ * @param        $field
+ * @param string  $format 'light' for normal REST API formatting or 'standard' to apply ACF's normal field formatting.
+ * @return mixed
+ */
+function acf_format_value_for_rest($value, $post_id, $field, $format = 'light')
+{
+}
 // class_exists check
 /**
 *  acf_save_post_revision
@@ -18375,47 +19393,122 @@ function register_options_page($page = '')
 }
 // class_exists check
 /**
-*  acf_pro_get_license
-*
-*  This function will return the license
-*
-*  @type    function
-*  @date    20/09/2016
-*  @since   5.4.0
-*
-*  @param   void
-*  @return  void
-*/
+ * Check if a license is defined in wp-config.php and requires activation.
+ * Also checks if the license key has been changed and reactivates.
+ *
+ * @date 29/09/2021
+ * @since 5.11.0
+ */
+function acf_pro_check_defined_license()
+{
+}
+/**
+ *  Set the automatic activation failure transient
+ *
+ *  @date    11/10/2021
+ *  @since   5.11.0
+ *
+ *  @param   string $error_text string containing the error text message.
+ *  @param   string $license_key the license key that was used during the failed activation.
+ *
+ *  @return void
+ */
+function acf_pro_set_activation_failure_transient($error_text, $license_key)
+{
+}
+/**
+ *  Get the automatic activation failure transient
+ *
+ *  @date    11/10/2021
+ *  @since   5.11.0
+ *
+ *  @return array|false Activation failure transient array, or false if it's not set.
+ */
+function acf_pro_get_activation_failure_transient()
+{
+}
+/**
+ * Display the stored activation error
+ *
+ * @date    11/10/2021
+ * @since   5.11.0
+ */
+function acf_pro_display_activation_error()
+{
+}
+/**
+ *  This function will return the license
+ *
+ *  @type    function
+ *  @date    20/09/2016
+ *  @since   5.4.0
+ *
+ *  @return  $license    Activated license array
+ */
 function acf_pro_get_license()
 {
 }
 /**
-*  acf_pro_get_license_key
-*
-*  This function will return the license key
-*
-*  @type    function
-*  @date    20/09/2016
-*  @since   5.4.0
-*
-*  @param   void
-*  @return  void
-*/
-function acf_pro_get_license_key()
+ *  This function will return the license key
+ *
+ *  @type    function
+ *  @date    20/09/2016
+ *  @since   5.4.0
+ *
+ *  @param   boolean $skip_url_check Skip the check of the current site url.
+ *  @return  string $license_key
+ */
+function acf_pro_get_license_key($skip_url_check = \false)
 {
 }
 /**
-*  acf_pro_update_license
-*
-*  This function will update the DB license
-*
-*  @type    function
-*  @date    20/09/2016
-*  @since   5.4.0
-*
-*  @param   string $key
-*  @return  void
-*/
+ *  This function will update the DB license
+ *
+ *  @type    function
+ *  @date    20/09/2016
+ *  @since   5.4.0
+ *
+ *  @param   string $key    The license key
+ *  @return  bool           The result of the update_option call
+ */
 function acf_pro_update_license($key = '')
+{
+}
+/**
+ * Activates the submitted license key
+ * Formally ACF_Admin_Updates::activate_pro_licence since 5.0.0
+ *
+ * @date    30/09/2021
+ * @since   5.11.0
+ *
+ * @param   string  $license_key    License key to activate
+ * @param   boolean $silent         Return errors rather than displaying them
+ * @return  mixed   $response       A wp-error instance, or an array with a boolean success key, and string message key
+ */
+function acf_pro_activate_license($license_key, $silent = \false)
+{
+}
+/**
+ * Deactivates the registered license key.
+ * Formally ACF_Admin_Updates::deactivate_pro_licence since 5.0.0
+ *
+ * @date    30/09/2021
+ * @since   5.11.0
+ *
+ * @param   bool $silent     Return errors rather than displaying them
+ * @return  mixed   $response   A wp-error instance, or an array with a boolean success key, and string message key
+ */
+function acf_pro_deactivate_license($silent = \false)
+{
+}
+/**
+ * Adds an admin notice using the provided WP_Error.
+ *
+ * @date    14/1/19
+ * @since   5.7.10
+ *
+ * @param   WP_Error $wp_error The error to display.
+ */
+function display_wp_activation_error($wp_error)
 {
 }
