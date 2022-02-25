@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.11.3';
+    var $version = '5.11.4';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -14205,8 +14205,6 @@ function acf_idify($str = '')
 {
 }
 /**
- * acf_slugify
- *
  * Returns a slug friendly string.
  *
  * @date    24/12/17
