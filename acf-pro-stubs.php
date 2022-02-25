@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.10.2';
+    var $version = '5.11';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -241,7 +241,7 @@ class ACF
 }
 class acf_admin_field_group
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the class functionality
@@ -250,8 +250,8 @@ class acf_admin_field_group
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
@@ -271,7 +271,7 @@ class acf_admin_field_group
     function use_block_editor_for_post_type($use_block_editor, $post_type)
     {
     }
-    /**
+    /*
      *  post_updated_messages
      *
      *  This function will customize the message shown when editing a field group
@@ -280,13 +280,13 @@ class acf_admin_field_group
      *  @date    30/04/2014
      *  @since   5.0.0
      *
-     *  @param   array $messages
+     *  @param   $messages (array)
      *  @return  $messages
      */
     function post_updated_messages($messages)
     {
     }
-    /**
+    /*
      *  current_screen
      *
      *  This function is fired when loading the admin page before HTML has been rendered.
@@ -295,13 +295,13 @@ class acf_admin_field_group
      *  @date    21/07/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function current_screen()
     {
     }
-    /**
+    /*
      *  admin_enqueue_scripts
      *
      *  This action is run after post query but before any admin script / head actions.
@@ -311,13 +311,13 @@ class acf_admin_field_group
      *  @date    30/06/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function admin_enqueue_scripts()
     {
     }
-    /**
+    /*
      *  admin_head
      *
      *  This function will setup all functionality for the field group edit page to work
@@ -326,13 +326,13 @@ class acf_admin_field_group
      *  @date    23/06/12
      *  @since   3.1.8
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function admin_head()
     {
     }
-    /**
+    /*
      *  edit_form_after_title
      *
      *  This action will allow ACF to render metaboxes after the title
@@ -340,13 +340,13 @@ class acf_admin_field_group
      *  @type    action
      *  @date    17/08/13
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function edit_form_after_title()
     {
     }
-    /**
+    /*
      *  form_data
      *
      *  This function will add extra HTML to the acf form data element
@@ -355,13 +355,13 @@ class acf_admin_field_group
      *  @date    31/05/2016
      *  @since   5.3.8
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function form_data($args)
     {
     }
-    /**
+    /*
      *  admin_l10n
      *
      *  This function will append extra l10n strings to the acf JS object
@@ -370,13 +370,13 @@ class acf_admin_field_group
      *  @date    31/05/2016
      *  @since   5.3.8
      *
-     *  @param   array $l10n
+     *  @param   $l10n (array)
      *  @return  $l10n
      */
     function admin_l10n($l10n)
     {
     }
-    /**
+    /*
      *  admin_footer
      *
      *  description
@@ -385,13 +385,13 @@ class acf_admin_field_group
      *  @date    11/01/2016
      *  @since   5.3.2
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function admin_footer()
     {
     }
-    /**
+    /*
      *  screen_settings
      *
      *  description
@@ -400,13 +400,13 @@ class acf_admin_field_group
      *  @date    26/01/13
      *  @since   3.6.0
      *
-     *  @param   string $current
+     *  @param   $current (string)
      *  @return  $current
      */
     function screen_settings($html)
     {
     }
-    /**
+    /*
      *  post_submitbox_misc_actions
      *
      *  This function will customize the publish metabox
@@ -415,13 +415,13 @@ class acf_admin_field_group
      *  @date    17/07/2015
      *  @since   5.2.9
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function post_submitbox_misc_actions()
     {
     }
-    /**
+    /*
      *  save_post
      *
      *  This function will save all the field group data
@@ -430,13 +430,13 @@ class acf_admin_field_group
      *  @date    23/06/12
      *  @since   1.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function save_post($post_id, $post)
     {
     }
-    /**
+    /*
      *  mb_fields
      *
      *  This function will render the HTML for the medtabox 'acf-field-group-fields'
@@ -445,13 +445,13 @@ class acf_admin_field_group
      *  @date    28/09/13
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   N/A
+     *  @return  N/A
      */
     function mb_fields()
     {
     }
-    /**
+    /*
      *  mb_options
      *
      *  This function will render the HTML for the medtabox 'acf-field-group-options'
@@ -460,13 +460,13 @@ class acf_admin_field_group
      *  @date    28/09/13
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   N/A
+     *  @return  N/A
      */
     function mb_options()
     {
     }
-    /**
+    /*
      *  mb_locations
      *
      *  This function will render the HTML for the medtabox 'acf-field-group-locations'
@@ -475,13 +475,13 @@ class acf_admin_field_group
      *  @date    28/09/13
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   N/A
+     *  @return  N/A
      */
     function mb_locations()
     {
     }
-    /**
+    /*
      *  ajax_render_location_rule
      *
      *  This function can be accessed via an AJAX action and will return the result from the render_location_value function
@@ -490,13 +490,13 @@ class acf_admin_field_group
      *  @date    30/09/13
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function ajax_render_location_rule()
     {
     }
-    /**
+    /*
      *  ajax_render_field_settings
      *
      *  This function will return HTML containing the field's settings based on it's new type
@@ -505,13 +505,13 @@ class acf_admin_field_group
      *  @date    30/09/13
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function ajax_render_field_settings()
     {
     }
-    /**
+    /*
      *  ajax_move_field
      *
      *  description
@@ -520,8 +520,8 @@ class acf_admin_field_group
      *  @date    20/01/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function ajax_move_field()
     {
@@ -906,7 +906,7 @@ class ACF_Data
      * @date    9/1/19
      * @since   5.7.10
      *
-     * @param   string|array $name The data name or an array of data.
+     * @param   (string|array) $name The data name or an array of data.
      * @param   mixed          $value The data value.
      * @return  ACF_Data
      */
@@ -991,7 +991,7 @@ class ACF_Data
      * @date    9/1/19
      * @since   5.7.10
      *
-     * @param   string|array $name The data name or an array of data.
+     * @param   (string|array) $name The data name or an array of data.
      * @param   mixed          $value The data value.
      * @return  ACF_Data
      */
@@ -1138,8 +1138,8 @@ class acf_admin_tools
      *  @date    10/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
@@ -1153,7 +1153,7 @@ class acf_admin_tools
      *  @since   5.6.3
      *
      *  @param   string $class
-     *  @return  void
+     *  @return  n/a
      */
     function register_tool($class)
     {
@@ -1167,7 +1167,7 @@ class acf_admin_tools
      *  @since   5.6.3
      *
      *  @param   string $name
-     *  @return  void
+     *  @return  n/a
      */
     function get_tool($name)
     {
@@ -1180,13 +1180,13 @@ class acf_admin_tools
      *  @date    10/10/17
      *  @since   5.6.3
      *
-     *  @param   void
+     *  @param   n/a
      *  @return  array
      */
     function get_tools()
     {
     }
-    /**
+    /*
      *  admin_menu
      *
      *  This function will add the ACF menu item to the WP admin
@@ -1195,8 +1195,8 @@ class acf_admin_tools
      *  @date    28/09/13
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function admin_menu()
     {
@@ -1209,8 +1209,8 @@ class acf_admin_tools
      *  @date    10/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function load()
     {
@@ -1223,8 +1223,8 @@ class acf_admin_tools
      *  @date    10/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function include_tools()
     {
@@ -1237,8 +1237,8 @@ class acf_admin_tools
      *  @date    10/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function check_submit()
     {
@@ -1251,8 +1251,8 @@ class acf_admin_tools
      *  @date    10/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function html()
     {
@@ -1265,8 +1265,8 @@ class acf_admin_tools
      *  @date    10/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function metabox_html($post, $metabox)
     {
@@ -1518,8 +1518,8 @@ class ACF_Admin_Tool
      *  @date    19/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function get_name()
     {
@@ -1532,8 +1532,8 @@ class ACF_Admin_Tool
      *  @date    19/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function get_title()
     {
@@ -1546,8 +1546,8 @@ class ACF_Admin_Tool
      *  @date    19/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function get_url()
     {
@@ -1560,13 +1560,13 @@ class ACF_Admin_Tool
      *  @date    19/10/17
      *  @since   5.6.3
      *
-     *  @param   void
+     *  @param   n/a
      *  @return  bool
      */
     function is_active()
     {
     }
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the class functionality
@@ -1575,8 +1575,8 @@ class ACF_Admin_Tool
      *  @date    27/6/17
      *  @since   5.6.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
@@ -1589,8 +1589,8 @@ class ACF_Admin_Tool
      *  @date    10/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
@@ -1603,8 +1603,8 @@ class ACF_Admin_Tool
      *  @date    10/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function load()
     {
@@ -1617,8 +1617,8 @@ class ACF_Admin_Tool
      *  @date    10/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function html()
     {
@@ -1631,8 +1631,8 @@ class ACF_Admin_Tool
      *  @date    10/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function submit()
     {
@@ -1652,8 +1652,8 @@ class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
      *  @date    10/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
@@ -1666,8 +1666,8 @@ class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
      *  @date    10/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function submit()
     {
@@ -1680,8 +1680,8 @@ class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
      *  @date    17/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function submit_download()
     {
@@ -1694,8 +1694,8 @@ class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
      *  @date    17/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function submit_generate()
     {
@@ -1708,8 +1708,8 @@ class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
      *  @date    21/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function load()
     {
@@ -1722,8 +1722,8 @@ class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
      *  @date    10/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function html()
     {
@@ -1736,8 +1736,8 @@ class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
      *  @date    24/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function html_field_selection()
     {
@@ -1750,8 +1750,8 @@ class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
      *  @date    21/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function html_panel_selection()
     {
@@ -1764,8 +1764,8 @@ class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
      *  @date    21/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function html_panel_settings()
     {
@@ -1778,8 +1778,8 @@ class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
      *  @date    20/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function html_archive()
     {
@@ -1792,8 +1792,8 @@ class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
      *  @date    20/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function html_single()
     {
@@ -1806,8 +1806,8 @@ class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
      *  @date    17/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function html_generate()
     {
@@ -1820,8 +1820,8 @@ class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
      *  @date    20/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function get_selected_keys()
     {
@@ -1834,7 +1834,7 @@ class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
      *  @date    17/10/17
      *  @since   5.6.3
      *
-     *  @param   void
+     *  @param   n/a
      *  @return  array
      */
     function get_selected()
@@ -1851,8 +1851,8 @@ class ACF_Admin_Tool_Import extends \ACF_Admin_Tool
      *  @date    10/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
@@ -1865,8 +1865,8 @@ class ACF_Admin_Tool_Import extends \ACF_Admin_Tool
      *  @date    10/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function html()
     {
@@ -1879,8 +1879,8 @@ class ACF_Admin_Tool_Import extends \ACF_Admin_Tool
      *  @date    10/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function submit()
     {
@@ -1998,7 +1998,7 @@ class ACF_Ajax
      * @since   5.8.8
      *
      * @param   array $request The request args.
-     * @return  bool|WP_Error True on success, WP_Error on fail.
+     * @return  (bool|WP_Error) True on success, WP_Error on fail.
      */
     function verify_request($request)
     {
@@ -2113,7 +2113,7 @@ class ACF_Ajax_Query extends \ACF_Ajax
      * @since   5.7.2
      *
      * @param   array $request The request args.
-     * @return  array|WP_Error The response data or WP_Error.
+     * @return  (array|WP_Error) The response data or WP_Error.
      */
     function get_response($request)
     {
@@ -2684,7 +2684,7 @@ class ACF_Compatibility
     function validate_user_field($field)
     {
     }
-    /**
+    /*
      *  validate_field_group
      *
      *  This function will provide compatibility with ACF4 field groups
@@ -2693,7 +2693,7 @@ class ACF_Compatibility
      *  @date    23/04/2014
      *  @since   5.0.0
      *
-     *  @param   array $field_group
+     *  @param   $field_group (array)
      *  @return  $field_group
      */
     function validate_field_group($field_group)
@@ -2718,7 +2718,7 @@ class acf_fields
 {
     /** @var array Contains an array of field type instances */
     var $types = array();
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the class functionality
@@ -2727,13 +2727,13 @@ class acf_fields
      *  @date    5/03/2014
      *  @since   5.4.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
     }
-    /**
+    /*
      *  register_field_type
      *
      *  This function will register a field type instance
@@ -2742,13 +2742,13 @@ class acf_fields
      *  @date    6/07/2016
      *  @since   5.4.0
      *
-     *  @param   string $class
-     *  @return  void
+     *  @param   $class (string)
+     *  @return  n/a
      */
     function register_field_type($class)
     {
     }
-    /**
+    /*
      *  get_field_type
      *
      *  This function will return a field type instance
@@ -2757,13 +2757,13 @@ class acf_fields
      *  @date    6/07/2016
      *  @since   5.4.0
      *
-     *  @param   string $name
-     *  @return  mixed
+     *  @param   $name (string)
+     *  @return  (mixed)
      */
     function get_field_type($name)
     {
     }
-    /**
+    /*
      *  is_field_type
      *
      *  This function will return true if a field type exists
@@ -2772,13 +2772,13 @@ class acf_fields
      *  @date    6/07/2016
      *  @since   5.4.0
      *
-     *  @param   string $name
-     *  @return  mixed
+     *  @param   $name (string)
+     *  @return  (mixed)
      */
     function is_field_type($name)
     {
     }
-    /**
+    /*
      *  register_field_type_info
      *
      *  This function will store a basic array of info about the field type
@@ -2788,13 +2788,13 @@ class acf_fields
      *  @date    29/5/17
      *  @since   5.6.0
      *
-     *  @param   array $info
-     *  @return  void
+     *  @param   $info (array)
+     *  @return  n/a
      */
     function register_field_type_info($info)
     {
     }
-    /**
+    /*
      *  get_field_types
      *
      *  This function will return an array of all field types
@@ -2803,8 +2803,8 @@ class acf_fields
      *  @date    6/07/2016
      *  @since   5.4.0
      *
-     *  @param   string $name
-     *  @return  mixed
+     *  @param   $name (string)
+     *  @return  (mixed)
      */
     function get_field_types()
     {
@@ -2814,7 +2814,8 @@ class acf_field
 {
     // vars
     var $name = '', $label = '', $category = 'basic', $defaults = array(), $l10n = array(), $public = \true;
-    /**
+    public $show_in_rest = \true;
+    /*
      *  __construct
      *
      *  This function will initialize the field type
@@ -2823,13 +2824,13 @@ class acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
     }
-    /**
+    /*
      *  initialize
      *
      *  This function will initialize the field type
@@ -2838,13 +2839,13 @@ class acf_field
      *  @date    27/6/17
      *  @since   5.6.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  add_filter
      *
      *  This function checks if the function is_callable before adding the filter
@@ -2853,16 +2854,16 @@ class acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   string $tag
-     *  @param   string $function_to_add
-     *  @param   int $priority
-     *  @param   int $accepted_args
-     *  @return  void
+     *  @param   $tag (string)
+     *  @param   $function_to_add (string)
+     *  @param   $priority (int)
+     *  @param   $accepted_args (int)
+     *  @return  n/a
      */
     function add_filter($tag = '', $function_to_add = '', $priority = 10, $accepted_args = 1)
     {
     }
-    /**
+    /*
      *  add_field_filter
      *
      *  This function will add a field type specific filter
@@ -2871,16 +2872,16 @@ class acf_field
      *  @date    29/09/2016
      *  @since   5.4.0
      *
-     *  @param   string $tag
-     *  @param   string $function_to_add
-     *  @param   int $priority
-     *  @param   int $accepted_args
-     *  @return  void
+     *  @param   $tag (string)
+     *  @param   $function_to_add (string)
+     *  @param   $priority (int)
+     *  @param   $accepted_args (int)
+     *  @return  n/a
      */
     function add_field_filter($tag = '', $function_to_add = '', $priority = 10, $accepted_args = 1)
     {
     }
-    /**
+    /*
      *  add_action
      *
      *  This function checks if the function is_callable before adding the action
@@ -2889,16 +2890,16 @@ class acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   string $tag
-     *  @param   string $function_to_add
-     *  @param   int $priority
-     *  @param   int $accepted_args
-     *  @return  void
+     *  @param   $tag (string)
+     *  @param   $function_to_add (string)
+     *  @param   $priority (int)
+     *  @param   $accepted_args (int)
+     *  @return  n/a
      */
     function add_action($tag = '', $function_to_add = '', $priority = 10, $accepted_args = 1)
     {
     }
-    /**
+    /*
      *  add_field_action
      *
      *  This function will add a field type specific filter
@@ -2907,16 +2908,16 @@ class acf_field
      *  @date    29/09/2016
      *  @since   5.4.0
      *
-     *  @param   string $tag
-     *  @param   string $function_to_add
-     *  @param   int $priority
-     *  @param   int $accepted_args
-     *  @return  void
+     *  @param   $tag (string)
+     *  @param   $function_to_add (string)
+     *  @param   $priority (int)
+     *  @param   $accepted_args (int)
+     *  @return  n/a
      */
     function add_field_action($tag = '', $function_to_add = '', $priority = 10, $accepted_args = 1)
     {
     }
-    /**
+    /*
      *  validate_field
      *
      *  This function will append default settings to a field
@@ -2925,13 +2926,13 @@ class acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   array $field
-     *  @return  array $field
+     *  @param   $field (array)
+     *  @return  $field (array)
      */
     function validate_field($field)
     {
     }
-    /**
+    /*
      *  admin_l10n
      *
      *  This function will append l10n text translations to an array which is later passed to JS
@@ -2940,15 +2941,76 @@ class acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   array $l10n
-     *  @return  array $l10n
+     *  @param   $l10n (array)
+     *  @return  $l10n (array)
      */
     function input_admin_l10n($l10n)
+    {
+    }
+    /**
+     * Add additional validation for fields being updated via the REST API.
+     *
+     * @param bool  $valid
+     * @param mixed $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Return an array of links for addition to the REST API response. Each link is an array and must have both `rel` and
+     * `href` keys. The `href` key must be a REST API resource URL. If a link is marked as `embeddable`, the `_embed` URL
+     * parameter will trigger WordPress to dispatch an internal sub request and load the object within the same request
+     * under the `_embedded` response property.
+     *
+     * e.g;
+     *    [
+     *        [
+     *            'rel' => 'acf:post',
+     *            'href' => 'https://example.com/wp-json/wp/v2/posts/497',
+     *            'embeddable' => true,
+     *        ],
+     *        [
+     *            'rel' => 'acf:user',
+     *            'href' => 'https://example.com/wp-json/wp/v2/users/2',
+     *            'embeddable' => true,
+     *        ],
+     *    ]
+     *
+     * @param mixed      $value The raw (unformatted) field value.
+     * @param string|int $post_id
+     * @param array      $field
+     * @return array
+     */
+    public function get_rest_links($value, $post_id, array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
     {
     }
 }
 class acf_field__accordion extends \acf_field
 {
+    public $show_in_rest = \false;
     /**
      *  initialize
      *
@@ -2957,8 +3019,8 @@ class acf_field__accordion extends \acf_field
      *  @date    30/10/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
@@ -2972,12 +3034,12 @@ class acf_field__accordion extends \acf_field
      *  @since   5.6.3
      *
      *  @param   array $field
-     *  @return  void
+     *  @return  n/a
      */
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -2992,7 +3054,7 @@ class acf_field__accordion extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  load_field()
      *
      *  This filter is appied to the $field after it is loaded from the database
@@ -3019,8 +3081,8 @@ class acf_field_button_group extends \acf_field
      *  @date    18/9/17
      *  @since   5.6.3
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
@@ -3034,7 +3096,7 @@ class acf_field_button_group extends \acf_field
      *  @since   5.6.3
      *
      *  @param   array $field The field settings array
-     *  @return  void
+     *  @return  n/a
      */
     function render_field($field)
     {
@@ -3048,12 +3110,12 @@ class acf_field_button_group extends \acf_field
      *  @since   5.6.3
      *
      *  @param   array $field The field settings array
-     *  @return  void
+     *  @return  n/a
      */
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  update_field()
      *
      *  This filter is appied to the $field before it is saved to the database
@@ -3067,7 +3129,7 @@ class acf_field_button_group extends \acf_field
     function update_field($field)
     {
     }
-    /**
+    /*
      *  load_value()
      *
      *  This filter is appied to the $value after it is loaded from the db
@@ -3083,7 +3145,7 @@ class acf_field_button_group extends \acf_field
     function load_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  translate_field
      *
      *  This function will translate field settings
@@ -3097,7 +3159,7 @@ class acf_field_button_group extends \acf_field
     function translate_field($field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -3113,10 +3175,19 @@ class acf_field_button_group extends \acf_field
     function format_value($value, $post_id, $field)
     {
     }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    function get_rest_schema(array $field)
+    {
+    }
 }
 class acf_field_checkbox extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -3125,30 +3196,30 @@ class acf_field_checkbox extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
      *
-     *  @param   array $field the $field being rendered
+     *  @param   $field (array) the $field being rendered
      *
      *  @type    action
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   array $field the $field being edited
-     *  @return  void
+     *  @param   $field (array) the $field being edited
+     *  @return  n/a
      */
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_choices
      *
      *  description
@@ -3157,13 +3228,13 @@ class acf_field_checkbox extends \acf_field
      *  @date    15/7/17
      *  @since   5.6.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function render_field_choices($field)
     {
     }
-    /**
+    /*
      *  render_field_toggle
      *
      *  description
@@ -3172,13 +3243,13 @@ class acf_field_checkbox extends \acf_field
      *  @date    15/7/17
      *  @since   5.6.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function render_field_toggle($field)
     {
     }
-    /**
+    /*
      *  render_field_custom
      *
      *  description
@@ -3187,8 +3258,8 @@ class acf_field_checkbox extends \acf_field
      *  @date    15/7/17
      *  @since   5.6.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function render_field_custom($field)
     {
@@ -3196,7 +3267,7 @@ class acf_field_checkbox extends \acf_field
     function walk($choices = array(), $args = array(), $depth = 0)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -3211,7 +3282,7 @@ class acf_field_checkbox extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  update_field()
      *
      *  This filter is appied to the $field before it is saved to the database
@@ -3228,7 +3299,7 @@ class acf_field_checkbox extends \acf_field
     function update_field($field)
     {
     }
-    /**
+    /*
      *  update_value()
      *
      *  This filter is appied to the $value before it is updated in the db
@@ -3246,7 +3317,7 @@ class acf_field_checkbox extends \acf_field
     function update_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  translate_field
      *
      *  This function will translate field settings
@@ -3255,13 +3326,13 @@ class acf_field_checkbox extends \acf_field
      *  @date    8/03/2016
      *  @since   5.3.2
      *
-     *  @param   array $field
+     *  @param   $field (array)
      *  @return  $field
      */
     function translate_field($field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -3270,19 +3341,28 @@ class acf_field_checkbox extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
     {
     }
 }
 class acf_field_color_picker extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -3291,13 +3371,13 @@ class acf_field_color_picker extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  input_admin_enqueue_scripts
      *
      *  description
@@ -3306,13 +3386,13 @@ class acf_field_color_picker extends \acf_field
      *  @date    16/12/2015
      *  @since   5.3.2
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function input_admin_enqueue_scripts()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -3326,7 +3406,7 @@ class acf_field_color_picker extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -3372,7 +3452,7 @@ class acf_field_color_picker extends \acf_field
 }
 class acf_field_date_picker extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -3381,13 +3461,13 @@ class acf_field_date_picker extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  input_admin_enqueue_scripts
      *
      *  description
@@ -3396,13 +3476,13 @@ class acf_field_date_picker extends \acf_field
      *  @date    16/12/2015
      *  @since   5.3.2
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function input_admin_enqueue_scripts()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -3416,7 +3496,7 @@ class acf_field_date_picker extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -3431,7 +3511,7 @@ class acf_field_date_picker extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -3440,19 +3520,54 @@ class acf_field_date_picker extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
+    {
+    }
+    /**
+     *  This filter is applied to the $field after it is loaded from the database
+     *  and ensures the return and display values are set.
+     *
+     *  @type    filter
+     *  @since   5.11.0
+     *  @date    28/09/21
+     *
+     *  @param array $field The field array holding all the field options.
+     *
+     *  @return array
+     */
+    function load_field($field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
     {
     }
 }
 class acf_field_date_and_time_picker extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -3461,13 +3576,13 @@ class acf_field_date_and_time_picker extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  input_admin_enqueue_scripts
      *
      *  description
@@ -3476,13 +3591,13 @@ class acf_field_date_and_time_picker extends \acf_field
      *  @date    16/12/2015
      *  @since   5.3.2
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function input_admin_enqueue_scripts()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -3496,7 +3611,7 @@ class acf_field_date_and_time_picker extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -3511,7 +3626,7 @@ class acf_field_date_and_time_picker extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -3520,19 +3635,43 @@ class acf_field_date_and_time_picker extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
+    {
+    }
+    /**
+     *  This filter is applied to the $field after it is loaded from the database
+     *  and ensures the return and display values are set.
+     *
+     *  @type    filter
+     *  @since   5.11.0
+     *  @date    28/09/21
+     *
+     *  @param array $field The field array holding all the field options.
+     *
+     *  @return array
+     */
+    function load_field($field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
     {
     }
 }
 class acf_field_email extends \acf_field
 {
-    /**
+    /*
      *  initialize
      *
      *  This function will setup the field type data
@@ -3541,13 +3680,13 @@ class acf_field_email extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -3561,7 +3700,7 @@ class acf_field_email extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -3591,10 +3730,19 @@ class acf_field_email extends \acf_field
     public function validate_value($valid, $value, $field, $input)
     {
     }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
 }
 class acf_field_file extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -3603,13 +3751,13 @@ class acf_field_file extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  input_admin_enqueue_scripts
      *
      *  description
@@ -3618,13 +3766,13 @@ class acf_field_file extends \acf_field
      *  @date    16/12/2015
      *  @since   5.3.2
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function input_admin_enqueue_scripts()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -3638,7 +3786,7 @@ class acf_field_file extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -3653,7 +3801,7 @@ class acf_field_file extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -3662,16 +3810,16 @@ class acf_field_file extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  get_media_item_args
      *
      *  description
@@ -3680,13 +3828,13 @@ class acf_field_file extends \acf_field
      *  @date    27/01/13
      *  @since   3.6.0
      *
-     *  @param   array $vars
+     *  @param   $vars (array)
      *  @return  $vars
      */
     function get_media_item_args($vars)
     {
     }
-    /**
+    /*
      *  update_value()
      *
      *  This filter is appied to the $value before it is updated in the db
@@ -3713,16 +3861,48 @@ class acf_field_file extends \acf_field
      *  @date    11/02/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function validate_value($valid, $value, $field, $input)
+    {
+    }
+    /**
+     * Validates file fields updated via the REST API.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
     {
     }
 }
 class acf_field_google_map extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -3731,13 +3911,13 @@ class acf_field_google_map extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  input_admin_enqueue_scripts
      *
      *  description
@@ -3746,13 +3926,13 @@ class acf_field_google_map extends \acf_field
      *  @date    16/12/2015
      *  @since   5.3.2
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function input_admin_enqueue_scripts()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -3766,7 +3946,7 @@ class acf_field_google_map extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -3792,12 +3972,12 @@ class acf_field_google_map extends \acf_field
      * @param   mixed $value The value loaded from the database.
      * @param   mixed $post_id The post ID where the value is saved.
      * @param   array $field The field settings array.
-     * @return  array|false
+     * @return  (array|false)
      */
     function load_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  update_value()
      *
      *  This filter is appied to the $value before it is updated in the db
@@ -3815,10 +3995,30 @@ class acf_field_google_map extends \acf_field
     function update_value($value, $post_id, $field)
     {
     }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field__group extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -3827,13 +4027,13 @@ class acf_field__group extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  load_field()
      *
      *  This filter is appied to the $field after it is loaded from the database
@@ -3849,7 +4049,7 @@ class acf_field__group extends \acf_field
     function load_field($field)
     {
     }
-    /**
+    /*
      *  load_value()
      *
      *  This filter is applied to the $value after it is loaded from the db
@@ -3858,15 +4058,15 @@ class acf_field__group extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value found in the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value found in the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *  @return  $value
      */
     function load_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -3875,16 +4075,16 @@ class acf_field__group extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  update_value()
      *
      *  This filter is appied to the $value before it is updated in the db
@@ -3902,7 +4102,7 @@ class acf_field__group extends \acf_field
     function update_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  prepare_field_for_db
      *
      *  This function will modify sub fields ready for update / load
@@ -3911,13 +4111,13 @@ class acf_field__group extends \acf_field
      *  @date    4/11/16
      *  @since   5.5.0
      *
-     *  @param   array $field
+     *  @param   $field (array)
      *  @return  $field
      */
     function prepare_field_for_db($field)
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -3931,7 +4131,7 @@ class acf_field__group extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_block
      *
      *  description
@@ -3940,13 +4140,13 @@ class acf_field__group extends \acf_field
      *  @date    12/07/2016
      *  @since   5.4.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function render_field_block($field)
     {
     }
-    /**
+    /*
      *  render_field_table
      *
      *  description
@@ -3955,13 +4155,13 @@ class acf_field__group extends \acf_field
      *  @date    12/07/2016
      *  @since   5.4.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function render_field_table($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -3976,7 +4176,7 @@ class acf_field__group extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  validate_value
      *
      *  description
@@ -3985,13 +4185,13 @@ class acf_field__group extends \acf_field
      *  @date    11/02/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function validate_value($valid, $value, $field, $input)
     {
     }
-    /**
+    /*
      *  duplicate_field()
      *
      *  This filter is appied to the $field before it is duplicated and saved to the database
@@ -4035,7 +4235,7 @@ class acf_field__group extends \acf_field
     function prepare_field_for_import($field)
     {
     }
-    /**
+    /*
      *  delete_value
      *
      *  Called when deleting this field's value.
@@ -4065,10 +4265,30 @@ class acf_field__group extends \acf_field
     function delete_field($field)
     {
     }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array|mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_image extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -4077,13 +4297,13 @@ class acf_field_image extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  input_admin_enqueue_scripts
      *
      *  description
@@ -4092,8 +4312,8 @@ class acf_field_image extends \acf_field
      *  @date    16/12/2015
      *  @since   5.3.2
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function input_admin_enqueue_scripts()
     {
@@ -4110,7 +4330,7 @@ class acf_field_image extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -4125,7 +4345,7 @@ class acf_field_image extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -4134,16 +4354,16 @@ class acf_field_image extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  get_media_item_args
      *
      *  description
@@ -4152,13 +4372,13 @@ class acf_field_image extends \acf_field
      *  @date    27/01/13
      *  @since   3.6.0
      *
-     *  @param   array $vars
+     *  @param   $vars (array)
      *  @return  $vars
      */
     function get_media_item_args($vars)
     {
     }
-    /**
+    /*
      *  update_value()
      *
      *  This filter is appied to the $value before it is updated in the db
@@ -4185,16 +4405,48 @@ class acf_field_image extends \acf_field
      *  @date    11/02/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function validate_value($valid, $value, $field, $input)
+    {
+    }
+    /**
+     * Additional validation for the image field when submitted via REST.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
     {
     }
 }
 class acf_field_link extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -4203,13 +4455,13 @@ class acf_field_link extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  get_link
      *
      *  description
@@ -4218,13 +4470,13 @@ class acf_field_link extends \acf_field
      *  @date    16/5/17
      *  @since   5.5.13
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function get_link($value = '')
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -4238,7 +4490,7 @@ class acf_field_link extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -4253,7 +4505,7 @@ class acf_field_link extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -4262,16 +4514,16 @@ class acf_field_link extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  validate_value
      *
      *  description
@@ -4280,13 +4532,13 @@ class acf_field_link extends \acf_field
      *  @date    11/02/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function validate_value($valid, $value, $field, $input)
     {
     }
-    /**
+    /*
      *  update_value()
      *
      *  This filter is appied to the $value before it is updated in the db
@@ -4304,10 +4556,20 @@ class acf_field_link extends \acf_field
     function update_value($value, $post_id, $field)
     {
     }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
 }
 class acf_field_message extends \acf_field
 {
-    /**
+    public $show_in_rest = \false;
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -4316,13 +4578,13 @@ class acf_field_message extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -4336,7 +4598,7 @@ class acf_field_message extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -4351,7 +4613,7 @@ class acf_field_message extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  translate_field
      *
      *  This function will translate field settings
@@ -4360,13 +4622,13 @@ class acf_field_message extends \acf_field
      *  @date    8/03/2016
      *  @since   5.3.2
      *
-     *  @param   array $field
+     *  @param   $field (array)
      *  @return  $field
      */
     function translate_field($field)
     {
     }
-    /**
+    /*
      *  load_field()
      *
      *  This filter is appied to the $field after it is loaded from the database
@@ -4385,7 +4647,7 @@ class acf_field_message extends \acf_field
 }
 class acf_field_number extends \acf_field
 {
-    /**
+    /*
      *  initialize
      *
      *  This function will setup the field type data
@@ -4394,13 +4656,13 @@ class acf_field_number extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -4414,7 +4676,7 @@ class acf_field_number extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -4429,7 +4691,7 @@ class acf_field_number extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  validate_value
      *
      *  description
@@ -4438,13 +4700,13 @@ class acf_field_number extends \acf_field
      *  @date    11/02/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function validate_value($valid, $value, $field, $input)
     {
     }
-    /**
+    /*
      *  update_value()
      *
      *  This filter is appied to the $value before it is updated in the db
@@ -4462,10 +4724,30 @@ class acf_field_number extends \acf_field
     function update_value($value, $post_id, $field)
     {
     }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_oembed extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -4474,13 +4756,13 @@ class acf_field_oembed extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  prepare_field
      *
      *  This function will prepare the field for input
@@ -4489,13 +4771,13 @@ class acf_field_oembed extends \acf_field
      *  @date    14/2/17
      *  @since   5.5.8
      *
-     *  @param   array $field
-     *  @return  int
+     *  @param   $field (array)
+     *  @return  (int)
      */
     function prepare_field($field)
     {
     }
-    /**
+    /*
      *  wp_oembed_get
      *
      *  description
@@ -4504,13 +4786,13 @@ class acf_field_oembed extends \acf_field
      *  @date    24/01/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function wp_oembed_get($url = '', $width = 0, $height = 0)
     {
     }
-    /**
+    /*
      *  ajax_query
      *
      *  description
@@ -4519,13 +4801,13 @@ class acf_field_oembed extends \acf_field
      *  @date    24/10/13
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function ajax_query()
     {
     }
-    /**
+    /*
      *  get_ajax_query
      *
      *  This function will return an array of data formatted for use in a select2 AJAX response
@@ -4534,13 +4816,13 @@ class acf_field_oembed extends \acf_field
      *  @date    15/10/2014
      *  @since   5.0.9
      *
-     *  @param   array $options
-     *  @return  array
+     *  @param   $options (array)
+     *  @return  (array)
      */
     function get_ajax_query($args = array())
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -4554,7 +4836,7 @@ class acf_field_oembed extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -4578,19 +4860,28 @@ class acf_field_oembed extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
     {
     }
 }
 class acf_field_output extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -4599,25 +4890,25 @@ class acf_field_output extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
      *
-     *  @param   array $field the $field being rendered
+     *  @param   $field (array) the $field being rendered
      *
      *  @type    action
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   array $field the $field being edited
-     *  @return  void
+     *  @param   $field (array) the $field being edited
+     *  @return  n/a
      */
     function render_field($field)
     {
@@ -4625,7 +4916,7 @@ class acf_field_output extends \acf_field
 }
 class acf_field_page_link extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -4634,13 +4925,13 @@ class acf_field_page_link extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  ajax_query
      *
      *  description
@@ -4649,13 +4940,13 @@ class acf_field_page_link extends \acf_field
      *  @date    24/10/13
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function ajax_query()
     {
     }
-    /**
+    /*
      *  get_post_result
      *
      *  This function will return an array containing id, text and maybe description data
@@ -4664,14 +4955,14 @@ class acf_field_page_link extends \acf_field
      *  @date    7/07/2016
      *  @since   5.4.0
      *
-     *  @param   mixed $id
-     *  @param   string $text
-     *  @return  array
+     *  @param   $id (mixed)
+     *  @param   $text (string)
+     *  @return  (array)
      */
     function get_post_result($id, $text)
     {
     }
-    /**
+    /*
      *  get_post_title
      *
      *  This function returns the HTML for a result
@@ -4680,15 +4971,15 @@ class acf_field_page_link extends \acf_field
      *  @date    1/11/2013
      *  @since   5.0.0
      *
-     *  @param   object $post
-     *  @param   array $field
-     *  @param   int $post_id the post_id to which this value is saved to
-     *  @return  string
+     *  @param   $post (object)
+     *  @param   $field (array)
+     *  @param   $post_id (int) the post_id to which this value is saved to
+     *  @return  (string)
      */
     function get_post_title($post, $field, $post_id = 0, $is_search = 0)
     {
     }
-    /**
+    /*
      *  get_posts
      *
      *  This function will return an array of posts for a given field value
@@ -4697,13 +4988,13 @@ class acf_field_page_link extends \acf_field
      *  @date    13/06/2014
      *  @since   5.0.0
      *
-     *  @param   array $value
+     *  @param   $value (array)
      *  @return  $value
      */
     function get_posts($value, $field)
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -4717,7 +5008,7 @@ class acf_field_page_link extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -4732,7 +5023,7 @@ class acf_field_page_link extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -4741,16 +5032,16 @@ class acf_field_page_link extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  update_value()
      *
      *  This filter is appied to the $value before it is updated in the db
@@ -4768,10 +5059,52 @@ class acf_field_page_link extends \acf_field
     function update_value($value, $post_id, $field)
     {
     }
+    /**
+     * Validates page link fields updated via the REST API.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * @see \acf_field::get_rest_links()
+     * @param mixed      $value The raw (unformatted) field value.
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array
+     */
+    public function get_rest_links($value, $post_id, array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_password extends \acf_field
 {
-    /**
+    /*
      *  initialize
      *
      *  This function will setup the field type data
@@ -4780,13 +5113,13 @@ class acf_field_password extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -4800,7 +5133,7 @@ class acf_field_password extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -4818,7 +5151,7 @@ class acf_field_password extends \acf_field
 }
 class acf_field_post_object extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -4827,13 +5160,13 @@ class acf_field_post_object extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  ajax_query
      *
      *  description
@@ -4842,13 +5175,13 @@ class acf_field_post_object extends \acf_field
      *  @date    24/10/13
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function ajax_query()
     {
     }
-    /**
+    /*
      *  get_ajax_query
      *
      *  This function will return an array of data formatted for use in a select2 AJAX response
@@ -4857,13 +5190,13 @@ class acf_field_post_object extends \acf_field
      *  @date    15/10/2014
      *  @since   5.0.9
      *
-     *  @param   array $options
-     *  @return  array
+     *  @param   $options (array)
+     *  @return  (array)
      */
     function get_ajax_query($options = array())
     {
     }
-    /**
+    /*
      *  get_post_result
      *
      *  This function will return an array containing id, text and maybe description data
@@ -4872,14 +5205,14 @@ class acf_field_post_object extends \acf_field
      *  @date    7/07/2016
      *  @since   5.4.0
      *
-     *  @param   mixed $id
-     *  @param   string $text
-     *  @return  array
+     *  @param   $id (mixed)
+     *  @param   $text (string)
+     *  @return  (array)
      */
     function get_post_result($id, $text)
     {
     }
-    /**
+    /*
      *  get_post_title
      *
      *  This function returns the HTML for a result
@@ -4888,15 +5221,15 @@ class acf_field_post_object extends \acf_field
      *  @date    1/11/2013
      *  @since   5.0.0
      *
-     *  @param   object $post
-     *  @param   array $field
-     *  @param   int $post_id the post_id to which this value is saved to
-     *  @return  string
+     *  @param   $post (object)
+     *  @param   $field (array)
+     *  @param   $post_id (int) the post_id to which this value is saved to
+     *  @return  (string)
      */
     function get_post_title($post, $field, $post_id = 0, $is_search = 0)
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -4910,7 +5243,7 @@ class acf_field_post_object extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -4925,7 +5258,7 @@ class acf_field_post_object extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  load_value()
      *
      *  This filter is applied to the $value after it is loaded from the db
@@ -4934,15 +5267,15 @@ class acf_field_post_object extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value found in the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value found in the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *  @return  $value
      */
     function load_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -4951,16 +5284,16 @@ class acf_field_post_object extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  update_value()
      *
      *  This filter is appied to the $value before it is updated in the db
@@ -4978,7 +5311,7 @@ class acf_field_post_object extends \acf_field
     function update_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  get_posts
      *
      *  This function will return an array of posts for a given field value
@@ -4987,16 +5320,58 @@ class acf_field_post_object extends \acf_field
      *  @date    13/06/2014
      *  @since   5.0.0
      *
-     *  @param   array $value
+     *  @param   $value (array)
      *  @return  $value
      */
     function get_posts($value, $field)
     {
     }
+    /**
+     * Validates post object fields updated via the REST API.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * @see \acf_field::get_rest_links()
+     * @param mixed      $value The raw (unformatted) field value.
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array
+     */
+    public function get_rest_links($value, $post_id, array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_radio extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -5005,30 +5380,30 @@ class acf_field_radio extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
      *
-     *  @param   array $field the $field being rendered
+     *  @param   $field (array) the $field being rendered
      *
      *  @type    action
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   array $field the $field being edited
-     *  @return  void
+     *  @param   $field (array) the $field being edited
+     *  @return  n/a
      */
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -5043,7 +5418,7 @@ class acf_field_radio extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  update_field()
      *
      *  This filter is appied to the $field before it is saved to the database
@@ -5060,7 +5435,7 @@ class acf_field_radio extends \acf_field
     function update_field($field)
     {
     }
-    /**
+    /*
      *  update_value()
      *
      *  This filter is appied to the $value before it is updated in the db
@@ -5079,7 +5454,7 @@ class acf_field_radio extends \acf_field
     function update_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  load_value()
      *
      *  This filter is appied to the $value after it is loaded from the db
@@ -5097,7 +5472,7 @@ class acf_field_radio extends \acf_field
     function load_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  translate_field
      *
      *  This function will translate field settings
@@ -5106,13 +5481,13 @@ class acf_field_radio extends \acf_field
      *  @date    8/03/2016
      *  @since   5.3.2
      *
-     *  @param   array $field
+     *  @param   $field (array)
      *  @return  $field
      */
     function translate_field($field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -5121,19 +5496,28 @@ class acf_field_radio extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    function get_rest_schema(array $field)
     {
     }
 }
 class acf_field_range extends \acf_field_number
 {
-    /**
+    /*
      *  initialize
      *
      *  This function will setup the field type data
@@ -5142,13 +5526,13 @@ class acf_field_range extends \acf_field_number
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -5162,7 +5546,7 @@ class acf_field_range extends \acf_field_number
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -5177,10 +5561,30 @@ class acf_field_range extends \acf_field_number
     function render_field_settings($field)
     {
     }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_relationship extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -5189,13 +5593,13 @@ class acf_field_relationship extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  input_admin_enqueue_scripts
      *
      *  description
@@ -5204,13 +5608,13 @@ class acf_field_relationship extends \acf_field
      *  @date    16/12/2015
      *  @since   5.3.2
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function input_admin_enqueue_scripts()
     {
     }
-    /**
+    /*
      *  ajax_query
      *
      *  description
@@ -5219,13 +5623,13 @@ class acf_field_relationship extends \acf_field
      *  @date    24/10/13
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function ajax_query()
     {
     }
-    /**
+    /*
      *  get_ajax_query
      *
      *  This function will return an array of data formatted for use in a select2 AJAX response
@@ -5234,13 +5638,13 @@ class acf_field_relationship extends \acf_field
      *  @date    15/10/2014
      *  @since   5.0.9
      *
-     *  @param   array $options
-     *  @return  array
+     *  @param   $options (array)
+     *  @return  (array)
      */
     function get_ajax_query($options = array())
     {
     }
-    /**
+    /*
      *  get_post_result
      *
      *  This function will return an array containing id, text and maybe description data
@@ -5249,14 +5653,14 @@ class acf_field_relationship extends \acf_field
      *  @date    7/07/2016
      *  @since   5.4.0
      *
-     *  @param   mixed $id
-     *  @param   string $text
-     *  @return  array
+     *  @param   $id (mixed)
+     *  @param   $text (string)
+     *  @return  (array)
      */
     function get_post_result($id, $text)
     {
     }
-    /**
+    /*
      *  get_post_title
      *
      *  This function returns the HTML for a result
@@ -5265,15 +5669,15 @@ class acf_field_relationship extends \acf_field
      *  @date    1/11/2013
      *  @since   5.0.0
      *
-     *  @param   object $post
-     *  @param   array $field
-     *  @param   int $post_id the post_id to which this value is saved to
-     *  @return  string
+     *  @param   $post (object)
+     *  @param   $field (array)
+     *  @param   $post_id (int) the post_id to which this value is saved to
+     *  @return  (string)
      */
     function get_post_title($post, $field, $post_id = 0, $is_search = 0)
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -5287,7 +5691,7 @@ class acf_field_relationship extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -5302,7 +5706,7 @@ class acf_field_relationship extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is applied to the $value after it is loaded from the db and before it is returned to the template
@@ -5311,16 +5715,16 @@ class acf_field_relationship extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  validate_value
      *
      *  description
@@ -5329,8 +5733,8 @@ class acf_field_relationship extends \acf_field
      *  @date    11/02/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function validate_value($valid, $value, $field, $input)
     {
@@ -5353,10 +5757,52 @@ class acf_field_relationship extends \acf_field
     function update_value($value, $post_id, $field)
     {
     }
+    /**
+     * Validates relationship fields updated via the REST API.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * @see \acf_field::get_rest_links()
+     * @param mixed      $value The raw (unformatted) field value.
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array
+     */
+    public function get_rest_links($value, $post_id, array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_select extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -5365,13 +5811,13 @@ class acf_field_select extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  input_admin_enqueue_scripts
      *
      *  description
@@ -5380,13 +5826,13 @@ class acf_field_select extends \acf_field
      *  @date    16/12/2015
      *  @since   5.3.2
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function input_admin_enqueue_scripts()
     {
     }
-    /**
+    /*
      *  ajax_query
      *
      *  description
@@ -5395,13 +5841,13 @@ class acf_field_select extends \acf_field
      *  @date    24/10/13
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function ajax_query()
     {
     }
-    /**
+    /*
      *  get_ajax_query
      *
      *  This function will return an array of data formatted for use in a select2 AJAX response
@@ -5410,13 +5856,13 @@ class acf_field_select extends \acf_field
      *  @date    15/10/2014
      *  @since   5.0.9
      *
-     *  @param   array $options
-     *  @return  array
+     *  @param   $options (array)
+     *  @return  (array)
      */
     function get_ajax_query($options = array())
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -5430,7 +5876,7 @@ class acf_field_select extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -5445,7 +5891,7 @@ class acf_field_select extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  load_value()
      *
      *  This filter is applied to the $value after it is loaded from the db
@@ -5454,15 +5900,15 @@ class acf_field_select extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value found in the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value found in the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *  @return  $value
      */
     function load_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  update_field()
      *
      *  This filter is appied to the $field before it is saved to the database
@@ -5479,7 +5925,7 @@ class acf_field_select extends \acf_field
     function update_field($field)
     {
     }
-    /**
+    /*
      *  update_value()
      *
      *  This filter is appied to the $value before it is updated in the db
@@ -5497,7 +5943,7 @@ class acf_field_select extends \acf_field
     function update_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  translate_field
      *
      *  This function will translate field settings
@@ -5506,13 +5952,13 @@ class acf_field_select extends \acf_field
      *  @date    8/03/2016
      *  @since   5.3.2
      *
-     *  @param   array $field
+     *  @param   $field (array)
      *  @return  $field
      */
     function translate_field($field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -5521,11 +5967,11 @@ class acf_field_select extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
     {
@@ -5533,10 +5979,31 @@ class acf_field_select extends \acf_field
     function format_value_single($value, $post_id, $field)
     {
     }
+    /**
+     * Validates select fields updated via the REST API.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
 }
 class acf_field_separator extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -5545,13 +6012,13 @@ class acf_field_separator extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -5565,7 +6032,7 @@ class acf_field_separator extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  load_field()
      *
      *  This filter is appied to the $field after it is loaded from the database
@@ -5584,7 +6051,8 @@ class acf_field_separator extends \acf_field
 }
 class acf_field_tab extends \acf_field
 {
-    /**
+    public $show_in_rest = \false;
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -5593,13 +6061,13 @@ class acf_field_tab extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -5613,7 +6081,7 @@ class acf_field_tab extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -5628,7 +6096,7 @@ class acf_field_tab extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  load_field()
      *
      *  This filter is appied to the $field after it is loaded from the database
@@ -5649,7 +6117,7 @@ class acf_field_taxonomy extends \acf_field
 {
     // vars
     var $save_post_terms = array();
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -5658,13 +6126,13 @@ class acf_field_taxonomy extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  ajax_query
      *
      *  description
@@ -5673,13 +6141,13 @@ class acf_field_taxonomy extends \acf_field
      *  @date    24/10/13
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function ajax_query()
     {
     }
-    /**
+    /*
      *  get_ajax_query
      *
      *  This function will return an array of data formatted for use in a select2 AJAX response
@@ -5688,8 +6156,8 @@ class acf_field_taxonomy extends \acf_field
      *  @date    15/10/2014
      *  @since   5.0.9
      *
-     *  @param   array $options
-     *  @return  array
+     *  @param   $options (array)
+     *  @return  (array)
      */
     function get_ajax_query($options = array())
     {
@@ -5708,7 +6176,7 @@ class acf_field_taxonomy extends \acf_field
     function get_term_title($term, $field, $post_id = 0)
     {
     }
-    /**
+    /*
      *  get_terms
      *
      *  This function will return an array of terms for a given field value
@@ -5717,13 +6185,13 @@ class acf_field_taxonomy extends \acf_field
      *  @date    13/06/2014
      *  @since   5.0.0
      *
-     *  @param   array $value
+     *  @param   $value (array)
      *  @return  $value
      */
     function get_terms($value, $taxonomy = 'category')
     {
     }
-    /**
+    /*
      *  load_value()
      *
      *  This filter is appied to the $value after it is loaded from the db
@@ -5741,7 +6209,7 @@ class acf_field_taxonomy extends \acf_field
     function load_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  update_value()
      *
      *  This filter is appied to the $value before it is updated in the db
@@ -5760,21 +6228,19 @@ class acf_field_taxonomy extends \acf_field
     {
     }
     /**
-     *  save_post
+     * This function will save any terms in the save_post_terms array
      *
-     *  This function will save any terms in the save_post_terms array
+     * @date    26/11/2014
+     * @since   5.0.9
      *
-     *  @type    function
-     *  @date    26/11/2014
-     *  @since   5.0.9
+     * @param int $post_id
      *
-     *  @param   int $post_id
-     *  @return  void
+     * @return void
      */
     function save_post($post_id)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -5783,16 +6249,16 @@ class acf_field_taxonomy extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -5806,7 +6272,7 @@ class acf_field_taxonomy extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_select()
      *
      *  Create the HTML interface for your field
@@ -5820,7 +6286,7 @@ class acf_field_taxonomy extends \acf_field
     function render_field_select($field)
     {
     }
-    /**
+    /*
      *  render_field_checkbox()
      *
      *  Create the HTML interface for your field
@@ -5834,7 +6300,7 @@ class acf_field_taxonomy extends \acf_field
     function render_field_checkbox($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -5849,7 +6315,7 @@ class acf_field_taxonomy extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  ajax_add_term
      *
      *  description
@@ -5858,16 +6324,35 @@ class acf_field_taxonomy extends \acf_field
      *  @date    17/04/2015
      *  @since   5.2.3
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function ajax_add_term()
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * @see \acf_field::get_rest_links()
+     * @param mixed      $value The raw (unformatted) field value.
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array
+     */
+    public function get_rest_links($value, $post_id, array $field)
     {
     }
 }
 class acf_field_text extends \acf_field
 {
-    /**
+    /*
      *  initialize
      *
      *  This function will setup the field type data
@@ -5876,13 +6361,13 @@ class acf_field_text extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -5896,7 +6381,7 @@ class acf_field_text extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -5919,19 +6404,28 @@ class acf_field_text extends \acf_field
      * @date    29/1/19
      * @since   5.7.11
      *
-     * @param   bool|string Whether the value is vaid or not.
+     * @param   (bool|string) Whether the value is vaid or not.
      * @param   mixed                                          $value The field value.
      * @param   array                                          $field The field array.
      * @param   string                                         $input The HTML input name.
-     * @return  bool|string
+     * @return  (bool|string)
      */
     function validate_value($valid, $value, $field, $input)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    function get_rest_schema(array $field)
     {
     }
 }
 class acf_field_textarea extends \acf_field
 {
-    /**
+    /*
      *  initialize
      *
      *  This function will setup the field type data
@@ -5940,13 +6434,13 @@ class acf_field_textarea extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -5960,7 +6454,7 @@ class acf_field_textarea extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -5975,7 +6469,7 @@ class acf_field_textarea extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is applied to the $value after it is loaded from the db and before it is returned to the template
@@ -5984,11 +6478,11 @@ class acf_field_textarea extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
     {
@@ -6001,19 +6495,28 @@ class acf_field_textarea extends \acf_field
      * @date    29/1/19
      * @since   5.7.11
      *
-     * @param   bool|string Whether the value is vaid or not.
+     * @param   (bool|string) Whether the value is vaid or not.
      * @param   mixed                                          $value The field value.
      * @param   array                                          $field The field array.
      * @param   string                                         $input The HTML input name.
-     * @return  bool|string
+     * @return  (bool|string)
      */
     function validate_value($valid, $value, $field, $input)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    function get_rest_schema(array $field)
     {
     }
 }
 class acf_field_time_picker extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -6022,13 +6525,13 @@ class acf_field_time_picker extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -6042,7 +6545,7 @@ class acf_field_time_picker extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -6057,7 +6560,7 @@ class acf_field_time_picker extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -6066,19 +6569,43 @@ class acf_field_time_picker extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
+    {
+    }
+    /**
+     *  This filter is applied to the $field after it is loaded from the database
+     *  and ensures the return and display values are set.
+     *
+     *  @type    filter
+     *  @since   5.11.0
+     *  @date    28/09/21
+     *
+     *  @param array $field The field array holding all the field options.
+     *
+     *  @return array
+     */
+    function load_field($field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
     {
     }
 }
 class acf_field_true_false extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -6087,13 +6614,13 @@ class acf_field_true_false extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -6107,7 +6634,7 @@ class acf_field_true_false extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -6122,7 +6649,7 @@ class acf_field_true_false extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -6131,16 +6658,16 @@ class acf_field_true_false extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  validate_value
      *
      *  description
@@ -6149,13 +6676,13 @@ class acf_field_true_false extends \acf_field
      *  @date    11/02/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function validate_value($valid, $value, $field, $input)
     {
     }
-    /**
+    /*
      *  translate_field
      *
      *  This function will translate field settings
@@ -6164,16 +6691,36 @@ class acf_field_true_false extends \acf_field
      *  @date    8/03/2016
      *  @since   5.3.2
      *
-     *  @param   array $field
+     *  @param   $field (array)
      *  @return  $field
      */
     function translate_field($field)
     {
     }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_url extends \acf_field
 {
-    /**
+    /*
      *  initialize
      *
      *  This function will setup the field type data
@@ -6182,13 +6729,13 @@ class acf_field_url extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -6202,7 +6749,7 @@ class acf_field_url extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -6217,7 +6764,7 @@ class acf_field_url extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  validate_value
      *
      *  description
@@ -6226,10 +6773,19 @@ class acf_field_url extends \acf_field
      *  @date    11/02/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function validate_value($valid, $value, $field, $input)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
     {
     }
 }
@@ -6279,7 +6835,7 @@ class ACF_Field_User extends \ACF_Field
      *
      * @param   WP_User      $user The WP_User object.
      * @param   array        $field The ACF field related to this query.
-     * @param   int|string $post_id The post_id being edited.
+     * @param   (int|string) $post_id The post_id being edited.
      * @return  string
      */
     function get_result($user, $field, $post_id = 0)
@@ -6422,10 +6978,52 @@ class ACF_Field_User extends \ACF_Field
     function user_search_columns($columns, $search, $WP_User_Query)
     {
     }
+    /**
+     * Validates user fields updated via the REST API.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * @see \acf_field::get_rest_links()
+     * @param mixed      $value The raw (unformatted) field value.
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array
+     */
+    public function get_rest_links($value, $post_id, array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_wysiwyg extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -6434,13 +7032,13 @@ class acf_field_wysiwyg extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  add_filters
      *
      *  This function will add filters to 'acf_the_content'
@@ -6449,13 +7047,13 @@ class acf_field_wysiwyg extends \acf_field
      *  @date    20/09/2016
      *  @since   5.4.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function add_filters()
     {
     }
-    /**
+    /*
      *  get_toolbars
      *
      *  This function will return an array of toolbars for the WYSIWYG field
@@ -6464,13 +7062,13 @@ class acf_field_wysiwyg extends \acf_field
      *  @date    18/04/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  array
+     *  @param   n/a
+     *  @return  (array)
      */
     function get_toolbars()
     {
     }
-    /**
+    /*
      *  acf_enqueue_uploader
      *
      *  Registers toolbars data for the WYSIWYG field.
@@ -6485,7 +7083,7 @@ class acf_field_wysiwyg extends \acf_field
     function acf_enqueue_uploader()
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -6499,7 +7097,7 @@ class acf_field_wysiwyg extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -6514,7 +7112,7 @@ class acf_field_wysiwyg extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -6523,11 +7121,11 @@ class acf_field_wysiwyg extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
     {
@@ -6535,7 +7133,7 @@ class acf_field_wysiwyg extends \acf_field
 }
 class acf_form_attachment
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the class functionality
@@ -6544,13 +7142,13 @@ class acf_form_attachment
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
     }
-    /**
+    /*
      *  admin_enqueue_scripts
      *
      *  This action is run after post query but before any admin script / head actions.
@@ -6560,13 +7158,13 @@ class acf_form_attachment
      *  @date    26/01/13
      *  @since   3.6.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   N/A
+     *  @return  N/A
      */
     function admin_enqueue_scripts()
     {
     }
-    /**
+    /*
      *  admin_footer
      *
      *  This function will add acf_form_data to the WP 4.0 attachment grid
@@ -6575,13 +7173,13 @@ class acf_form_attachment
      *  @date    11/09/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function admin_footer()
     {
     }
-    /**
+    /*
      *  edit_attachment
      *
      *  description
@@ -6590,13 +7188,13 @@ class acf_form_attachment
      *  @date    8/10/13
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function edit_attachment($form_fields, $post)
     {
     }
-    /**
+    /*
      *  save_attachment
      *
      *  description
@@ -6605,8 +7203,8 @@ class acf_form_attachment
      *  @date    8/10/13
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function save_attachment($post, $attachment)
     {
@@ -6614,7 +7212,7 @@ class acf_form_attachment
 }
 class acf_form_comment
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the class functionality
@@ -6623,13 +7221,13 @@ class acf_form_comment
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
     }
-    /**
+    /*
      *  validate_page
      *
      *  This function will check if the current page is for a post/page edit form
@@ -6638,13 +7236,13 @@ class acf_form_comment
      *  @date    23/06/12
      *  @since   3.1.8
      *
-     *  @param   void
-     *  @return  boolean
+     *  @param   n/a
+     *  @return  (boolean)
      */
     function validate_page()
     {
     }
-    /**
+    /*
      *  admin_enqueue_scripts
      *
      *  This action is run after post query but before any admin script / head actions.
@@ -6654,13 +7252,13 @@ class acf_form_comment
      *  @date    26/01/13
      *  @since   3.6.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function admin_enqueue_scripts()
     {
     }
-    /**
+    /*
      *  edit_comment
      *
      *  This function is run on the admin comment.php page and will render the ACF fields within custom metaboxes to look native
@@ -6669,13 +7267,13 @@ class acf_form_comment
      *  @date    19/10/13
      *  @since   5.0.0
      *
-     *  @param   object $comment
-     *  @return  void
+     *  @param   $comment (object)
+     *  @return  n/a
      */
     function edit_comment($comment)
     {
     }
-    /**
+    /*
      *  comment_form_field_comment
      *
      *  description
@@ -6684,13 +7282,13 @@ class acf_form_comment
      *  @date    18/04/2016
      *  @since   5.3.8
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function comment_form_field_comment($html)
     {
     }
-    /**
+    /*
      *  save_comment
      *
      *  This function will save the comment data
@@ -6700,12 +7298,12 @@ class acf_form_comment
      *  @since   5.0.0
      *
      *  @param   comment_id (int)
-     *  @return  void
+     *  @return  n/a
      */
     function save_comment($comment_id)
     {
     }
-    /**
+    /*
      *  admin_footer
      *
      *  description
@@ -6714,8 +7312,8 @@ class acf_form_comment
      *  @date    27/03/2015
      *  @since   5.1.5
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function admin_footer()
     {
@@ -6723,7 +7321,7 @@ class acf_form_comment
 }
 class acf_form_customizer
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the class functionality
@@ -6732,13 +7330,13 @@ class acf_form_customizer
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
     }
-    /**
+    /*
      *  admin_enqueue_scripts
      *
      *  This action is run after post query but before any admin script / head actions.
@@ -6748,13 +7346,13 @@ class acf_form_customizer
      *  @date    26/01/13
      *  @since   3.6.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   N/A
+     *  @return  N/A
      */
     function customize_controls_init()
     {
     }
-    /**
+    /*
      *  save_widget
      *
      *  This function will hook into the widget update filter and save ACF data
@@ -6763,16 +7361,16 @@ class acf_form_customizer
      *  @date    27/05/2015
      *  @since   5.2.3
      *
-     *  @param   array $instance widget settings
-     *  @param   array $new_instance widget settings
-     *  @param   array $old_instance widget settings
-     *  @param   object $widget widget info
+     *  @param   $instance (array) widget settings
+     *  @param   $new_instance (array) widget settings
+     *  @param   $old_instance (array) widget settings
+     *  @param   $widget (object) widget info
      *  @return  $instance
      */
     function save_widget($instance, $new_instance, $old_instance, $widget)
     {
     }
-    /**
+    /*
      *  settings
      *
      *  This function will return an array of cutomizer settings that include ACF data
@@ -6782,13 +7380,13 @@ class acf_form_customizer
      *  @date    22/03/2016
      *  @since   5.3.2
      *
-     *  @param   object $customizer
-     *  @return  mixed $value
+     *  @param   $customizer (object)
+     *  @return  $value (mixed)
      */
     function settings($customizer)
     {
     }
-    /**
+    /*
      *  customize_preview_init
      *
      *  This function is called when customizer preview is initialized
@@ -6797,8 +7395,8 @@ class acf_form_customizer
      *  @date    22/03/2016
      *  @since   5.3.2
      *
-     *  @param   object $customizer
-     *  @return  void
+     *  @param   $customizer (object)
+     *  @return  n/a
      */
     function customize_preview_init($customizer)
     {
@@ -6831,7 +7429,7 @@ class acf_form_customizer
     function pre_load_reference($field_key, $field_name, $post_id)
     {
     }
-    /**
+    /*
      *  customize_save
      *
      *  This function is called when customizer saves a widget.
@@ -6842,13 +7440,13 @@ class acf_form_customizer
      *  @date    22/03/2016
      *  @since   5.3.2
      *
-     *  @param   object $customizer
-     *  @return  void
+     *  @param   $customizer (object)
+     *  @return  n/a
      */
     function customize_save($customizer)
     {
     }
-    /**
+    /*
      *  pre_update_option
      *
      *  this function will remove the [acf] data from widget insance
@@ -6857,13 +7455,13 @@ class acf_form_customizer
      *  @date    22/03/2016
      *  @since   5.3.2
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function pre_update_option($value, $option, $old_value)
     {
     }
-    /**
+    /*
      *  admin_footer
      *
      *  This function will add some custom HTML to the footer of the edit page
@@ -6872,8 +7470,8 @@ class acf_form_customizer
      *  @date    11/06/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function admin_footer()
     {
@@ -6885,7 +7483,7 @@ class acf_form_front
     private $forms = array();
     /** @var array An array of default fields */
     public $fields = array();
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the class functionality
@@ -6894,13 +7492,13 @@ class acf_form_front
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
     }
-    /**
+    /*
      *  validate_form
      *
      *  description
@@ -6909,13 +7507,13 @@ class acf_form_front
      *  @date    28/2/17
      *  @since   5.5.8
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function validate_form($args)
     {
     }
-    /**
+    /*
      *  add_form
      *
      *  description
@@ -6924,13 +7522,13 @@ class acf_form_front
      *  @date    28/2/17
      *  @since   5.5.8
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function add_form($args = array())
     {
     }
-    /**
+    /*
      *  get_form
      *
      *  description
@@ -6939,13 +7537,13 @@ class acf_form_front
      *  @date    28/2/17
      *  @since   5.5.8
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function get_form($id = '')
     {
     }
-    /**
+    /*
      *  validate_save_post
      *
      *  This function will validate fields from the above array
@@ -6954,13 +7552,13 @@ class acf_form_front
      *  @date    7/09/2016
      *  @since   5.4.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function validate_save_post()
     {
     }
-    /**
+    /*
      *  pre_save_post
      *
      *  description
@@ -6969,13 +7567,13 @@ class acf_form_front
      *  @date    7/09/2016
      *  @since   5.4.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function pre_save_post($post_id, $form)
     {
     }
-    /**
+    /*
      *  enqueue
      *
      *  This function will enqueue a form
@@ -6984,13 +7582,13 @@ class acf_form_front
      *  @date    7/09/2016
      *  @since   5.4.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function enqueue_form()
     {
     }
-    /**
+    /*
      *  check_submit_form
      *
      *  This function will maybe submit form data
@@ -6999,13 +7597,13 @@ class acf_form_front
      *  @date    3/3/17
      *  @since   5.5.10
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function check_submit_form()
     {
     }
-    /**
+    /*
      *  submit_form
      *
      *  This function will submit form data
@@ -7014,13 +7612,13 @@ class acf_form_front
      *  @date    3/3/17
      *  @since   5.5.10
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function submit_form($form)
     {
     }
-    /**
+    /*
      *  render
      *
      *  description
@@ -7029,8 +7627,8 @@ class acf_form_front
      *  @date    7/09/2016
      *  @since   5.4.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function render_form($args = array())
     {
@@ -7141,7 +7739,7 @@ class ACF_Form_Gutenberg
 }
 class acf_form_nav_menu
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the class functionality
@@ -7150,13 +7748,13 @@ class acf_form_nav_menu
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
     }
-    /**
+    /*
      *  admin_enqueue_scripts
      *
      *  This action is run after post query but before any admin script / head actions.
@@ -7166,8 +7764,8 @@ class acf_form_nav_menu
      *  @date    26/01/13
      *  @since   3.6.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   N/A
+     *  @return  N/A
      */
     function admin_enqueue_scripts()
     {
@@ -7186,7 +7784,7 @@ class acf_form_nav_menu
     function wp_nav_menu_item_custom_fields($item_id, $item, $depth, $args, $id = '')
     {
     }
-    /**
+    /*
      *  update_nav_menu
      *
      *  description
@@ -7195,13 +7793,13 @@ class acf_form_nav_menu
      *  @date    26/5/17
      *  @since   5.6.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function update_nav_menu($menu_id)
     {
     }
-    /**
+    /*
      *  update_nav_menu_items
      *
      *  description
@@ -7210,8 +7808,8 @@ class acf_form_nav_menu
      *  @date    26/5/17
      *  @since   5.6.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function update_nav_menu_items($menu_id)
     {
@@ -7246,7 +7844,7 @@ class acf_form_nav_menu
     function wp_edit_nav_menu_walker($class, $menu_id = 0)
     {
     }
-    /**
+    /*
      *  acf_validate_save_post
      *
      *  This function will loop over $_POST data and validate
@@ -7255,13 +7853,13 @@ class acf_form_nav_menu
      *  @date    7/09/2016
      *  @since   5.4.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function acf_validate_save_post()
     {
     }
-    /**
+    /*
      *  admin_footer
      *
      *  This function will add some custom HTML to the footer of the edit page
@@ -7270,8 +7868,8 @@ class acf_form_nav_menu
      *  @date    11/06/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function admin_footer()
     {
@@ -7368,7 +7966,7 @@ class ACF_Form_Post
     function wp_insert_post_empty_content($maybe_empty, $postarr)
     {
     }
-    /**
+    /*
      *  allow_save_post
      *
      *  Checks if the $post is allowed to be saved.
@@ -7384,7 +7982,7 @@ class ACF_Form_Post
     function allow_save_post($post)
     {
     }
-    /**
+    /*
      *  save_post
      *
      *  Triggers during the 'save_post' action to save the $_POST data.
@@ -7404,7 +8002,7 @@ class ACF_Form_Post
 class acf_form_taxonomy
 {
     var $view = 'add';
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the class functionality
@@ -7413,13 +8011,13 @@ class acf_form_taxonomy
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
     }
-    /**
+    /*
      *  validate_page
      *
      *  This function will check if the current page is for a post/page edit form
@@ -7428,13 +8026,13 @@ class acf_form_taxonomy
      *  @date    23/06/12
      *  @since   3.1.8
      *
-     *  @param   void
-     *  @return  boolean
+     *  @param   n/a
+     *  @return  (boolean)
      */
     function validate_page()
     {
     }
-    /**
+    /*
      *  admin_enqueue_scripts
      *
      *  This action is run after post query but before any admin script / head actions.
@@ -7444,13 +8042,13 @@ class acf_form_taxonomy
      *  @date    26/01/13
      *  @since   3.6.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   N/A
+     *  @return  N/A
      */
     function admin_enqueue_scripts()
     {
     }
-    /**
+    /*
      *  add_term
      *
      *  description
@@ -7459,13 +8057,13 @@ class acf_form_taxonomy
      *  @date    8/10/13
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function add_term($taxonomy)
     {
     }
-    /**
+    /*
      *  edit_term
      *
      *  description
@@ -7474,13 +8072,13 @@ class acf_form_taxonomy
      *  @date    8/10/13
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function edit_term($term, $taxonomy)
     {
     }
-    /**
+    /*
      *  admin_footer
      *
      *  description
@@ -7489,13 +8087,13 @@ class acf_form_taxonomy
      *  @date    27/03/2015
      *  @since   5.1.5
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function admin_footer()
     {
     }
-    /**
+    /*
      *  save_term
      *
      *  description
@@ -7504,13 +8102,13 @@ class acf_form_taxonomy
      *  @date    8/10/13
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function save_term($term_id, $tt_id, $taxonomy)
     {
     }
-    /**
+    /*
      *  delete_term
      *
      *  description
@@ -7519,8 +8117,8 @@ class acf_form_taxonomy
      *  @date    15/10/13
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function delete_term($term, $tt_id, $taxonomy, $deleted_term)
     {
@@ -7530,7 +8128,7 @@ class ACF_Form_User
 {
     /** @var string The current view (new, edit, register) */
     var $view = '';
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the class functionality
@@ -7539,8 +8137,8 @@ class ACF_Form_User
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
@@ -7573,7 +8171,7 @@ class ACF_Form_User
     function login_form_register()
     {
     }
-    /**
+    /*
      *  register_user
      *
      *  Called during the user register form
@@ -7588,7 +8186,7 @@ class ACF_Form_User
     function render_register()
     {
     }
-    /**
+    /*
      *  render_edit
      *
      *  Called during the user edit form
@@ -7603,7 +8201,7 @@ class ACF_Form_User
     function render_edit($user)
     {
     }
-    /**
+    /*
      *  user_new_form
      *
      *  description
@@ -7612,13 +8210,13 @@ class ACF_Form_User
      *  @date    8/10/13
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function render_new()
     {
     }
-    /**
+    /*
      *  render
      *
      *  This function will render ACF fields for a given $post_id parameter
@@ -7627,15 +8225,15 @@ class ACF_Form_User
      *  @date    7/10/13
      *  @since   5.0.0
      *
-     *  @param   int $user_id this can be set to 0 for a new user
-     *  @param   string $user_form used for location rule matching. edit | add | register
-     *  @param   string $el
-     *  @return  void
+     *  @param   $user_id (int) this can be set to 0 for a new user
+     *  @param   $user_form (string) used for location rule matching. edit | add | register
+     *  @param   $el (string)
+     *  @return  n/a
      */
     function render($args = array())
     {
     }
-    /**
+    /*
      *  admin_footer
      *
      *  description
@@ -7644,13 +8242,13 @@ class ACF_Form_User
      *  @date    27/03/2015
      *  @since   5.1.5
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function admin_footer()
     {
     }
-    /**
+    /*
      *  save_user
      *
      *  description
@@ -7659,8 +8257,8 @@ class ACF_Form_User
      *  @date    8/10/13
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function save_user($user_id)
     {
@@ -7690,7 +8288,7 @@ class ACF_Form_User
      * @since   5.8.2
      *
      * @param   null         $null A null placeholder.
-     * @param   int|string $post_id The post id.
+     * @param   (int|string) $post_id The post id.
      * @param   array        $field The field array.
      * @return  mixed
      */
@@ -7700,7 +8298,7 @@ class ACF_Form_User
 }
 class acf_form_widget
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the class functionality
@@ -7709,13 +8307,13 @@ class acf_form_widget
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
     }
-    /**
+    /*
      *  admin_enqueue_scripts
      *
      *  This action is run after post query but before any admin script / head actions.
@@ -7725,13 +8323,13 @@ class acf_form_widget
      *  @date    26/01/13
      *  @since   3.6.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   N/A
+     *  @return  N/A
      */
     function admin_enqueue_scripts()
     {
     }
-    /**
+    /*
      *  acf_validate_save_post
      *
      *  This function will loop over $_POST data and validate
@@ -7740,13 +8338,13 @@ class acf_form_widget
      *  @date    7/09/2016
      *  @since   5.4.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function acf_validate_save_post()
     {
     }
-    /**
+    /*
      *  edit_widget
      *
      *  This function will render the fields for a widget form
@@ -7755,15 +8353,15 @@ class acf_form_widget
      *  @date    11/06/2014
      *  @since   5.0.0
      *
-     *  @param   object $widget
-     *  @param   null $return
-     *  @param   object $instance
-     *  @return  int $post_id
+     *  @param   $widget (object)
+     *  @param   $return (null)
+     *  @param   $instance (object)
+     *  @return  $post_id (int)
      */
     function edit_widget($widget, $return, $instance)
     {
     }
-    /**
+    /*
      *  save_widget
      *
      *  This function will hook into the widget update filter and save ACF data
@@ -7772,16 +8370,16 @@ class acf_form_widget
      *  @date    27/05/2015
      *  @since   5.2.3
      *
-     *  @param   array $instance widget settings
-     *  @param   array $new_instance widget settings
-     *  @param   array $old_instance widget settings
-     *  @param   object $widget widget info
+     *  @param   $instance (array) widget settings
+     *  @param   $new_instance (array) widget settings
+     *  @param   $old_instance (array) widget settings
+     *  @param   $widget (object) widget info
      *  @return  $instance
      */
     function save_widget($instance, $new_instance, $old_instance, $widget)
     {
     }
-    /**
+    /*
      *  admin_footer
      *
      *  This function will add some custom HTML to the footer of the edit page
@@ -7790,8 +8388,8 @@ class acf_form_widget
      *  @date    11/06/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function admin_footer()
     {
@@ -8058,7 +8656,7 @@ class ACF_Local_Meta
      * @since   5.7.13
      *
      * @param   null         $null .
-     * @param   int|string $post_id The post id.
+     * @param   (int|string) $post_id The post id.
      * @param   string       $name The meta name.
      * @param   mixed        $value The meta value.
      * @param   bool         $hidden If the meta is hidden (starts with an underscore).
@@ -8105,7 +8703,7 @@ class ACF_Local_Meta
      * @since   5.8.0
      *
      * @param   null         $null An empty parameter. Return a non null value to short-circuit the function.
-     * @param   int|string $post_id The post id.
+     * @param   (int|string) $post_id The post id.
      * @param   string       $name The meta name.
      * @param   bool         $hidden If the meta is hidden (starts with an underscore).
      * @return  mixed
@@ -9232,7 +9830,7 @@ class ACF_Location_Widget extends \ACF_Location
 }
 class acf_loop
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the class functionality
@@ -9241,13 +9839,13 @@ class acf_loop
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
     }
-    /**
+    /*
      *  is_empty
      *
      *  This function will return true if no loops exist
@@ -9256,13 +9854,13 @@ class acf_loop
      *  @date    3/03/2016
      *  @since   5.3.2
      *
-     *  @param   void
-     *  @return  boolean
+     *  @param   n/a
+     *  @return  (boolean)
      */
     function is_empty()
     {
     }
-    /**
+    /*
      *  is_loop
      *
      *  This function will return true if a loop exists for the given array index
@@ -9271,13 +9869,13 @@ class acf_loop
      *  @date    3/03/2016
      *  @since   5.3.2
      *
-     *  @param   int $i
-     *  @return  boolean
+     *  @param   $i (int)
+     *  @return  (boolean)
      */
     function is_loop($i = 0)
     {
     }
-    /**
+    /*
      *  get_i
      *
      *  This function will return a valid array index for the given $i
@@ -9286,13 +9884,13 @@ class acf_loop
      *  @date    3/03/2016
      *  @since   5.3.2
      *
-     *  @param   mixed $i
-     *  @return  int
+     *  @param   $i (mixed)
+     *  @return  (int)
      */
     function get_i($i = 0)
     {
     }
-    /**
+    /*
      *  add_loop
      *
      *  This function will add a new loop
@@ -9301,13 +9899,13 @@ class acf_loop
      *  @date    3/03/2016
      *  @since   5.3.2
      *
-     *  @param   array $loop
-     *  @return  void
+     *  @param   $loop (array)
+     *  @return  n/a
      */
     function add_loop($loop = array())
     {
     }
-    /**
+    /*
      *  update_loop
      *
      *  This function will update a loop's setting
@@ -9316,15 +9914,15 @@ class acf_loop
      *  @date    3/03/2016
      *  @since   5.3.2
      *
-     *  @param   mixed $i
-     *  @param   string $key the loop setting name
-     *  @param   mixed $value the loop setting value
-     *  @return  boolean true on success
+     *  @param   $i (mixed)
+     *  @param   $key (string) the loop setting name
+     *  @param   $value (mixed) the loop setting value
+     *  @return  (boolean) true on success
      */
     function update_loop($i = 'active', $key = \null, $value = \null)
     {
     }
-    /**
+    /*
      *  get_loop
      *
      *  This function will return a loop, or loop's setting for a given index & key
@@ -9333,14 +9931,14 @@ class acf_loop
      *  @date    3/03/2016
      *  @since   5.3.2
      *
-     *  @param   mixed $i
-     *  @param   string $key the loop setting name
-     *  @return  mixed false on failure
+     *  @param   $i (mixed)
+     *  @param   $key (string) the loop setting name
+     *  @return  (mixed) false on failure
      */
     function get_loop($i = 'active', $key = \null)
     {
     }
-    /**
+    /*
      *  remove_loop
      *
      *  This function will remove a loop
@@ -9349,8 +9947,8 @@ class acf_loop
      *  @date    3/03/2016
      *  @since   5.3.2
      *
-     *  @param   mixed $i
-     *  @return  boolean true on success
+     *  @param   $i (mixed)
+     *  @return  (boolean) true on success
      */
     function remove_loop($i = 'active')
     {
@@ -9471,11 +10069,287 @@ class ACF_Media
     {
     }
 }
+class ACF_Rest_Api
+{
+    /** @var ACF_Rest_Request */
+    private $request;
+    /** @var ACF_Rest_Embed_Links */
+    private $embed_links;
+    public function __construct()
+    {
+    }
+    public function initialize()
+    {
+    }
+    /**
+     * Register our custom property as a REST field.
+     */
+    private function register_field()
+    {
+    }
+    /**
+     * Dynamically generate the schema for the current request.
+     *
+     * @return array
+     */
+    private function get_schema()
+    {
+    }
+    /**
+     * Validate the request args. Mostly a wrapper for `rest_validate_request_arg()`, but also
+     * fires off a filter, so we can add some custom validation for specific fields.
+     *
+     * This will likely no longer be needed once WordPress implements something like `validate_callback`
+     * and `sanitize_callback` for nested schema properties, see:
+     * https://core.trac.wordpress.org/ticket/49960
+     *
+     * @param mixed            $value
+     * @param \WP_REST_Request $request
+     * @param string           $param
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_arg($value, $request, $param)
+    {
+    }
+    /**
+     * Load field values into the requested object. This method is not a part of any public API and is only public as
+     * it is required by WordPress.
+     *
+     * @param array           $object An array representation of the post, term, or user object.
+     * @param string          $field_name
+     * @param WP_REST_Request $request
+     * @param string          $object_sub_type Note that this isn't the same as $this->object_type. This variable is
+     *                                           more specific and can be a post type or taxonomy.
+     * @return array
+     */
+    public function load_fields($object, $field_name, $request, $object_sub_type)
+    {
+    }
+    /**
+     * Update any incoming field values for the given object. This method is not a part of any public API and is only
+     * public as it is required by WordPress.
+     *
+     * @param array                   $data
+     * @param WP_Post|WP_Term|WP_User $object
+     * @param string                  $property 'acf'
+     * @param WP_REST_Request         $request
+     * @param string                  $object_sub_type This will be the post type, the taxonomy, or 'user'.
+     * @return bool|WP_Error
+     */
+    public function update_fields($data, $object, $property, $request, $object_sub_type)
+    {
+    }
+    // todo - this should check for a flag and validate a nonce to ensure we are in admin mode.
+    // todo - consider/discuss handling this in the request object instead.
+    private function is_admin_mode($data)
+    {
+    }
+    /**
+     * Make the ACF identifier string for the given object.
+     *
+     * @param int    $object_id
+     * @param string $object_type 'user', 'term', or 'post'
+     * @return string
+     */
+    private function make_identifier($object_id, $object_type)
+    {
+    }
+    /**
+     * Gets an array of the location types that a field group is configured to use.
+     *
+     * @param string $object_type    'user', 'term', or 'post'
+     * @param array  $field_group    The field group to check.
+     * @param array  $location_types An array of location types.
+     *
+     * @return bool
+     */
+    private function object_type_has_field_group($object_type, $field_group, $location_types = array())
+    {
+    }
+    /**
+     * Get all field groups for the provided object type.
+     *
+     * @param string $object_type  'user', 'term', or 'post'
+     *
+     * @return array An array of field groups that display for that location type.
+     */
+    private function get_field_groups_by_object_type($object_type)
+    {
+    }
+    /**
+     * Get all field groups for a given object.
+     *
+     * @param int         $object_id
+     * @param string      $object_type 'user', 'term', or 'post'
+     * @param string|null $object_sub_type The post type or taxonomy. When an $object_type of 'user' is in play, this can be ignored.
+     * @param array       $scope Field group keys to limit the returned set of field groups to. This is used to scope field lookups to specific groups.
+     * @return array An array of matching field groups.
+     */
+    private function get_field_groups_by_id($object_id, $object_type, $object_sub_type = \null, $scope = array())
+    {
+    }
+    /**
+     * Get all ACF fields for a given field group and allow third party filtering.
+     *
+     * @param array    $field_group This could technically be other possible values supported by acf_get_fields() but in this
+     *                           context, we're only using the field group arrays.
+     * @param null|int $object_id The ID of the object being prepared.
+     * @return array
+     */
+    private function get_fields($field_group, $object_id = \null)
+    {
+    }
+}
+/**
+ * Class ACF_Rest_Embed_Links
+ *
+ * Manage the addition of embed links on supported REST endpoints.
+ */
+class ACF_Rest_Embed_Links
+{
+    /** @var array Links to add to the response. These can be flagged as embeddable and expanded when _embed is passed with the request. */
+    private $links = array();
+    public function initialize()
+    {
+    }
+    /**
+     * Hook into all REST-enabled post type, taxonomy, and the user controllers in order to prepare links.
+     */
+    private function hook_link_handlers()
+    {
+    }
+    /**
+     * Add links to internal property for subsequent use in \ACF_Rest_Embed_Links::load_item_links().
+     *
+     * @param       $post_id
+     * @param array   $field
+     */
+    public function prepare_links($post_id, array $field)
+    {
+    }
+    /**
+     * Hook into the rest_prepare_{$type} filters and add links for the object being prepared.
+     *
+     * @param WP_REST_Response        $response
+     * @param WP_Post|WP_User|WP_Term $item
+     * @param WP_REST_Request         $request
+     * @return WP_REST_Response
+     */
+    public function load_item_links($response, $item, $request)
+    {
+    }
+}
+/**
+ * Class ACF_Rest_Request
+ *
+ * @property-read string $object_sub_type
+ * @property-read string $object_type
+ * @property-read string $http_method
+ */
+class ACF_Rest_Request
+{
+    /**
+     * Define which private/protected class properties are allowed read access. Access to these is controlled in
+     * \ACF_Rest_Request::__get();
+     *
+     * @var string[]
+     */
+    private $readonly_props = array('object_type', 'object_sub_type', 'child_object_type', 'http_method');
+    /** @var string The HTTP request method for the current request. i.e; GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD */
+    private $http_method;
+    /** @var string The current route being requested. */
+    private $current_route;
+    /** @var array Route URL patterns we support. */
+    private $supported_routes = array();
+    /** @var array Parameters matched from the URL. e.g; object IDs. */
+    private $url_params = array();
+    /** @var string The underlying object type. e.g; post, term, user, etc. */
+    private $object_type;
+    /** @var string The requested object type. */
+    private $object_sub_type;
+    /** @var string The object type for a child object. e.g. post-revision, autosaves, etc. */
+    private $child_object_type;
+    /**
+     * Determine all required information from the current request.
+     */
+    public function parse_request()
+    {
+    }
+    /**
+     * Magic getter for accessing read-only properties. Should we ever need to enforce a getter method, we can do so here.
+     *
+     * @param string $name The desired property name.
+     * @return string|null
+     */
+    public function __get($name)
+    {
+    }
+    /**
+     * Get a URL parameter if found on the request URL.
+     *
+     * @param $param
+     * @return mixed|null
+     */
+    public function get_url_param($param)
+    {
+    }
+    /**
+     * Determine the HTTP method of the current request.
+     */
+    private function set_http_method()
+    {
+    }
+    /**
+     * Get the current REST route as determined by WordPress.
+     */
+    private function set_current_route()
+    {
+    }
+    /**
+     * Build an array of route match patterns that we handle. These are the same as WordPress' core patterns except
+     * we are also matching the object type here as well.
+     */
+    private function build_supported_routes()
+    {
+    }
+    /**
+     * Loop through supported routes to find matching pattern. Use matching pattern to determine any URL parameters.
+     */
+    private function set_url_params()
+    {
+    }
+    /**
+     * Determine the object type and sub type from the requested route. We need to know both the underlying WordPress
+     * object type as well as post type or taxonomy in order to provide the right context when getting/updating fields.
+     */
+    private function set_object_types()
+    {
+    }
+    /**
+     * Find the REST enabled post type object that matches the given REST base.
+     *
+     * @param string $rest_base
+     * @return WP_Post_Type|null
+     */
+    private function get_post_type_by_rest_base($rest_base)
+    {
+    }
+    /**
+     * Find the REST enabled taxonomy object that matches the given REST base.
+     *
+     * @param $rest_base
+     * @return WP_Taxonomy|null
+     */
+    private function get_taxonomy_by_rest_base($rest_base)
+    {
+    }
+}
 class acf_revisions
 {
     // vars
     var $cache = array();
-    /**
+    /*
      *  __construct
      *
      *  A good place to add actions / filters
@@ -9483,13 +10357,13 @@ class acf_revisions
      *  @type    function
      *  @date    11/08/13
      *
-     *  @param   void
-     *  @return  void
+     *  @param   N/A
+     *  @return  N/A
      */
     function __construct()
     {
     }
-    /**
+    /*
      *  wp_preview_post_fields
      *
      *  This function is used to trick WP into thinking that one of the $post's fields has changed and
@@ -9500,13 +10374,13 @@ class acf_revisions
      *  @date    21/10/2014
      *  @since   5.1.0
      *
-     *  @param   array $fields
+     *  @param   $fields (array)
      *  @return  $fields
      */
     function wp_preview_post_fields($fields)
     {
     }
-    /**
+    /*
      *  wp_save_post_revision_check_for_changes
      *
      *  This filter will return false and force WP to save a revision. This is required due to
@@ -9515,15 +10389,15 @@ class acf_revisions
      *  @type    filter
      *  @date    19/09/13
      *
-     *  @param   boolean $return defaults to true
-     *  @param   object $last_revision the last revision that WP will compare against
-     *  @param   object $post the $post that WP will compare against
-     *  @return  boolean $return
+     *  @param   $return (boolean) defaults to true
+     *  @param   $last_revision (object) the last revision that WP will compare against
+     *  @param   $post (object) the $post that WP will compare against
+     *  @return  $return (boolean)
      */
     function wp_save_post_revision_check_for_changes($return, $last_revision, $post)
     {
     }
-    /**
+    /*
      *  wp_post_revision_fields
      *
      *  This filter will add the ACF fields to the returned array
@@ -9533,13 +10407,13 @@ class acf_revisions
      *  @type    filter
      *  @date    11/08/13
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function wp_post_revision_fields($fields, $post = \null)
     {
     }
-    /**
+    /*
      *  wp_post_revision_field
      *
      *  This filter will load the value for the given field and return it for rendering
@@ -9547,16 +10421,16 @@ class acf_revisions
      *  @type    filter
      *  @date    11/08/13
      *
-     *  @param   mixed $value should be false as it has not yet been loaded
-     *  @param   string $field_name The name of the field
-     *  @param   mixed $post Holds the $post object to load from - in WP 3.5, this is not passed!
-     *  @param   string $direction to / from - not used
-     *  @return  string $value
+     *  @param   $value (mixed) should be false as it has not yet been loaded
+     *  @param   $field_name (string) The name of the field
+     *  @param   $post (mixed) Holds the $post object to load from - in WP 3.5, this is not passed!
+     *  @param   $direction (string) to / from - not used
+     *  @return  $value (string)
      */
     function wp_post_revision_field($value, $field_name, $post = \null, $direction = \false)
     {
     }
-    /**
+    /*
      *  wp_restore_post_revision
      *
      *  This action will copy and paste the metadata from a revision to the post
@@ -9564,13 +10438,13 @@ class acf_revisions
      *  @type    action
      *  @date    11/08/13
      *
-     *  @param   int $parent_id the destination post
-     *  @return  int $revision_id the source post
+     *  @param   $parent_id (int) the destination post
+     *  @return  $revision_id (int) the source post
      */
     function wp_restore_post_revision($post_id, $revision_id)
     {
     }
-    /**
+    /*
      *  acf_validate_post_id
      *
      *  This function will modify the $post_id and allow loading values from a revision
@@ -9579,9 +10453,9 @@ class acf_revisions
      *  @date    6/3/17
      *  @since   5.5.10
      *
-     *  @param   int $post_id
-     *  @param   int $_post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @param   $_post_id (int)
+     *  @return  $post_id (int)
      */
     function acf_validate_post_id($post_id, $_post_id)
     {
@@ -9589,7 +10463,7 @@ class acf_revisions
 }
 class acf_third_party
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the class functionality
@@ -9598,8 +10472,8 @@ class acf_third_party
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
@@ -9620,7 +10494,7 @@ class acf_third_party
     function ee_get_post_types($post_types, $args)
     {
     }
-    /**
+    /*
      *  tabify_posttypes
      *
      *  This function removes ACF post types from the tabify edit screen (post type selection sidebar)
@@ -9629,13 +10503,13 @@ class acf_third_party
      *  @date    9/10/12
      *  @since   3.5.1
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function tabify_posttypes($posttypes)
     {
     }
-    /**
+    /*
      *  tabify_add_meta_boxes
      *
      *  This function creates dummy metaboxes on the tabify edit screen page
@@ -9644,13 +10518,13 @@ class acf_third_party
      *  @date    9/10/12
      *  @since   3.5.1
      *
-     *  @param   string $post_type
-     *  @return  void
+     *  @param   $post_type (string)
+     *  @return  n/a
      */
     function tabify_add_meta_boxes($post_type)
     {
     }
-    /**
+    /*
      *  pts_allowed_pages
      *
      *  This filter will prevent PTS from running on the field group page!
@@ -9659,7 +10533,7 @@ class acf_third_party
      *  @date    25/09/2014
      *  @since   5.0.0
      *
-     *  @param   array $pages
+     *  @param   $pages (array)
      *  @return  $pages
      */
     function pts_allowed_pages($pages)
@@ -9688,7 +10562,7 @@ class ACF_Updates
     var $plugins = array();
     /** @var int Counts the number of plugin update checks */
     var $checked = 0;
-    /**
+    /*
      *  __construct
      *
      *  Sets up the class functionality.
@@ -9702,7 +10576,7 @@ class ACF_Updates
     function __construct()
     {
     }
-    /**
+    /*
      *  add_plugin
      *
      *  Registeres a plugin for updates.
@@ -9731,7 +10605,7 @@ class ACF_Updates
     function get_plugin_by($key = '', $value = \null)
     {
     }
-    /**
+    /*
      * request
      *
      * Makes a request to the ACF connect server.
@@ -9741,12 +10615,12 @@ class ACF_Updates
      *
      * @param   string $endpoint The API endpoint.
      * @param   array $body The body to post.
-     * @return  array|string|WP_Error
+     * @return  (array|string|WP_Error)
      */
     function request($endpoint = '', $body = \null)
     {
     }
-    /**
+    /*
      *  get_plugin_info
      *
      *  Returns update information for the given plugin id.
@@ -9807,7 +10681,7 @@ class ACF_Updates
     function get_expiration($response = \false, $min = 0, $max = 0)
     {
     }
-    /**
+    /*
      *  refresh_plugins_transient
      *
      *  Deletes transients and allows a fresh lookup.
@@ -9821,7 +10695,7 @@ class ACF_Updates
     function refresh_plugins_transient()
     {
     }
-    /**
+    /*
      *  modify_plugins_transient
      *
      *  Called when WP updates the 'update_plugins' site transient. Used to inject ACF plugin update info.
@@ -9835,7 +10709,7 @@ class ACF_Updates
     function modify_plugins_transient($transient)
     {
     }
-    /**
+    /*
      *  modify_plugin_details
      *
      *  Returns the plugin data visible in the 'View details' popup
@@ -9854,7 +10728,7 @@ class ACF_Updates
 }
 class acf_validation
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the class functionality
@@ -9863,13 +10737,13 @@ class acf_validation
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
     }
-    /**
+    /*
      *  add_error
      *
      *  This function will add an error message for a field
@@ -9878,14 +10752,14 @@ class acf_validation
      *  @date    25/11/2013
      *  @since   5.0.0
      *
-     *  @param   string $input name attribute of DOM elmenet
-     *  @param   string $message error message
-     *  @return  int $post_id
+     *  @param   $input (string) name attribute of DOM elmenet
+     *  @param   $message (string) error message
+     *  @return  $post_id (int)
      */
     function add_error($input, $message)
     {
     }
-    /**
+    /*
      *  get_error
      *
      *  This function will return an error for a given input
@@ -9894,13 +10768,13 @@ class acf_validation
      *  @date    5/03/2016
      *  @since   5.3.2
      *
-     *  @param   string $input name attribute of DOM elmenet
-     *  @return  mixed
+     *  @param   $input (string) name attribute of DOM elmenet
+     *  @return  (mixed)
      */
     function get_error($input)
     {
     }
-    /**
+    /*
      *  get_errors
      *
      *  This function will return validation errors
@@ -9909,13 +10783,13 @@ class acf_validation
      *  @date    25/11/2013
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  array|boolean
+     *  @param   n/a
+     *  @return  (array|boolean)
      */
     function get_errors()
     {
     }
-    /**
+    /*
      *  reset_errors
      *
      *  This function will remove all errors
@@ -9924,13 +10798,13 @@ class acf_validation
      *  @date    4/03/2016
      *  @since   5.3.2
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function reset_errors()
     {
     }
-    /**
+    /*
      *  ajax_validate_save_post
      *
      *  This function will validate the $_POST data via AJAX
@@ -9939,13 +10813,13 @@ class acf_validation
      *  @date    27/10/2014
      *  @since   5.0.9
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function ajax_validate_save_post()
     {
     }
-    /**
+    /*
      *  acf_validate_save_post
      *
      *  This function will loop over $_POST data and validate
@@ -9954,8 +10828,8 @@ class acf_validation
      *  @date    7/09/2016
      *  @since   5.4.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function acf_validate_save_post()
     {
@@ -10212,7 +11086,7 @@ class ACF_WPML_Compatibility
 }
 class acf_pro
 {
-    /**
+    /*
      *  __construct
      *
      *
@@ -10221,13 +11095,13 @@ class acf_pro
      *  @date    23/06/12
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   N/A
+     *  @return  N/A
      */
     function __construct()
     {
     }
-    /**
+    /*
      *  include_field_types
      *
      *  description
@@ -10236,13 +11110,13 @@ class acf_pro
      *  @date    21/10/2015
      *  @since   5.2.3
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function include_field_types()
     {
     }
-    /**
+    /*
      *  include_location_rules
      *
      *  description
@@ -10251,13 +11125,13 @@ class acf_pro
      *  @date    10/6/17
      *  @since   5.6.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function include_location_rules()
     {
     }
-    /**
+    /*
      *  register_assets
      *
      *  description
@@ -10266,13 +11140,13 @@ class acf_pro
      *  @date    4/11/2013
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function register_assets()
     {
     }
-    /**
+    /*
      *  input_admin_enqueue_scripts
      *
      *  description
@@ -10281,13 +11155,13 @@ class acf_pro
      *  @date    4/11/2013
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function input_admin_enqueue_scripts()
     {
     }
-    /**
+    /*
      *  field_group_admin_enqueue_scripts
      *
      *  description
@@ -10296,8 +11170,8 @@ class acf_pro
      *  @date    4/11/2013
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function field_group_admin_enqueue_scripts()
     {
@@ -10307,7 +11181,7 @@ class acf_admin_options_page
 {
     /** @var array Contains the current options page */
     var $page;
-    /**
+    /*
      *  __construct
      *
      *  Initialize filters, action, variables and includes
@@ -10316,13 +11190,13 @@ class acf_admin_options_page
      *  @date    23/06/12
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
     }
-    /**
+    /*
      *  admin_menu
      *
      *  description
@@ -10337,7 +11211,7 @@ class acf_admin_options_page
     function admin_menu()
     {
     }
-    /**
+    /*
      *  load
      *
      *  description
@@ -10346,13 +11220,13 @@ class acf_admin_options_page
      *  @date    2/02/13
      *  @since   3.6
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function admin_load()
     {
     }
-    /**
+    /*
      *  admin_enqueue_scripts
      *
      *  This function will enqueue the 'post.js' script which adds support for 'Screen Options' column toggle
@@ -10367,7 +11241,7 @@ class acf_admin_options_page
     function admin_enqueue_scripts()
     {
     }
-    /**
+    /*
      *  admin_head
      *
      *  This action will find and add field groups to the current edit page
@@ -10376,13 +11250,13 @@ class acf_admin_options_page
      *  @date    23/06/12
      *  @since   3.1.8
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function admin_head()
     {
     }
-    /**
+    /*
      *  postbox_submitdiv
      *
      *  This function will render the submitdiv metabox
@@ -10391,29 +11265,27 @@ class acf_admin_options_page
      *  @date    23/03/2016
      *  @since   5.3.2
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function postbox_submitdiv($post, $args)
     {
     }
     /**
-     *  render_meta_box
+     * Renders a postbox on an ACF options page.
      *
-     *  description
+     * @date    24/02/2014
+     * @since   5.0.0
      *
-     *  @type    function
-     *  @date    24/02/2014
-     *  @since   5.0.0
+     * @param object $post
+     * @param array  $args
      *
-     *  @param   object $post
-     *  @param   array $args
-     *  @return  void
+     * @return void
      */
     function postbox_acf($post, $args)
     {
     }
-    /**
+    /*
      *  html
      *
      *  @description:
@@ -10500,34 +11372,6 @@ class ACF_Admin_Updates
     {
     }
     /**
-     * activate_pro_licence
-     *
-     * Activates the submitted license key.
-     *
-     * @date    16/01/2014
-     * @since   5.0.0
-     *
-     * @param   void
-     * @return  void
-     */
-    function activate_pro_licence()
-    {
-    }
-    /**
-     * activate_pro_licence
-     *
-     * Deactivates the registered license key.
-     *
-     * @date    16/01/2014
-     * @since   5.0.0
-     *
-     * @param   void
-     * @return  void
-     */
-    function deactivate_pro_licence()
-    {
-    }
-    /**
      * html
      *
      * Displays the submenu page's HTML.
@@ -10544,7 +11388,7 @@ class ACF_Admin_Updates
 }
 class acf_field_clone extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -10553,13 +11397,13 @@ class acf_field_clone extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  is_enabled
      *
      *  This function will return true if acf_local functionality is enabled
@@ -10568,13 +11412,13 @@ class acf_field_clone extends \acf_field
      *  @date    14/07/2016
      *  @since   5.4.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function is_enabled()
     {
     }
-    /**
+    /*
      *  load_field()
      *
      *  This filter is appied to the $field after it is loaded from the database
@@ -10590,7 +11434,7 @@ class acf_field_clone extends \acf_field
     function load_field($field)
     {
     }
-    /**
+    /*
      *  acf_get_fields
      *
      *  This function will hook into the 'acf/get_fields' filter and inject/replace seamless clones fields
@@ -10599,14 +11443,14 @@ class acf_field_clone extends \acf_field
      *  @date    17/06/2016
      *  @since   5.3.8
      *
-     *  @param   array $fields
-     *  @param   array $parent
+     *  @param   $fields (array)
+     *  @param   $parent (array)
      *  @return  $fields
      */
     function acf_get_fields($fields, $parent)
     {
     }
-    /**
+    /*
      *  get_cloned_fields
      *
      *  This function will return an array of fields for a given clone field
@@ -10615,14 +11459,14 @@ class acf_field_clone extends \acf_field
      *  @date    28/06/2016
      *  @since   5.3.8
      *
-     *  @param   array $field
-     *  @param   array $parent
-     *  @return  array
+     *  @param   $field (array)
+     *  @param   $parent (array)
+     *  @return  (array)
      */
     function get_cloned_fields($field)
     {
     }
-    /**
+    /*
      *  acf_clone_field
      *
      *  This function is run when cloning a clone field
@@ -10632,14 +11476,14 @@ class acf_field_clone extends \acf_field
      *  @date    28/06/2016
      *  @since   5.3.8
      *
-     *  @param   array $field
-     *  @param   array $clone_field
+     *  @param   $field (array)
+     *  @param   $clone_field (array)
      *  @return  $field
      */
     function acf_clone_field($field, $clone_field)
     {
     }
-    /**
+    /*
      *  acf_clone_clone_field
      *
      *  This function is run when cloning a clone field
@@ -10650,14 +11494,14 @@ class acf_field_clone extends \acf_field
      *  @date    28/06/2016
      *  @since   5.3.8
      *
-     *  @param   array $field
-     *  @param   array $clone_field
+     *  @param   $field (array)
+     *  @param   $clone_field (array)
      *  @return  $field
      */
     function acf_clone_clone_field($field, $clone_field)
     {
     }
-    /**
+    /*
      *  prepare_field_for_db
      *
      *  description
@@ -10666,13 +11510,13 @@ class acf_field_clone extends \acf_field
      *  @date    4/11/16
      *  @since   5.5.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function prepare_field_for_db($field)
     {
     }
-    /**
+    /*
      *  load_value()
      *
      *  This filter is applied to the $value after it is loaded from the db
@@ -10681,15 +11525,15 @@ class acf_field_clone extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value found in the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value found in the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *  @return  $value
      */
     function load_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -10698,16 +11542,27 @@ class acf_field_clone extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
     {
     }
     /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
+    /*
      *  update_value()
      *
      *  This filter is appied to the $value before it is updated in the db
@@ -10725,7 +11580,7 @@ class acf_field_clone extends \acf_field
     function update_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -10739,7 +11594,7 @@ class acf_field_clone extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_block
      *
      *  description
@@ -10748,13 +11603,13 @@ class acf_field_clone extends \acf_field
      *  @date    12/07/2016
      *  @since   5.4.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function render_field_block($field)
     {
     }
-    /**
+    /*
      *  render_field_table
      *
      *  description
@@ -10763,13 +11618,13 @@ class acf_field_clone extends \acf_field
      *  @date    12/07/2016
      *  @since   5.4.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function render_field_table($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -10784,7 +11639,7 @@ class acf_field_clone extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  get_clone_setting_choices
      *
      *  This function will return an array of choices data for Select2
@@ -10793,13 +11648,13 @@ class acf_field_clone extends \acf_field
      *  @date    17/06/2016
      *  @since   5.3.8
      *
-     *  @param   mixed $value
-     *  @return  array
+     *  @param   $value (mixed)
+     *  @return  (array)
      */
     function get_clone_setting_choices($value)
     {
     }
-    /**
+    /*
      *  get_clone_setting_choice
      *
      *  This function will return the label for a given clone choice
@@ -10808,13 +11663,13 @@ class acf_field_clone extends \acf_field
      *  @date    17/06/2016
      *  @since   5.3.8
      *
-     *  @param   mixed $selector
-     *  @return  string
+     *  @param   $selector (mixed)
+     *  @return  (string)
      */
     function get_clone_setting_choice($selector = '')
     {
     }
-    /**
+    /*
      *  get_clone_setting_field_choice
      *
      *  This function will return the text for a field choice
@@ -10823,13 +11678,13 @@ class acf_field_clone extends \acf_field
      *  @date    20/07/2016
      *  @since   5.4.0
      *
-     *  @param   array $field
-     *  @return  string
+     *  @param   $field (array)
+     *  @return  (string)
      */
     function get_clone_setting_field_choice($field)
     {
     }
-    /**
+    /*
      *  get_clone_setting_group_choice
      *
      *  This function will return the text for a group choice
@@ -10838,13 +11693,13 @@ class acf_field_clone extends \acf_field
      *  @date    20/07/2016
      *  @since   5.4.0
      *
-     *  @param   array $field_group
-     *  @return  string
+     *  @param   $field_group (array)
+     *  @return  (string)
      */
     function get_clone_setting_group_choice($field_group)
     {
     }
-    /**
+    /*
      *  ajax_query
      *
      *  description
@@ -10853,13 +11708,13 @@ class acf_field_clone extends \acf_field
      *  @date    17/06/2016
      *  @since   5.3.8
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function ajax_query()
     {
     }
-    /**
+    /*
      *  acf_prepare_field
      *
      *  This function will restore a field's key ready for input
@@ -10868,13 +11723,13 @@ class acf_field_clone extends \acf_field
      *  @date    6/09/2016
      *  @since   5.4.0
      *
-     *  @param   array $field
+     *  @param   $field (array)
      *  @return  $field
      */
     function acf_prepare_field($field)
     {
     }
-    /**
+    /*
      *  validate_value
      *
      *  description
@@ -10883,16 +11738,25 @@ class acf_field_clone extends \acf_field
      *  @date    11/02/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function validate_value($valid, $value, $field, $input)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
     {
     }
 }
 class acf_field_flexible_content extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -10901,13 +11765,13 @@ class acf_field_flexible_content extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  input_admin_enqueue_scripts
      *
      *  description
@@ -10916,13 +11780,13 @@ class acf_field_flexible_content extends \acf_field
      *  @date    16/12/2015
      *  @since   5.3.2
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function input_admin_enqueue_scripts()
     {
     }
-    /**
+    /*
      *  get_valid_layout
      *
      *  This function will fill in the missing keys to create a valid layout
@@ -10931,13 +11795,13 @@ class acf_field_flexible_content extends \acf_field
      *  @date    3/10/13
      *  @since   1.1.0
      *
-     *  @param   array $layout
-     *  @return  array $layout
+     *  @param   $layout (array)
+     *  @return  $layout (array)
      */
     function get_valid_layout($layout = array())
     {
     }
-    /**
+    /*
      *  load_field()
      *
      *  This filter is appied to the $field after it is loaded from the database
@@ -10953,7 +11817,7 @@ class acf_field_flexible_content extends \acf_field
     function load_field($field)
     {
     }
-    /**
+    /*
      *  get_sub_field
      *
      *  This function will return a specific sub field
@@ -10963,14 +11827,14 @@ class acf_field_flexible_content extends \acf_field
      *  @since   5.4.0
      *
      *  @param   $sub_field
-     *  @param   string $selector
-     *  @param   array $field
-     *  @return  int $post_id
+     *  @param   $selector (string)
+     *  @param   $field (array)
+     *  @return  $post_id (int)
      */
     function get_sub_field($sub_field, $id, $field)
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -10984,7 +11848,7 @@ class acf_field_flexible_content extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_layout
      *
      *  description
@@ -10993,13 +11857,13 @@ class acf_field_flexible_content extends \acf_field
      *  @date    19/11/2013
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function render_layout($field, $layout, $i, $value)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -11014,7 +11878,7 @@ class acf_field_flexible_content extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  load_value()
      *
      *  This filter is applied to the $value after it is loaded from the db
@@ -11023,15 +11887,15 @@ class acf_field_flexible_content extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value found in the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value found in the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *  @return  $value
      */
     function load_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -11040,16 +11904,16 @@ class acf_field_flexible_content extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  validate_value
      *
      *  description
@@ -11058,8 +11922,8 @@ class acf_field_flexible_content extends \acf_field
      *  @date    11/02/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function validate_value($valid, $value, $field, $input)
     {
@@ -11106,7 +11970,7 @@ class acf_field_flexible_content extends \acf_field
     function update_row($row, $i, $field, $post_id)
     {
     }
-    /**
+    /*
      *  update_value()
      *
      *  This filter is appied to the $value before it is updated in the db
@@ -11124,7 +11988,7 @@ class acf_field_flexible_content extends \acf_field
     function update_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  delete_value
      *
      *  description
@@ -11133,13 +11997,13 @@ class acf_field_flexible_content extends \acf_field
      *  @date    1/07/2015
      *  @since   5.2.3
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function delete_value($post_id, $key, $field)
     {
     }
-    /**
+    /*
      *  update_field()
      *
      *  This filter is appied to the $field before it is saved to the database
@@ -11156,7 +12020,7 @@ class acf_field_flexible_content extends \acf_field
     function update_field($field)
     {
     }
-    /**
+    /*
      *  delete_field
      *
      *  description
@@ -11165,13 +12029,13 @@ class acf_field_flexible_content extends \acf_field
      *  @date    4/04/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function delete_field($field)
     {
     }
-    /**
+    /*
      *  duplicate_field()
      *
      *  This filter is appied to the $field before it is duplicated and saved to the database
@@ -11187,7 +12051,7 @@ class acf_field_flexible_content extends \acf_field
     function duplicate_field($field)
     {
     }
-    /**
+    /*
      *  ajax_layout_title
      *
      *  description
@@ -11196,8 +12060,8 @@ class acf_field_flexible_content extends \acf_field
      *  @date    2/03/2016
      *  @since   5.3.2
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function ajax_layout_title()
     {
@@ -11205,7 +12069,7 @@ class acf_field_flexible_content extends \acf_field
     function get_layout_title($field, $layout, $i, $value)
     {
     }
-    /**
+    /*
      *  clone_any_field
      *
      *  This function will update clone field settings based on the origional field
@@ -11214,14 +12078,14 @@ class acf_field_flexible_content extends \acf_field
      *  @date    28/06/2016
      *  @since   5.3.8
      *
-     *  @param   array $clone
-     *  @param   array $field
+     *  @param   $clone (array)
+     *  @param   $field (array)
      *  @return  $clone
      */
     function clone_any_field($field, $clone_field)
     {
     }
-    /**
+    /*
      *  prepare_field_for_export
      *
      *  description
@@ -11230,8 +12094,8 @@ class acf_field_flexible_content extends \acf_field
      *  @date    11/03/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function prepare_field_for_export($field)
     {
@@ -11239,7 +12103,7 @@ class acf_field_flexible_content extends \acf_field
     function prepare_any_field_for_export($field)
     {
     }
-    /**
+    /*
      *  prepare_field_for_import
      *
      *  description
@@ -11248,13 +12112,13 @@ class acf_field_flexible_content extends \acf_field
      *  @date    11/03/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function prepare_field_for_import($field)
     {
     }
-    /**
+    /*
      *  validate_any_field
      *
      *  This function will add compatibility for the 'column_width' setting
@@ -11263,13 +12127,13 @@ class acf_field_flexible_content extends \acf_field
      *  @date    30/1/17
      *  @since   5.5.6
      *
-     *  @param   array $field
+     *  @param   $field (array)
      *  @return  $field
      */
     function validate_any_field($field)
     {
     }
-    /**
+    /*
      *  translate_field
      *
      *  This function will translate field settings
@@ -11278,16 +12142,48 @@ class acf_field_flexible_content extends \acf_field
      *  @date    8/03/2016
      *  @since   5.3.2
      *
-     *  @param   array $field
+     *  @param   $field (array)
      *  @return  $field
      */
     function translate_field($field)
     {
     }
+    /**
+     * Additional validation for the flexible content field when submitted via REST.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array|mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_gallery extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -11296,13 +12192,13 @@ class acf_field_gallery extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  input_admin_enqueue_scripts
      *
      *  description
@@ -11311,13 +12207,13 @@ class acf_field_gallery extends \acf_field
      *  @date    16/12/2015
      *  @since   5.3.2
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function input_admin_enqueue_scripts()
     {
     }
-    /**
+    /*
      *  ajax_get_attachment
      *
      *  description
@@ -11326,13 +12222,13 @@ class acf_field_gallery extends \acf_field
      *  @date    13/12/2013
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function ajax_get_attachment()
     {
     }
-    /**
+    /*
      *  ajax_update_attachment
      *
      *  description
@@ -11341,13 +12237,13 @@ class acf_field_gallery extends \acf_field
      *  @date    13/12/2013
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function ajax_update_attachment()
     {
     }
-    /**
+    /*
      *  ajax_get_sort_order
      *
      *  description
@@ -11356,8 +12252,8 @@ class acf_field_gallery extends \acf_field
      *  @date    13/12/2013
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function ajax_get_sort_order()
     {
@@ -11375,7 +12271,7 @@ class acf_field_gallery extends \acf_field
     function render_attachment($id, $field)
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -11389,7 +12285,7 @@ class acf_field_gallery extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -11404,7 +12300,7 @@ class acf_field_gallery extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -11413,16 +12309,16 @@ class acf_field_gallery extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  validate_value
      *
      *  description
@@ -11431,13 +12327,13 @@ class acf_field_gallery extends \acf_field
      *  @date    11/02/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function validate_value($valid, $value, $field, $input)
     {
     }
-    /**
+    /*
      *  update_value()
      *
      *  This filter is appied to the $value before it is updated in the db
@@ -11455,10 +12351,52 @@ class acf_field_gallery extends \acf_field
     function update_value($value, $post_id, $field)
     {
     }
+    /**
+     * Validates file fields updated via the REST API.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * @see \acf_field::get_rest_links()
+     * @param mixed      $value The raw (unformatted) field value.
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array
+     */
+    public function get_rest_links($value, $post_id, array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param string|int $post_id
+     * @param array      $field
+     * @return mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
 }
 class acf_field_repeater extends \acf_field
 {
-    /**
+    /*
      *  __construct
      *
      *  This function will setup the field type data
@@ -11467,13 +12405,13 @@ class acf_field_repeater extends \acf_field
      *  @date    5/03/2014
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function initialize()
     {
     }
-    /**
+    /*
      *  input_admin_enqueue_scripts
      *
      *  description
@@ -11482,13 +12420,13 @@ class acf_field_repeater extends \acf_field
      *  @date    16/12/2015
      *  @since   5.3.2
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function input_admin_enqueue_scripts()
     {
     }
-    /**
+    /*
      *  load_field()
      *
      *  This filter is appied to the $field after it is loaded from the database
@@ -11504,7 +12442,7 @@ class acf_field_repeater extends \acf_field
     function load_field($field)
     {
     }
-    /**
+    /*
      *  render_field()
      *
      *  Create the HTML interface for your field
@@ -11518,7 +12456,7 @@ class acf_field_repeater extends \acf_field
     function render_field($field)
     {
     }
-    /**
+    /*
      *  render_field_settings()
      *
      *  Create extra options for your field. This is rendered when editing a field.
@@ -11533,7 +12471,7 @@ class acf_field_repeater extends \acf_field
     function render_field_settings($field)
     {
     }
-    /**
+    /*
      *  load_value()
      *
      *  This filter is applied to the $value after it is loaded from the db
@@ -11542,15 +12480,15 @@ class acf_field_repeater extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value found in the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value found in the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *  @return  $value
      */
     function load_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  format_value()
      *
      *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -11559,16 +12497,16 @@ class acf_field_repeater extends \acf_field
      *  @since   3.6
      *  @date    23/01/13
      *
-     *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
-     *  @param   array $field the field array holding all the field options
+     *  @param   $value (mixed) the value which was loaded from the database
+     *  @param   $post_id (mixed) the $post_id from which the value was loaded
+     *  @param   $field (array) the field array holding all the field options
      *
-     *  @return  mixed $value the modified value
+     *  @return  $value (mixed) the modified value
      */
     function format_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  validate_value
      *
      *  description
@@ -11577,8 +12515,8 @@ class acf_field_repeater extends \acf_field
      *  @date    11/02/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function validate_value($valid, $value, $field, $input)
     {
@@ -11612,7 +12550,7 @@ class acf_field_repeater extends \acf_field
     function delete_row($i, $field, $post_id)
     {
     }
-    /**
+    /*
      *  update_value()
      *
      *  This filter is appied to the $value before it is updated in the db
@@ -11630,7 +12568,7 @@ class acf_field_repeater extends \acf_field
     function update_value($value, $post_id, $field)
     {
     }
-    /**
+    /*
      *  delete_value
      *
      *  description
@@ -11639,13 +12577,13 @@ class acf_field_repeater extends \acf_field
      *  @date    1/07/2015
      *  @since   5.2.3
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function delete_value($post_id, $key, $field)
     {
     }
-    /**
+    /*
      *  delete_field
      *
      *  description
@@ -11654,13 +12592,13 @@ class acf_field_repeater extends \acf_field
      *  @date    4/04/2014
      *  @since   5.0.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function delete_field($field)
     {
     }
-    /**
+    /*
      *  update_field()
      *
      *  This filter is appied to the $field before it is saved to the database
@@ -11677,7 +12615,7 @@ class acf_field_repeater extends \acf_field
     function update_field($field)
     {
     }
-    /**
+    /*
      *  duplicate_field()
      *
      *  This filter is appied to the $field before it is duplicated and saved to the database
@@ -11693,7 +12631,7 @@ class acf_field_repeater extends \acf_field
     function duplicate_field($field)
     {
     }
-    /**
+    /*
      *  translate_field
      *
      *  This function will translate field settings
@@ -11702,13 +12640,13 @@ class acf_field_repeater extends \acf_field
      *  @date    8/03/2016
      *  @since   5.3.2
      *
-     *  @param   array $field
+     *  @param   $field (array)
      *  @return  $field
      */
     function translate_field($field)
     {
     }
-    /**
+    /*
      *  validate_any_field
      *
      *  This function will add compatibility for the 'column_width' setting
@@ -11717,7 +12655,7 @@ class acf_field_repeater extends \acf_field
      *  @date    30/1/17
      *  @since   5.5.6
      *
-     *  @param   array $field
+     *  @param   $field (array)
      *  @return  $field
      */
     function validate_any_field($field)
@@ -11749,6 +12687,38 @@ class acf_field_repeater extends \acf_field
      * @return  array
      */
     function prepare_field_for_import($field)
+    {
+    }
+    /**
+     * Additional validation for the repeater field when submitted via REST.
+     *
+     * @param bool  $valid
+     * @param int   $value
+     * @param array $field
+     *
+     * @return bool|WP_Error
+     */
+    public function validate_rest_value($valid, $value, $field)
+    {
+    }
+    /**
+     * Return the schema array for the REST API.
+     *
+     * @param array $field
+     * @return array
+     */
+    public function get_rest_schema(array $field)
+    {
+    }
+    /**
+     * Apply basic formatting to prepare the value for default REST output.
+     *
+     * @param mixed      $value
+     * @param int|string $post_id
+     * @param array      $field
+     * @return array|mixed
+     */
+    public function format_value_for_rest($value, $post_id, array $field)
     {
     }
 }
@@ -11838,7 +12808,7 @@ class acf_options_page
 {
     /** @var array Contains an array of options page settings */
     var $pages = array();
-    /**
+    /*
      *  __construct
      *
      *  Initialize filters, action, variables and includes
@@ -11847,8 +12817,8 @@ class acf_options_page
      *  @date    23/06/12
      *  @since   5.0.0
      *
-     *  @param   void
-     *  @return  void
+     *  @param   n/a
+     *  @return  n/a
      */
     function __construct()
     {
@@ -11865,7 +12835,7 @@ class acf_options_page
     function validate_page($page)
     {
     }
-    /**
+    /*
      *  add_page
      *
      *  This function will store an options page settings
@@ -11874,13 +12844,13 @@ class acf_options_page
      *  @date    9/6/17
      *  @since   5.6.0
      *
-     *  @param   array $page
-     *  @return  void
+     *  @param   $page (array)
+     *  @return  n/a
      */
     function add_page($page)
     {
     }
-    /**
+    /*
      *  add_sub_page
      *
      *  description
@@ -11889,13 +12859,13 @@ class acf_options_page
      *  @date    9/6/17
      *  @since   5.6.0
      *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     *  @param   $post_id (int)
+     *  @return  $post_id (int)
      */
     function add_sub_page($page)
     {
     }
-    /**
+    /*
      *  update_page
      *
      *  This function will update an options page settings
@@ -11904,14 +12874,14 @@ class acf_options_page
      *  @date    9/6/17
      *  @since   5.6.0
      *
-     *  @param   string $slug
-     *  @param   array $data
-     *  @return  array
+     *  @param   $slug (string)
+     *  @param   $data (array)
+     *  @return  (array)
      */
     function update_page($slug = '', $data = array())
     {
     }
-    /**
+    /*
      *  get_page
      *
      *  This function will return an options page settings
@@ -11920,13 +12890,13 @@ class acf_options_page
      *  @date    6/07/2016
      *  @since   5.4.0
      *
-     *  @param   string $slug
-     *  @return  mixed
+     *  @param   $slug (string)
+     *  @return  (mixed)
      */
     function get_page($slug)
     {
     }
-    /**
+    /*
      *  get_pages
      *
      *  This function will return all options page settings
@@ -11935,8 +12905,8 @@ class acf_options_page
      *  @date    6/07/2016
      *  @since   5.4.0
      *
-     *  @param   string $slug
-     *  @return  mixed
+     *  @param   $slug (string)
+     *  @return  (mixed)
      */
     function get_pages()
     {
@@ -11952,9 +12922,6 @@ class acf_pro_updates
      *  @type    function
      *  @date    23/06/12
      *  @since   5.0.0
-     *
-     *  @param   void
-     *  @return  void
      */
     function __construct()
     {
@@ -11967,14 +12934,11 @@ class acf_pro_updates
      *  @type    function
      *  @date    10/4/17
      *  @since   5.5.10
-     *
-     *  @param   int $post_id
-     *  @return  int $post_id
      */
     function init()
     {
     }
-    /**
+    /*
      *  modify_plugin_update_message
      *
      *  Displays an update message for plugin list screens.
@@ -11983,16 +12947,16 @@ class acf_pro_updates
      *  @date    14/06/2016
      *  @since   5.3.8
      *
-     *  @param   string $message
-     *  @param   array $plugin_data
-     *  @param   object $r
+     *  @param   $message (string)
+     *  @param   $plugin_data (array)
+     *  @param   $r (object)
      *  @return  $message
      */
     function modify_plugin_update_message($plugin_data, $response)
     {
     }
 }
-/**
+/*
  * acf
  *
  * The main function responsible for returning the one true acf Instance to functions everywhere.
@@ -12017,8 +12981,8 @@ function acf()
  * @date    17/1/19
  * @since   5.7.10
  *
- * @param   int|string $id The field ID, key or name.
- * @return  array|false The field array.
+ * @param   (int|string) $id The field ID, key or name.
+ * @return  (array|false) The field array.
  */
 function acf_get_field($id = 0)
 {
@@ -12031,8 +12995,8 @@ function acf_get_field($id = 0)
  * @date    18/1/19
  * @since   5.7.10
  *
- * @param   int|string $id The field ID, key or name.
- * @return  array|false The field array.
+ * @param   (int|string) $id The field ID, key or name.
+ * @return  (array|false) The field array.
  */
 function acf_get_raw_field($id = 0)
 {
@@ -12045,8 +13009,8 @@ function acf_get_raw_field($id = 0)
  * @date    18/1/19
  * @since   5.7.10
  *
- * @param   int|string $id The field ID, key or name.
- * @return  array|false The field array.
+ * @param   (int|string) $id The field ID, key or name.
+ * @return  (array|false) The field array.
  */
 function acf_get_field_post($id = 0)
 {
@@ -12115,7 +13079,7 @@ function acf_translate_field($field = array())
  * @date    30/09/13
  * @since   5.0.0
  *
- * @param   int|string|array $parent The field group or field settings. Also accepts the field group ID or key.
+ * @param   (int|string|array) $parent The field group or field settings. Also accepts the field group ID or key.
  * @return  array
  */
 function acf_get_fields($parent)
@@ -12188,7 +13152,7 @@ function acf_prepare_field($field)
  * @since   5.6.9 Changed parameter order.
  *
  * @param   array        $fields An array of fields.
- * @param   int|string $post_id The post ID to load values from.
+ * @param   (int|string) $post_id The post ID to load values from.
  * @param   string       $element The wrapping element type.
  * @param   string       $instruction The instruction render position (label|field).
  * @return  void
@@ -12340,7 +13304,7 @@ function acf_flush_field_cache($field)
  * @date    21/1/19
  * @since   5.7.10
  *
- * @param   int|string $id The field ID, key or name.
+ * @param   (int|string) $id The field ID, key or name.
  * @return  bool True if field was deleted.
  */
 function acf_delete_field($id = 0)
@@ -12354,7 +13318,7 @@ function acf_delete_field($id = 0)
  * @date    2/10/13
  * @since   5.0.0
  *
- * @param   int|string $id The field ID, key or name.
+ * @param   (int|string) $id The field ID, key or name.
  * @return  bool True if field was trashed.
  */
 function acf_trash_field($id = 0)
@@ -12368,7 +13332,7 @@ function acf_trash_field($id = 0)
  * @date    2/10/13
  * @since   5.0.0
  *
- * @param   int|string $id The field ID, key or name.
+ * @param   (int|string) $id The field ID, key or name.
  * @return  bool True if field was trashed.
  */
 function acf_untrash_field($id = 0)
@@ -12412,9 +13376,9 @@ function acf_prefix_fields(&$fields, $prefix = 'acf')
  * @date    21/1/19
  * @since   5.7.10
  *
- * @param   int|string $id The field ID, key or name.
+ * @param   (int|string) $id The field ID, key or name.
  * @param   array        $field The parent field array.
- * @return  array|false
+ * @return  (array|false)
  */
 function acf_get_sub_field($id, $field)
 {
@@ -12427,9 +13391,9 @@ function acf_get_sub_field($id, $field)
  * @date    12/2/19
  * @since   5.7.11
  *
- * @param   int|string $id The field ID, key or name.
+ * @param   (int|string) $id The field ID, key or name.
  * @param   array        $haystack The array of fields.
- * @return  int|false
+ * @return  (int|false)
  */
 function acf_search_fields($id, $fields)
 {
@@ -12486,7 +13450,7 @@ function acf_duplicate_fields($fields = array(), $parent_id = 0)
  * @date    16/06/2014
  * @since   5.0.0
  *
- * @param   int|string $id The field ID, key or name.
+ * @param   (int|string) $id The field ID, key or name.
  * @param   int          $parent_id The new parent ID.
  * @return  bool True if field was duplicated.
  */
@@ -12558,8 +13522,8 @@ function acf_prepare_field_for_import($field)
  * @date    30/09/13
  * @since   5.0.0
  *
- * @param   int|string $id The field group ID, key or name.
- * @return  array|false The field group array.
+ * @param   (int|string) $id The field group ID, key or name.
+ * @return  (array|false) The field group array.
  */
 function acf_get_field_group($id = 0)
 {
@@ -12572,8 +13536,8 @@ function acf_get_field_group($id = 0)
  * @date    18/1/19
  * @since   5.7.10
  *
- * @param   int|string $id The field ID, key or name.
- * @return  array|false The field group array.
+ * @param   (int|string) $id The field ID, key or name.
+ * @return  (array|false) The field group array.
  */
 function acf_get_raw_field_group($id = 0)
 {
@@ -12586,8 +13550,8 @@ function acf_get_raw_field_group($id = 0)
  * @date    18/1/19
  * @since   5.7.10
  *
- * @param   int|string $id The field group's ID, key or name.
- * @return  array|false The field group's array.
+ * @param   (int|string) $id The field group's ID, key or name.
+ * @return  (array|false) The field group's array.
  */
 function acf_get_field_group_post($id = 0)
 {
@@ -12760,7 +13724,7 @@ function acf_flush_field_group_cache($field_group)
  * @date    21/1/19
  * @since   5.7.10
  *
- * @param   int|string $id The field group ID, key or name.
+ * @param   (int|string) $id The field group ID, key or name.
  * @return  bool True if field group was deleted.
  */
 function acf_delete_field_group($id = 0)
@@ -12774,7 +13738,7 @@ function acf_delete_field_group($id = 0)
  * @date    2/10/13
  * @since   5.0.0
  *
- * @param   int|string $id The field group ID, key or name.
+ * @param   (int|string) $id The field group ID, key or name.
  * @return  bool True if field group was trashed.
  */
 function acf_trash_field_group($id = 0)
@@ -12788,7 +13752,7 @@ function acf_trash_field_group($id = 0)
  * @date    2/10/13
  * @since   5.0.0
  *
- * @param   int|string $id The field_group ID, key or name.
+ * @param   (int|string) $id The field_group ID, key or name.
  * @return  bool True if field_group was trashed.
  */
 function acf_untrash_field_group($id = 0)
@@ -12832,7 +13796,7 @@ function acf_is_field_group($field_group = \false)
  * @date    16/06/2014
  * @since   5.0.0
  *
- * @param   int|string $id The field_group ID, key or name.
+ * @param   (int|string) $id The field_group ID, key or name.
  * @param   int          $new_post_id Optional post ID to override.
  * @return  array The new field group.
  */
@@ -12982,7 +13946,7 @@ function acf_save_post($post_id = 0, $values = \null)
 function _acf_do_save_post($post_id = 0)
 {
 }
-/**
+/*
  * acf_is_empty
  *
  * Returns true if the value provided is considered "empty". Allows numbers such as 0.
@@ -13207,6 +14171,16 @@ function acf_maybe_idval($value)
 {
 }
 /**
+ * Convert any numeric strings into their equivalent numeric type. This function will
+ * work with both single values and arrays.
+ *
+ * @param mixed $value Either a single value or an array of values.
+ * @return mixed
+ */
+function acf_format_numerics($value)
+{
+}
+/**
  * acf_numval
  *
  * Casts the provided value as eiter an int or float using a simple hack.
@@ -13215,7 +14189,7 @@ function acf_maybe_idval($value)
  * @since   5.7.14
  *
  * @param   mixed $value A value to parse.
- * @return  int|float
+ * @return  (int|float)
  */
 function acf_numval($value)
 {
@@ -13365,7 +14339,7 @@ function acf_add_action_variations($action = '', $variations = array(), $index =
 /**
  * _acf_apply_hook_variations
  *
- * Applys hook variations during apply_filters() or do_action().
+ * Applies hook variations during apply_filters() or do_action().
  *
  * @date    25/1/19
  * @since   5.7.11
@@ -13409,9 +14383,7 @@ function acf_add_deprecated_action($deprecated, $version, $replacement)
 {
 }
 /**
- * _acf_apply_deprecated_hook
- *
- * Applys a deprecated filter during apply_filters() or do_action().
+ * Applies a deprecated filter during apply_filters() or do_action().
  *
  * @date    25/1/19
  * @since   5.7.11
@@ -13777,15 +14749,14 @@ function acf_esc_atts_e($attrs)
 {
 }
 /**
- * acf_get_meta
- *
  * Returns an array of "ACF only" meta for the given post_id.
  *
  * @date    9/10/18
  * @since   5.8.0
  *
- * @param   mixed $post_id The post_id for this data.
- * @return  array
+ * @param mixed $post_id The post_id for this data.
+ *
+ * @return array
  */
 function acf_get_meta($post_id = 0)
 {
@@ -13805,49 +14776,46 @@ function acf_get_option_meta($prefix = '')
 {
 }
 /**
- * acf_get_metadata
- *
  * Retrieves specific metadata from the database.
  *
  * @date    16/10/2015
  * @since   5.2.3
  *
  * @param   int|string $post_id The post id.
- * @param   string       $name The meta name.
- * @param   bool         $hidden If the meta is hidden (starts with an underscore).
+ * @param   string     $name    The meta name.
+ * @param   bool       $hidden  If the meta is hidden (starts with an underscore).
+ *
  * @return  mixed
  */
 function acf_get_metadata($post_id = 0, $name = '', $hidden = \false)
 {
 }
 /**
- * acf_update_metadata
- *
  * Updates metadata in the database.
  *
  * @date    16/10/2015
  * @since   5.2.3
  *
  * @param   int|string $post_id The post id.
- * @param   string       $name The meta name.
- * @param   mixed        $value The meta value.
- * @param   bool         $hidden If the meta is hidden (starts with an underscore).
+ * @param   string     $name    The meta name.
+ * @param   mixed      $value   The meta value.
+ * @param   bool       $hidden  If the meta is hidden (starts with an underscore).
+ *
  * @return  int|bool Meta ID if the key didn't exist, true on successful update, false on failure.
  */
 function acf_update_metadata($post_id = 0, $name = '', $value = '', $hidden = \false)
 {
 }
 /**
- * acf_delete_metadata
- *
  * Deletes metadata from the database.
  *
  * @date    16/10/2015
  * @since   5.2.3
  *
  * @param   int|string $post_id The post id.
- * @param   string       $name The meta name.
- * @param   bool         $hidden If the meta is hidden (starts with an underscore).
+ * @param   string     $name The meta name.
+ * @param   bool       $hidden If the meta is hidden (starts with an underscore).
+ *
  * @return  bool
  */
 function acf_delete_metadata($post_id = 0, $name = '', $hidden = \false)
@@ -13861,8 +14829,8 @@ function acf_delete_metadata($post_id = 0, $name = '', $hidden = \false)
  * @date    25/06/2016
  * @since   5.3.8
  *
- * @param   int|string $from_post_id The post id to copy from.
- * @param   int|string $to_post_id The post id to paste to.
+ * @param   (int|string) $from_post_id The post id to copy from.
+ * @param   (int|string) $to_post_id The post id to paste to.
  * @return  void
  */
 function acf_copy_metadata($from_post_id = 0, $to_post_id = 0)
@@ -13894,8 +14862,8 @@ function acf_copy_postmeta($from_post_id = 0, $to_post_id = 0)
  * @since   5.7.10
  *
  * @param   string       $key The meta name (field name).
- * @param   int|string $post_id The post_id where this field's value is saved.
- * @return  array|false The field array.
+ * @param   (int|string) $post_id The post_id where this field's value is saved.
+ * @return  (array|false) The field array.
  */
 function acf_get_meta_field($key = 0, $post_id = 0)
 {
@@ -13908,7 +14876,7 @@ function acf_get_meta_field($key = 0, $post_id = 0)
  * @date    16/10/2015
  * @since   5.2.3
  *
- * @param   int|string                                   $post_id The post id.
+ * @param   (int|string)                                   $post_id The post id.
  * @param   string type The reference type (fields|groups).
  * @param   string                                         $name An optional specific name
  * @return  mixed
@@ -13924,10 +14892,10 @@ function acf_get_metaref($post_id = 0, $type = 'fields', $name = '')
  * @date    16/10/2015
  * @since   5.2.3
  *
- * @param   int|string                                   $post_id The post id.
+ * @param   (int|string)                                   $post_id The post id.
  * @param   string type The reference type (fields|groups).
  * @param   array                                          $references An array of references.
- * @return  int|bool Meta ID if the key didn't exist, true on successful update, false on failure.
+ * @return  (int|bool) Meta ID if the key didn't exist, true on successful update, false on failure.
  */
 function acf_update_metaref($post_id = 0, $type = 'fields', $references = array())
 {
@@ -14101,7 +15069,7 @@ function acf_get_path($filename = '')
 function acf_get_url($filename = '')
 {
 }
-/**
+/*
  * acf_include
  *
  * Includes a file within the ACF plugin.
@@ -14152,7 +15120,7 @@ function acf_get_value($post_id, $field)
  * @since   5.0.0
  *
  * @param   mixed        $value The field value.
- * @param   int|string $post_id The post id.
+ * @param   (int|string) $post_id The post id.
  * @param   array        $field The field array.
  * @return  mixed.
  */
@@ -14168,7 +15136,7 @@ function acf_format_value($value, $post_id, $field)
  * @since   5.0.0
  *
  * @param   mixed        $value The new value.
- * @param   int|string $post_id The post id.
+ * @param   (int|string) $post_id The post id.
  * @param   array        $field The field array.
  * @return  bool.
  */
@@ -14184,7 +15152,7 @@ function acf_update_value($value, $post_id, $field)
  * @since   5.7.13
  *
  * @param   array values The array of values.
- * @param   int|string                     $post_id The post id.
+ * @param   (int|string)                     $post_id The post id.
  * @return  void
  */
 function acf_update_values($values, $post_id)
@@ -14198,7 +15166,7 @@ function acf_update_values($values, $post_id)
  * @date    22/1/19
  * @since   5.7.10
  *
- * @param   int|string $post_id The post id.
+ * @param   (int|string) $post_id The post id.
  * @param   string       $field_name The field name.
  * @return  void
  */
@@ -14213,7 +15181,7 @@ function acf_flush_value_cache($post_id = 0, $field_name = '')
  * @date    28/09/13
  * @since   5.0.0
  *
- * @param   int|string $post_id The post id.
+ * @param   (int|string) $post_id The post id.
  * @param   array        $field The field array.
  * @return  bool.
  */
@@ -14229,7 +15197,7 @@ function acf_delete_value($post_id, $field)
  * @since   5.0.0
  *
  * @param   mixed        $value The new value.
- * @param   int|string $post_id The post id.
+ * @param   (int|string) $post_id The post id.
  * @param   array        $field The field array.
  * @return  bool.
  */
@@ -14255,10 +15223,31 @@ function acf_get_object_type($object_type, $object_subtype = '')
  * @date    25/1/19
  * @since   5.7.11
  *
- * @param   int|string $post_id The post id.
+ * @param   (int|string) $post_id The post id.
  * @return  array
  */
 function acf_decode_post_id($post_id = 0)
+{
+}
+/**
+ * Determine the REST base for a post type or taxonomy object. Note that this is not intended for use
+ * with term or post objects but is, instead, to be used with the underlying WP_Post_Type and WP_Taxonomy
+ * instances.
+ *
+ * @param WP_Post_Type|WP_Taxonomy $type_object
+ * @return string|null
+ */
+function acf_get_object_type_rest_base($type_object)
+{
+}
+/**
+ * Extract the ID of a given object/array. This supports all expected types handled by our update_fields() and
+ * load_fields() callbacks.
+ *
+ * @param WP_Post|WP_User|WP_Term|array $object
+ * @return int|mixed|null
+ */
+function acf_get_object_id($object)
 {
 }
 // class_exists check
@@ -14300,13 +15289,14 @@ function acf_render_admin_notices()
  *
  * @param   string $text The admin notice text.
  * @param   string $class The type of notice (warning, error, success, info).
+ * @param   string $dismissable Is this notification dismissible (default true) (since 5.11.0)
  * @return  ACF_Admin_Notice
  */
-function acf_add_admin_notice($text = '', $type = 'info')
+function acf_add_admin_notice($text = '', $type = 'info', $dismissible = \true)
 {
 }
 // class_exists check
-/**
+/*
 *  acf_register_admin_tool
 *
 *  alias of acf()->admin_tools->register_tool()
@@ -14315,13 +15305,13 @@ function acf_add_admin_notice($text = '', $type = 'info')
 *  @date    31/5/17
 *  @since   5.6.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function acf_register_admin_tool($class)
 {
 }
-/**
+/*
 *  acf_get_admin_tools_url
 *
 *  This function will return the admin URL to the tools page
@@ -14330,13 +15320,13 @@ function acf_register_admin_tool($class)
 *  @date    31/5/17
 *  @since   5.6.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function acf_get_admin_tools_url()
 {
 }
-/**
+/*
 *  acf_get_admin_tool_url
 *
 *  This function will return the admin URL to the tools page
@@ -14345,13 +15335,13 @@ function acf_get_admin_tools_url()
 *  @date    31/5/17
 *  @since   5.6.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function acf_get_admin_tool_url($tool = '')
 {
 }
-/**
+/*
 *  acf_is_array
 *
 *  This function will return true for a non empty array
@@ -14360,8 +15350,8 @@ function acf_get_admin_tool_url($tool = '')
 *  @date    6/07/2016
 *  @since   5.4.0
 *
-*  @param   array $array
-*  @return  boolean
+*  @param   $array (array)
+*  @return  (boolean)
 */
 function acf_is_array($array)
 {
@@ -14374,8 +15364,8 @@ function acf_is_array($array)
  *  @date    2/2/18
  *  @since   5.6.5
  *
- *  @param   void
- *  @return  void
+ *  @param   n/a
+ *  @return  n/a
  */
 function acf_has_setting($name = '')
 {
@@ -14388,13 +15378,13 @@ function acf_has_setting($name = '')
  *  @date    2/2/18
  *  @since   5.6.5
  *
- *  @param   void
- *  @return  void
+ *  @param   n/a
+ *  @return  n/a
  */
 function acf_raw_setting($name = '')
 {
 }
-/**
+/*
 *  acf_update_setting
 *
 *  alias of acf()->update_setting()
@@ -14403,9 +15393,9 @@ function acf_raw_setting($name = '')
 *  @date    28/09/13
 *  @since   5.0.0
 *
-*  @param   string $name
-*  @param   mixed $value
-*  @return  void
+*  @param   $name (string)
+*  @param   $value (mixed)
+*  @return  n/a
 */
 function acf_update_setting($name, $value)
 {
@@ -14418,13 +15408,13 @@ function acf_update_setting($name, $value)
  *  @date    2/2/18
  *  @since   5.6.5
  *
- *  @param   void
- *  @return  void
+ *  @param   n/a
+ *  @return  n/a
  */
 function acf_validate_setting($name = '')
 {
 }
-/**
+/*
 *  acf_get_setting
 *
 *  alias of acf()->get_setting()
@@ -14433,13 +15423,13 @@ function acf_validate_setting($name = '')
 *  @date    28/09/13
 *  @since   5.0.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function acf_get_setting($name, $value = \null)
 {
 }
-/**
+/*
 *  acf_append_setting
 *
 *  This function will add a value into the settings array found in the acf object
@@ -14448,9 +15438,9 @@ function acf_get_setting($name, $value = \null)
 *  @date    28/09/13
 *  @since   5.0.0
 *
-*  @param   string $name
-*  @param   mixed $value
-*  @return  void
+*  @param   $name (string)
+*  @param   $value (mixed)
+*  @return  n/a
 */
 function acf_append_setting($name, $value)
 {
@@ -14479,7 +15469,7 @@ function acf_get_data($name)
  *
  *  @param   string $name
  *  @param   mixed  $value
- *  @return  void
+ *  @return  n/a
  */
 function acf_set_data($name, $value)
 {
@@ -14496,7 +15486,7 @@ function acf_set_data($name, $value)
 function acf_append_data($name, $data)
 {
 }
-/**
+/*
 *  acf_init
 *
 *  alias of acf()->init()
@@ -14505,13 +15495,13 @@ function acf_append_data($name, $data)
 *  @date    28/09/13
 *  @since   5.0.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function acf_init()
 {
 }
-/**
+/*
 *  acf_has_done
 *
 *  This function will return true if this action has already been done
@@ -14520,13 +15510,13 @@ function acf_init()
 *  @date    16/12/2015
 *  @since   5.3.2
 *
-*  @param   string $name
-*  @return  boolean
+*  @param   $name (string)
+*  @return  (boolean)
 */
 function acf_has_done($name)
 {
 }
-/**
+/*
 *  acf_get_external_path
 *
 *  This function will return the path to a file within an external folder
@@ -14535,14 +15525,14 @@ function acf_has_done($name)
 *  @date    22/2/17
 *  @since   5.5.8
 *
-*  @param   string $file
-*  @param   string $path
-*  @return  string
+*  @param   $file (string)
+*  @param   $path (string)
+*  @return  (string)
 */
 function acf_get_external_path($file, $path = '')
 {
 }
-/**
+/*
 *  acf_get_external_dir
 *
 *  This function will return the url to a file within an external folder
@@ -14551,9 +15541,9 @@ function acf_get_external_path($file, $path = '')
 *  @date    22/2/17
 *  @since   5.5.8
 *
-*  @param   string $file
-*  @param   string $path
-*  @return  string
+*  @param   $file (string)
+*  @param   $path (string)
+*  @return  (string)
 */
 function acf_get_external_dir($file, $path = '')
 {
@@ -14573,7 +15563,7 @@ function acf_get_external_dir($file, $path = '')
 function acf_plugin_dir_url($file)
 {
 }
-/**
+/*
 *  acf_parse_args
 *
 *  This function will merge together 2 arrays and also convert any numeric values to ints
@@ -14582,14 +15572,14 @@ function acf_plugin_dir_url($file)
 *  @date    18/10/13
 *  @since   5.0.0
 *
-*  @param   array $args
-*  @param   array $defaults
-*  @return  array $args
+*  @param   $args (array)
+*  @param   $defaults (array)
+*  @return  $args (array)
 */
 function acf_parse_args($args, $defaults = array())
 {
 }
-/**
+/*
 *  acf_parse_types
 *
 *  This function will convert any numeric values to int and trim strings
@@ -14598,13 +15588,13 @@ function acf_parse_args($args, $defaults = array())
 *  @date    18/10/13
 *  @since   5.0.0
 *
-*  @param   mixed $var
-*  @return  mixed $var
+*  @param   $var (mixed)
+*  @return  $var (mixed)
 */
 function acf_parse_types($array)
 {
 }
-/**
+/*
 *  acf_parse_type
 *
 *  description
@@ -14613,29 +15603,27 @@ function acf_parse_types($array)
 *  @date    11/11/2014
 *  @since   5.0.9
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_parse_type($v)
 {
 }
 /**
-*  acf_get_view
-*
-*  This function will load in a file from the 'admin/views' folder and allow variables to be passed through
-*
-*  @type    function
-*  @date    28/09/13
-*  @since   5.0.0
-*
-*  @param   string $view_name
-*  @param   array $args
-*  @return  void
-*/
-function acf_get_view($path = '', $args = array())
+ *  This function will load in a file from the 'admin/views' folder and allow variables to be passed through
+ *
+ *  @date    28/09/13
+ *  @since   5.0.0
+ *
+ *  @param string $view_path
+ *  @param array  $view_args
+ *
+ *  @return void
+ */
+function acf_get_view($view_path = '', $view_args = array())
 {
 }
-/**
+/*
 *  acf_merge_atts
 *
 *  description
@@ -14644,13 +15632,13 @@ function acf_get_view($path = '', $args = array())
 *  @date    2/11/2014
 *  @since   5.0.9
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_merge_atts($atts, $extra = array())
 {
 }
-/**
+/*
 *  acf_nonce_input
 *
 *  This function will create a basic nonce input
@@ -14659,13 +15647,13 @@ function acf_merge_atts($atts, $extra = array())
 *  @date    24/5/17
 *  @since   5.6.0
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_nonce_input($nonce = '')
 {
 }
-/**
+/*
 *  acf_extract_var
 *
 *  This function will remove the var from the array, and return the var
@@ -14674,14 +15662,14 @@ function acf_nonce_input($nonce = '')
 *  @date    2/10/13
 *  @since   5.0.0
 *
-*  @param   array $array
-*  @param   string $key
-*  @return  mixed
+*  @param   $array (array)
+*  @param   $key (string)
+*  @return  (mixed)
 */
 function acf_extract_var(&$array, $key, $default = \null)
 {
 }
-/**
+/*
 *  acf_extract_vars
 *
 *  This function will remove the vars from the array, and return the vars
@@ -14690,13 +15678,13 @@ function acf_extract_var(&$array, $key, $default = \null)
 *  @date    8/10/13
 *  @since   5.0.0
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_extract_vars(&$array, $keys)
 {
 }
-/**
+/*
 *  acf_get_sub_array
 *
 *  This function will return a sub array of data
@@ -14705,8 +15693,8 @@ function acf_extract_vars(&$array, $keys)
 *  @date    15/03/2016
 *  @since   5.3.2
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_get_sub_array($array, $keys)
 {
@@ -14728,7 +15716,7 @@ function acf_get_post_types($args = array())
 function acf_get_pretty_post_types($post_types = array())
 {
 }
-/**
+/*
 *  acf_get_post_type_label
 *
 *  This function will return a pretty label for a specific post_type
@@ -14737,13 +15725,13 @@ function acf_get_pretty_post_types($post_types = array())
 *  @date    5/07/2016
 *  @since   5.4.0
 *
-*  @param   string $post_type
-*  @return  string
+*  @param   $post_type (string)
+*  @return  (string)
 */
 function acf_get_post_type_label($post_type)
 {
 }
-/**
+/*
 *  acf_verify_nonce
 *
 *  This function will look at the $_POST['_acf_nonce'] value and return true or false
@@ -14752,13 +15740,13 @@ function acf_get_post_type_label($post_type)
 *  @date    15/10/13
 *  @since   5.0.0
 *
-*  @param   string $nonce
-*  @return  boolean
+*  @param   $nonce (string)
+*  @return  (boolean)
 */
 function acf_verify_nonce($value)
 {
 }
-/**
+/*
 *  acf_verify_ajax
 *
 *  This function will return true if the current AJAX request is valid
@@ -14768,13 +15756,13 @@ function acf_verify_nonce($value)
 *  @date    7/08/2015
 *  @since   5.2.3
 *
-*  @param   void
-*  @return  boolean
+*  @param   n/a
+*  @return  (boolean)
 */
 function acf_verify_ajax()
 {
 }
-/**
+/*
 *  acf_get_image_sizes
 *
 *  This function will return an array of available image sizes
@@ -14783,8 +15771,8 @@ function acf_verify_ajax()
 *  @date    23/10/13
 *  @since   5.0.0
 *
-*  @param   void
-*  @return  array
+*  @param   n/a
+*  @return  (array)
 */
 function acf_get_image_sizes()
 {
@@ -14808,7 +15796,7 @@ function acf_get_image_size($s = '')
 function acf_version_compare($left = '', $compare = '>', $right = '')
 {
 }
-/**
+/*
 *  acf_get_full_version
 *
 *  This function will remove any '-beta1' or '-RC1' strings from a version
@@ -14817,13 +15805,13 @@ function acf_version_compare($left = '', $compare = '>', $right = '')
 *  @date    24/11/16
 *  @since   5.5.0
 *
-*  @param   string $version
-*  @return  string
+*  @param   $version (string)
+*  @return  (string)
 */
 function acf_get_full_version($version = '1')
 {
 }
-/**
+/*
 *  acf_get_terms
 *
 *  This function is a wrapper for the get_terms() function
@@ -14832,13 +15820,13 @@ function acf_get_full_version($version = '1')
 *  @date    28/09/2016
 *  @since   5.4.0
 *
-*  @param   array $args
-*  @return  array
+*  @param   $args (array)
+*  @return  (array)
 */
 function acf_get_terms($args)
 {
 }
-/**
+/*
 *  acf_get_taxonomy_terms
 *
 *  This function will return an array of available taxonomy terms
@@ -14847,13 +15835,13 @@ function acf_get_terms($args)
 *  @date    7/10/13
 *  @since   5.0.0
 *
-*  @param   array $taxonomies
-*  @return  array
+*  @param   $taxonomies (array)
+*  @return  (array)
 */
 function acf_get_taxonomy_terms($taxonomies = array())
 {
 }
-/**
+/*
 *  acf_decode_taxonomy_terms
 *
 *  This function decodes the $taxonomy:$term strings into a nested array
@@ -14862,13 +15850,13 @@ function acf_get_taxonomy_terms($taxonomies = array())
 *  @date    27/02/2014
 *  @since   5.0.0
 *
-*  @param   array $terms
-*  @return  array
+*  @param   $terms (array)
+*  @return  (array)
 */
 function acf_decode_taxonomy_terms($strings = \false)
 {
 }
-/**
+/*
 *  acf_decode_taxonomy_term
 *
 *  This function will return the taxonomy and term slug for a given value
@@ -14877,8 +15865,8 @@ function acf_decode_taxonomy_terms($strings = \false)
 *  @date    31/03/2014
 *  @since   5.0.0
 *
-*  @param   string $string
-*  @return  array
+*  @param   $string (string)
+*  @return  (array)
 */
 function acf_decode_taxonomy_term($value)
 {
@@ -14909,7 +15897,7 @@ function acf_array($val = array())
 function acf_unarray($val)
 {
 }
-/**
+/*
 *  acf_get_array
 *
 *  This function will force a variable to become an array
@@ -14918,13 +15906,13 @@ function acf_unarray($val)
 *  @date    4/02/2014
 *  @since   5.0.0
 *
-*  @param   mixed $var
-*  @return  array
+*  @param   $var (mixed)
+*  @return  (array)
 */
 function acf_get_array($var = \false, $delimiter = '')
 {
 }
-/**
+/*
 *  acf_get_numeric
 *
 *  This function will return numeric values
@@ -14933,8 +15921,8 @@ function acf_get_array($var = \false, $delimiter = '')
 *  @date    15/07/2016
 *  @since   5.4.0
 *
-*  @param   mixed $value
-*  @return  mixed
+*  @param   $value (mixed)
+*  @return  (mixed)
 */
 function acf_get_numeric($value = '')
 {
@@ -14953,7 +15941,7 @@ function acf_get_numeric($value = '')
 function acf_get_posts($args = array())
 {
 }
-/**
+/*
 *  _acf_query_remove_post_type
 *
 *  This function will remove the 'wp_posts.post_type' WHERE clause completely
@@ -14963,13 +15951,13 @@ function acf_get_posts($args = array())
 *  @date    4/03/2015
 *  @since   5.1.5
 *
-*  @param   string $sql
+*  @param   $sql (string)
 *  @return  $sql
 */
 function _acf_query_remove_post_type($sql)
 {
 }
-/**
+/*
 *  acf_get_grouped_posts
 *
 *  This function will return all posts grouped by post_type
@@ -14979,8 +15967,8 @@ function _acf_query_remove_post_type($sql)
 *  @date    27/02/2014
 *  @since   5.0.0
 *
-*  @param   array $args
-*  @return  array
+*  @param   $args (array)
+*  @return  (array)
 */
 function acf_get_grouped_posts($args)
 {
@@ -14994,7 +15982,7 @@ function acf_get_post_title($post = 0, $is_search = \false)
 function acf_order_by_search($array, $search)
 {
 }
-/**
+/*
 *  acf_get_pretty_user_roles
 *
 *  description
@@ -15003,13 +15991,13 @@ function acf_order_by_search($array, $search)
 *  @date    23/02/2016
 *  @since   5.3.2
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_get_pretty_user_roles($allowed = \false)
 {
 }
-/**
+/*
 *  acf_get_grouped_users
 *
 *  This function will return all users grouped by role
@@ -15019,8 +16007,8 @@ function acf_get_pretty_user_roles($allowed = \false)
 *  @date    27/02/2014
 *  @since   5.0.0
 *
-*  @param   array $args
-*  @return  array
+*  @param   $args (array)
+*  @return  (array)
 */
 function acf_get_grouped_users($args = array())
 {
@@ -15039,7 +16027,7 @@ function acf_get_grouped_users($args = array())
 function acf_json_encode($json)
 {
 }
-/**
+/*
 *  acf_str_exists
 *
 *  This function will return true if a sub string is found
@@ -15048,14 +16036,14 @@ function acf_json_encode($json)
 *  @date    1/05/2014
 *  @since   5.0.0
 *
-*  @param   string $needle
-*  @param   string $haystack
-*  @return  boolean
+*  @param   $needle (string)
+*  @param   $haystack (string)
+*  @return  (boolean)
 */
 function acf_str_exists($needle, $haystack)
 {
 }
-/**
+/*
 *  acf_debug
 *
 *  description
@@ -15064,8 +16052,8 @@ function acf_str_exists($needle, $haystack)
 *  @date    2/05/2014
 *  @since   5.0.0
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_debug()
 {
@@ -15076,7 +16064,7 @@ function acf_debug_start()
 function acf_debug_end()
 {
 }
-/**
+/*
 *  acf_encode_choices
 *
 *  description
@@ -15085,8 +16073,8 @@ function acf_debug_end()
 *  @date    4/06/2014
 *  @since   5.0.0
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_encode_choices($array = array(), $show_keys = \true)
 {
@@ -15094,7 +16082,7 @@ function acf_encode_choices($array = array(), $show_keys = \true)
 function acf_decode_choices($string = '', $array_keys = \false)
 {
 }
-/**
+/*
 *  acf_str_replace
 *
 *  This function will replace an array of strings much like str_replace
@@ -15105,13 +16093,13 @@ function acf_decode_choices($string = '', $array_keys = \false)
 *  @date    21/06/2016
 *  @since   5.3.8
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_str_replace($string = '', $search_replace = array())
 {
 }
-/**
+/*
 *  acf_split_date_time
 *
 *  This function will split a format string into seperate date and time
@@ -15120,13 +16108,13 @@ function acf_str_replace($string = '', $search_replace = array())
 *  @date    26/05/2016
 *  @since   5.3.8
 *
-*  @param   string $date_time
-*  @return  array $formats
+*  @param   $date_time (string)
+*  @return  $formats (array)
 */
 function acf_split_date_time($date_time = '')
 {
 }
-/**
+/*
 *  acf_convert_date_to_php
 *
 *  This fucntion converts a date format string from JS to PHP
@@ -15135,13 +16123,13 @@ function acf_split_date_time($date_time = '')
 *  @date    20/06/2014
 *  @since   5.0.0
 *
-*  @param   string $date
-*  @return  string
+*  @param   $date (string)
+*  @return  (string)
 */
 function acf_convert_date_to_php($date = '')
 {
 }
-/**
+/*
 *  acf_convert_date_to_js
 *
 *  This fucntion converts a date format string from PHP to JS
@@ -15150,13 +16138,13 @@ function acf_convert_date_to_php($date = '')
 *  @date    20/06/2014
 *  @since   5.0.0
 *
-*  @param   string $date
-*  @return  string
+*  @param   $date (string)
+*  @return  (string)
 */
 function acf_convert_date_to_js($date = '')
 {
 }
-/**
+/*
 *  acf_convert_time_to_php
 *
 *  This fucntion converts a time format string from JS to PHP
@@ -15165,13 +16153,13 @@ function acf_convert_date_to_js($date = '')
 *  @date    20/06/2014
 *  @since   5.0.0
 *
-*  @param   string $time
-*  @return  string
+*  @param   $time (string)
+*  @return  (string)
 */
 function acf_convert_time_to_php($time = '')
 {
 }
-/**
+/*
 *  acf_convert_time_to_js
 *
 *  This fucntion converts a date format string from PHP to JS
@@ -15180,13 +16168,13 @@ function acf_convert_time_to_php($time = '')
 *  @date    20/06/2014
 *  @since   5.0.0
 *
-*  @param   string $time
-*  @return  string
+*  @param   $time (string)
+*  @return  (string)
 */
 function acf_convert_time_to_js($time = '')
 {
 }
-/**
+/*
 *  acf_update_user_setting
 *
 *  description
@@ -15195,13 +16183,13 @@ function acf_convert_time_to_js($time = '')
 *  @date    15/07/2014
 *  @since   5.0.0
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_update_user_setting($name, $value)
 {
 }
-/**
+/*
 *  acf_get_user_setting
 *
 *  description
@@ -15210,13 +16198,13 @@ function acf_update_user_setting($name, $value)
 *  @date    15/07/2014
 *  @since   5.0.0
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_get_user_setting($name = '', $default = \false)
 {
 }
-/**
+/*
 *  acf_in_array
 *
 *  description
@@ -15225,13 +16213,13 @@ function acf_get_user_setting($name = '', $default = \false)
 *  @date    22/07/2014
 *  @since   5.0.0
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_in_array($value = '', $array = \false)
 {
 }
-/**
+/*
 *  acf_get_valid_post_id
 *
 *  This function will return a valid post_id based on the current screen / parameter
@@ -15240,13 +16228,13 @@ function acf_in_array($value = '', $array = \false)
 *  @date    8/12/2013
 *  @since   5.0.0
 *
-*  @param   mixed $post_id
-*  @return  mixed $post_id
+*  @param   $post_id (mixed)
+*  @return  $post_id (mixed)
 */
 function acf_get_valid_post_id($post_id = 0)
 {
 }
-/**
+/*
 *  acf_get_post_id_info
 *
 *  This function will return the type and id for a given $post_id string
@@ -15255,13 +16243,13 @@ function acf_get_valid_post_id($post_id = 0)
 *  @date    2/07/2016
 *  @since   5.4.0
 *
-*  @param   mixed $post_id
-*  @return  array $info
+*  @param   $post_id (mixed)
+*  @return  $info (array)
 */
 function acf_get_post_id_info($post_id = 0)
 {
 }
-/**
+/*
 acf_log( acf_get_post_id_info(4) );
 acf_log( acf_get_post_id_info('post_4') );
 acf_log( acf_get_post_id_info('user_123') );
@@ -15272,7 +16260,7 @@ acf_log( acf_get_post_id_info('options_lol!') );
 acf_log( acf_get_post_id_info('option') );
 acf_log( acf_get_post_id_info('options') );
 */
-/**
+/*
 *  acf_isset_termmeta
 *
 *  This function will return true if the termmeta table exists
@@ -15282,13 +16270,13 @@ acf_log( acf_get_post_id_info('options') );
 *  @date    3/09/2016
 *  @since   5.4.0
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_isset_termmeta($taxonomy = '')
 {
 }
-/**
+/*
 *  acf_upload_files
 *
 *  This function will walk througfh the $_FILES data and upload each found
@@ -15297,13 +16285,13 @@ function acf_isset_termmeta($taxonomy = '')
 *  @date    25/10/2014
 *  @since   5.0.9
 *
-*  @param   array $ancestors an internal parameter, not required
-*  @return  void
+*  @param   $ancestors (array) an internal parameter, not required
+*  @return  n/a
 */
 function acf_upload_files($ancestors = array())
 {
 }
-/**
+/*
 *  acf_upload_file
 *
 *  This function will uploade a $_FILE
@@ -15312,13 +16300,13 @@ function acf_upload_files($ancestors = array())
 *  @date    27/10/2014
 *  @since   5.0.9
 *
-*  @param   array $uploaded_file array found from $_FILE data
-*  @return  int $id new attachment ID
+*  @param   $uploaded_file (array) array found from $_FILE data
+*  @return  $id (int) new attachment ID
 */
 function acf_upload_file($uploaded_file)
 {
 }
-/**
+/*
 *  acf_update_nested_array
 *
 *  This function will update a nested array value. Useful for modifying the $_POST array
@@ -15327,15 +16315,15 @@ function acf_upload_file($uploaded_file)
 *  @date    27/10/2014
 *  @since   5.0.9
 *
-*  @param   array $array target array to be updated
-*  @param   array $ancestors array of keys to navigate through to find the child
-*  @param   mixed $value The new value
-*  @return  boolean
+*  @param   $array (array) target array to be updated
+*  @param   $ancestors (array) array of keys to navigate through to find the child
+*  @param   $value (mixed) The new value
+*  @return  (boolean)
 */
 function acf_update_nested_array(&$array, $ancestors, $value)
 {
 }
-/**
+/*
 *  acf_is_screen
 *
 *  This function will return true if all args are matched for the current screen
@@ -15344,13 +16332,13 @@ function acf_update_nested_array(&$array, $ancestors, $value)
 *  @date    9/12/2014
 *  @since   5.1.5
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_is_screen($id = '')
 {
 }
-/**
+/*
 *  acf_maybe_get
 *
 *  This function will return a var if it exists in an array
@@ -15359,10 +16347,10 @@ function acf_is_screen($id = '')
 *  @date    9/12/2014
 *  @since   5.1.5
 *
-*  @param   array $array the array to look within
-*  @param   key $key the array key to look for. Nested values may be found using '/'
-*  @param   mixed $default the value returned if not found
-*  @return  int $post_id
+*  @param   $array (array) the array to look within
+*  @param   $key (key) the array key to look for. Nested values may be found using '/'
+*  @param   $default (mixed) the value returned if not found
+*  @return  $post_id (int)
 */
 function acf_maybe_get($array = array(), $key = 0, $default = \null)
 {
@@ -15385,7 +16373,7 @@ function acf_maybe_get_GET($key = '', $default = \null)
 function acf_get_attachment($attachment)
 {
 }
-/**
+/*
 *  acf_get_truncated
 *
 *  This function will truncate and return a string
@@ -15394,14 +16382,14 @@ function acf_get_attachment($attachment)
 *  @date    8/08/2014
 *  @since   5.0.0
 *
-*  @param   string $text
-*  @param   int $length
-*  @return  string
+*  @param   $text (string)
+*  @param   $length (int)
+*  @return  (string)
 */
 function acf_get_truncated($text, $length = 64)
 {
 }
-/**
+/*
 *  acf_current_user_can_admin
 *
 *  This function will return true if the current user can administrate the ACF field groups
@@ -15410,13 +16398,13 @@ function acf_get_truncated($text, $length = 64)
 *  @date    9/02/2015
 *  @since   5.1.5
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_current_user_can_admin()
 {
 }
-/**
+/*
 *  acf_get_filesize
 *
 *  This function will return a numeric value of bytes for a given filesize string
@@ -15425,13 +16413,13 @@ function acf_current_user_can_admin()
 *  @date    18/02/2015
 *  @since   5.1.5
 *
-*  @param   mixed $size
-*  @return  int
+*  @param   $size (mixed)
+*  @return  (int)
 */
 function acf_get_filesize($size = 1)
 {
 }
-/**
+/*
 *  acf_format_filesize
 *
 *  This function will return a formatted string containing the filesize and unit
@@ -15440,13 +16428,13 @@ function acf_get_filesize($size = 1)
 *  @date    18/02/2015
 *  @since   5.1.5
 *
-*  @param   mixed $size
-*  @return  int
+*  @param   $size (mixed)
+*  @return  (int)
 */
 function acf_format_filesize($size = 1)
 {
 }
-/**
+/*
 *  acf_get_valid_terms
 *
 *  This function will replace old terms with new split term ids
@@ -15455,14 +16443,14 @@ function acf_format_filesize($size = 1)
 *  @date    27/02/2015
 *  @since   5.1.5
 *
-*  @param   int|array $terms
-*  @param   string $taxonomy
+*  @param   $terms (int|array)
+*  @param   $taxonomy (string)
 *  @return  $terms
 */
 function acf_get_valid_terms($terms = \false, $taxonomy = 'category')
 {
 }
-/**
+/*
 *  acf_validate_attachment
 *
 *  This function will validate an attachment based on a field's restrictions and return an array of errors
@@ -15471,10 +16459,10 @@ function acf_get_valid_terms($terms = \false, $taxonomy = 'category')
 *  @date    3/07/2015
 *  @since   5.2.3
 *
-*  @param   array $attachment attachment data. Changes based on context
-*  @param   array $field field settings containing restrictions
-*  @param   string $context $file is different when uploading / preparing
-*  @return  array $errors
+*  @param   $attachment (array) attachment data. Changes based on context
+*  @param   $field (array) field settings containing restrictions
+*  @param   $context (string) $file is different when uploading / preparing
+*  @return  $errors (array)
 */
 function acf_validate_attachment($attachment, $field, $context = 'prepare')
 {
@@ -15482,7 +16470,7 @@ function acf_validate_attachment($attachment, $field, $context = 'prepare')
 function _acf_settings_uploader($uploader)
 {
 }
-/**
+/*
 *  acf_translate_keys
 *
 *  description
@@ -15491,10 +16479,10 @@ function _acf_settings_uploader($uploader)
 *  @date    7/12/2015
 *  @since   5.3.2
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
-/**
+/*
 function acf_translate_keys( $array, $keys ) {
 
 	// bail early if no keys
@@ -15519,7 +16507,7 @@ function acf_translate_keys( $array, $keys ) {
 
 }
 */
-/**
+/*
 *  acf_translate
 *
 *  This function will translate a string using the new 'l10n_textdomain' setting
@@ -15529,13 +16517,13 @@ function acf_translate_keys( $array, $keys ) {
 *  @date    4/12/2015
 *  @since   5.3.2
 *
-*  @param   mixed $string string or array containins strings to be translated
+*  @param   $string (mixed) string or array containins strings to be translated
 *  @return  $string
 */
 function acf_translate($string)
 {
 }
-/**
+/*
 *  acf_maybe_add_action
 *
 *  This function will determine if the action has already run before adding / calling the function
@@ -15544,13 +16532,13 @@ function acf_translate($string)
 *  @date    13/01/2016
 *  @since   5.3.2
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_maybe_add_action($tag, $function_to_add, $priority = 10, $accepted_args = 1)
 {
 }
-/**
+/*
 *  acf_is_row_collapsed
 *
 *  This function will return true if the field's row is collapsed
@@ -15559,13 +16547,13 @@ function acf_maybe_add_action($tag, $function_to_add, $priority = 10, $accepted_
 *  @date    2/03/2016
 *  @since   5.3.2
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_is_row_collapsed($field_key = '', $row_index = 0)
 {
 }
-/**
+/*
 *  acf_get_attachment_image
 *
 *  description
@@ -15574,13 +16562,13 @@ function acf_is_row_collapsed($field_key = '', $row_index = 0)
 *  @date    24/10/16
 *  @since   5.5.0
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_get_attachment_image($attachment_id = 0, $size = 'thumbnail')
 {
 }
-/**
+/*
 *  acf_get_post_thumbnail
 *
 *  This function will return a thumbail image url for a given post
@@ -15589,9 +16577,9 @@ function acf_get_attachment_image($attachment_id = 0, $size = 'thumbnail')
 *  @date    3/05/2016
 *  @since   5.3.8
 *
-*  @param   obj $post
-*  @param   mixed $size
-*  @return  string
+*  @param   $post (obj)
+*  @param   $size (mixed)
+*  @return  (string)
 */
 function acf_get_post_thumbnail($post = \null, $size = 'thumbnail')
 {
@@ -15610,7 +16598,7 @@ function acf_get_post_thumbnail($post = \null, $size = 'thumbnail')
 function acf_get_browser()
 {
 }
-/**
+/*
 *  acf_is_ajax
 *
 *  This function will reutrn true if performing a wp ajax call
@@ -15619,13 +16607,13 @@ function acf_get_browser()
 *  @date    7/06/2016
 *  @since   5.3.8
 *
-*  @param   void
-*  @return  boolean
+*  @param   n/a
+*  @return  (boolean)
 */
 function acf_is_ajax($action = '')
 {
 }
-/**
+/*
 *  acf_format_date
 *
 *  This function will accept a date value and return it in a formatted string
@@ -15634,8 +16622,8 @@ function acf_is_ajax($action = '')
 *  @date    16/06/2016
 *  @since   5.3.8
 *
-*  @param   string $value
-*  @return  string $format
+*  @param   $value (string)
+*  @return  $format (string)
 */
 function acf_format_date($value, $format)
 {
@@ -15654,7 +16642,7 @@ function acf_format_date($value, $format)
 function acf_clear_log()
 {
 }
-/**
+/*
 *  acf_log
 *
 *  description
@@ -15663,8 +16651,8 @@ function acf_clear_log()
 *  @date    24/06/2016
 *  @since   5.3.8
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_log()
 {
@@ -15683,7 +16671,7 @@ function acf_log()
 function acf_dev_log()
 {
 }
-/**
+/*
 *  acf_doing
 *
 *  This function will tell ACF what task it is doing
@@ -15692,14 +16680,14 @@ function acf_dev_log()
 *  @date    28/06/2016
 *  @since   5.3.8
 *
-*  @param   string $event
+*  @param   $event (string)
 *  @param   context (string)
-*  @return  void
+*  @return  n/a
 */
 function acf_doing($event = '', $context = '')
 {
 }
-/**
+/*
 *  acf_is_doing
 *
 *  This function can be used to state what ACF is doing, or to check
@@ -15708,14 +16696,14 @@ function acf_doing($event = '', $context = '')
 *  @date    28/06/2016
 *  @since   5.3.8
 *
-*  @param   string $event
+*  @param   $event (string)
 *  @param   context (string)
-*  @return  boolean
+*  @return  (boolean)
 */
 function acf_is_doing($event = '', $context = '')
 {
 }
-/**
+/*
 *  acf_is_plugin_active
 *
 *  This function will return true if the ACF plugin is active
@@ -15725,13 +16713,13 @@ function acf_is_doing($event = '', $context = '')
 *  @date    13/07/2016
 *  @since   5.4.0
 *
-*  @param   int $basename
-*  @return  int $post_id
+*  @param   $basename (int)
+*  @return  $post_id (int)
 */
 function acf_is_plugin_active()
 {
 }
-/**
+/*
 *  acf_send_ajax_results
 *
 *  This function will print JSON data for a Select2 AJAX query
@@ -15740,13 +16728,13 @@ function acf_is_plugin_active()
 *  @date    19/07/2016
 *  @since   5.4.0
 *
-*  @param   array $response
-*  @return  void
+*  @param   $response (array)
+*  @return  n/a
 */
 function acf_send_ajax_results($response)
 {
 }
-/**
+/*
 *  acf_is_sequential_array
 *
 *  This function will return true if the array contains only numeric keys
@@ -15756,13 +16744,13 @@ function acf_send_ajax_results($response)
 *  @date    9/09/2016
 *  @since   5.4.0
 *
-*  @param   array $array
-*  @return  boolean
+*  @param   $array (array)
+*  @return  (boolean)
 */
 function acf_is_sequential_array($array)
 {
 }
-/**
+/*
 *  acf_is_associative_array
 *
 *  This function will return true if the array contains one or more string keys
@@ -15772,13 +16760,13 @@ function acf_is_sequential_array($array)
 *  @date    9/09/2016
 *  @since   5.4.0
 *
-*  @param   array $array
-*  @return  boolean
+*  @param   $array (array)
+*  @return  (boolean)
 */
 function acf_is_associative_array($array)
 {
 }
-/**
+/*
 *  acf_add_array_key_prefix
 *
 *  This function will add a prefix to all array keys
@@ -15788,14 +16776,14 @@ function acf_is_associative_array($array)
 *  @date    15/09/2016
 *  @since   5.4.0
 *
-*  @param   array $array
-*  @param   string $prefix
-*  @return  array
+*  @param   $array (array)
+*  @param   $prefix (string)
+*  @return  (array)
 */
 function acf_add_array_key_prefix($array, $prefix)
 {
 }
-/**
+/*
 *  acf_remove_array_key_prefix
 *
 *  This function will remove a prefix to all array keys
@@ -15805,31 +16793,31 @@ function acf_add_array_key_prefix($array, $prefix)
 *  @date    15/09/2016
 *  @since   5.4.0
 *
-*  @param   array $array
-*  @param   string $prefix
-*  @return  array
+*  @param   $array (array)
+*  @param   $prefix (string)
+*  @return  (array)
 */
 function acf_remove_array_key_prefix($array, $prefix)
 {
 }
-/**
+/*
 *  acf_strip_protocol
 *
 *  This function will remove the proticol from a url
-*  Used to allow licences to remain active if a site is switched to https
+*  Used to allow licenses to remain active if a site is switched to https
 *
 *  @type    function
 *  @date    10/01/2017
 *  @since   5.5.4
 *  @author  Aaron
 *
-*  @param   string $url
-*  @return  string
+*  @param   $url (string)
+*  @return  (string)
 */
 function acf_strip_protocol($url)
 {
 }
-/**
+/*
 *  acf_connect_attachment_to_post
 *
 *  This function will connect an attacment (image etc) to the post
@@ -15847,7 +16835,7 @@ function acf_strip_protocol($url)
 function acf_connect_attachment_to_post($attachment_id = 0, $post_id = 0)
 {
 }
-/**
+/*
 *  acf_encrypt
 *
 *  This function will encrypt a string using PHP
@@ -15857,13 +16845,13 @@ function acf_connect_attachment_to_post($attachment_id = 0, $post_id = 0)
 *  @date    27/2/17
 *  @since   5.5.8
 *
-*  @param   string $data
-*  @return  string
+*  @param   $data (string)
+*  @return  (string)
 */
 function acf_encrypt($data = '')
 {
 }
-/**
+/*
 *  acf_decrypt
 *
 *  This function will decrypt an encrypted string using PHP
@@ -15873,8 +16861,8 @@ function acf_encrypt($data = '')
 *  @date    27/2/17
 *  @since   5.5.8
 *
-*  @param   string $data
-*  @return  string
+*  @param   $data (string)
+*  @return  (string)
 */
 function acf_decrypt($data = '')
 {
@@ -15978,7 +16966,7 @@ function acf_array_camel_case($array = array())
 function acf_is_block_editor()
 {
 }
-/**
+/*
 *  get_field()
 *
 *  This function will return a custom field value for a specific field name/key + post_id.
@@ -15989,15 +16977,15 @@ function acf_is_block_editor()
 *  @since   3.6
 *  @date    29/01/13
 *
-*  @param   string $selector the field name or key
-*  @param   mixed $post_id the post_id of which the value is saved against
-*  @param   boolean $format_value whether or not to format the value as described above
-*  @return  mixed
+*  @param   $selector (string) the field name or key
+*  @param   $post_id (mixed) the post_id of which the value is saved against
+*  @param   $format_value (boolean) whether or not to format the value as described above
+*  @return  (mixed)
 */
 function get_field($selector, $post_id = \false, $format_value = \true)
 {
 }
-/**
+/*
 *  the_field()
 *
 *  This function is the same as echo get_field().
@@ -16006,32 +16994,30 @@ function get_field($selector, $post_id = \false, $format_value = \true)
 *  @since   1.0.3
 *  @date    29/01/13
 *
-*  @param   string $selector the field name or key
-*  @param   mixed $post_id the post_id of which the value is saved against
-*  @return  void
+*  @param   $selector (string) the field name or key
+*  @param   $post_id (mixed) the post_id of which the value is saved against
+*  @return  n/a
 */
 function the_field($selector, $post_id = \false, $format_value = \true)
 {
 }
 /**
-*  get_field_object()
-*
-*  This function will return an array containing all the field data for a given field_name
-*
-*  @type    function
-*  @since   3.6
-*  @date    3/02/13
-*
-*  @param   string $selector the field name or key
-*  @param   mixed $post_id the post_id of which the value is saved against
-*  @param   boolean $format_value whether or not to format the field value
-*  @param   boolean $load_value whether or not to load the field value
-*  @return  array $field
-*/
+ * This function will return an array containing all the field data for a given field_name.
+ *
+ * @since 3.6
+ * @date  3/02/13
+ *
+ * @param string $selector     The field name or key.
+ * @param mixed  $post_id      The post_id of which the value is saved against.
+ * @param bool   $format_value Whether to format the field value.
+ * @param bool   $load_value   Whether to load the field value.
+ *
+ * @return array $field
+ */
 function get_field_object($selector, $post_id = \false, $format_value = \true, $load_value = \true)
 {
 }
-/**
+/*
 *  acf_get_object_field
 *
 *  This function will return a field for the given selector.
@@ -16041,15 +17027,15 @@ function get_field_object($selector, $post_id = \false, $format_value = \true, $
 *  @date    4/08/2015
 *  @since   5.2.3
 *
-*  @param   mixed $selector identifyer of field. Can be an ID, key, name or post object
-*  @param   mixed $post_id the post_id of which the value is saved against
-*  @param   boolean $strict if true, return a field only when a field key is found.
-*  @return  array $field
+*  @param   $selector (mixed) identifyer of field. Can be an ID, key, name or post object
+*  @param   $post_id (mixed) the post_id of which the value is saved against
+*  @param   $strict (boolean) if true, return a field only when a field key is found.
+*  @return  $field (array)
 */
 function acf_maybe_get_field($selector, $post_id = \false, $strict = \true)
 {
 }
-/**
+/*
 *  acf_maybe_get_sub_field
 *
 *  This function will attempt to find a sub field
@@ -16058,13 +17044,13 @@ function acf_maybe_get_field($selector, $post_id = \false, $strict = \true)
 *  @date    3/10/2016
 *  @since   5.4.0
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_maybe_get_sub_field($selectors, $post_id = \false, $strict = \true)
 {
 }
-/**
+/*
 *  get_fields()
 *
 *  This function will return an array containing all the custom field values for a specific post_id.
@@ -16074,14 +17060,14 @@ function acf_maybe_get_sub_field($selectors, $post_id = \false, $strict = \true)
 *  @since   3.6
 *  @date    29/01/13
 *
-*  @param   mixed $post_id the post_id of which the value is saved against
-*  @param   boolean $format_value whether or not to format the field value
-*  @return  array associative array where field name => field value
+*  @param   $post_id (mixed) the post_id of which the value is saved against
+*  @param   $format_value (boolean) whether or not to format the field value
+*  @return  (array) associative array where field name => field value
 */
 function get_fields($post_id = \false, $format_value = \true)
 {
 }
-/**
+/*
 *  get_field_objects()
 *
 *  This function will return an array containing all the custom field objects for a specific post_id.
@@ -16091,10 +17077,10 @@ function get_fields($post_id = \false, $format_value = \true)
 *  @since   3.6
 *  @date    29/01/13
 *
-*  @param   mixed $post_id the post_id of which the value is saved against
-*  @param   boolean $format_value whether or not to format the field value
-*  @param   boolean $load_value whether or not to load the field value
-*  @return  array associative array where field name => field
+*  @param   $post_id (mixed) the post_id of which the value is saved against
+*  @param   $format_value (boolean) whether or not to format the field value
+*  @param   $load_value (boolean) whether or not to load the field value
+*  @return  (array) associative array where field name => field
 */
 function get_field_objects($post_id = \false, $format_value = \true, $load_value = \true)
 {
@@ -16115,7 +17101,7 @@ function get_field_objects($post_id = \false, $format_value = \true, $load_value
 function have_rows($selector, $post_id = \false)
 {
 }
-/**
+/*
 *  the_row
 *
 *  This function will progress the global repeater or flexible content value 1 row
@@ -16124,8 +17110,8 @@ function have_rows($selector, $post_id = \false)
 *  @date    2/09/13
 *  @since   4.3.0
 *
-*  @param   void
-*  @return  array the current row data
+*  @param   N/A
+*  @return  (array) the current row data
 */
 function the_row($format = \false)
 {
@@ -16139,7 +17125,7 @@ function get_row_index()
 function the_row_index()
 {
 }
-/**
+/*
 *  get_row_sub_field
 *
 *  This function is used inside a 'has_sub_field' while loop to return a sub field object
@@ -16148,13 +17134,13 @@ function the_row_index()
 *  @date    16/05/2016
 *  @since   5.3.8
 *
-*  @param   string $selector
-*  @return  array
+*  @param   $selector (string)
+*  @return  (array)
 */
 function get_row_sub_field($selector)
 {
 }
-/**
+/*
 *  get_row_sub_value
 *
 *  This function is used inside a 'has_sub_field' while loop to return a sub field value
@@ -16163,13 +17149,13 @@ function get_row_sub_field($selector)
 *  @date    16/05/2016
 *  @since   5.3.8
 *
-*  @param   string $selector
-*  @return  mixed
+*  @param   $selector (string)
+*  @return  (mixed)
 */
 function get_row_sub_value($selector)
 {
 }
-/**
+/*
 *  reset_rows
 *
 *  This function will find the current loop and unset it from the global array.
@@ -16179,13 +17165,13 @@ function get_row_sub_value($selector)
 *  @date    26/10/13
 *  @since   5.0.0
 *
-*  @param   boolean $hard_reset completely wipe the global variable, or just unset the active row
-*  @return  boolean
+*  @param   $hard_reset (boolean) completely wipe the global variable, or just unset the active row
+*  @return  (boolean)
 */
 function reset_rows()
 {
 }
-/**
+/*
 *  has_sub_field()
 *
 *  This function is used inside a while loop to return either true or false (loop again or stop).
@@ -16196,9 +17182,9 @@ function reset_rows()
 *  @since   1.0.3
 *  @date    29/01/13
 *
-*  @param   string $field_name the field name
-*  @param   mixed $post_id the post_id of which the value is saved against
-*  @return  boolean
+*  @param   $field_name (string) the field name
+*  @param   $post_id (mixed) the post_id of which the value is saved against
+*  @return  (boolean)
 */
 function has_sub_field($field_name, $post_id = \false)
 {
@@ -16206,7 +17192,7 @@ function has_sub_field($field_name, $post_id = \false)
 function has_sub_fields($field_name, $post_id = \false)
 {
 }
-/**
+/*
 *  get_sub_field()
 *
 *  This function is used inside a 'has_sub_field' while loop to return a sub field value
@@ -16215,13 +17201,13 @@ function has_sub_fields($field_name, $post_id = \false)
 *  @since   1.0.3
 *  @date    29/01/13
 *
-*  @param   string $field_name the field name
-*  @return  mixed
+*  @param   $field_name (string) the field name
+*  @return  (mixed)
 */
 function get_sub_field($selector = '', $format_value = \true)
 {
 }
-/**
+/*
 *  the_sub_field()
 *
 *  This function is the same as echo get_sub_field
@@ -16230,13 +17216,13 @@ function get_sub_field($selector = '', $format_value = \true)
 *  @since   1.0.3
 *  @date    29/01/13
 *
-*  @param   string $field_name the field name
-*  @return  void
+*  @param   $field_name (string) the field name
+*  @return  n/a
 */
 function the_sub_field($field_name, $format_value = \true)
 {
 }
-/**
+/*
 *  get_sub_field_object()
 *
 *  This function is used inside a 'has_sub_field' while loop to return a sub field object
@@ -16245,13 +17231,13 @@ function the_sub_field($field_name, $format_value = \true)
 *  @since   3.5.8.1
 *  @date    29/01/13
 *
-*  @param   string $child_name the field name
-*  @return  array
+*  @param   $child_name (string) the field name
+*  @return  (array)
 */
 function get_sub_field_object($selector, $format_value = \true, $load_value = \true)
 {
 }
-/**
+/*
 *  get_row_layout()
 *
 *  This function will return a string representation of the current row layout within a 'have_rows' loop
@@ -16260,31 +17246,27 @@ function get_sub_field_object($selector, $format_value = \true, $load_value = \t
 *  @since   3.0.6
 *  @date    29/01/13
 *
-*  @param   void
-*  @return  string
+*  @param   n/a
+*  @return  (string)
 */
 function get_row_layout()
 {
 }
 /**
-*  acf_shortcode()
-*
-*  This function is used to add basic shortcode support for the ACF plugin
-*  eg. [acf field="heading" post_id="123" format_value="1"]
-*
-*  @type    function
-*  @since   1.1.1
-*  @date    29/01/13
-*
-*  @param   string $field the field name or key
-*  @param   mixed $post_id the post_id of which the value is saved against
-*  @param   boolean $format_value whether or not to format the field value
-*  @return  string
-*/
+ * This function is used to add basic shortcode support for the ACF plugin
+ * eg. [acf field="heading" post_id="123" format_value="1"]
+ *
+ * @since 1.1.1
+ * @date  29/01/13
+ *
+ * @param array $atts The shortcode attributes.
+ *
+ * @return string
+ */
 function acf_shortcode($atts)
 {
 }
-/**
+/*
 *  update_field()
 *
 *  This function will update a value in the database
@@ -16293,15 +17275,15 @@ function acf_shortcode($atts)
 *  @since   3.1.9
 *  @date    29/01/13
 *
-*  @param   string $selector the field name or key
-*  @param   mixed $value the value to save in the database
-*  @param   mixed $post_id the post_id of which the value is saved against
-*  @return  boolean
+*  @param   $selector (string) the field name or key
+*  @param   $value (mixed) the value to save in the database
+*  @param   $post_id (mixed) the post_id of which the value is saved against
+*  @return  (boolean)
 */
 function update_field($selector, $value, $post_id = \false)
 {
 }
-/**
+/*
 *  update_sub_field
 *
 *  This function will update a value of a sub field in the database
@@ -16310,15 +17292,15 @@ function update_field($selector, $value, $post_id = \false)
 *  @date    2/04/2014
 *  @since   5.0.0
 *
-*  @param   mixed $selector the sub field name or key, or an array of ancestors
-*  @param   mixed $value the value to save in the database
-*  @param   mixed $post_id the post_id of which the value is saved against
-*  @return  boolean
+*  @param   $selector (mixed) the sub field name or key, or an array of ancestors
+*  @param   $value (mixed) the value to save in the database
+*  @param   $post_id (mixed) the post_id of which the value is saved against
+*  @return  (boolean)
 */
 function update_sub_field($selector, $value, $post_id = \false)
 {
 }
-/**
+/*
 *  delete_field()
 *
 *  This function will remove a value from the database
@@ -16327,14 +17309,14 @@ function update_sub_field($selector, $value, $post_id = \false)
 *  @since   3.1.9
 *  @date    29/01/13
 *
-*  @param   string $selector the field name or key
-*  @param   mixed $post_id the post_id of which the value is saved against
-*  @return  boolean
+*  @param   $selector (string) the field name or key
+*  @param   $post_id (mixed) the post_id of which the value is saved against
+*  @return  (boolean)
 */
 function delete_field($selector, $post_id = \false)
 {
 }
-/**
+/*
 *  delete_sub_field
 *
 *  This function will delete a value of a sub field in the database
@@ -16343,15 +17325,15 @@ function delete_field($selector, $post_id = \false)
 *  @date    2/04/2014
 *  @since   5.0.0
 *
-*  @param   mixed $selector the sub field name or key, or an array of ancestors
-*  @param   mixed $value the value to save in the database
-*  @param   mixed $post_id the post_id of which the value is saved against
-*  @return  boolean
+*  @param   $selector (mixed) the sub field name or key, or an array of ancestors
+*  @param   $value (mixed) the value to save in the database
+*  @param   $post_id (mixed) the post_id of which the value is saved against
+*  @return  (boolean)
 */
 function delete_sub_field($selector, $post_id = \false)
 {
 }
-/**
+/*
 *  add_row
 *
 *  This function will add a row of data to a field
@@ -16360,15 +17342,15 @@ function delete_sub_field($selector, $post_id = \false)
 *  @date    16/10/2015
 *  @since   5.2.3
 *
-*  @param   string $selector
-*  @param   array $row
-*  @param   mixed $post_id
-*  @return  boolean
+*  @param   $selector (string)
+*  @param   $row (array)
+*  @param   $post_id (mixed)
+*  @return  (boolean)
 */
 function add_row($selector, $row = \false, $post_id = \false)
 {
 }
-/**
+/*
 *  add_sub_row
 *
 *  This function will add a row of data to a field
@@ -16377,15 +17359,15 @@ function add_row($selector, $row = \false, $post_id = \false)
 *  @date    16/10/2015
 *  @since   5.2.3
 *
-*  @param   string $selector
-*  @param   array $row
-*  @param   mixed $post_id
-*  @return  boolean
+*  @param   $selector (string)
+*  @param   $row (array)
+*  @param   $post_id (mixed)
+*  @return  (boolean)
 */
 function add_sub_row($selector, $row = \false, $post_id = \false)
 {
 }
-/**
+/*
 *  update_row
 *
 *  This function will update a row of data to a field
@@ -16394,16 +17376,16 @@ function add_sub_row($selector, $row = \false, $post_id = \false)
 *  @date    19/10/2015
 *  @since   5.2.3
 *
-*  @param   string $selector
-*  @param   int $i
-*  @param   array $row
-*  @param   mixed $post_id
-*  @return  boolean
+*  @param   $selector (string)
+*  @param   $i (int)
+*  @param   $row (array)
+*  @param   $post_id (mixed)
+*  @return  (boolean)
 */
 function update_row($selector, $i = 1, $row = \false, $post_id = \false)
 {
 }
-/**
+/*
 *  update_sub_row
 *
 *  This function will add a row of data to a field
@@ -16412,15 +17394,15 @@ function update_row($selector, $i = 1, $row = \false, $post_id = \false)
 *  @date    16/10/2015
 *  @since   5.2.3
 *
-*  @param   string $selector
-*  @param   array $row
-*  @param   mixed $post_id
-*  @return  boolean
+*  @param   $selector (string)
+*  @param   $row (array)
+*  @param   $post_id (mixed)
+*  @return  (boolean)
 */
 function update_sub_row($selector, $i = 1, $row = \false, $post_id = \false)
 {
 }
-/**
+/*
 *  delete_row
 *
 *  This function will delete a row of data from a field
@@ -16429,15 +17411,15 @@ function update_sub_row($selector, $i = 1, $row = \false, $post_id = \false)
 *  @date    19/10/2015
 *  @since   5.2.3
 *
-*  @param   string $selector
-*  @param   int $i
-*  @param   mixed $post_id
-*  @return  boolean
+*  @param   $selector (string)
+*  @param   $i (int)
+*  @param   $post_id (mixed)
+*  @return  (boolean)
 */
 function delete_row($selector, $i = 1, $post_id = \false)
 {
 }
-/**
+/*
 *  delete_sub_row
 *
 *  This function will add a row of data to a field
@@ -16446,15 +17428,15 @@ function delete_row($selector, $i = 1, $post_id = \false)
 *  @date    16/10/2015
 *  @since   5.2.3
 *
-*  @param   string $selector
-*  @param   array $row
-*  @param   mixed $post_id
-*  @return  boolean
+*  @param   $selector (string)
+*  @param   $row (array)
+*  @param   $post_id (mixed)
+*  @return  (boolean)
 */
 function delete_sub_row($selector, $i = 1, $post_id = \false)
 {
 }
-/**
+/*
 *  Depreceated Functions
 *
 *  These functions are outdated
@@ -16463,8 +17445,8 @@ function delete_sub_row($selector, $i = 1, $post_id = \false)
 *  @date    4/03/2014
 *  @since   1.0.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function create_field($field)
 {
@@ -16484,7 +17466,7 @@ function the_flexible_field($field_name, $post_id = \false)
 function acf_filter_post_id($post_id)
 {
 }
-/**
+/*
 *  acf_get_taxonomies
 *
 *  Returns an array of taxonomy names.
@@ -16512,7 +17494,7 @@ function acf_get_taxonomies($args = array())
 function acf_get_taxonomies_for_post_type($post_types = 'post')
 {
 }
-/**
+/*
 *  acf_get_taxonomy_labels
 *
 *  Returns an array of taxonomies in the format "name => label" for use in a select field.
@@ -16692,9 +17674,9 @@ function acf_get_choice_from_term($term, $format = 'term_id')
  * @since   5.5.6
  * @deprecated 5.9.2
  *
- * @param   string $taxonomy The taxonomy type.
- * @param   int $term_id The term ID.
- * @return  string
+ * @param   $taxonomy (string) The taxonomy type.
+ * @param   $term_id (int) The term ID.
+ * @return  (string)
  */
 function acf_get_term_post_id($taxonomy, $term_id)
 {
@@ -16761,7 +17743,7 @@ function acf_enqueue_uploader()
 {
 }
 // class_exists check
-/**
+/*
  * acf_get_compatibility
  *
  * Returns true if compatibility is enabled for the given component.
@@ -16805,7 +17787,7 @@ function acf_render_field_wrap_label($field)
 function acf_render_field_wrap_description($field)
 {
 }
-/**
+/*
  * acf_get_fields_by_id
  *
  * Returns and array of fields for the given $parent_id.
@@ -16869,7 +17851,7 @@ function acf_get_dir($filename = '')
 {
 }
 // class_exists check
-/**
+/*
 *  acf_register_field_type
 *
 *  alias of acf()->fields->register_field_type()
@@ -16878,13 +17860,13 @@ function acf_get_dir($filename = '')
 *  @date    31/5/17
 *  @since   5.6.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function acf_register_field_type($class)
 {
 }
-/**
+/*
 *  acf_register_field_type_info
 *
 *  alias of acf()->fields->register_field_type_info()
@@ -16893,13 +17875,13 @@ function acf_register_field_type($class)
 *  @date    31/5/17
 *  @since   5.6.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function acf_register_field_type_info($info)
 {
 }
-/**
+/*
 *  acf_get_field_type
 *
 *  alias of acf()->fields->get_field_type()
@@ -16908,13 +17890,13 @@ function acf_register_field_type_info($info)
 *  @date    31/5/17
 *  @since   5.6.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function acf_get_field_type($name)
 {
 }
-/**
+/*
 *  acf_get_field_types
 *
 *  alias of acf()->fields->get_field_types()
@@ -16923,8 +17905,8 @@ function acf_get_field_type($name)
 *  @date    31/5/17
 *  @since   5.6.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function acf_get_field_types($args = array())
 {
@@ -16943,7 +17925,7 @@ function acf_get_field_types($args = array())
 function acf_get_field_types_info($args = array())
 {
 }
-/**
+/*
 *  acf_is_field_type
 *
 *  alias of acf()->fields->is_field_type()
@@ -16952,13 +17934,13 @@ function acf_get_field_types_info($args = array())
 *  @date    31/5/17
 *  @since   5.6.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function acf_is_field_type($name = '')
 {
 }
-/**
+/*
 *  acf_get_field_type_prop
 *
 *  This function will return a field type's property
@@ -16967,13 +17949,13 @@ function acf_is_field_type($name = '')
 *  @date    1/10/13
 *  @since   5.0.0
 *
-*  @param   void
-*  @return  array
+*  @param   n/a
+*  @return  (array)
 */
 function acf_get_field_type_prop($name = '', $prop = '')
 {
 }
-/**
+/*
 *  acf_get_field_type_label
 *
 *  This function will return the label of a field type
@@ -16982,13 +17964,13 @@ function acf_get_field_type_prop($name = '', $prop = '')
 *  @date    1/10/13
 *  @since   5.0.0
 *
-*  @param   void
-*  @return  array
+*  @param   n/a
+*  @return  (array)
 */
 function acf_get_field_type_label($name = '')
 {
 }
-/**
+/*
 *  acf_field_type_exists (deprecated)
 *
 *  deprecated in favour of acf_is_field_type()
@@ -16997,13 +17979,13 @@ function acf_get_field_type_label($name = '')
 *  @date    1/10/13
 *  @since   5.0.0
 *
-*  @param   string $type
-*  @return  boolean
+*  @param   $type (string)
+*  @return  (boolean)
 */
 function acf_field_type_exists($type = '')
 {
 }
-/**
+/*
 *  acf_get_grouped_field_types
 *
 *  Returns an multi-dimentional array of field types "name => label" grouped by category
@@ -17012,14 +17994,14 @@ function acf_field_type_exists($type = '')
 *  @date    1/10/13
 *  @since   5.0.0
 *
-*  @param   void
-*  @return  array
+*  @param   n/a
+*  @return  (array)
 */
 function acf_get_grouped_field_types()
 {
 }
 // class_exists check
-/**
+/*
 *  Functions
 *
 *  alias of acf()->form->functions
@@ -17028,8 +18010,8 @@ function acf_get_grouped_field_types()
 *  @date    11/06/2014
 *  @since   5.0.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function acf_form_head()
 {
@@ -17046,7 +18028,7 @@ function acf_register_form($args)
 //function determine_locale()
 {
 }
-/**
+/*
  * acf_get_locale
  *
  * Returns the current locale.
@@ -17279,7 +18261,7 @@ function acf_is_local_field_group_key($key = '')
  * @since   5.7.10
  *
  * @param   string $key The field group key.
- * @return  array|null
+ * @return  (array|null)
  */
 function acf_get_local_field_group($key = '')
 {
@@ -17420,7 +18402,7 @@ function acf_is_local_field_key($key = '')
  * @since   5.7.10
  *
  * @param   string $key The field group key.
- * @return  array|null
+ * @return  (array|null)
  */
 function acf_get_local_field($key = '')
 {
@@ -17556,7 +18538,7 @@ function acf_reset_meta($post_id = 0)
  * @since   5.9.0
  *
  * @param   string $class_name The location class name.
- * @return  ACF_Location|false
+ * @return  (ACF_Location|false)
  */
 function acf_register_location_type($class_name)
 {
@@ -17580,7 +18562,7 @@ function acf_get_location_types()
  * @since   5.7.12
  *
  * @param   string $name The location type name.
- * @return  ACF_Location|null
+ * @return  (ACF_Location|null)
  */
 function acf_get_location_type($name)
 {
@@ -17667,7 +18649,7 @@ function acf_get_location_screen($screen = array(), $deprecated = \false)
  * @since   5.6.0
  *
  * @param   string $class_name The location class name.
- * @return  ACF_Location|false
+ * @return  (ACF_Location|false)
  */
 function acf_register_location_rule($class_name)
 {
@@ -17679,7 +18661,7 @@ function acf_register_location_rule($class_name)
  * @since   5.6.0
  *
  * @param   string $class_name The location class name.
- * @return  ACF_Location|false
+ * @return  (ACF_Location|false)
  */
 function acf_get_location_rule($name)
 {
@@ -17697,7 +18679,7 @@ function acf_get_valid_location_rule($rule)
 {
 }
 // class_exists check
-/**
+/*
 *  acf_add_loop
 *
 *  alias of acf()->loop->add_loop()
@@ -17706,13 +18688,13 @@ function acf_get_valid_location_rule($rule)
 *  @date    6/10/13
 *  @since   5.0.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function acf_add_loop($loop = array())
 {
 }
-/**
+/*
 *  acf_update_loop
 *
 *  alias of acf()->loop->update_loop()
@@ -17721,13 +18703,13 @@ function acf_add_loop($loop = array())
 *  @date    6/10/13
 *  @since   5.0.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function acf_update_loop($i = 'active', $key = \null, $value = \null)
 {
 }
-/**
+/*
 *  acf_get_loop
 *
 *  alias of acf()->loop->get_loop()
@@ -17736,13 +18718,13 @@ function acf_update_loop($i = 'active', $key = \null, $value = \null)
 *  @date    6/10/13
 *  @since   5.0.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function acf_get_loop($i = 'active', $key = \null)
 {
 }
-/**
+/*
 *  acf_remove_loop
 *
 *  alias of acf()->loop->remove_loop()
@@ -17751,14 +18733,50 @@ function acf_get_loop($i = 'active', $key = \null)
 *  @date    6/10/13
 *  @since   5.0.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function acf_remove_loop($i = 'active')
 {
 }
-// class_exists check
 /**
+ * Get the REST API schema for a given field.
+ *
+ * @param array $field
+ * @return array
+ */
+function acf_get_field_rest_schema(array $field)
+{
+}
+/**
+ * Get the REST API field links for a given field. The links are appended to the REST response under the _links property
+ * and provide API resource links to related objects. If a link is marked as 'embeddable', WordPress can load the resource
+ * in the main request under the _embedded property when the request contains the _embed URL parameter.
+ *
+ * @see \acf_field::get_rest_links()
+ * @see https://developer.wordpress.org/rest-api/using-the-rest-api/linking-and-embedding/
+ *
+ * @param string|int $post_id
+ * @param array      $field
+ * @return array
+ */
+function acf_get_field_rest_links($post_id, array $field)
+{
+}
+/**
+ * Format a given field's value for output in the REST API.
+ *
+ * @param        $value
+ * @param        $post_id
+ * @param        $field
+ * @param string  $format 'light' for normal REST API formatting or 'standard' to apply ACF's normal field formatting.
+ * @return mixed
+ */
+function acf_format_value_for_rest($value, $post_id, $field, $format = 'light')
+{
+}
+// class_exists check
+/*
 *  acf_save_post_revision
 *
 *  This function will copy meta from a post to it's latest revision
@@ -17767,13 +18785,13 @@ function acf_remove_loop($i = 'active')
 *  @date    26/09/2016
 *  @since   5.4.0
 *
-*  @param   int $post_id
-*  @return  void
+*  @param   $post_id (int)
+*  @return  n/a
 */
 function acf_save_post_revision($post_id = 0)
 {
 }
-/**
+/*
 *  acf_get_post_latest_revision
 *
 *  This function will return the latest revision for a given post
@@ -17782,13 +18800,13 @@ function acf_save_post_revision($post_id = 0)
 *  @date    25/06/2016
 *  @since   5.3.8
 *
-*  @param   int $post_id
-*  @return  int $post_id
+*  @param   $post_id (int)
+*  @return  $post_id (int)
 */
 function acf_get_post_latest_revision($post_id)
 {
 }
-/**
+/*
  *  acf_updates
  *
  *  The main function responsible for returning the one true acf_updates instance to functions everywhere.
@@ -17805,7 +18823,7 @@ function acf_get_post_latest_revision($post_id)
 function acf_updates()
 {
 }
-/**
+/*
  *  acf_register_plugin_update
  *
  *  Alias of acf_updates()->add_plugin().
@@ -17862,7 +18880,7 @@ function acf_upgrade_all()
 function acf_get_db_version()
 {
 }
-/**
+/*
 *  acf_update_db_version
 *
 *  Updates the ACF DB version.
@@ -17975,7 +18993,7 @@ function acf_upgrade_550()
 function acf_upgrade_550_termmeta()
 {
 }
-/**
+/*
 *  acf_wp_upgrade_550_termmeta
 *
 *  When the database is updated to support term meta, migrate ACF term meta data across.
@@ -18005,7 +19023,7 @@ function acf_upgrade_550_taxonomy($taxonomy)
 {
 }
 // class_exists check
-/**
+/*
 *  Public functions
 *
 *  alias of acf()->validation->function()
@@ -18014,8 +19032,8 @@ function acf_upgrade_550_taxonomy($taxonomy)
 *  @date    6/10/13
 *  @since   5.0.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function acf_add_validation_error($input, $message = '')
 {
@@ -18029,7 +19047,7 @@ function acf_get_validation_error()
 function acf_reset_validation_errors()
 {
 }
-/**
+/*
 *  acf_validate_save_post
 *
 *  This function will validate $_POST data and add errors
@@ -18038,13 +19056,13 @@ function acf_reset_validation_errors()
 *  @date    25/11/2013
 *  @since   5.0.0
 *
-*  @param   boolean $show_errors if true, errors will be shown via a wp_die screen
-*  @return  boolean
+*  @param   $show_errors (boolean) if true, errors will be shown via a wp_die screen
+*  @return  (boolean)
 */
 function acf_validate_save_post($show_errors = \false)
 {
 }
-/**
+/*
 *  acf_validate_values
 *
 *  This function will validate an array of field values
@@ -18054,13 +19072,13 @@ function acf_validate_save_post($show_errors = \false)
 *  @since   5.0.0
 *
 *  @param   values (array)
-*  @param   string $input_prefix
-*  @return  void
+*  @param   $input_prefix (string)
+*  @return  n/a
 */
 function acf_validate_values($values, $input_prefix = '')
 {
 }
-/**
+/*
 *  acf_validate_value
 *
 *  This function will validate a field's value
@@ -18069,8 +19087,8 @@ function acf_validate_values($values, $input_prefix = '')
 *  @date    6/10/13
 *  @since   5.0.0
 *
-*  @param   void
-*  @return  void
+*  @param   n/a
+*  @return  n/a
 */
 function acf_validate_value($value, $field, $input)
 {
@@ -18084,7 +19102,7 @@ function acf_validate_value($value, $field, $input)
  * @since   5.8.0
  *
  * @param   array $block The block settings.
- * @return  array|false
+ * @return  (array|false)
  */
 function acf_register_block_type($block)
 {
@@ -18098,7 +19116,7 @@ function acf_register_block_type($block)
  * @since   5.7.12
  *
  * @param   array $block The block settings.
- * @return  array|false
+ * @return  (array|false)
  */
 function acf_register_block($block)
 {
@@ -18140,7 +19158,7 @@ function acf_get_block_types()
  * @since   5.7.12
  *
  * @param   string $name The block type name.
- * @return  array|null
+ * @return  (array|null)
  */
 function acf_get_block_type($name)
 {
@@ -18331,7 +19349,7 @@ function acf_parse_save_blocks($text = '')
 function acf_parse_save_blocks_callback($matches)
 {
 }
-/**
+/*
  *  acf_options_page
  *
  *  This function will return the options page instance
@@ -18340,8 +19358,8 @@ function acf_parse_save_blocks_callback($matches)
  *  @date    9/6/17
  *  @since   5.6.0
  *
- *  @param   void
- *  @return  object
+ *  @param   n/a
+ *  @return  (object)
  */
 function acf_options_page()
 {
@@ -18375,47 +19393,122 @@ function register_options_page($page = '')
 }
 // class_exists check
 /**
-*  acf_pro_get_license
-*
-*  This function will return the license
-*
-*  @type    function
-*  @date    20/09/2016
-*  @since   5.4.0
-*
-*  @param   void
-*  @return  void
-*/
+ * Check if a license is defined in wp-config.php and requires activation.
+ * Also checks if the license key has been changed and reactivates.
+ *
+ * @date 29/09/2021
+ * @since 5.11.0
+ */
+function acf_pro_check_defined_license()
+{
+}
+/**
+ *  Set the automatic activation failure transient
+ *
+ *  @date    11/10/2021
+ *  @since   5.11.0
+ *
+ *  @param   string $error_text string containing the error text message.
+ *  @param   string $license_key the license key that was used during the failed activation.
+ *
+ *  @return void
+ */
+function acf_pro_set_activation_failure_transient($error_text, $license_key)
+{
+}
+/**
+ *  Get the automatic activation failure transient
+ *
+ *  @date    11/10/2021
+ *  @since   5.11.0
+ *
+ *  @return array|false Activation failure transient array, or false if it's not set.
+ */
+function acf_pro_get_activation_failure_transient()
+{
+}
+/**
+ * Display the stored activation error
+ *
+ * @date    11/10/2021
+ * @since   5.11.0
+ */
+function acf_pro_display_activation_error()
+{
+}
+/**
+ *  This function will return the license
+ *
+ *  @type    function
+ *  @date    20/09/2016
+ *  @since   5.4.0
+ *
+ *  @return  $license    Activated license array
+ */
 function acf_pro_get_license()
 {
 }
 /**
-*  acf_pro_get_license_key
-*
-*  This function will return the license key
-*
-*  @type    function
-*  @date    20/09/2016
-*  @since   5.4.0
-*
-*  @param   void
-*  @return  void
-*/
-function acf_pro_get_license_key()
+ *  This function will return the license key
+ *
+ *  @type    function
+ *  @date    20/09/2016
+ *  @since   5.4.0
+ *
+ *  @param   boolean $skip_url_check Skip the check of the current site url.
+ *  @return  string $license_key
+ */
+function acf_pro_get_license_key($skip_url_check = \false)
 {
 }
 /**
-*  acf_pro_update_license
-*
-*  This function will update the DB license
-*
-*  @type    function
-*  @date    20/09/2016
-*  @since   5.4.0
-*
-*  @param   string $key
-*  @return  void
-*/
+ *  This function will update the DB license
+ *
+ *  @type    function
+ *  @date    20/09/2016
+ *  @since   5.4.0
+ *
+ *  @param   string $key    The license key
+ *  @return  bool           The result of the update_option call
+ */
 function acf_pro_update_license($key = '')
+{
+}
+/**
+ * Activates the submitted license key
+ * Formally ACF_Admin_Updates::activate_pro_licence since 5.0.0
+ *
+ * @date    30/09/2021
+ * @since   5.11.0
+ *
+ * @param   string  $license_key    License key to activate
+ * @param   boolean $silent         Return errors rather than displaying them
+ * @return  mixed   $response       A wp-error instance, or an array with a boolean success key, and string message key
+ */
+function acf_pro_activate_license($license_key, $silent = \false)
+{
+}
+/**
+ * Deactivates the registered license key.
+ * Formally ACF_Admin_Updates::deactivate_pro_licence since 5.0.0
+ *
+ * @date    30/09/2021
+ * @since   5.11.0
+ *
+ * @param   bool $silent     Return errors rather than displaying them
+ * @return  mixed   $response   A wp-error instance, or an array with a boolean success key, and string message key
+ */
+function acf_pro_deactivate_license($silent = \false)
+{
+}
+/**
+ * Adds an admin notice using the provided WP_Error.
+ *
+ * @date    14/1/19
+ * @since   5.7.10
+ *
+ * @param   WP_Error $wp_error The error to display.
+ */
+function display_wp_activation_error($wp_error)
 {
 }
