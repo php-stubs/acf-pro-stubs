@@ -8,7 +8,7 @@
 class ACF
 {
     /** @var string The plugin version number. */
-    var $version = '5.12';
+    var $version = '5.12.1';
     /** @var array The plugin settings array. */
     var $settings = array();
     /** @var array The plugin data array. */
@@ -10095,7 +10095,7 @@ class ACF_Rest_Api
     /**
      * Register our custom property as a REST field.
      */
-    private function register_field()
+    public function register_field()
     {
     }
     /**
@@ -15264,7 +15264,7 @@ function acf_get_object_type_rest_base($type_object)
  * Extract the ID of a given object/array. This supports all expected types handled by our update_fields() and
  * load_fields() callbacks.
  *
- * @param WP_Post|WP_User|WP_Term|array $object
+ * @param WP_Post|WP_User|WP_Term|WP_Comment|array $object
  * @return int|mixed|null
  */
 function acf_get_object_id($object)
