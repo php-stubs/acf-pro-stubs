@@ -1,15 +1,121 @@
 diff --git a/acf-pro-stubs.php b/acf-pro-stubs.php
-index 882670f3ae278eef585683fb9a8ca599891181e4..433874597a09772cb3743cc3d0c7597d9e4627fb 100644
+index 882670f3ae278eef585683fb9a8ca599891181e4..c4271a7c6a3347a27e9439d57de9d6d4921b14e4 100644
 --- a/acf-pro-stubs.php
 +++ b/acf-pro-stubs.php
-@@ -18431,8 +18431,8 @@ function acf_register_field_type_info($info)
- *  @date    31/5/17
+@@ -1541,7 +1541,7 @@ class ACF_Admin_Tool
+      *  @since   5.6.3
+      *
+      *  @param   void
+-     *  @return  void
++     *  @return  string
+      */
+     function get_url()
+     {
+@@ -1815,7 +1815,7 @@ class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
+      *  @since   5.6.3
+      *
+      *  @param   void
+-     *  @return  void
++     *  @return  array|false
+      */
+     function get_selected_keys()
+     {
+@@ -11732,7 +11732,7 @@ class acf_field_clone extends \acf_field
+      *  @since   5.4.0
+      *
+      *  @param   void
+-     *  @return  void
++     *  @return  bool
+      */
+     function is_enabled()
+     {
+@@ -13734,7 +13734,7 @@ function acf_render_field_label($field)
+  *
+  * @param   array  $field The field array.
+  * @param   string $context The output context (admin).
+- * @return  void
++ * @return  string
+  */
+ function acf_get_field_label($field, $context = '')
+ {
+@@ -15870,7 +15870,7 @@ function acf_register_admin_tool($class)
  *  @since   5.6.0
  *
--*  @param   void
+ *  @param   void
 -*  @return  void
-+*  @param   string
++*  @return  string
+ */
+ function acf_get_admin_tools_url()
+ {
+@@ -15885,7 +15885,7 @@ function acf_get_admin_tools_url()
+ *  @since   5.6.0
+ *
+ *  @param   void
+-*  @return  void
++*  @return  string
+ */
+ function acf_get_admin_tool_url($tool = '')
+ {
+@@ -15914,7 +15914,7 @@ function acf_is_array($array)
+  *  @since   5.6.5
+  *
+  *  @param   void
+- *  @return  void
++ *  @return  bool
+  */
+ function acf_has_setting($name = '')
+ {
+@@ -15928,7 +15928,7 @@ function acf_has_setting($name = '')
+  *  @since   5.6.5
+  *
+  *  @param   void
+- *  @return  void
++ *  @return  mixed
+  */
+ function acf_raw_setting($name = '')
+ {
+@@ -15944,7 +15944,7 @@ function acf_raw_setting($name = '')
+ *
+ *  @param   string $name
+ *  @param   mixed $value
+-*  @return  void
++*  @return  true
+ */
+ function acf_update_setting($name, $value)
+ {
+@@ -15958,7 +15958,7 @@ function acf_update_setting($name, $value)
+  *  @since   5.6.5
+  *
+  *  @param   void
+- *  @return  void
++ *  @return  mixed
+  */
+ function acf_validate_setting($name = '')
+ {
+@@ -15973,7 +15973,7 @@ function acf_validate_setting($name = '')
+ *  @since   5.0.0
+ *
+ *  @param   void
+-*  @return  void
 +*  @return  mixed
  */
- function acf_get_field_type($name)
+ function acf_get_setting($name, $value = \null)
+ {
+@@ -18476,7 +18476,7 @@ function acf_get_field_types_info($args = array())
+ *  @since   5.6.0
+ *
+ *  @param   void
+-*  @return  void
++*  @return  bool
+ */
+ function acf_is_field_type($name = '')
+ {
+@@ -19624,7 +19624,7 @@ function acf_validate_values($values, $input_prefix = '')
+ *  @since   5.0.0
+ *
+ *  @param   void
+-*  @return  void
++*  @return  bool
+ */
+ function acf_validate_value($value, $field, $input)
  {
