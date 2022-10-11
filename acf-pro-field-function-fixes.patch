@@ -1,0 +1,15 @@
+diff --git a/acf-pro-stubs.php b/acf-pro-stubs.php
+index 882670f3ae278eef585683fb9a8ca599891181e4..433874597a09772cb3743cc3d0c7597d9e4627fb 100644
+--- a/acf-pro-stubs.php
++++ b/acf-pro-stubs.php
+@@ -18431,8 +18431,8 @@ function acf_register_field_type_info($info)
+ *  @date    31/5/17
+ *  @since   5.6.0
+ *
+-*  @param   void
+-*  @return  void
++*  @param   string
++*  @return  mixed
+ */
+ function acf_get_field_type($name)
+ {
