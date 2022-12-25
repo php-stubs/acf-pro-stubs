@@ -15,7 +15,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.0.1';
+    public $version = '6.0.3';
     /**
      * The plugin settings array.
      *
@@ -6549,17 +6549,6 @@ class acf_field_taxonomy extends \acf_field
      *  @param   $field  - an array holding all the field's data
      */
     function render_field_settings($field)
-    {
-    }
-    /**
-     * Renders the field settings used in the "Validation" tab.
-     *
-     * @since 6.0
-     *
-     * @param array $field The field settings array.
-     * @return void
-     */
-    function render_field_validation_settings($field)
     {
     }
     /**
