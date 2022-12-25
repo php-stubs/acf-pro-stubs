@@ -15,7 +15,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.0.3';
+    public $version = '6.0.4';
     /**
      * The plugin settings array.
      *
@@ -3010,11 +3010,11 @@ class acf_field__accordion extends \acf_field
      *
      *  This function will setup the field type data
      *
-     *  @date    30/10/17
-     *  @since   5.6.3
+     * @date  30/10/17
+     * @since 5.6.3
      *
-     *  @param   void
-     *  @return  void
+     * @param  void
+     * @return void
      */
     function initialize()
     {
@@ -3024,11 +3024,11 @@ class acf_field__accordion extends \acf_field
      *
      *  Create the HTML interface for your field
      *
-     *  @date    30/10/17
-     *  @since   5.6.3
+     * @date  30/10/17
+     * @since 5.6.3
      *
-     *  @param   array $field
-     *  @return  void
+     * @param  array $field
+     * @return void
      */
     function render_field($field)
     {
@@ -12744,17 +12744,11 @@ class acf_field_repeater extends \acf_field
      */
     public $is_rendering = \false;
     /**
-     * The total number of rows added to the repeater.
+     * The post/page ID that we're rendering for.
      *
-     * @var int
+     * @var mixed
      */
-    public $total_rows = 0;
-    /**
-     * The original field name before it's ran through `acf_prepare_field()`.
-     *
-     * @var string
-     */
-    public $orig_name = '';
+    public $post_id = \false;
     /**
      * This function will set up the field type data
      *
@@ -12795,7 +12789,7 @@ class acf_field_repeater extends \acf_field
      * @param mixed $post_id The post ID for the field being rendered.
      * @return array
      */
-    function pre_render_fields($fields, $post_id = \false)
+    public function pre_render_fields($fields, $post_id = \false)
     {
     }
     /**
@@ -12806,7 +12800,7 @@ class acf_field_repeater extends \acf_field
      *
      * @param array $field An array holding all the field's data.
      */
-    function render_field($field)
+    public function render_field($field)
     {
     }
     /**
@@ -12854,7 +12848,7 @@ class acf_field_repeater extends \acf_field
      * @param array $field    The field array holding all the field options.
      * @return array $value
      */
-    function load_value($value, $post_id, $field)
+    public function load_value($value, $post_id, $field)
     {
     }
     /**
@@ -13062,6 +13056,17 @@ class acf_field_repeater extends \acf_field
      * @return array|mixed
      */
     public function format_value_for_rest($value, $post_id, array $field)
+    {
+    }
+    /**
+     * Takes the provided input name and turns it into a field name that
+     * works with repeater fields that are subfields of other fields.
+     *
+     * @param string $input_name The name attribute used in the repeater.
+     *
+     * @return string|bool
+     */
+    public function get_field_name_from_input_name($input_name)
     {
     }
     /**
@@ -14829,6 +14834,26 @@ function acf_get_current_url()
  * @return string
  */
 function acf_add_url_utm_tags($url, $campaign, $content, $anchor = \false)
+{
+}
+/**
+ * Sanitizes request arguments.
+ *
+ * @param mixed $args The data to sanitize.
+ *
+ * @return array|bool|float|int|mixed|string
+ */
+function acf_sanitize_request_args($args = array())
+{
+}
+/**
+ * Sanitizes file upload arrays.
+ * 
+ * @param array $args The file array.
+ *
+ * @return array
+ */
+function acf_sanitize_files_array(array $args = array())
 {
 }
 /**
@@ -19820,6 +19845,16 @@ function acf_rendered_block($attributes, $content = '', $is_preview = \false, $p
  * @return  void|string
  */
 function acf_render_block($attributes, $content = '', $is_preview = \false, $post_id = 0, $wp_block = \null, $context = \false)
+{
+}
+/**
+ * Locate and include an ACF block's template.
+ *
+ * @since   6.0.4
+ *
+ * @param   array $block The block props.
+ */
+function acf_block_render_template($block, $content, $is_preview, $post_id, $wp_block, $context)
 {
 }
 /**
