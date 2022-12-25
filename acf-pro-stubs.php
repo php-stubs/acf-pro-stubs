@@ -15,7 +15,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.0.5';
+    public $version = '6.0.6';
     /**
      * The plugin settings array.
      *
@@ -366,12 +366,12 @@ class acf_admin_field_group
     {
     }
     /**
-     *  Screen settings html output
+     * Screen settings html output
      *
-     *  @since   3.6.0
+     * @since   3.6.0
      *
-     *  @param   string $html Current screen settings HTML.
-     *  @return  string $html
+     * @param string $html Current screen settings HTML.
+     * @return string $html
      */
     public function screen_settings($html)
     {
@@ -12172,18 +12172,14 @@ class acf_field_flexible_content extends \acf_field
     {
     }
     /**
-     *  render_field_settings()
+     * Renders the flexible content field layouts in the field group editor.
      *
-     *  Create extra options for your field. This is rendered when editing a field.
-     *  The value of $field['name'] can be used (like bellow) to save extra data to the $field
+     * @since 3.6
+     * @date  23/01/13
      *
-     *  @type    action
-     *  @since   3.6
-     *  @date    23/01/13
-     *
-     *  @param   $field  - an array holding all the field's data
+     * @param array $field An array holding all the field's data.
      */
-    function render_field_settings($field)
+    public function render_field_settings($field)
     {
     }
     /**
