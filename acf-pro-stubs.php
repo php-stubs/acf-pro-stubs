@@ -15,7 +15,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.0.0';
+    public $version = '6.0.1';
     /**
      * The plugin settings array.
      *
@@ -20072,6 +20072,29 @@ function acf_pro_display_activation_error()
  *  @return  $license    Activated license array
  */
 function acf_pro_get_license()
+{
+}
+/**
+ * An ACF specific getter to replace `home_url` in our licence checks to ensure we can avoid third party filters.
+ *
+ * @since 6.0.1
+ *
+ * @return string $home_url The output from home_url, sans known third party filters which cause licence activation issues.
+ */
+function acf_get_home_url()
+{
+}
+/**
+ * Return the original home url inside ACF's home url getter.
+ *
+ * @since 6.0.1
+ *
+ * @param string $home_url the WPML converted home URL.
+ * @param string $url the original home URL.
+ *
+ * @return string $url
+ */
+function acf_licence_wpml_intercept($home_url, $url)
 {
 }
 /**
