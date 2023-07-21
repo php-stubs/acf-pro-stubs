@@ -16,7 +16,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.1.6';
+    public $version = '6.1.7';
     /**
      * The plugin settings array.
      *
@@ -1578,6 +1578,14 @@ class acf_admin_field_group extends \ACF_Admin_Internal_Post_Type
     {
     }
     /**
+     * Renders HTML for the ACF PRO features upgrade notice.
+     *
+     * @return void
+     */
+    public function include_pro_features()
+    {
+    }
+    /**
      * Screen settings html output
      *
      * @since   3.6.0
@@ -1714,6 +1722,14 @@ class ACF_Admin_Field_Groups extends \ACF_Admin_Internal_Post_Type_List
      * @return  void
      */
     public function __construct()
+    {
+    }
+    /**
+     * Renders HTML for the ACF PRO features upgrade notice.
+     *
+     * @return void
+     */
+    public function include_pro_features()
     {
     }
     /**
@@ -2047,6 +2063,25 @@ class ACF_Admin_Post_Types extends \ACF_Admin_Internal_Post_Type_List
      */
     public $store = 'post-types';
     /**
+     * Constructor.
+     *
+     * @date    5/03/2014
+     * @since   6.2
+     *
+     * @return  void
+     */
+    public function __construct()
+    {
+    }
+    /**
+     * Renders HTML for the ACF PRO features upgrade notice.
+     *
+     * @return void
+     */
+    public function include_pro_features()
+    {
+    }
+    /**
      * Current screen actions for the post types list admin page.
      *
      * @since   6.1
@@ -2171,6 +2206,25 @@ class ACF_Admin_Taxonomies extends \ACF_Admin_Internal_Post_Type_List
      * @var string
      */
     public $store = 'taxonomies';
+    /**
+     * Constructor.
+     *
+     * @date    5/03/2014
+     * @since   6.2
+     *
+     * @return  void
+     */
+    public function __construct()
+    {
+    }
+    /**
+     * Renders HTML for the ACF PRO features upgrade notice.
+     *
+     * @return void
+     */
+    public function include_pro_features()
+    {
+    }
     /**
      * Current screen actions for the taxonomies list admin page.
      *
@@ -16463,12 +16517,15 @@ function acf_get_current_url()
  *
  * @since 6.0.0
  *
- * @param string $url The URL to be tagged.
+ * @param string $url      The URL to be tagged.
  * @param string $campaign The campaign tag.
- * @param string $content The UTM content tag.
+ * @param string $content  The UTM content tag.
+ * @param bool   $anchor   An optional anchor ID.
+ * @param string $source   An optional UTM source tag.
+ * @param string $medium   An optional UTM medium tag.
  * @return string
  */
-function acf_add_url_utm_tags($url, $campaign, $content, $anchor = \false)
+function acf_add_url_utm_tags($url, $campaign, $content, $anchor = \false, $source = '', $medium = '')
 {
 }
 /**
