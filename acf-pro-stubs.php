@@ -16,7 +16,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.1.4';
+    public $version = '6.1.5';
     /**
      * The plugin settings array.
      *
@@ -1770,6 +1770,17 @@ class ACF_Admin_Field_Groups extends \ACF_Admin_Internal_Post_Type_List
      * @return void
      */
     public function render_admin_table_column_locations($field_group)
+    {
+    }
+    /**
+     * Renders the number of fields created for the field group in the list table.
+     *
+     * @since 6.1.5
+     *
+     * @param array $field_group The main field group array.
+     * @return void
+     */
+    public function render_admin_table_column_num_fields($field_group)
     {
     }
     /**
@@ -17288,6 +17299,28 @@ function acf_validate_internal_post_type_values($post_type)
  * @return void
  */
 function acf_add_internal_post_type_validation_error($name, $message = '')
+{
+}
+/**
+ * Gets an ACF post type from request args and verifies nonce based on action.
+ *
+ * @since 6.1.5
+ *
+ * @param string $action The action being performed.
+ * @return array|bool
+ */
+function acf_get_post_type_from_request_args($action = '')
+{
+}
+/**
+ * Gets an ACF taxonomy from request args and verifies nonce based on action.
+ *
+ * @since 6.1.5
+ *
+ * @param string $action The action being performed.
+ * @return array|bool
+ */
+function acf_get_taxonomy_from_request_args($action = '')
 {
 }
 /**
