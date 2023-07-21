@@ -8,6 +8,7 @@
 /**
  * The main ACF class
  */
+#[\AllowDynamicProperties]
 class ACF
 {
     /**
@@ -15,7 +16,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.0.7';
+    public $version = '6.1.0';
     /**
      * The plugin settings array.
      *
@@ -79,6 +80,16 @@ class ACF
     {
     }
     /**
+     * Loads and instantiates the enabled additional custom post types.
+     *
+     * @since 6.1
+     *
+     * @return void
+     */
+    public function init_post_types()
+    {
+    }
+    /**
      * Registers the ACF post statuses.
      *
      * @date    22/10/2015
@@ -110,9 +121,9 @@ class ACF
      * @date    31/8/19
      * @since   5.8.1
      *
-     * @param   string   $where The WHERE clause.
-     * @param   WP_Query $wp_query The query object.
-     * @return  WP_Query $wp_query The query object.
+     * @param  string   $where    The WHERE clause.
+     * @param  WP_Query $wp_query The query object.
+     * @return string
      */
     public function posts_where($where, $wp_query)
     {
@@ -241,239 +252,24 @@ class ACF
     {
     }
 }
-/**
- *  ACF Admin Field Group Class
- *
- *  All the logic for editing a field group
- */
-class acf_admin_field_group
+class ACF_Admin_Internal_Post_Type_List
 {
     /**
-     * This function will setup the class functionality
+     * The slug for the internal post type.
      *
-     * @since   5.0.0
-     *
-     * @return  void
+     * @since 6.1
+     * @var string
      */
-    public function __construct()
-    {
-    }
+    public $post_type = '';
     /**
-     * Prevents the block editor from loading when editing an ACF field group.
+     * The admin body class used for the post type.
      *
-     * @since   5.8.0
-     *
-     * @param   bool   $use_block_editor Whether the post type can be edited or not. Default true.
-     * @param   string $post_type The post type being checked.
-     * @return  bool
+     * @since 6.1
+     * @var string
      */
-    public function use_block_editor_for_post_type($use_block_editor, $post_type)
-    {
-    }
+    public $admin_body_class = '';
     /**
-     *  This function will customize the message shown when editing a field group
-     *
-     *  @since   5.0.0
-     *
-     *  @param   array $messages Post type messages.
-     *  @return  $messages
-     */
-    public function post_updated_messages($messages)
-    {
-    }
-    /**
-     *  This function is fired when loading the admin page before HTML has been rendered.
-     *
-     *  @since   5.0.0
-     *
-     *  @return void
-     */
-    public function current_screen()
-    {
-    }
-    /**
-     * Modifies the admin body class.
-     *
-     * @since   6.0.0
-     *
-     * @param   string $classes Space-separated list of CSS classes.
-     * @return  string
-     */
-    public function admin_body_class($classes)
-    {
-    }
-    /**
-     *  This action is run after post query but before any admin script / head actions.
-     *  It is a good place to register all actions.
-     *
-     *  @since   5.0.0
-     *
-     *  @return  void
-     */
-    public function admin_enqueue_scripts()
-    {
-    }
-    /**
-     *  This function will setup all functionality for the field group edit page to work
-     *
-     *  @since   3.1.8
-     *
-     *  @return  void
-     */
-    public function admin_head()
-    {
-    }
-    /**
-     *  This action will allow ACF to render metaboxes after the title
-     *
-     *  @date    17/08/13
-     *
-     *  @return void
-     */
-    public function edit_form_after_title()
-    {
-    }
-    /**
-     * This function will add extra HTML to the acf form data element
-     *
-     *  @since   5.3.8
-     *
-     *  @param array $args Arguments array to pass through to action.
-     *  @return void
-     */
-    public function form_data($args)
-    {
-    }
-    /**
-     * This function will append extra l10n strings to the acf JS object
-     *
-     *  @since   5.3.8
-     *
-     *  @param   array $l10n The array of translated strings.
-     *  @return  $l10n
-     */
-    public function admin_l10n($l10n)
-    {
-    }
-    /**
-     * Admin footer third party hook support
-     *
-     * @since   5.3.2
-     *
-     * @return void
-     */
-    public function admin_footer()
-    {
-    }
-    /**
-     * Screen settings html output
-     *
-     * @since   3.6.0
-     *
-     * @param string $html Current screen settings HTML.
-     * @return string $html
-     */
-    public function screen_settings($html)
-    {
-    }
-    /**
-     * Sets the "Edit Field Group" screen to use a one-column layout.
-     *
-     * @param int $columns Number of columns for layout.
-     *
-     * @return int
-     */
-    public function screen_layout($columns = 0)
-    {
-    }
-    /**
-     *  This function will customize the publish metabox
-     *
-     *  @since   5.2.9
-     *
-     *  @return void
-     */
-    public function post_submitbox_misc_actions()
-    {
-    }
-    /**
-     * This function will save all the field group data
-     *
-     *  @since   1.0.0
-     *
-     *  @param int     $post_id The post ID.
-     *  @param WP_Post $post The post object.
-     *
-     *  @return int $post_id
-     */
-    public function save_post($post_id, $post)
-    {
-    }
-    /**
-     *  This function will render the HTML for the metabox 'acf-field-group-fields'
-     *
-     *  @since   5.0.0
-     *
-     *  @return  void
-     */
-    public function mb_fields()
-    {
-    }
-    /**
-     * This function will render the HTML for the metabox 'acf-field-group-pro-features'
-     *
-     * @since 6.0.0
-     *
-     * @return void
-     */
-    public function mb_pro_features()
-    {
-    }
-    /**
-     * This function will render the HTML for the metabox 'acf-field-group-options'
-     *
-     *  @since   5.0.0
-     *
-     *  @return void
-     */
-    public function mb_options()
-    {
-    }
-    /**
-     * This function can be accessed via an AJAX action and will return the result from the render_location_value function
-     *
-     * @since   5.0.0
-     *
-     * @return void
-     */
-    public function ajax_render_location_rule()
-    {
-    }
-    /**
-     * This function will return HTML containing the field's settings based on it's new type
-     *
-     * @since   5.0.0
-     *
-     * @return void
-     */
-    public function ajax_render_field_settings()
-    {
-    }
-    /**
-     *  Move field AJAX function
-     *
-     *  @since   5.0.0
-     *
-     *  @return  void No return, HTML output for AJAX consumption.
-     */
-    public function ajax_move_field()
-    {
-    }
-}
-class ACF_Admin_Field_Groups
-{
-    /**
-     * Array of field groups availbale for sync.
+     * Array of post objects available for sync.
      *
      * @since 5.9.0
      * @var array
@@ -487,19 +283,27 @@ class ACF_Admin_Field_Groups
      */
     public $view = '';
     /**
-     * Constructor.
+     * The name of the store used for the post type.
      *
-     * @date    5/03/2014
-     * @since   5.0.0
-     *
-     * @param   void
-     * @return  void
+     * @var string
+     */
+    public $store = '';
+    /**
+     * Constructs the class.
      */
     public function __construct()
     {
     }
     /**
-     * Returns the Field Groups admin URL.
+     * Add any menu items required for post types.
+     *
+     * @since 6.1
+     */
+    public function admin_menu()
+    {
+    }
+    /**
+     * Returns the admin URL for the current post type edit page.
      *
      * @date    27/3/20
      * @since   5.9.0
@@ -511,7 +315,7 @@ class ACF_Admin_Field_Groups
     {
     }
     /**
-     * Returns the Field Groups admin URL taking into account the current view.
+     * Returns the post type admin URL taking into account the current view.
      *
      * @date    27/3/20
      * @since   5.9.0
@@ -523,24 +327,11 @@ class ACF_Admin_Field_Groups
     {
     }
     /**
-     * Redirects users from ACF 4.0 admin page.
-     *
-     * @date    17/9/18
-     * @since   5.7.6
-     *
-     * @param   void
-     * @return  void
-     */
-    public function handle_redirection()
-    {
-    }
-    /**
-     * Constructor for the Field Groups admin page.
+     * Constructor for all ACF internal post type admin list pages.
      *
      * @date    21/07/2014
      * @since   5.0.0
      *
-     * @param   void
      * @return  void
      */
     public function current_screen()
@@ -552,7 +343,6 @@ class ACF_Admin_Field_Groups
      * @date    17/4/20
      * @since   5.9.0
      *
-     * @param   void
      * @return  void
      */
     public function setup_sync()
@@ -564,7 +354,6 @@ class ACF_Admin_Field_Groups
      * @date    18/4/20
      * @since   5.9.0
      *
-     * @param   void
      * @return  void
      */
     public function admin_enqueue_scripts()
@@ -576,22 +365,30 @@ class ACF_Admin_Field_Groups
      * @date    18/4/20
      * @since   5.9.0
      *
-     * @param   string $classes Space-separated list of CSS classes.
-     * @return  string
+     * @param string $classes Space-separated list of CSS classes.
+     * @return string
      */
     public function admin_body_class($classes)
     {
     }
     /**
-     * returns the disabled post state HTML.
+     * Returns the disabled post state HTML.
      *
-     * @date    17/4/20
      * @since   5.9.0
      *
-     * @param   void
      * @return  string
      */
     public function get_disabled_post_state()
+    {
+    }
+    /**
+     * Returns the registration error state.
+     *
+     * @since   6.1
+     *
+     * @return  string
+     */
+    public function get_registration_error_state()
     {
     }
     /**
@@ -600,19 +397,19 @@ class ACF_Admin_Field_Groups
      * @date    1/4/20
      * @since   5.9.0
      *
-     * @param   array   $post_states An array of post display states.
-     * @param   WP_Post $post The current post object.
-     * @return  array
+     * @param array   $post_states An array of post display states.
+     * @param WP_Post $post        The current post object.
+     * @return array
      */
     public function display_post_states($post_states, $post)
     {
     }
     /**
-     * Get the HTML for when a file is not found.
+     * Get the HTML for when there are no post objects found.
      *
      * @since   6.0.0
      *
-     * @return  string html.
+     * @return string
      */
     public function get_not_found_html()
     {
@@ -648,27 +445,15 @@ class ACF_Admin_Field_Groups
      * @date    17/4/20
      * @since   5.9.0
      *
-     * @param   string $column_name The name of the column to display.
-     * @param   array  $field_group The field group.
-     * @return  void
+     * @param string $column_name The name of the column to display.
+     * @param array  $post        The main ACF post array.
+     * @return void
      */
-    public function render_admin_table_column($column_name, $field_group)
+    public function render_admin_table_column($column_name, $post)
     {
     }
     /**
-     * Displays a visual representation of the field group's locations.
-     *
-     * @date    1/4/20
-     * @since   5.9.0
-     *
-     * @param   array $field_group The field group.
-     * @return  void
-     */
-    public function render_admin_table_column_locations($field_group)
-    {
-    }
-    /**
-     * Returns a human readable file location.
+     * Returns a human-readable file location.
      *
      * @date    17/4/20
      * @since   5.9.0
@@ -680,15 +465,15 @@ class ACF_Admin_Field_Groups
     {
     }
     /**
-     * Displays the local JSON status of a field group.
+     * Displays the local JSON status of an ACF post.
      *
      * @date    14/4/20
      * @since   5.9.0
      *
-     * @param   type $var Description. Default.
-     * @return  type Description.
+     * @param array $post The main ACF post array.
+     * @return void
      */
-    public function render_admin_table_column_local_status($field_group)
+    public function render_admin_table_column_local_status($post)
     {
     }
     /**
@@ -717,6 +502,18 @@ class ACF_Admin_Field_Groups
     {
     }
     /**
+     * Gets the translated action notice text for list table actions (activate, deactivate, sync, etc.).
+     *
+     * @since 6.1
+     *
+     * @param string $action The action being performed.
+     * @param int    $count  The number of items the action was performed on.
+     * @return string
+     */
+    public function get_action_notice_text($action, $count = 1)
+    {
+    }
+    /**
      * Checks for the custom "Activate" bulk action.
      *
      * @since 6.0
@@ -738,7 +535,6 @@ class ACF_Admin_Field_Groups
      * @date    15/4/20
      * @since   5.9.0
      *
-     * @param   void
      * @return  void
      */
     public function check_duplicate()
@@ -750,7 +546,6 @@ class ACF_Admin_Field_Groups
      * @date    15/4/20
      * @since   5.9.0
      *
-     * @param   void
      * @return  void
      */
     public function check_sync()
@@ -774,10 +569,9 @@ class ACF_Admin_Field_Groups
      * @date    20/4/20
      * @since   5.9.0
      *
-     * @param   void
      * @return  void
      */
-    function admin_footer()
+    public function admin_footer()
     {
     }
     /**
@@ -786,14 +580,13 @@ class ACF_Admin_Field_Groups
      * @date    17/4/20
      * @since   5.9.0
      *
-     * @param   array $views The available views.
-     * @return  array
+     * @return void
      */
     public function admin_footer__sync()
     {
     }
     /**
-     * Fires when trashing a field group post.
+     * Fires when trashing an internal post type.
      *
      * @date    8/01/2014
      * @since   5.0.0
@@ -805,7 +598,7 @@ class ACF_Admin_Field_Groups
     {
     }
     /**
-     * Fires when untrashing a field group post.
+     * Fires when untrashing an internal post type.
      *
      * @date    8/01/2014
      * @since   5.0.0
@@ -817,7 +610,7 @@ class ACF_Admin_Field_Groups
     {
     }
     /**
-     * Fires when deleting a field group post.
+     * Fires when deleting an internal post type.
      *
      * @date    8/01/2014
      * @since   5.0.0
@@ -829,6 +622,154 @@ class ACF_Admin_Field_Groups
     {
     }
 }
+/**
+ * ACF Internal Post Type class.
+ *
+ * Adds logic to the edit page for ACF internal post types.
+ */
+class ACF_Admin_Internal_Post_Type
+{
+    /**
+     * The slug for the internal post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $post_type = '';
+    /**
+     * The admin body class used for the post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $admin_body_class = '';
+    /**
+     * Constructs the class.
+     */
+    public function __construct()
+    {
+    }
+    /**
+     * Prevents the block editor from loading when editing an ACF field group.
+     *
+     * @since   5.8.0
+     *
+     * @param bool   $use_block_editor Whether the post type can be edited or not. Default true.
+     * @param string $post_type        The post type being checked.
+     * @return bool
+     */
+    public function use_block_editor_for_post_type($use_block_editor, $post_type)
+    {
+    }
+    /**
+     * This function will customize the message shown when editing a field group
+     *
+     * @since 5.0.0
+     *
+     * @param array $messages Post type messages.
+     * @return array
+     */
+    public function post_updated_messages($messages)
+    {
+    }
+    /**
+     * This function is fired when loading the admin page before HTML has been rendered.
+     *
+     * @since 5.0.0
+     *
+     * @return void
+     */
+    public function current_screen()
+    {
+    }
+    /**
+     * Modifies the admin body class.
+     *
+     * @since 6.0.0
+     *
+     * @param string $classes Space-separated list of CSS classes.
+     * @return string
+     */
+    public function admin_body_class($classes)
+    {
+    }
+    /**
+     * Enqueues any scripts necessary for internal post type.
+     *
+     * @since 5.0.0
+     *
+     * @return void
+     */
+    public function admin_enqueue_scripts()
+    {
+    }
+    /**
+     * Set up functionality for the field group edit page.
+     *
+     * @since 3.1.8
+     *
+     * @return void
+     */
+    public function admin_head()
+    {
+    }
+    /**
+     * Adds extra HTML to the acf form data element.
+     *
+     *  @since 5.3.8
+     *
+     *  @param array $args Arguments array to pass through to action.
+     *  @return void
+     */
+    public function form_data($args)
+    {
+    }
+    /**
+     * Admin footer third party hook support
+     *
+     * @since 5.3.2
+     *
+     * @return void
+     */
+    public function admin_footer()
+    {
+    }
+    /**
+     * This function will append extra l10n strings to the acf JS object
+     *
+     * @since   5.3.8
+     *
+     * @param array $l10n The array of translated strings.
+     * @return array $l10n
+     */
+    public function admin_l10n($l10n)
+    {
+    }
+    /**
+     * Ran during the `save_post` hook to verify that the post should be saved.
+     *
+     * @since 6.1
+     *
+     * @param int     $post_id The ID of the post being saved.
+     * @param WP_Post $post    The post object.
+     *
+     * @return bool
+     */
+    public function verify_save_post($post_id, $post)
+    {
+    }
+    /**
+     * Powers the modal for linking field groups to newly-created CPTs/taxonomies.
+     *
+     * @since 6.1
+     *
+     * @return void
+     */
+    public function ajax_link_field_groups()
+    {
+    }
+}
+#[\AllowDynamicProperties]
 class ACF_Data
 {
     /** @var string Unique identifier. */
@@ -1077,6 +1018,8 @@ class ACF_Admin_Notice extends \ACF_Data
         'type' => 'info',
         /** @type bool If the notice can be dismissed. */
         'dismissible' => \true,
+        /** @type bool If the dismissed state should be persisted to ACF user preferences. */
+        'persisted' => \false,
     );
     /**
      *  render
@@ -1093,6 +1036,7 @@ class ACF_Admin_Notice extends \ACF_Data
     {
     }
 }
+#[\AllowDynamicProperties]
 class acf_admin_tools
 {
     /** @var array Contains an array of admin tool instances */
@@ -1182,6 +1126,17 @@ class acf_admin_tools
      *  @return  void
      */
     function load()
+    {
+    }
+    /**
+     * Modifies the admin body class.
+     *
+     * @since 6.0.0
+     *
+     * @param string $classes Space-separated list of CSS classes.
+     * @return string
+     */
+    public function admin_body_class($classes)
     {
     }
     /**
@@ -1339,6 +1294,17 @@ class ACF_Admin_Upgrade
     {
     }
     /**
+     * Modifies the admin body class.
+     *
+     * @since 6.0.0
+     *
+     * @param string $classes Space-separated list of CSS classes.
+     * @return string
+     */
+    public function admin_body_class($classes)
+    {
+    }
+    /**
      *  admin_notices
      *
      *  Displays the DB Upgrade prompt.
@@ -1414,11 +1380,8 @@ class ACF_Admin
      *
      * @date    28/09/13
      * @since   5.0.0
-     *
-     * @param   void
-     * @return  void
      */
-    function admin_menu()
+    public function admin_menu()
     {
     }
     /**
@@ -1454,7 +1417,7 @@ class ACF_Admin
      * @param   void
      * @return  void
      */
-    function current_screen($screen)
+    public function current_screen($screen)
     {
     }
     /**
@@ -1467,6 +1430,14 @@ class ACF_Admin
      * @return  void
      */
     public function setup_help_tab()
+    {
+    }
+    /**
+     * Shows a notice to import post types and taxonomies from CPTUI if that plugin is active.
+     *
+     * @since 6.1
+     */
+    public function maybe_show_import_from_cptui_notice()
     {
     }
     /**
@@ -1493,6 +1464,998 @@ class ACF_Admin
     function admin_footer_text($text)
     {
     }
+    /**
+     * Ensure the ACF parent menu is selected for add-new.php
+     *
+     * @since 6.1
+     * @param string $parent_file The parent file checked against menu activation.
+     * @return string The modified parent file
+     */
+    public function ensure_menu_selection($parent_file)
+    {
+    }
+    /**
+     * Ensure the correct ACF submenu item is selected when in post-new versions of edit pages
+     *
+     * @since 6.1
+     * @param string $submenu_file The submenu filename.
+     * @return string The modified submenu filename
+     */
+    public function ensure_submenu_selection($submenu_file)
+    {
+    }
+}
+/**
+ *  ACF Admin Field Group Class
+ *
+ *  All the logic for editing a field group
+ */
+class acf_admin_field_group extends \ACF_Admin_Internal_Post_Type
+{
+    /**
+     * The slug for the internal post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $post_type = 'acf-field-group';
+    /**
+     * The admin body class used for the post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $admin_body_class = 'acf-admin-single-field-group';
+    /**
+     * Constructs the class.
+     *
+     * @since   5.0.0
+     *
+     * @return  void
+     */
+    public function __construct()
+    {
+    }
+    /**
+     *  This function will customize the message shown when editing a field group
+     *
+     *  @since   5.0.0
+     *
+     *  @param array $messages Post type messages.
+     *  @return array
+     */
+    public function post_updated_messages($messages)
+    {
+    }
+    /**
+     * Enqueues any scripts necessary for internal post type.
+     *
+     * @since 5.0.0
+     *
+     * @return void
+     */
+    public function admin_enqueue_scripts()
+    {
+    }
+    /**
+     * Set up functionality for the field group edit page.
+     *
+     * @since 3.1.8
+     *
+     * @return void
+     */
+    public function admin_head()
+    {
+    }
+    /**
+     * This action will allow ACF to render metaboxes after the title.
+     *
+     * @return void
+     */
+    public function edit_form_after_title()
+    {
+    }
+    /**
+     * This function will add extra HTML to the acf form data element
+     *
+     * @since   5.3.8
+     *
+     * @param array $args Arguments array to pass through to action.
+     * @return void
+     */
+    public function form_data($args)
+    {
+    }
+    /**
+     * This function will append extra l10n strings to the acf JS object
+     *
+     * @since   5.3.8
+     *
+     * @param array $l10n The array of translated strings.
+     * @return array $l10n
+     */
+    public function admin_l10n($l10n)
+    {
+    }
+    /**
+     * Admin footer third party hook support
+     *
+     * @since   5.3.2
+     *
+     * @return void
+     */
+    public function admin_footer()
+    {
+    }
+    /**
+     * Screen settings html output
+     *
+     * @since   3.6.0
+     *
+     * @param string $html Current screen settings HTML.
+     * @return string $html
+     */
+    public function screen_settings($html)
+    {
+    }
+    /**
+     * Sets the "Edit Field Group" screen to use a one-column layout.
+     *
+     * @param int $columns Number of columns for layout.
+     *
+     * @return int
+     */
+    public function screen_layout($columns = 0)
+    {
+    }
+    /**
+     * This function will customize the publish metabox
+     *
+     * @since   5.2.9
+     *
+     * @return void
+     */
+    public function post_submitbox_misc_actions()
+    {
+    }
+    /**
+     * Saves field group data.
+     *
+     * @since 1.0.0
+     *
+     * @param int     $post_id The post ID.
+     * @param WP_Post $post    The post object.
+     *
+     * @return int $post_id
+     */
+    public function save_post($post_id, $post)
+    {
+    }
+    /**
+     * This function will render the HTML for the metabox 'acf-field-group-fields'
+     *
+     * @since   5.0.0
+     *
+     * @return  void
+     */
+    public function mb_fields()
+    {
+    }
+    /**
+     * This function will render the HTML for the metabox 'acf-field-group-pro-features'
+     *
+     * @since 6.0.0
+     *
+     * @return void
+     */
+    public function mb_pro_features()
+    {
+    }
+    /**
+     * This function will render the HTML for the metabox 'acf-field-group-options'
+     *
+     * @since 5.0.0
+     *
+     * @return void
+     */
+    public function mb_options()
+    {
+    }
+    /**
+     * This function can be accessed via an AJAX action and will return the result from the render_location_value function
+     *
+     * @since   5.0.0
+     *
+     * @return void
+     */
+    public function ajax_render_location_rule()
+    {
+    }
+    /**
+     * This function will return HTML containing the field's settings based on it's new type
+     *
+     * @since   5.0.0
+     *
+     * @return void
+     */
+    public function ajax_render_field_settings()
+    {
+    }
+    /**
+     * Move field AJAX function
+     *
+     * @since   5.0.0
+     *
+     * @return void No return, HTML output for AJAX consumption.
+     */
+    public function ajax_move_field()
+    {
+    }
+}
+#[\AllowDynamicProperties]
+class ACF_Admin_Field_Groups extends \ACF_Admin_Internal_Post_Type_List
+{
+    /**
+     * The slug for the internal post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $post_type = 'acf-field-group';
+    /**
+     * The admin body class used for the post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $admin_body_class = 'acf-admin-field-groups';
+    /**
+     * The name of the store used for the post type.
+     *
+     * @var string
+     */
+    public $store = 'field-groups';
+    /**
+     * Constructor.
+     *
+     * @date    5/03/2014
+     * @since   5.0.0
+     *
+     * @return  void
+     */
+    public function __construct()
+    {
+    }
+    /**
+     * Add any menu items required for field groups.
+     *
+     * @since 6.1
+     */
+    public function admin_menu()
+    {
+    }
+    /**
+     * Redirects users from ACF 4.0 admin page.
+     *
+     * @date    17/9/18
+     * @since   5.7.6
+     *
+     * @return void
+     */
+    public function handle_redirection()
+    {
+    }
+    /**
+     * Customizes the admin table columns.
+     *
+     * @date    1/4/20
+     * @since   5.9.0
+     *
+     * @param array $_columns The columns array.
+     * @return array
+     */
+    public function admin_table_columns($_columns)
+    {
+    }
+    /**
+     * Renders a specific admin table column.
+     *
+     * @date    17/4/20
+     * @since   5.9.0
+     *
+     * @param string $column_name The name of the column to display.
+     * @param array  $post        The main ACF post array.
+     * @return void
+     */
+    public function render_admin_table_column($column_name, $post)
+    {
+    }
+    /**
+     * Displays a visual representation of the field group's locations.
+     *
+     * @date    1/4/20
+     * @since   5.9.0
+     *
+     * @param array $field_group The field group.
+     * @return void
+     */
+    public function render_admin_table_column_locations($field_group)
+    {
+    }
+    /**
+     * Fires when trashing a field group.
+     *
+     * @date    8/01/2014
+     * @since   5.0.0
+     *
+     * @param   int $post_id The post ID.
+     * @return  void
+     */
+    public function trashed_post($post_id)
+    {
+    }
+    /**
+     * Fires when untrashing a field group.
+     *
+     * @date    8/01/2014
+     * @since   5.0.0
+     *
+     * @param   int $post_id The post ID.
+     * @return  void
+     */
+    public function untrashed_post($post_id)
+    {
+    }
+    /**
+     * Fires when deleting a field group.
+     *
+     * @date    8/01/2014
+     * @since   5.0.0
+     *
+     * @param   int $post_id The post ID.
+     * @return  void
+     */
+    public function deleted_post($post_id)
+    {
+    }
+    /**
+     * Gets the translated action notice text for list table actions (activate, deactivate, sync, etc.).
+     *
+     * @since 6.1
+     *
+     * @param string $action The action being performed.
+     * @param int    $count  The number of items the action was performed on.
+     * @return string
+     */
+    public function get_action_notice_text($action, $count = 1)
+    {
+    }
+}
+/**
+ *  ACF Admin Post Type Class
+ *
+ *  All the logic for editing a post type.
+ */
+class ACF_Admin_Post_type extends \ACF_Admin_Internal_Post_Type
+{
+    /**
+     * The slug for the internal post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $post_type = 'acf-post-type';
+    /**
+     * The admin body class used for the post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $admin_body_class = 'acf-admin-single-post-type';
+    /**
+     * This function will customize the message shown when editing a post type.
+     *
+     * @since 5.0.0
+     *
+     * @param array $messages Post type messages.
+     * @return array
+     */
+    public function post_updated_messages($messages)
+    {
+    }
+    /**
+     * Renders the post type created message.
+     *
+     * @since 6.1
+     *
+     * @param bool $created True if the post was just created.
+     * @return string
+     */
+    public function post_type_created_message($created = \false)
+    {
+    }
+    /**
+     * Enqueues any scripts necessary for internal post type.
+     *
+     * @since 5.0.0
+     *
+     * @return void
+     */
+    public function admin_enqueue_scripts()
+    {
+    }
+    /**
+     * Sets up all functionality for the post type edit page to work.
+     *
+     * @since   3.1.8
+     *
+     * @return  void
+     */
+    public function admin_head()
+    {
+    }
+    /**
+     * This action will allow ACF to render metaboxes after the title.
+     *
+     * @return void
+     */
+    public function edit_form_after_title()
+    {
+    }
+    /**
+     * This function will add extra HTML to the acf form data element
+     *
+     *  @since   5.3.8
+     *
+     *  @param array $args Arguments array to pass through to action.
+     *  @return void
+     */
+    public function form_data($args)
+    {
+    }
+    /**
+     * This function will append extra l10n strings to the acf JS object
+     *
+     * @since   5.3.8
+     *
+     * @param array $l10n The array of translated strings.
+     * @return array $l10n
+     */
+    public function admin_l10n($l10n)
+    {
+    }
+    /**
+     * Admin footer third party hook support
+     *
+     * @since   5.3.2
+     *
+     * @return void
+     */
+    public function admin_footer()
+    {
+    }
+    /**
+     * Screen settings html output
+     *
+     * @since   3.6.0
+     *
+     * @param string $html Current screen settings HTML.
+     * @return string $html
+     */
+    public function screen_settings($html)
+    {
+    }
+    /**
+     * Sets the "Edit Post Type" screen to use a one-column layout.
+     *
+     * @param int $columns Number of columns for layout.
+     *
+     * @return int
+     */
+    public function screen_layout($columns = 0)
+    {
+    }
+    /**
+     * Force basic settings to always be visible
+     *
+     * @param array $hidden_metaboxes The metaboxes hidden on this page.
+     *
+     * @return array
+     */
+    public function force_basic_settings($hidden_metaboxes)
+    {
+    }
+    /**
+     * Force advanced settings to be visible
+     *
+     * @param array $hidden_metaboxes The metaboxes hidden on this page.
+     *
+     * @return array
+     */
+    public function force_advanced_settings($hidden_metaboxes)
+    {
+    }
+    /**
+     * This function will customize the publish metabox
+     *
+     * @since   5.2.9
+     *
+     * @return void
+     */
+    public function post_submitbox_misc_actions()
+    {
+    }
+    /**
+     * Saves post type data.
+     *
+     * @since 1.0.0
+     *
+     * @param int     $post_id The post ID.
+     * @param WP_Post $post    The post object.
+     *
+     * @return int $post_id
+     */
+    public function save_post($post_id, $post)
+    {
+    }
+    /**
+     * Renders HTML for the basic settings metabox.
+     *
+     * @since 5.0.0
+     *
+     * @return void
+     */
+    public function mb_basic_settings()
+    {
+    }
+    /**
+     * Renders the HTML for the advanced settings metabox.
+     *
+     * @since   5.0.0
+     *
+     * @return void
+     */
+    public function mb_advanced_settings()
+    {
+    }
+}
+/**
+ * The ACF Post Types admin controller class
+ */
+#[\AllowDynamicProperties]
+class ACF_Admin_Post_Types extends \ACF_Admin_Internal_Post_Type_List
+{
+    /**
+     * The slug for the internal post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $post_type = 'acf-post-type';
+    /**
+     * The admin body class used for the post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $admin_body_class = 'acf-admin-post-types';
+    /**
+     * The name of the store used for the post type.
+     *
+     * @var string
+     */
+    public $store = 'post-types';
+    /**
+     * Constructor for the post types list admin page.
+     *
+     * @since   6.1
+     *
+     * @return  void
+     */
+    public function current_screen()
+    {
+    }
+    /**
+     * Add any menu items required for post types.
+     *
+     * @since 6.1
+     */
+    public function admin_menu()
+    {
+    }
+    /**
+     * Customizes the admin table columns.
+     *
+     * @date    1/4/20
+     * @since   5.9.0
+     *
+     * @param array $_columns The columns array.
+     * @return array
+     */
+    public function admin_table_columns($_columns)
+    {
+    }
+    /**
+     * Renders a specific admin table column.
+     *
+     * @date    17/4/20
+     * @since   5.9.0
+     *
+     * @param string $column_name The name of the column to display.
+     * @param array  $post        The main ACF post array.
+     * @return void
+     */
+    public function render_admin_table_column($column_name, $post)
+    {
+    }
+    /**
+     * Renders the field groups attached to the post type in the list table.
+     *
+     * @since 6.1
+     *
+     * @param array $post_type The main post type array.
+     * @return void
+     */
+    public function render_admin_table_column_field_groups($post_type)
+    {
+    }
+    /**
+     * Renders the taxonomies attached to the post type in the list table.
+     *
+     * @since 6.1
+     *
+     * @param array $post_type The main post type array.
+     * @return void
+     */
+    public function render_admin_table_column_taxonomies($post_type)
+    {
+    }
+    /**
+     * Renders the number of posts created for the post type in the list table.
+     *
+     * @since 6.1
+     *
+     * @param array $post_type The main post type array.
+     * @return void
+     */
+    public function render_admin_table_column_num_posts($post_type)
+    {
+    }
+    /**
+     * Gets the translated action notice text for list table actions (activate, deactivate, sync, etc.).
+     *
+     * @since 6.1
+     *
+     * @param string $action The action being performed.
+     * @param int    $count  The number of items the action was performed on.
+     * @return string
+     */
+    public function get_action_notice_text($action, $count = 1)
+    {
+    }
+    /**
+     * Returns the registration error state.
+     *
+     * @since   6.1
+     *
+     * @return  string
+     */
+    public function get_registration_error_state()
+    {
+    }
+}
+/**
+ * The ACF Post Types admin controller class
+ */
+#[\AllowDynamicProperties]
+class ACF_Admin_Taxonomies extends \ACF_Admin_Internal_Post_Type_List
+{
+    /**
+     * The slug for the internal post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $post_type = 'acf-taxonomy';
+    /**
+     * The admin body class used for the post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $admin_body_class = 'acf-admin-taxonomies';
+    /**
+     * The name of the store used for the post type.
+     *
+     * @var string
+     */
+    public $store = 'taxonomies';
+    /**
+     * Constructor for the taxonomies list admin page.
+     *
+     * @since   6.1
+     *
+     * @return  void
+     */
+    public function current_screen()
+    {
+    }
+    /**
+     * Add any menu items required for taxonomies.
+     *
+     * @since 6.1
+     */
+    public function admin_menu()
+    {
+    }
+    /**
+     * Customizes the admin table columns.
+     *
+     * @date    1/4/20
+     * @since   5.9.0
+     *
+     * @param array $_columns The columns array.
+     * @return array
+     */
+    public function admin_table_columns($_columns)
+    {
+    }
+    /**
+     * Renders a specific admin table column.
+     *
+     * @date    17/4/20
+     * @since   5.9.0
+     *
+     * @param string $column_name The name of the column to display.
+     * @param array  $post        The main ACF post array.
+     * @return void
+     */
+    public function render_admin_table_column($column_name, $post)
+    {
+    }
+    /**
+     * Renders the field groups attached to the taxonomy in the list table.
+     *
+     * @since 6.1
+     *
+     * @param array $taxonomy The main taxonomy array.
+     * @return void
+     */
+    public function render_admin_table_column_field_groups($taxonomy)
+    {
+    }
+    /**
+     * Renders the post types attached to the taxonomy in the list table.
+     *
+     * @since 6.1
+     *
+     * @param array $taxonomy The main taxonomy array.
+     * @return void
+     */
+    public function render_admin_table_column_post_types($taxonomy)
+    {
+    }
+    /**
+     * Renders the number of terms created for the taxonomy in the list table.
+     *
+     * @since 6.1
+     *
+     * @param array $taxonomy The main taxonomy array.
+     * @return void
+     */
+    public function render_admin_table_column_num_terms($taxonomy)
+    {
+    }
+    /**
+     * Gets the translated action notice text for list table actions (activate, deactivate, sync, etc.).
+     *
+     * @since 6.1
+     *
+     * @param string $action The action being performed.
+     * @param int    $count  The number of items the action was performed on.
+     * @return string
+     */
+    public function get_action_notice_text($action, $count = 1)
+    {
+    }
+    /**
+     * Returns the registration error state.
+     *
+     * @since   6.1
+     *
+     * @return  string
+     */
+    public function get_registration_error_state()
+    {
+    }
+}
+/**
+ *  ACF Admin Field Group Class
+ *
+ *  All the logic for editing a taxonomy.
+ */
+class ACF_Admin_Taxonomy extends \ACF_Admin_Internal_Post_Type
+{
+    /**
+     * The slug for the internal post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $post_type = 'acf-taxonomy';
+    /**
+     * The admin body class used for the post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $admin_body_class = 'acf-admin-single-taxonomy';
+    /**
+     *  This function will customize the message shown when editing a field group
+     *
+     *  @since   5.0.0
+     *
+     *  @param array $messages Post type messages.
+     *  @return array
+     */
+    public function post_updated_messages($messages)
+    {
+    }
+    /**
+     * Renders the post type created message.
+     *
+     * @since 6.1
+     *
+     * @param bool $created True if the post was just created.
+     * @return string
+     */
+    public function taxonomy_saved_message($created = \false)
+    {
+    }
+    /**
+     * Enqueues any scripts necessary for internal post type.
+     *
+     * @since 5.0.0
+     *
+     * @return void
+     */
+    public function admin_enqueue_scripts()
+    {
+    }
+    /**
+     *  Sets up all functionality for the taxonomy edit page to work.
+     *
+     *  @since   3.1.8
+     *
+     *  @return  void
+     */
+    public function admin_head()
+    {
+    }
+    /**
+     * This action will allow ACF to render metaboxes after the title.
+     *
+     * @return void
+     */
+    public function edit_form_after_title()
+    {
+    }
+    /**
+     * This function will add extra HTML to the acf form data element
+     *
+     *  @since   5.3.8
+     *
+     *  @param array $args Arguments array to pass through to action.
+     *  @return void
+     */
+    public function form_data($args)
+    {
+    }
+    /**
+     * This function will append extra l10n strings to the acf JS object
+     *
+     * @since   5.3.8
+     *
+     * @param array $l10n The array of translated strings.
+     * @return array $l10n
+     */
+    public function admin_l10n($l10n)
+    {
+    }
+    /**
+     * Admin footer third party hook support
+     *
+     * @since   5.3.2
+     *
+     * @return void
+     */
+    public function admin_footer()
+    {
+    }
+    /**
+     * Screen settings html output
+     *
+     * @since   3.6.0
+     *
+     * @param string $html Current screen settings HTML.
+     * @return string $html
+     */
+    public function screen_settings($html)
+    {
+    }
+    /**
+     * Sets the "Edit Field Group" screen to use a one-column layout.
+     *
+     * @param int $columns Number of columns for layout.
+     *
+     * @return int
+     */
+    public function screen_layout($columns = 0)
+    {
+    }
+    /**
+     * Force basic settings to always be visible
+     *
+     * @param array $hidden_metaboxes The metaboxes hidden on this page.
+     *
+     * @return array
+     */
+    public function force_basic_settings($hidden_metaboxes)
+    {
+    }
+    /**
+     * Force advanced settings to be visible
+     *
+     * @param array $hidden_metaboxes The metaboxes hidden on this page.
+     *
+     * @return array
+     */
+    public function force_advanced_settings($hidden_metaboxes)
+    {
+    }
+    /**
+     *  This function will customize the publish metabox
+     *
+     *  @since   5.2.9
+     *
+     *  @return void
+     */
+    public function post_submitbox_misc_actions()
+    {
+    }
+    /**
+     * Saves taxonomy data.
+     *
+     * @since 1.0.0
+     *
+     * @param int     $post_id The post ID.
+     * @param WP_Post $post    The post object.
+     *
+     * @return int $post_id
+     */
+    public function save_post($post_id, $post)
+    {
+    }
+    /**
+     * Renders HTML for the 'acf-taxonomy-fields' metabox.
+     *
+     * @since 5.0.0
+     *
+     * @return void
+     */
+    public function mb_basic_settings()
+    {
+    }
+    /**
+     * Renders the HTML for the 'acf-taxonomy-options' metabox.
+     *
+     *  @since   5.0.0
+     *
+     *  @return void
+     */
+    public function mb_advanced_settings()
+    {
+    }
 }
 class ACF_Admin_Tool
 {
@@ -1501,7 +2464,7 @@ class ACF_Admin_Tool
     /** @var string Tool title */
     var $title = '';
     /** @var string Dashicon slug */
-    // var $icon = '';
+    var $icon = '';
     /** @var boolean Redirect form to single */
     // var $redirect = false;
     /**
@@ -1723,31 +2686,25 @@ class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
     {
     }
     /**
-     *  html_field_selection
+     * Renders the checkboxes to select items to export.
      *
-     *  description
+     * @date 24/10/17
+     * @since 5.6.3
      *
-     *  @date    24/10/17
-     *  @since   5.6.3
-     *
-     *  @param   void
-     *  @return  void
+     * @return void
      */
-    function html_field_selection()
+    public function html_field_selection()
     {
     }
     /**
-     *  html_panel_selection
+     * Renders the side panel for selecting ACF items to export via PHP.
      *
-     *  description
+     * @date 21/10/17
+     * @since 5.6.3
      *
-     *  @date    21/10/17
-     *  @since   5.6.3
-     *
-     *  @param   void
-     *  @return  void
+     * @return void
      */
-    function html_panel_selection()
+    public function html_panel_selection()
     {
     }
     /**
@@ -1779,59 +2736,47 @@ class ACF_Admin_Tool_Export extends \ACF_Admin_Tool
     {
     }
     /**
-     *  html_single
+     * Renders the PHP export screen.
      *
-     *  description
+     * @date 20/10/17
+     * @since 5.6.3
      *
-     *  @date    20/10/17
-     *  @since   5.6.3
-     *
-     *  @param   void
-     *  @return  void
+     * @return void
      */
-    function html_single()
+    public function html_single()
     {
     }
     /**
-     *  html_generate
+     * Generates the HTML for the PHP export functionality.
      *
-     *  description
+     * @date    17/10/17
+     * @since   5.6.3
      *
-     *  @date    17/10/17
-     *  @since   5.6.3
-     *
-     *  @param   void
-     *  @return  void
+     * @return void
      */
-    function html_generate()
+    public function html_generate()
     {
     }
     /**
-     *  get_selected_keys
+     * Return an array of keys that have been selected in the export tool.
      *
-     *  This function will return an array of field group keys that have been selected
+     * @date 20/10/17
+     * @since 5.6.3
      *
-     *  @date    20/10/17
-     *  @since   5.6.3
-     *
-     *  @param   void
-     *  @return  void
+     * @return array|bool
      */
-    function get_selected_keys()
+    public function get_selected_keys()
     {
     }
     /**
-     *  get_selected
+     * Returns the JSON data for given $_POST args.
      *
-     *  This function will return the JSON data for given $_POST args
+     * @date  17/10/17
+     * @since 5.6.3
      *
-     *  @date    17/10/17
-     *  @since   5.6.3
-     *
-     *  @param   void
-     *  @return  array
+     * @return array|bool
      */
-    function get_selected()
+    public function get_selected()
     {
     }
 }
@@ -1866,17 +2811,25 @@ class ACF_Admin_Tool_Import extends \ACF_Admin_Tool
     {
     }
     /**
-     *  submit
+     * Imports the selected ACF posts and returns an admin notice on completion.
      *
-     *  This function will run when the tool's form has been submit
+     * @date 10/10/17
+     * @since 5.6.3
      *
-     *  @date    10/10/17
-     *  @since   5.6.3
-     *
-     *  @param   void
-     *  @return  void
+     * @return ACF_Admin_Notice
      */
-    function submit()
+    public function submit()
+    {
+    }
+    /**
+     * Handles the import of CPTUI post types and taxonomies.
+     *
+     * @since 6.1
+     *
+     * @param array $import_args What to import.
+     * @return ACF_Admin_Notice
+     */
+    public function import_cpt_ui($import_args)
     {
     }
 }
@@ -2061,22 +3014,28 @@ class ACF_Ajax_Check_Screen extends \ACF_Ajax
 }
 class ACF_Ajax_Local_JSON_Diff extends \ACF_Ajax
 {
-    /** @var string The AJAX action name. */
-    var $action = 'acf/ajax/local_json_diff';
-    /** @var bool Prevents access for non-logged in users. */
-    var $public = \false;
     /**
-     * get_response
+     * The AJAX action name.
      *
+     * @var string
+     */
+    public $action = 'acf/ajax/local_json_diff';
+    /**
+     * Prevents access for non-logged in users.
+     *
+     * @var bool
+     */
+    public $public = \false;
+    /**
      * Returns the response data to sent back.
      *
      * @date    31/7/18
      * @since   5.7.2
      *
-     * @param   array $request The request args.
-     * @return  mixed The response data or WP_Error.
+     * @param array $request The request args.
+     * @return array|WP_Error The response data or WP_Error.
      */
-    function get_response($request)
+    public function get_response($request)
     {
     }
 }
@@ -2489,6 +3448,380 @@ class ACF_Assets
     {
     }
 }
+abstract class ACF_Internal_Post_Type
+{
+    /**
+     * The ACF internal post type name.
+     *
+     * @var string
+     */
+    public $post_type = '';
+    /**
+     * The prefix for the key used in the main post array.
+     *
+     * @var string
+     */
+    public $post_key_prefix = '';
+    /**
+     * The cache key for a singular post.
+     *
+     * @var string
+     */
+    public $cache_key = '';
+    /**
+     * The cache key for a collection of posts.
+     *
+     * @var string
+     */
+    public $cache_key_plural = '';
+    /**
+     * The hook name for a singular post.
+     *
+     * @var string
+     */
+    public $hook_name = '';
+    /**
+     * The hook name for a collection of posts.
+     *
+     * @var string
+     */
+    public $hook_name_plural = '';
+    /**
+     * The name of the store used for the post type.
+     *
+     * @var string
+     */
+    public $store = '';
+    /**
+     * Constructs the class.
+     */
+    public function __construct()
+    {
+    }
+    /**
+     * Register post type to WordPress if required for this post type
+     *
+     * @since 6.1
+     */
+    public function register_post_type()
+    {
+    }
+    /**
+     * Get an ACF CPT object as an array.
+     *
+     * @since 6.1
+     *
+     * @param int|WP_Post $id The post ID being queried.
+     * @return array|bool The main ACF array for the post, or false on failure.
+     */
+    public function get_post($id = 0)
+    {
+    }
+    /**
+     * Retrieves raw post data for the given identifier.
+     *
+     * @since 6.1
+     *
+     * @param int|string $id The field ID, key or name.
+     * @return array|false The field group array, or false on failure.
+     */
+    public function get_raw_post($id = 0)
+    {
+    }
+    /**
+     * Retrieves the WP_Post object for an ACF internal CPT.
+     *
+     * @since 6.1
+     *
+     * @param int|string $id The post ID, key, or name.
+     * @return WP_Post|bool The post object, or false on failure.
+     */
+    public function get_post_object($id = 0)
+    {
+    }
+    /**
+     * Returns true if the given identifier is an ACF post key.
+     *
+     * @since 6.1
+     *
+     * @param string $id The identifier.
+     * @return bool
+     */
+    public function is_post_key($id = '')
+    {
+    }
+    /**
+     * Validates an ACF internal post type.
+     *
+     * @since 6.1
+     *
+     * @param array $post The main post array.
+     * @return array
+     */
+    public function validate_post($post = array())
+    {
+    }
+    /**
+     * Validates post type values before allowing save from the global $_POST object.
+     * Errors are added to the form using acf_add_internal_post_type_validation_error().
+     *
+     * @since 6.1
+     *
+     * @return bool
+     */
+    public function ajax_validate_values()
+    {
+    }
+    /**
+     * Ensures the given ACF post is valid.
+     *
+     * @since 6.1
+     *
+     * @param array $post The main post array.
+     * @return array
+     */
+    public function get_valid_post($post = \false)
+    {
+    }
+    /**
+     * Gets the default settings array for an ACF post type.
+     *
+     * @return array
+     */
+    public function get_settings_array()
+    {
+    }
+    /**
+     * Translates an ACF post.
+     *
+     * @since 6.1
+     *
+     * @param array $post The field group array.
+     * @return array
+     */
+    public function translate_post($post = array())
+    {
+    }
+    /**
+     * Returns an array of ACF posts for the given $filter.
+     *
+     * @since 6.1
+     *
+     * @param array $filter An array of args to filter by.
+     * @return array
+     */
+    public function get_posts($filter = array())
+    {
+    }
+    /**
+     * Returns an array of raw ACF post data.
+     *
+     * @since 6.1
+     *
+     * @return array
+     */
+    public function get_raw_posts()
+    {
+    }
+    /**
+     * Filter the posts returned by $this->get_posts().
+     *
+     * @since 6.1
+     *
+     * @param array $posts An array of posts to filter.
+     * @param array $args  An array of args to filter by.
+     * @return array
+     */
+    public function filter_posts($posts, $args = array())
+    {
+    }
+    /**
+     * Updates an ACF post.
+     *
+     * @since 6.1
+     *
+     * @param array $post The ACF post to update.
+     * @return array
+     */
+    public function update_post($post)
+    {
+    }
+    /**
+     * Allows full control over ACF post slugs.
+     *
+     * @since 6.1
+     *
+     * @param string $slug          The post slug.
+     * @param int    $post_ID       Post ID.
+     * @param string $post_status   The post status.
+     * @param string $post_type     Post type.
+     * @param int    $post_parent   Post parent ID.
+     * @param string $original_slug The original post slug.
+     * @return string
+     */
+    public function apply_unique_post_slug($slug, $post_ID, $post_status, $post_type, $post_parent, $original_slug)
+    {
+    }
+    /**
+     * Deletes all caches for this ACF post.
+     *
+     * @since 6.1
+     *
+     * @param array $post The ACF post array.
+     * @return void
+     */
+    public function flush_post_cache($post)
+    {
+    }
+    /**
+     * Deletes an ACF post.
+     *
+     * @since 6.1
+     *
+     * @param int|string $id The ID of the ACF post to delete.
+     * @return bool
+     */
+    public function delete_post($id = 0)
+    {
+    }
+    /**
+     * Trashes an ACF post.
+     *
+     * @since 6.1
+     *
+     * @param int|string $id The ID of the ACF post to trash.
+     * @return bool
+     */
+    public function trash_post($id = 0)
+    {
+    }
+    /**
+     * Restores an ACF post from the trash.
+     *
+     * @since 6.1
+     *
+     * @param int|string $id The ID of the ACF post to untrash.
+     * @return bool
+     */
+    public function untrash_post($id = 0)
+    {
+    }
+    /**
+     * Returns the previous post_status instead of "draft" for the ACF internal post types.
+     * Prior to WordPress 5.6.0, this filter was not needed as restored posts were always assigned their original status.
+     *
+     * @since 6.1
+     *
+     * @param string $new_status      The new status of the post being restored.
+     * @param int    $post_id         The ID of the post being restored.
+     * @param string $previous_status The status of the post at the point where it was trashed.
+     * @return string
+     */
+    public function untrash_post_status($new_status, $post_id, $previous_status)
+    {
+    }
+    /**
+     * Returns true if the given params match an ACF post.
+     *
+     * @since 6.1
+     *
+     * @param array $post The post array to check.
+     * @return bool
+     */
+    public function is_post($post = \false)
+    {
+    }
+    /**
+     * Duplicates an ACF post.
+     *
+     * @since 6.1
+     *
+     * @param int|string $id          The ID of the post to duplicate.
+     * @param int        $new_post_id Optional post ID to override.
+     * @return array The new ACF post array.
+     */
+    public function duplicate_post($id = 0, $new_post_id = 0)
+    {
+    }
+    /**
+     * Activates or deactivates an ACF post.
+     *
+     * @since 6.1
+     *
+     * @param int|string $id       The ID of the ACF post to activate/deactivate.
+     * @param bool       $activate True if the post should be activated.
+     * @return bool
+     */
+    public function update_post_active_status($id, $activate = \true)
+    {
+    }
+    /**
+     * Checks if the current user can edit ACF posts and returns the edit url.
+     *
+     * @since 6.1
+     *
+     * @param int $post_id The ACF post ID.
+     * @return string
+     */
+    public function get_post_edit_link($post_id)
+    {
+    }
+    /**
+     * Returns a modified ACF post array ready for export.
+     *
+     * @since 6.1
+     *
+     * @param array $post The ACF post array.
+     * @return array
+     */
+    public function prepare_post_for_export($post = array())
+    {
+    }
+    /**
+     * Returns a string containing PHP code that can be used to create the post in ACF.
+     *
+     * @since 6.1
+     *
+     * @param array $post The post being exported.
+     * @return string
+     */
+    public function export_post_as_php($post = array())
+    {
+    }
+    /**
+     * Formats code used for PHP exports.
+     *
+     * @since 6.1
+     *
+     * @param string $code The code being formatted.
+     * @return string
+     */
+    public function format_code_for_export($code = '')
+    {
+    }
+    /**
+     * Prepares an ACF post for import.
+     *
+     * @since 6.1
+     *
+     * @param array $post The ACF post array.
+     * @return array
+     */
+    public function prepare_post_for_import($post)
+    {
+    }
+    /**
+     * Imports an ACF post into the database.
+     *
+     * @since 6.1
+     *
+     * @param array $post The ACF post array.
+     * @return array
+     */
+    public function import_post($post)
+    {
+    }
+}
 class ACF_Compatibility
 {
     /**
@@ -2689,6 +4022,7 @@ class ACF_Compatibility
     {
     }
 }
+#[\AllowDynamicProperties]
 class acf_fields
 {
     /** @var array Contains an array of field type instances */
@@ -2785,10 +4119,21 @@ class acf_fields
     {
     }
 }
+#[\AllowDynamicProperties]
 class acf_field
 {
-    // vars
-    var $name = '', $label = '', $category = 'basic', $defaults = array(), $l10n = array(), $public = \true;
+    // field information properties.
+    public $name = '';
+    public $label = '';
+    public $category = 'basic';
+    public $description = '';
+    public $doc_url = \false;
+    public $tutorial_url = \false;
+    public $preview_image = \false;
+    public $pro = \false;
+    public $defaults = array();
+    public $l10n = array();
+    public $public = \true;
     public $show_in_rest = \true;
     /**
      *  __construct
@@ -3945,6 +5290,7 @@ class acf_field_file extends \acf_field
     {
     }
 }
+#[\AllowDynamicProperties]
 class acf_field_google_map extends \acf_field
 {
     /**
@@ -4061,6 +5407,7 @@ class acf_field_google_map extends \acf_field
     {
     }
 }
+#[\AllowDynamicProperties]
 class acf_field__group extends \acf_field
 {
     /**
@@ -4834,6 +6181,7 @@ class acf_field_number extends \acf_field
     {
     }
 }
+#[\AllowDynamicProperties]
 class acf_field_oembed extends \acf_field
 {
     /**
@@ -4949,7 +6297,7 @@ class acf_field_oembed extends \acf_field
      *  @date    23/01/13
      *
      *  @param   mixed $value the value which was loaded from the database
-     *  @param   mixed $post_id the $post_id from which the value was loaded
+     *  @param   mixed $post_id the post_id from which the value was loaded
      *  @param   array $field the field array holding all the field options
      *
      *  @return  mixed $value the modified value
@@ -5936,7 +7284,7 @@ class acf_field_relationship extends \acf_field
      *  @date    23/01/13
      *
      *  @param   $value - the value which will be saved in the database
-     *  @param   $post_id - the $post_id of which the value will be saved
+     *  @param   $post_id - the post_id of which the value will be saved
      *  @param   $field - the field array holding all the field options
      *
      *  @return  $value - the modified value
@@ -7608,6 +8956,7 @@ class acf_form_comment
     {
     }
 }
+#[\AllowDynamicProperties]
 class acf_form_customizer
 {
     /**
@@ -7766,6 +9115,7 @@ class acf_form_customizer
     {
     }
 }
+#[\AllowDynamicProperties]
 class acf_form_front
 {
     /** @var array An array of default fields */
@@ -8583,6 +9933,7 @@ class ACF_Form_User
     {
     }
 }
+#[\AllowDynamicProperties]
 class acf_form_widget
 {
     /**
@@ -8761,15 +10112,37 @@ class ACF_Local_JSON
     {
     }
     /**
+     * Writes ACF posts to the JSON file.
+     *
+     * @since 6.1
+     *
+     * @param array $post The main ACF post array.
+     * @return bool
+     */
+    public function update_internal_post_type($post)
+    {
+    }
+    /**
      * Deletes a field group JSON file.
      *
-     * @date    14/4/20
-     * @since   5.9.0
+     * @date 14/4/20
+     * @since 5.9.0
      *
-     * @param   array $field_group The field group.
-     * @return  void
+     * @param  array $field_group The field group.
+     * @return bool
      */
     public function delete_field_group($field_group)
+    {
+    }
+    /**
+     * Deletes an ACF JSON file.
+     *
+     * @since 6.1
+     *
+     * @param array $post The main ACF post array.
+     * @return bool
+     */
+    public function delete_internal_post_type($post)
     {
     }
     /**
@@ -8785,50 +10158,80 @@ class ACF_Local_JSON
     {
     }
     /**
+     * Includes all local JSON post types.
+     *
+     * @since 6.1
+     *
+     * @return void
+     */
+    public function include_post_types()
+    {
+    }
+    /**
+     * Includes all local JSON taxonomies.
+     *
+     * @since 6.1
+     *
+     * @return void
+     */
+    public function include_taxonomies()
+    {
+    }
+    /**
      * Scans for JSON field groups.
      *
      * @date    14/4/20
      * @since   5.9.0
      *
-     * @param   void
      * @return  array
      */
     function scan_field_groups()
     {
     }
     /**
-     * Returns an array of found JSON field group files.
+     * Scans for JSON files.
      *
-     * @date    14/4/20
-     * @since   5.9.0
+     * @since 6.1
      *
-     * @param   void
-     * @return  array
+     * @param string $post_type The ACF post type to scan for.
+     * @return array
      */
-    public function get_files()
+    function scan_files($post_type = 'acf-field-group')
     {
     }
     /**
-     * Saves a field group JSON file.
+     * Returns an array of found JSON files.
      *
-     * @date    17/4/20
-     * @since   5.9.0
+     * @date 14/4/20
+     * @since 5.9.0
      *
-     * @param   string $key The field group key.
-     * @param   array  $field_group The field group.
-     * @return  bool
+     * @param string $post_type The ACF post type to get files for.
+     * @return array
      */
-    public function save_file($key, $field_group)
+    public function get_files($post_type = 'acf-field-group')
     {
     }
     /**
-     * Deletes a field group JSON file.
+     * Saves an ACF JSON file.
      *
-     * @date    17/4/20
-     * @since   5.9.0
+     * @date 17/4/20
+     * @since 5.9.0
      *
-     * @param   string $key The field group key.
-     * @return  bool True on success.
+     * @param string $key  The ACF post key.
+     * @param array  $post The main ACF post array.
+     * @return bool
+     */
+    public function save_file($key, $post)
+    {
+    }
+    /**
+     * Deletes an ACF JSON file.
+     *
+     * @date 17/4/20
+     * @since 5.9.0
+     *
+     * @param string $key The ACF post key.
+     * @return bool True on success.
      */
     public function delete_file($key)
     {
@@ -10108,6 +11511,7 @@ class ACF_Location_Widget extends \ACF_Location
     {
     }
 }
+#[\AllowDynamicProperties]
 class acf_loop
 {
     /**
@@ -10337,6 +11741,491 @@ class ACF_Media
     {
     }
 }
+class ACF_Field_Group extends \ACF_Internal_Post_Type
+{
+    /**
+     * The ACF internal post type name.
+     *
+     * @var string
+     */
+    public $post_type = 'acf-field-group';
+    /**
+     * The prefix for the key used in the main post array.
+     *
+     * @var string
+     */
+    public $post_key_prefix = 'group_';
+    /**
+     * The cache key for a singular post.
+     *
+     * @var string
+     */
+    public $cache_key = 'acf_get_field_group_post:key:';
+    /**
+     * The cache key for a collection of posts.
+     *
+     * @var string
+     */
+    public $cache_key_plural = 'acf_get_field_group_posts';
+    /**
+     * The hook name for a singular post.
+     *
+     * @var string
+     */
+    public $hook_name = 'field_group';
+    /**
+     * The hook name for a collection of posts.
+     *
+     * @var string
+     */
+    public $hook_name_plural = 'field_groups';
+    /**
+     * The name of the store used for the post type.
+     *
+     * @var string
+     */
+    public $store = 'field-groups';
+    /**
+     * Constructs the class.
+     */
+    public function __construct()
+    {
+    }
+    /**
+     * Gets the default settings array for an ACF field group.
+     *
+     * @return array
+     */
+    public function get_settings_array()
+    {
+    }
+    /**
+     * Register the field-group custom post type with WordPress
+     *
+     * @since 6.1
+     */
+    public function register_post_type()
+    {
+    }
+    /**
+     * Get an ACF CPT object as an array.
+     *
+     * @since 6.1
+     *
+     * @param int|WP_Post $id The post ID being queried.
+     * @return array|bool The main ACF array for the post, or false on failure.
+     */
+    public function get_post($id = 0)
+    {
+    }
+    /**
+     * Filter the posts returned by $this->get_posts().
+     *
+     * @since 6.1
+     *
+     * @param array $posts An array of posts to filter.
+     * @param array $args  An array of args to filter by.
+     * @return array
+     */
+    public function filter_posts($posts, $args = array())
+    {
+    }
+    /**
+     * Filters the field group data before it is updated in the database.
+     *
+     * @since 6.1
+     *
+     * @param array $field_group The field group being updated.
+     * @return array
+     */
+    public function pre_update_field_group($field_group)
+    {
+    }
+    /**
+     * Deletes an ACF field group and related fields.
+     *
+     * @since 6.1
+     *
+     * @param int|string $id The ID of the field group to delete.
+     * @return bool
+     */
+    public function delete_post($id = 0)
+    {
+    }
+    /**
+     * Trashes an ACF field group and related fields.
+     *
+     * @since 6.1
+     *
+     * @param int|string $id The ID of the field group to trash.
+     * @return bool
+     */
+    public function trash_post($id = 0)
+    {
+    }
+    /**
+     * Restores an ACF field group and related fields from the trash.
+     *
+     * @since 6.1
+     *
+     * @param int|string $id The ID of the ACF post to untrash.
+     * @return bool
+     */
+    public function untrash_post($id = 0)
+    {
+    }
+    /**
+     * Duplicates an ACF post.
+     *
+     * @since 6.1
+     *
+     * @param int|string $id          The ID of the post to duplicate.
+     * @param int        $new_post_id Optional post ID to override.
+     * @return array The new ACF post array.
+     */
+    public function duplicate_post($id = 0, $new_post_id = 0)
+    {
+    }
+    /**
+     * Returns a modified ACF field group array ready for export.
+     *
+     * @since 6.1
+     *
+     * @param array $post The ACF post array.
+     * @return array
+     */
+    public function prepare_post_for_export($post = array())
+    {
+    }
+    /**
+     * Prepares an ACF field group for import.
+     *
+     * @since 6.1
+     *
+     * @param array $post The ACF field group array.
+     * @return array
+     */
+    public function prepare_post_for_import($post)
+    {
+    }
+    /**
+     * Returns a string that can be used to create a field group with PHP.
+     *
+     * @since 6.1
+     *
+     * @param array $post The main field group array.
+     * @return string
+     */
+    public function export_post_as_php($post = array())
+    {
+    }
+    /**
+     * Imports an ACF post into the database.
+     *
+     * @since 6.1
+     *
+     * @param array $post The ACF post array.
+     * @return array
+     */
+    public function import_post($post)
+    {
+    }
+}
+class ACF_Post_Type extends \ACF_Internal_Post_Type
+{
+    /**
+     * The ACF internal post type name.
+     *
+     * @var string
+     */
+    public $post_type = 'acf-post-type';
+    /**
+     * The prefix for the key used in the main post array.
+     *
+     * @var string
+     */
+    public $post_key_prefix = 'post_type_';
+    /**
+     * The cache key for a singular post.
+     *
+     * @var string
+     */
+    public $cache_key = 'acf_get_post_type_post:key:';
+    /**
+     * The cache key for a collection of posts.
+     *
+     * @var string
+     */
+    public $cache_key_plural = 'acf_get_post_type_posts';
+    /**
+     * The hook name for a singular post.
+     *
+     * @var string
+     */
+    public $hook_name = 'post_type';
+    /**
+     * The hook name for a collection of posts.
+     *
+     * @var string
+     */
+    public $hook_name_plural = 'post_types';
+    /**
+     * The name of the store used for the post type.
+     *
+     * @var string
+     */
+    public $store = 'post-types';
+    /**
+     * Constructs the class.
+     */
+    public function __construct()
+    {
+    }
+    /**
+     * Register activated post types with WordPress
+     *
+     * @since 6.1
+     */
+    public function register_post_types()
+    {
+    }
+    /**
+     * Gets the default settings array for an ACF post type.
+     *
+     * @return array
+     */
+    public function get_settings_array()
+    {
+    }
+    /**
+     * Validates an ACF internal post type.
+     *
+     * @since 6.1
+     *
+     * @param array $post The main post array.
+     * @return array
+     */
+    public function validate_post($post = array())
+    {
+    }
+    /**
+     * Validates post type values before allowing save from the global $_POST object.
+     * Errors are added to the form using acf_add_internal_post_type_validation_error().
+     *
+     * @since 6.1
+     *
+     * @return bool validity status
+     */
+    public function ajax_validate_values()
+    {
+    }
+    /**
+     * Parses ACF post type settings and returns an array of post type
+     * args that can be easily handled by `register_post_type()`.
+     *
+     * Omits settings that line up with the WordPress defaults to reduce the size
+     * of the array passed to `register_post_type()`, which might be exported.
+     *
+     * @since 6.1
+     *
+     * @param array $post The main ACF post type settings array.
+     * @return array
+     */
+    public function get_post_type_args($post)
+    {
+    }
+    /**
+     * Register the CPT required for ACF post types.
+     */
+    public function register_post_type()
+    {
+    }
+    /**
+     * Returns a string that can be used to create a post type in PHP.
+     *
+     * @since 6.1
+     *
+     * @param array $post The main post type array.
+     * @return string
+     */
+    public function export_post_as_php($post = array())
+    {
+    }
+    /**
+     * Flush rewrite rules whenever anything changes about a post type.
+     *
+     * @since 6.1
+     *
+     * @param array $post The main post type array.
+     */
+    public function flush_post_cache($post)
+    {
+    }
+    /**
+     * Translates an ACF post.
+     *
+     * @since 6.1
+     *
+     * @param array $post The field group array.
+     * @return array
+     */
+    public function translate_post($post = array())
+    {
+    }
+    /**
+     * Imports a post type from CPTUI.
+     *
+     * @since 6.1
+     *
+     * @param array $args Arguments from CPTUI.
+     * @return array
+     */
+    public function import_cptui_post_type($args)
+    {
+    }
+}
+class ACF_Taxonomy extends \ACF_Internal_Post_Type
+{
+    /**
+     * The ACF internal post type name.
+     *
+     * @var string
+     */
+    public $post_type = 'acf-taxonomy';
+    /**
+     * The prefix for the key used in the main post array.
+     *
+     * @var string
+     */
+    public $post_key_prefix = 'taxonomy_';
+    /**
+     * The cache key for a singular post.
+     *
+     * @var string
+     */
+    public $cache_key = 'acf_get_taxonomy_post:key:';
+    /**
+     * The cache key for a collection of posts.
+     *
+     * @var string
+     */
+    public $cache_key_plural = 'acf_get_taxonomy_posts';
+    /**
+     * The hook name for a singular post.
+     *
+     * @var string
+     */
+    public $hook_name = 'taxonomy';
+    /**
+     * The hook name for a collection of posts.
+     *
+     * @var string
+     */
+    public $hook_name_plural = 'taxonomies';
+    /**
+     * The name of the store used for the post type.
+     *
+     * @var string
+     */
+    public $store = 'taxonomies';
+    /**
+     * Constructs the class.
+     */
+    public function __construct()
+    {
+    }
+    /**
+     * Register activated taxonomies with WordPress
+     *
+     * @since 6.1
+     */
+    public function register_taxonomies()
+    {
+    }
+    /**
+     * Gets the default settings array for an ACF taxonomy.
+     *
+     * @return array
+     */
+    public function get_settings_array()
+    {
+    }
+    /**
+     * Register the CPT required for ACF taxonomies.
+     */
+    public function register_post_type()
+    {
+    }
+    /**
+     * Validates post type values before allowing save from the global $_POST object.
+     * Errors are added to the form using acf_add_internal_post_type_validation_error().
+     *
+     * @since 6.1
+     *
+     * @return bool validity status
+     */
+    public function ajax_validate_values()
+    {
+    }
+    /**
+     * Parses ACF taxonomy settings and returns an array of taxonomy
+     * args that can be easily handled by `register_taxonomy()`.
+     *
+     * Omits settings that line up with the WordPress defaults to reduce the size
+     * of the array passed to `register_taxonomy()`, which might be exported.
+     *
+     * @since 6.1
+     *
+     * @param array $post The main ACF taxonomy settings array.
+     * @return array
+     */
+    public function get_taxonomy_args($post)
+    {
+    }
+    /**
+     * Returns a string that can be used to create a taxonomy in PHP.
+     *
+     * @since 6.1
+     *
+     * @param array $post The main taxonomy array.
+     * @return string
+     */
+    public function export_post_as_php($post = array())
+    {
+    }
+    /**
+     * Flush rewrite rules whenever anything changes about a taxonomy.
+     *
+     * @since 6.1
+     *
+     * @param array $post The main post type array.
+     */
+    public function flush_post_cache($post)
+    {
+    }
+    /**
+     * Translates an ACF post.
+     *
+     * @since 6.1
+     *
+     * @param array $post The field group array.
+     * @return array
+     */
+    public function translate_post($post = array())
+    {
+    }
+    /**
+     * Imports a taxonomy from CPTUI.
+     *
+     * @since 6.1
+     *
+     * @param array $args Arguments from CPTUI.
+     * @return array
+     */
+    public function import_cptui_taxonomy($args)
+    {
+    }
+}
 class ACF_Rest_Api
 {
     public function __construct()
@@ -10462,6 +12351,7 @@ class ACF_Rest_Request
     {
     }
 }
+#[\AllowDynamicProperties]
 class acf_revisions
 {
     // vars
@@ -10837,6 +12727,7 @@ class ACF_Updates
     {
     }
 }
+#[\AllowDynamicProperties]
 class acf_validation
 {
     /**
@@ -10931,18 +12822,13 @@ class acf_validation
     {
     }
     /**
-     *  acf_validate_save_post
+     * Loops over $_POST data and validates ACF values.
      *
-     *  This function will loop over $_POST data and validate
+     * @since   5.4.0
      *
-     *  @type    function
-     *  @date    7/09/2016
-     *  @since   5.4.0
-     *
-     *  @param   void
-     *  @return  void
+     * @return  void
      */
-    function acf_validate_save_post()
+    public function acf_validate_save_post()
     {
     }
 }
@@ -11474,6 +13360,17 @@ class ACF_Admin_Updates
      * @return  void
      */
     function load()
+    {
+    }
+    /**
+     * Modifies the admin body class.
+     *
+     * @since 6.0.0
+     *
+     * @param string $classes Space-separated list of CSS classes.
+     * @return string
+     */
+    public function admin_body_class($classes)
     {
     }
     /**
@@ -13465,7 +15362,7 @@ function acf_render_field_label($field)
  *
  * @param   array  $field The field array.
  * @param   string $context The output context (admin).
- * @return  void
+ * @return  string The field label in HTML format.
  */
 function acf_get_field_label($field, $context = '')
 {
@@ -13820,15 +15717,13 @@ function acf_is_field_group_key($id = '')
 {
 }
 /**
- * acf_validate_field_group
- *
  * Ensures the given field group is valid.
  *
  * @date    18/1/19
  * @since   5.7.10
  *
- * @param   array $field The field group array.
- * @return  array
+ * @param array $field_group The field group array.
+ * @return array
  */
 function acf_validate_field_group($field_group = array())
 {
@@ -14055,7 +15950,8 @@ function acf_duplicate_field_group($id = 0, $new_post_id = 0)
 /**
  * Activates or deactivates a field group.
  *
- * @param int|string $id The field_group ID, key or name.
+ * @param int|string $id       The field_group ID, key or name.
+ * @param bool       $activate True if the post should be activated.
  * @return bool
  */
 function acf_update_field_group_active_status($id, $activate = \true)
@@ -14129,6 +16025,19 @@ function acf_prepare_field_group_for_import($field_group)
  * @return  array The new field group.
  */
 function acf_import_field_group($field_group)
+{
+}
+/**
+ *  Returns an array of tabs for the field group settings.
+ *  We combine a list of default tabs with filtered tabs.
+ *  I.E. Default tabs should be static and should not be changed by the
+ *  filtered tabs.
+ *
+ *  @since 6.1
+ *
+ *  @return array Key/value array of the default settings tabs for field group settings.
+ */
+function acf_get_combined_field_group_settings_tabs()
 {
 }
 /**
@@ -14610,6 +16519,17 @@ function acf_sanitize_files_value_array($array, $sanitize_function)
 {
 }
 /**
+ * Maybe unserialize, but don't allow any classes.
+ *
+ * @since 6.1
+ *
+ * @param string $data String to be unserialized, if serialized.
+ * @return mixed The unserialized, or original data.
+ */
+function acf_maybe_unserialize($data)
+{
+}
+/**
  * acf_add_filter_variations
  *
  * Registers variations for the given filter.
@@ -15054,6 +16974,345 @@ function acf_esc_atts_e($attrs)
 {
 }
 /**
+ * Generic functions for accessing ACF objects stored as WordPress post types which aren't handled by type specific functions.
+ *
+ * @package ACF
+ */
+/**
+ * Gets an instance of an ACF_Internal_Post_Type.
+ *
+ * @param string $post_type The ACF internal post type to get the instance for.
+ * @return ACF_Internal_Post_Type|bool The internal post type class instance, or false on failure.
+ */
+function acf_get_internal_post_type_instance($post_type = 'acf-field-group')
+{
+}
+/**
+ * Get an ACF CPT object as an array
+ *
+ * @param int    $id        The post ID being queried.
+ * @param string $post_type The post type being queried.
+ * @return array|false The post type object.
+ */
+function acf_get_internal_post_type($id, $post_type)
+{
+}
+/**
+ * Retrieves raw internal post type data for the given identifier.
+ *
+ * @since   6.1
+ *
+ * @param   int|string $id        The post ID.
+ * @param   string     $post_type The post type name.
+ * @return  array|false The internal post type array.
+ */
+function acf_get_raw_internal_post_type($id, $post_type)
+{
+}
+/**
+ * Gets a post object from an ACF internal post type.
+ *
+ * @since 6.1
+ *
+ * @param int|string $id        The post ID, key, or name.
+ * @param string     $post_type The post type name.
+ * @return object|bool The post object, or false on failure.
+ */
+function acf_get_internal_post_type_post($id, $post_type)
+{
+}
+/**
+ * Returns true if the given identifier is a ACF internal post type key.
+ *
+ * @since 6.1
+ *
+ * @param string $id        The identifier.
+ * @param string $post_type The ACF post type the key is for.
+ * @return bool
+ */
+function acf_is_internal_post_type_key($id = '', $post_type = 'acf-field-group')
+{
+}
+/**
+ * Validates an ACF internal post type.
+ *
+ * @since 6.1
+ *
+ * @param array  $internal_post_type The internal post type array.
+ * @param string $post_type_name     The post type name.
+ * @return array|bool
+ */
+function acf_validate_internal_post_type($internal_post_type, $post_type_name)
+{
+}
+/**
+ * Translates the settings for an ACF internal post type.
+ *
+ * @since 6.1
+ *
+ * @param array  $internal_post_type The ACF post array.
+ * @param string $post_type          The post type name.
+ * @return array
+ */
+function acf_translate_internal_post_type($internal_post_type, $post_type)
+{
+}
+/**
+ * Returns and array of ACF posts for the given $filter.
+ *
+ * @since 6.1
+ *
+ * @param string $post_type The ACF post type to get posts for.
+ * @param array  $filter    An array of args to filter results by.
+ * @return array
+ */
+function acf_get_internal_post_type_posts($post_type = 'acf-field-group', $filter = array())
+{
+}
+/**
+ * Returns an array of raw/unvalidated ACF post data.
+ *
+ * @since 6.1
+ *
+ * @param string $post_type The ACF post type to get post data for.
+ * @return array
+ */
+function acf_get_raw_internal_post_type_posts($post_type)
+{
+}
+/**
+ * Returns a filtered array of ACF posts based on the given $args.
+ *
+ * @since 6.1
+ *
+ * @param array  $posts     An array of ACF posts.
+ * @param array  $args      An array of args to filter by.
+ * @param string $post_type The ACF post type of the posts being filtered.
+ * @return array
+ */
+function acf_filter_internal_post_type_posts($posts, $args = array(), $post_type = 'acf-field-group')
+{
+}
+/**
+ * Updates a internal post type in the database.
+ *
+ * @since   6.1
+ *
+ * @param array  $internal_post_type Array of data to be saved.
+ * @param string $post_type_name     The internal post type being updated.
+ * @return array
+ */
+function acf_update_internal_post_type($internal_post_type, $post_type_name)
+{
+}
+/**
+ * Deletes all caches for the provided ACF post.
+ *
+ * @since 6.1
+ *
+ * @param array  $post      The ACF post array.
+ * @param string $post_type The ACF post type the cache is being cleared for.
+ * @return void
+ */
+function acf_flush_internal_post_type_cache($post, $post_type)
+{
+}
+/**
+ * Deletes an internal post type from the database.
+ *
+ * @since 6.1
+ *
+ * @param int|string $id             The internal post type ID, key or name.
+ * @param string     $post_type_name The post type to be deleted.
+ * @return bool True if field group was deleted.
+ */
+function acf_delete_internal_post_type($id = 0, $post_type_name = '')
+{
+}
+/**
+ * Trashes an internal post type.
+ *
+ * @since 6.1
+ *
+ * @param int|string $id             The internal post type ID, key, or name.
+ * @param string     $post_type_name The post type being trashed.
+ * @return bool True if post was trashed.
+ */
+function acf_trash_internal_post_type($id = 0, $post_type_name = '')
+{
+}
+/**
+ * Restores an ACF post from the trash.
+ *
+ * @since 6.1
+ *
+ * @param int|string $id             The internal post type ID, key, or name.
+ * @param string     $post_type_name The post type being untrashed.
+ * @return bool True if post was untrashed.
+ */
+function acf_untrash_internal_post_type($id = 0, $post_type_name = '')
+{
+}
+/**
+ * Returns true if the given params match an ACF post.
+ *
+ * @since 6.1
+ *
+ * @param array  $post      The ACF post array.
+ * @param string $post_type The ACF post type.
+ * @return bool
+ */
+function acf_is_internal_post_type($post, $post_type)
+{
+}
+/**
+ * Duplicates an ACF post.
+ *
+ * @since 6.1
+ *
+ * @param int|string $id          The field_group ID, key or name.
+ * @param int        $new_post_id Optional ID to override.
+ * @param string     $post_type   The post type of the post being duplicated.
+ * @return array|bool The new ACF post, or false on failure.
+ */
+function acf_duplicate_internal_post_type($id = 0, $new_post_id = 0, $post_type = 'acf-field-group')
+{
+}
+/**
+ * Activates or deactivates an ACF post.
+ *
+ * @param int|string $id        The field_group ID, key or name.
+ * @param bool       $activate  True if the post should be activated.
+ * @param string     $post_type The post type being activated/deactivated.
+ * @return bool
+ */
+function acf_update_internal_post_type_active_status($id, $activate = \true, $post_type = 'acf-field-group')
+{
+}
+/**
+ * Checks if the current user can edit the field group and returns the edit url.
+ *
+ * @since 6.1
+ *
+ * @param int    $post_id   The ACF post ID.
+ * @param string $post_type The ACF post type to get the edit link for.
+ * @return string
+ */
+function acf_get_internal_post_type_edit_link($post_id, $post_type)
+{
+}
+/**
+ * Returns a modified field group ready for export.
+ *
+ * @since 6.1
+ *
+ * @param array  $post      The ACF post array.
+ * @param string $post_type The post type of the ACF post being exported.
+ * @return array
+ */
+function acf_prepare_internal_post_type_for_export($post = array(), $post_type = 'acf-field-group')
+{
+}
+/**
+ * Exports an ACF post as PHP.
+ *
+ * @since 6.1
+ *
+ * @param array  $post      The ACF post array.
+ * @param string $post_type The post type of the ACF post being exported.
+ * @return string|bool
+ */
+function acf_export_internal_post_type_as_php($post, $post_type = 'acf-field-group')
+{
+}
+/**
+ * Prepares an ACF post for the import process.
+ *
+ * @since 6.1
+ *
+ * @param array  $post      The ACF post array.
+ * @param string $post_type The post type of the ACF post being imported.
+ * @return  array
+ */
+function acf_prepare_internal_post_type_for_import($post = array(), $post_type = 'acf-field-group')
+{
+}
+/**
+ * Imports an ACF post into the database.
+ *
+ * @since 6.1
+ *
+ * @param array  $post      The ACF post array.
+ * @param string $post_type The post type of the ACF post being imported.
+ * @return array The imported post.
+ */
+function acf_import_internal_post_type($post, $post_type)
+{
+}
+/**
+ * Tries to determine the ACF post type for the provided key.
+ *
+ * @param string $key The key to check.
+ * @return string|bool
+ */
+function acf_determine_internal_post_type($key)
+{
+}
+/**
+ * Returns an array of tabs for the post type advanced settings.
+ *
+ * @since 6.1
+ *
+ * @return array
+ */
+function acf_get_combined_post_type_settings_tabs()
+{
+}
+/**
+ * Returns an array of tabs for the taxonomy advanced settings.
+ *
+ * @since 6.1
+ *
+ * @return array
+ */
+function acf_get_combined_taxonomy_settings_tabs()
+{
+}
+/**
+ * Converts an _acf_screen or hook value into a post type.
+ *
+ * @since 6.1
+ *
+ * @param string $screen The ACF screen being viewed.
+ * @return string The post type matching the screen or hook value.
+ */
+function acf_get_post_type_from_screen_value($screen)
+{
+}
+/**
+ * Calls the ajax validator for a post type
+ *
+ * @since 6.1
+ *
+ * @param string $post_type The post type being validated.
+ * @return mixed
+ */
+function acf_validate_internal_post_type_values($post_type)
+{
+}
+/**
+ * Adds a validation error for ACF internal post types.
+ *
+ * @since 6.1
+ *
+ * @param string $name    The name of the input.
+ * @param string $message An optional error message to display.
+ * @return void
+ */
+function acf_add_internal_post_type_validation_error($name, $message = '')
+{
+}
+/**
  * Returns an array of "ACF only" meta for the given post_id.
  *
  * @date    9/10/18
@@ -15218,6 +17477,496 @@ function acf_get_post_templates()
 {
 }
 /**
+ * Functions for ACF post type objects.
+ *
+ * @package ACF
+ */
+/**
+ * Get an ACF CPT as an array
+ *
+ * @param int|string $id The post ID being queried.
+ * @return array|false The post type object.
+ */
+function acf_get_post_type($id)
+{
+}
+/**
+ * Retrieves a raw ACF CPT.
+ *
+ * @since   6.1
+ *
+ * @param   int|string $id        The post ID.
+ * @return  array|false The internal post type array.
+ */
+function acf_get_raw_post_type($id)
+{
+}
+/**
+ * Gets a post object for an ACF CPT.
+ *
+ * @since 6.1
+ *
+ * @param int|string $id The post ID, key, or name.
+ * @return object|bool The post object, or false on failure.
+ */
+function acf_get_post_type_post($id)
+{
+}
+/**
+ * Returns true if the given identifier is an ACF CPT key.
+ *
+ * @since 6.1
+ *
+ * @param string $id The identifier.
+ * @return bool
+ */
+function acf_is_post_type_key($id)
+{
+}
+/**
+ * Validates an ACF CPT.
+ *
+ * @since 6.1
+ *
+ * @param array $post_type The ACF post type array.
+ * @return array|bool
+ */
+function acf_validate_post_type(array $post_type = array())
+{
+}
+/**
+ * Translates the settings for an ACF internal post type.
+ *
+ * @since 6.1
+ *
+ * @param array $post_type The ACF post type array.
+ * @return array
+ */
+function acf_translate_post_type(array $post_type)
+{
+}
+/**
+ * Returns and array of ACF post types for the given $filter.
+ *
+ * @since 6.1
+ *
+ * @param array $filter An array of args to filter results by.
+ * @return array
+ */
+function acf_get_acf_post_types(array $filter = array())
+{
+}
+/**
+ * Returns an array of raw ACF post types.
+ *
+ * @since 6.1
+ *
+ * @return array
+ */
+function acf_get_raw_post_types()
+{
+}
+/**
+ * Returns a filtered array of ACF post types based on the given $args.
+ *
+ * @since 6.1
+ *
+ * @param array $post_types An array of ACF posts.
+ * @param array $args       An array of args to filter by.
+ * @return array
+ */
+function acf_filter_post_types(array $post_types, array $args = array())
+{
+}
+/**
+ * Updates an ACF post type in the database.
+ *
+ * @since   6.1
+ *
+ * @param array $post_type The main ACF post type array.
+ * @return array
+ */
+function acf_update_post_type(array $post_type)
+{
+}
+/**
+ * Deletes all caches for the provided ACF post type.
+ *
+ * @since 6.1
+ *
+ * @param array $post_type The ACF post type array.
+ * @return void
+ */
+function acf_flush_post_type_cache(array $post_type)
+{
+}
+/**
+ * Deletes an ACF post type from the database.
+ *
+ * @since 6.1
+ *
+ * @param int|string $id The ACF post type ID, key or name.
+ * @return bool True if post type was deleted.
+ */
+function acf_delete_post_type($id = 0)
+{
+}
+/**
+ * Trashes an ACF post type.
+ *
+ * @since 6.1
+ *
+ * @param int|string $id The post type ID, key, or name.
+ * @return bool True if post was trashed.
+ */
+function acf_trash_post_type($id = 0)
+{
+}
+/**
+ * Restores an ACF post type from the trash.
+ *
+ * @since 6.1
+ *
+ * @param int|string $id The post type ID, key, or name.
+ * @return bool True if post was untrashed.
+ */
+function acf_untrash_post_type($id = 0)
+{
+}
+/**
+ * Returns true if the given params match an ACF post type.
+ *
+ * @since 6.1
+ *
+ * @param array $post_type The ACF post type array.
+ * @return bool
+ */
+function acf_is_post_type($post_type)
+{
+}
+/**
+ * Duplicates an ACF post type.
+ *
+ * @since 6.1
+ *
+ * @param int|string $id          The ACF post type ID, key or name.
+ * @param int        $new_post_id Optional ID to override.
+ * @return array|bool The new ACF post type, or false on failure.
+ */
+function acf_duplicate_post_type($id = 0, $new_post_id = 0)
+{
+}
+/**
+ * Activates or deactivates an ACF post type.
+ *
+ * @param int|string $id        The ACF post type ID, key or name.
+ * @param bool       $activate  True if the post type should be activated.
+ * @return bool
+ */
+function acf_update_post_type_active_status($id, $activate = \true)
+{
+}
+/**
+ * Checks if the current user can edit the post type and returns the edit url.
+ *
+ * @since 6.1
+ *
+ * @param int $post_id The ACF post type ID.
+ * @return string
+ */
+function acf_get_post_type_edit_link($post_id)
+{
+}
+/**
+ * Returns a modified ACF post type ready for export.
+ *
+ * @since 6.1
+ *
+ * @param array $post_type The ACF post type array.
+ * @return array
+ */
+function acf_prepare_post_type_for_export(array $post_type = array())
+{
+}
+/**
+ * Exports an ACF post type as PHP.
+ *
+ * @since 6.1
+ *
+ * @param array $post_type The ACF post type array.
+ * @return string|bool
+ */
+function acf_export_post_type_as_php(array $post_type)
+{
+}
+/**
+ * Prepares an ACF post type for the import process.
+ *
+ * @since 6.1
+ *
+ * @param array $post_type The ACF post type array.
+ * @return array
+ */
+function acf_prepare_post_type_for_import(array $post_type = array())
+{
+}
+/**
+ * Imports an ACF post type into the database.
+ *
+ * @since 6.1
+ *
+ * @param array $post_type The ACF post type array.
+ * @return array The imported post type.
+ */
+function acf_import_post_type(array $post_type)
+{
+}
+/**
+ * Functions for ACF taxonomy objects.
+ *
+ * @package ACF
+ */
+/**
+ * Get an ACF taxonomy as an array
+ *
+ * @param int|string $id The post ID being queried.
+ * @return array|false The taxonomy object.
+ */
+function acf_get_taxonomy($id)
+{
+}
+/**
+ * Retrieves a raw ACF taxonomy.
+ *
+ * @since   6.1
+ *
+ * @param   int|string $id        The post ID.
+ * @return  array|false The taxonomy array.
+ */
+function acf_get_raw_taxonomy($id)
+{
+}
+/**
+ * Gets a post object for an ACF taxonomy.
+ *
+ * @since 6.1
+ *
+ * @param int|string $id The post ID, key, or name.
+ * @return object|bool The post object, or false on failure.
+ */
+function acf_get_taxonomy_post($id)
+{
+}
+/**
+ * Returns true if the given identifier is an ACF taxonomy key.
+ *
+ * @since 6.1
+ *
+ * @param string $id The identifier.
+ * @return bool
+ */
+function acf_is_taxonomy_key($id)
+{
+}
+/**
+ * Validates an ACF taxonomy.
+ *
+ * @since 6.1
+ *
+ * @param array $taxonomy The ACF taxonomy array.
+ * @return array|bool
+ */
+function acf_validate_taxonomy(array $taxonomy = array())
+{
+}
+/**
+ * Translates the settings for an ACF taxonomy.
+ *
+ * @since 6.1
+ *
+ * @param array $taxonomy The ACF taxonomy array.
+ * @return array
+ */
+function acf_translate_taxonomy(array $taxonomy)
+{
+}
+/**
+ * Returns an array of ACF taxonomies for the given $filter.
+ *
+ * @since 6.1
+ *
+ * @param array $filter An array of args to filter results by.
+ * @return array
+ */
+function acf_get_acf_taxonomies(array $filter = array())
+{
+}
+/**
+ * Returns an array of raw ACF taxonomies.
+ *
+ * @since 6.1
+ *
+ * @return array
+ */
+function acf_get_raw_taxonomies()
+{
+}
+/**
+ * Returns a filtered array of ACF taxonomies based on the given $args.
+ *
+ * @since 6.1
+ *
+ * @param array $taxonomies An array of ACF taxonomies.
+ * @param array $args       An array of args to filter by.
+ * @return array
+ */
+function acf_filter_taxonomies(array $taxonomies, array $args = array())
+{
+}
+/**
+ * Updates an ACF taxonomy in the database.
+ *
+ * @since   6.1
+ *
+ * @param array $taxonomy The main ACF taxonomy array.
+ * @return array
+ */
+function acf_update_taxonomy(array $taxonomy)
+{
+}
+/**
+ * Deletes all caches for the provided ACF taxonomy.
+ *
+ * @since 6.1
+ *
+ * @param array $taxonomy The ACF taxonomy array.
+ * @return void
+ */
+function acf_flush_taxonomy_cache(array $taxonomy)
+{
+}
+/**
+ * Deletes an ACF taxonomy from the database.
+ *
+ * @since 6.1
+ *
+ * @param int|string $id The ACF taxonomy ID, key or name.
+ * @return bool True if taxonomy was deleted.
+ */
+function acf_delete_taxonomy($id = 0)
+{
+}
+/**
+ * Trashes an ACF taxonomy.
+ *
+ * @since 6.1
+ *
+ * @param int|string $id The taxonomy ID, key, or name.
+ * @return bool True if taxonomy was trashed.
+ */
+function acf_trash_taxonomy($id = 0)
+{
+}
+/**
+ * Restores an ACF taxonomy from the trash.
+ *
+ * @since 6.1
+ *
+ * @param int|string $id The taxonomy ID, key, or name.
+ * @return bool True if taxonomy was untrashed.
+ */
+function acf_untrash_taxonomy($id = 0)
+{
+}
+/**
+ * Returns true if the given params match an ACF taxonomy.
+ *
+ * @since 6.1
+ *
+ * @param array $taxonomy The ACF taxonomy array.
+ * @return bool
+ */
+function acf_is_taxonomy($taxonomy)
+{
+}
+/**
+ * Duplicates an ACF taxonomy.
+ *
+ * @since 6.1
+ *
+ * @param int|string $id          The ACF taxonomy ID, key or name.
+ * @param int        $new_post_id Optional ID to override.
+ * @return array|bool The new ACF taxonomy, or false on failure.
+ */
+function acf_duplicate_taxonomy($id = 0, $new_post_id = 0)
+{
+}
+/**
+ * Activates or deactivates an ACF taxonomy.
+ *
+ * @param int|string $id        The ACF taxonomy ID, key or name.
+ * @param bool       $activate  True if the taxonomy should be activated.
+ * @return bool
+ */
+function acf_update_taxonomy_active_status($id, $activate = \true)
+{
+}
+/**
+ * Checks if the current user can edit the taxonomy and returns the edit url.
+ *
+ * @since 6.1
+ *
+ * @param int $post_id The ACF taxonomy ID.
+ * @return string
+ */
+function acf_get_taxonomy_edit_link($post_id)
+{
+}
+/**
+ * Returns a modified ACF taxonomy ready for export.
+ *
+ * @since 6.1
+ *
+ * @param array $taxonomy The ACF taxonomy array.
+ * @return array
+ */
+function acf_prepare_taxonomy_for_export(array $taxonomy = array())
+{
+}
+/**
+ * Exports an ACF taxonomy as PHP.
+ *
+ * @since 6.1
+ *
+ * @param array $taxonomy The ACF taxonomy array.
+ * @return string|bool
+ */
+function acf_export_taxonomy_as_php(array $taxonomy)
+{
+}
+/**
+ * Prepares an ACF taxonomy for the import process.
+ *
+ * @since 6.1
+ *
+ * @param array $taxonomy The ACF taxonomy array.
+ * @return array
+ */
+function acf_prepare_taxonomy_for_import(array $taxonomy = array())
+{
+}
+/**
+ * Imports an ACF taxonomy into the database.
+ *
+ * @since 6.1
+ *
+ * @param array $taxonomy The ACF taxonomy array.
+ * @return array The imported taxonomy.
+ */
+function acf_import_taxonomy(array $taxonomy)
+{
+}
+/**
  * acf_get_users
  *
  * Similar to the get_users() function but with extra functionality.
@@ -15288,15 +18037,13 @@ function acf_new_instance($class = '')
 {
 }
 /**
- * acf_get_instance
- *
  * Returns an instance for the given class.
  *
- * @date    9/1/19
- * @since   5.7.10
+ * @date  9/1/19
+ * @since 5.7.10
  *
- * @param   string $class The class name.
- * @return  object The instance.
+ * @param string $class The class name.
+ * @return object The instance.
  */
 function acf_get_instance($class = '')
 {
@@ -15603,12 +18350,13 @@ function acf_render_admin_notices()
  * @date        17/10/13
  * @since       5.0.0
  *
- * @param   string $text The admin notice text.
- * @param   string $class The type of notice (warning, error, success, info).
- * @param   string $dismissable Is this notification dismissible (default true) (since 5.11.0)
+ * @param   string  $text The admin notice text.
+ * @param   string  $class The type of notice (warning, error, success, info).
+ * @param   boolean $dismissable Is this notification dismissible (default true) (since 5.11.0)
+ * @param   boolean $persisted Store once a notice has been dismissed per user and prevent showing it again. (since 6.1.0)
  * @return  ACF_Admin_Notice
  */
-function acf_add_admin_notice($text = '', $type = 'info', $dismissible = \true)
+function acf_add_admin_notice($text = '', $type = 'info', $dismissible = \true, $persisted = \false)
 {
 }
 // class_exists check
@@ -15743,6 +18491,15 @@ function acf_validate_setting($name = '')
 *  @return  void
 */
 function acf_get_setting($name, $value = \null)
+{
+}
+/**
+ * Return an array of ACF's internal post type names
+ *
+ * @since 6.1
+ * @return array An array of ACF's internal post type names
+ */
+function acf_get_internal_post_types()
 {
 }
 /**
@@ -16016,20 +18773,46 @@ function acf_get_sub_array($array, $keys)
 {
 }
 /**
- *  acf_get_post_types
- *
  *  Returns an array of post type names.
  *
  *  @date    7/10/13
  *  @since   5.0.0
  *
- *  @param   array $args Optional. An array of key => value arguments to match against the post type objects. Default empty array.
- *  @return  array A list of post type names.
+ *  @param array $args Optional. An array of key => value arguments to match against the post type objects. Default empty array.
+ *  @return array A list of post type names.
  */
 function acf_get_post_types($args = array())
 {
 }
 function acf_get_pretty_post_types($post_types = array())
+{
+}
+/**
+ *  Function acf_get_post_stati()
+ *
+ *  Returns an array of post status names.
+ *
+ *  @date    01/24/23
+ *  @since   6.1.0
+ *
+ *  @param   array $args Optional. An array of key => value arguments to match against the post status objects. Default empty array.
+ *  @return  array A list of post status names.
+ */
+function acf_get_post_stati($args = array())
+{
+}
+/**
+ *  Function acf_get_pretty_post_statuses()
+ *
+ *  Returns a clean array of post status names.
+ *
+ *  @date    02/16/23
+ *  @since   6.1.0
+ *
+ *  @param   array $post_statuses Optional. An array of post status objects. Default empty array.
+ *  @return  array An array of post status names.
+ */
+function acf_get_pretty_post_statuses($post_statuses = array())
 {
 }
 /**
@@ -16045,6 +18828,21 @@ function acf_get_pretty_post_types($post_types = array())
 *  @return  string
 */
 function acf_get_post_type_label($post_type)
+{
+}
+/**
+ *  Function acf_get_post_status_label()
+ *
+ *  This function will return a pretty label for a specific post_status
+ *
+ *  @type    function
+ *  @date    01/24/2023
+ *  @since   6.1.0
+ *
+ *  @param   string $post_status The post status.
+ *  @return  string The post status label.
+ */
+function acf_get_post_status_label($post_status)
 {
 }
 /**
@@ -17278,6 +20076,16 @@ function acf_is_block_editor()
 {
 }
 /**
+ * Return an array of the WordPress reserved terms
+ *
+ * @since 6.1
+ *
+ * @return array The WordPress reserved terms list.
+ */
+function acf_get_wp_reserved_terms()
+{
+}
+/**
 *  get_field()
 *
 *  This function will return a custom field value for a specific field name/key + post_id.
@@ -18294,18 +21102,46 @@ function acf_field_type_exists($type = '')
 {
 }
 /**
-*  acf_get_grouped_field_types
-*
-*  Returns an multi-dimentional array of field types "name => label" grouped by category
-*
-*  @type    function
-*  @date    1/10/13
-*  @since   5.0.0
-*
-*  @param   void
-*  @return  array
-*/
+ * Returns an array of localised field categories.
+ *
+ * @since 6.1
+ *
+ * @return array
+ */
+function acf_get_field_categories_i18n()
+{
+}
+/**
+ *  Returns an multi-dimentional array of field types "name => label" grouped by category
+ *
+ *  @since   5.0.0
+ *
+ *  @return  array
+ */
 function acf_get_grouped_field_types()
+{
+}
+/**
+ *  Returns an array of tabs for a field type.
+ *  We combine a list of default tabs with filtered tabs.
+ *  I.E. Default tabs should be static and should not be changed by the
+ *  filtered tabs.
+ *
+ *  @since   6.1
+ *
+ *  @return array Key/value array of the default settings tabs for field type settings.
+ */
+function acf_get_combined_field_type_settings_tabs()
+{
+}
+/**
+ * Get the PRO only fields and their core metadata.
+ *
+ * @since 6.1
+ *
+ * @return array An array of all the pro field types and their field type selection required meta data.
+ */
+function acf_get_pro_field_types()
 {
 }
 // class_exists check
@@ -18421,17 +21257,16 @@ function acf_is_local_enabled()
 {
 }
 /**
- * acf_get_local_store
+ * Returns either local store or a dummy store for the given name or post type.
  *
- * Returns either local store or a dummy store for the given name.
+ * @date 23/1/19
+ * @since 5.7.10
  *
- * @date    23/1/19
- * @since   5.7.10
- *
- * @param   string $name The store name (fields|groups).
- * @return  ACF_Data
+ * @param string $name      The store name.
+ * @param string $post_type The post type for the desired store.
+ * @return ACF_Data
  */
-function acf_get_local_store($name = '')
+function acf_get_local_store($name = '', $post_type = '')
 {
 }
 /**
@@ -18460,6 +21295,17 @@ function acf_reset_local()
  * @return  array
  */
 function acf_get_local_field_groups()
+{
+}
+/**
+ * Returns local ACF posts with the provided post type.
+ *
+ * @since 6.1
+ *
+ * @param string $post_type The post type to check for.
+ * @return array|mixed
+ */
+function acf_get_local_internal_posts($post_type = 'acf-field-group')
 {
 }
 /**
@@ -18505,6 +21351,18 @@ function acf_add_local_field_group($field_group)
 {
 }
 /**
+ * Adds a local ACF internal post type.
+ *
+ * @since 6.1
+ *
+ * @param array  $post      The main ACF post array.
+ * @param string $post_type The post type being added.
+ * @return bool
+ */
+function acf_add_local_internal_post_type($post, $post_type)
+{
+}
+/**
  * register_field_group
  *
  * See acf_add_local_field_group().
@@ -18533,6 +21391,18 @@ function acf_remove_local_field_group($key = '')
 {
 }
 /**
+ * Removes a local ACF post with the given key and post type.
+ *
+ * @since 6.1
+ *
+ * @param string $key       The ACF key.
+ * @param string $post_type The ACF post type.
+ * @return bool
+ */
+function acf_remove_local_internal_post_type($key = '', $post_type = 'acf-field-group')
+{
+}
+/**
  * acf_is_local_field_group
  *
  * Returns true if a field group exists for the given key.
@@ -18547,6 +21417,18 @@ function acf_is_local_field_group($key = '')
 {
 }
 /**
+ * Returns true if an ACF post exists for the given key.
+ *
+ * @since 6.1
+ *
+ * @param string $key       The ACF key.
+ * @param string $post_type The ACF post type.
+ * @return  bool
+ */
+function acf_is_local_internal_post_type($key = '', $post_type = 'acf-field-group')
+{
+}
+/**
  * acf_is_local_field_group_key
  *
  * Returns true if a field group exists for the given key.
@@ -18554,10 +21436,22 @@ function acf_is_local_field_group($key = '')
  * @date    22/1/19
  * @since   5.7.10
  *
- * @param   string $key The field group group key.
+ * @param   string $key The field group key.
  * @return  bool
  */
 function acf_is_local_field_group_key($key = '')
+{
+}
+/**
+ * Returns true if a local ACF post exists for the given key.
+ *
+ * @since 6.1
+ *
+ * @param string $key       The ACF post key.
+ * @param string $post_type The post type to check.
+ * @return bool
+ */
+function acf_is_local_internal_post_type_key($key = '', $post_type = '')
 {
 }
 /**
@@ -18572,6 +21466,18 @@ function acf_is_local_field_group_key($key = '')
  * @return  array|null
  */
 function acf_get_local_field_group($key = '')
+{
+}
+/**
+ * Returns an ACF post for the given key.
+ *
+ * @since 6.1
+ *
+ * @param string $key       The field group key.
+ * @param string $post_type The ACF post type.
+ * @return array|null
+ */
+function acf_get_local_internal_post_type($key = '', $post_type = 'acf-field-group')
 {
 }
 /**
@@ -18730,6 +21636,18 @@ function _acf_apply_get_local_field_groups($groups = array())
 {
 }
 /**
+ * Appends local ACF internal post types to the provided array.
+ *
+ * @since 6.1
+ *
+ * @param array  $posts     An array of ACF posts.
+ * @param string $post_type The ACF internal post type being loaded.
+ * @return array
+ */
+function _acf_apply_get_local_internal_posts($posts = array(), $post_type = 'acf-field-group')
+{
+}
+/**
  * _acf_apply_is_local_field_key
  *
  * Returns true if is a local key.
@@ -18760,6 +21678,19 @@ function _acf_apply_is_local_field_group_key($bool, $id)
 {
 }
 /**
+ * Returns true if is a local key.
+ *
+ * @since 6.1
+ *
+ * @param bool   $bool      The result.
+ * @param string $id        The identifier.
+ * @param string $post_type The post type.
+ * @return bool
+ */
+function _acf_apply_is_local_internal_post_type_key($bool, $id, $post_type = 'acf-field-group')
+{
+}
+/**
  * _acf_do_prepare_local_fields
  *
  * Local fields that are added too early will not be correctly prepared by the field type class.
@@ -18780,10 +21711,10 @@ function _acf_do_prepare_local_fields()
  * @date    14/4/20
  * @since   5.9.0
  *
- * @param   type $var Description. Default.
- * @return  type Description.
+ * @param string $post_type The ACF post type to get files for.
+ * @return array
  */
-function acf_get_local_json_files()
+function acf_get_local_json_files($post_type = 'acf-field-group')
 {
 }
 /**
