@@ -5,5 +5,6 @@ return \StubsGenerator\Finder::create()
     // For versions 5.6.0+
     ->notPath('assets/')
     ->notPath('lang/')
+    ->notPath('vendor/')
     ->sortByName()
 ;

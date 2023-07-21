@@ -15,7 +15,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.0.6';
+    public $version = '6.0.7';
     /**
      * The plugin settings array.
      *
@@ -410,7 +410,7 @@ class acf_admin_field_group
     {
     }
     /**
-     *  This function will render the HTML for the medtabox 'acf-field-group-fields'
+     *  This function will render the HTML for the metabox 'acf-field-group-fields'
      *
      *  @since   5.0.0
      *
@@ -2313,13 +2313,6 @@ class ACF_Assets
      */
     public $data = array();
     /**
-     * List of enqueue flags.
-     *
-     * @since 5.9.0
-     * @var bool
-     */
-    private $enqueue = array();
-    /**
      * Constructor.
      *
      * @date    10/4/18
@@ -2402,18 +2395,6 @@ class ACF_Assets
      * @return  void
      */
     public function enqueue_style($name)
-    {
-    }
-    /**
-     * Adds the actions needed to print supporting inline scripts.
-     *
-     * @date    27/4/20
-     * @since   5.9.0
-     *
-     * @param   void
-     * @return  void
-     */
-    private function add_actions()
     {
     }
     /**
@@ -3489,18 +3470,6 @@ class acf_field_color_picker extends \acf_field
      * @return string|array
      */
     public function format_value($value, $post_id, $field)
-    {
-    }
-    /**
-     * Convert either a Hexadecimal or RGBA string to an RGBA array.
-     *
-     * @since        5.10
-     * @date         15/12/20
-     *
-     * @param string $value
-     * @return array
-     */
-    private function string_to_array($value)
     {
     }
 }
@@ -7799,8 +7768,6 @@ class acf_form_customizer
 }
 class acf_form_front
 {
-    /** @var array An array of registered form settings */
-    private $forms = array();
     /** @var array An array of default fields */
     public $fields = array();
     /**
@@ -8757,13 +8724,6 @@ class ACF_Legacy_Locations
 }
 class ACF_Local_JSON
 {
-    /**
-     * The found JSON field group files.
-     *
-     * @since 5.9.0
-     * @var array
-     */
-    private $files = array();
     /**
      * Constructor.
      *
@@ -10325,18 +10285,6 @@ class ACF_Media
     {
     }
     /**
-     * Returns the field responsible for the current Media query or upload context.
-     *
-     * @date    21/5/21
-     * @since   5.9.7
-     *
-     * @param   void
-     * @return  array| false.
-     */
-    private function get_source_field()
-    {
-    }
-    /**
      * Fires during the WP Modal Query AJAX call.
      *
      * @date    26/06/2015
@@ -10391,10 +10339,6 @@ class ACF_Media
 }
 class ACF_Rest_Api
 {
-    /** @var ACF_Rest_Request */
-    private $request;
-    /** @var ACF_Rest_Embed_Links */
-    private $embed_links;
     public function __construct()
     {
     }
@@ -10405,14 +10349,6 @@ class ACF_Rest_Api
      * Register our custom property as a REST field.
      */
     public function register_field()
-    {
-    }
-    /**
-     * Dynamically generate the schema for the current request.
-     *
-     * @return array
-     */
-    private function get_schema()
     {
     }
     /**
@@ -10460,66 +10396,6 @@ class ACF_Rest_Api
     public function update_fields($data, $object, $property, $request, $object_sub_type)
     {
     }
-    // todo - this should check for a flag and validate a nonce to ensure we are in admin mode.
-    // todo - consider/discuss handling this in the request object instead.
-    private function is_admin_mode($data)
-    {
-    }
-    /**
-     * Make the ACF identifier string for the given object.
-     *
-     * @param int    $object_id
-     * @param string $object_type 'user', 'term', or 'post'
-     * @return string
-     */
-    private function make_identifier($object_id, $object_type)
-    {
-    }
-    /**
-     * Gets an array of the location types that a field group is configured to use.
-     *
-     * @param string $object_type    'user', 'term', or 'post'
-     * @param array  $field_group    The field group to check.
-     * @param array  $location_types An array of location types.
-     *
-     * @return bool
-     */
-    private function object_type_has_field_group($object_type, $field_group, $location_types = array())
-    {
-    }
-    /**
-     * Get all field groups for the provided object type.
-     *
-     * @param string $object_type  'user', 'term', or 'post'
-     *
-     * @return array An array of field groups that display for that location type.
-     */
-    private function get_field_groups_by_object_type($object_type)
-    {
-    }
-    /**
-     * Get all field groups for a given object.
-     *
-     * @param int         $object_id
-     * @param string      $object_type 'user', 'term', or 'post'
-     * @param string|null $object_sub_type The post type or taxonomy. When an $object_type of 'user' is in play, this can be ignored.
-     * @param array       $scope Field group keys to limit the returned set of field groups to. This is used to scope field lookups to specific groups.
-     * @return array An array of matching field groups.
-     */
-    private function get_field_groups_by_id($object_id, $object_type, $object_sub_type = \null, $scope = array())
-    {
-    }
-    /**
-     * Get all ACF fields for a given field group and allow third party filtering.
-     *
-     * @param array    $field_group This could technically be other possible values supported by acf_get_fields() but in this
-     *                           context, we're only using the field group arrays.
-     * @param null|int $object_id The ID of the object being prepared.
-     * @return array
-     */
-    private function get_fields($field_group, $object_id = \null)
-    {
-    }
 }
 /**
  * Class ACF_Rest_Embed_Links
@@ -10528,15 +10404,7 @@ class ACF_Rest_Api
  */
 class ACF_Rest_Embed_Links
 {
-    /** @var array Links to add to the response. These can be flagged as embeddable and expanded when _embed is passed with the request. */
-    private $links = array();
     public function initialize()
-    {
-    }
-    /**
-     * Hook into all REST-enabled post type, taxonomy, and the user controllers in order to prepare links.
-     */
-    private function hook_link_handlers()
     {
     }
     /**
@@ -10570,27 +10438,6 @@ class ACF_Rest_Embed_Links
 class ACF_Rest_Request
 {
     /**
-     * Define which private/protected class properties are allowed read access. Access to these is controlled in
-     * \ACF_Rest_Request::__get();
-     *
-     * @var string[]
-     */
-    private $readonly_props = array('object_type', 'object_sub_type', 'child_object_type', 'http_method');
-    /** @var string The HTTP request method for the current request. i.e; GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD */
-    private $http_method;
-    /** @var string The current route being requested. */
-    private $current_route;
-    /** @var array Route URL patterns we support. */
-    private $supported_routes = array();
-    /** @var array Parameters matched from the URL. e.g; object IDs. */
-    private $url_params = array();
-    /** @var string The underlying object type. e.g; post, term, user, etc. */
-    private $object_type;
-    /** @var string The requested object type. */
-    private $object_sub_type;
-    /** @var string The object type for a child object. e.g. post-revision, autosaves, etc. */
-    private $child_object_type;
-    /**
      * Determine all required information from the current request.
      */
     public function parse_request($request)
@@ -10612,56 +10459,6 @@ class ACF_Rest_Request
      * @return mixed|null
      */
     public function get_url_param($param)
-    {
-    }
-    /**
-     * Determine the HTTP method of the current request.
-     */
-    private function set_http_method()
-    {
-    }
-    /**
-     * Get the current REST route as determined by WordPress.
-     */
-    private function set_current_route($request)
-    {
-    }
-    /**
-     * Build an array of route match patterns that we handle. These are the same as WordPress' core patterns except
-     * we are also matching the object type here as well.
-     */
-    private function build_supported_routes()
-    {
-    }
-    /**
-     * Loop through supported routes to find matching pattern. Use matching pattern to determine any URL parameters.
-     */
-    private function set_url_params()
-    {
-    }
-    /**
-     * Determine the object type and sub type from the requested route. We need to know both the underlying WordPress
-     * object type as well as post type or taxonomy in order to provide the right context when getting/updating fields.
-     */
-    private function set_object_types()
-    {
-    }
-    /**
-     * Find the REST enabled post type object that matches the given REST base.
-     *
-     * @param string $rest_base
-     * @return WP_Post_Type|null
-     */
-    private function get_post_type_by_rest_base($rest_base)
-    {
-    }
-    /**
-     * Find the REST enabled taxonomy object that matches the given REST base.
-     *
-     * @param $rest_base
-     * @return WP_Taxonomy|null
-     */
-    private function get_taxonomy_by_rest_base($rest_base)
     {
     }
 }
@@ -13087,67 +12884,11 @@ class acf_field_repeater extends \acf_field
 class ACF_Repeater_Table
 {
     /**
-     * The main field array used to render the repeater.
-     *
-     * @var array
-     */
-    private $field;
-    /**
-     * An array containing the subfields used in the repeater.
-     *
-     * @var array
-     */
-    private $sub_fields;
-    /**
-     * The value(s) of the repeater field.
-     *
-     * @var array
-     */
-    private $value;
-    /**
-     * If we should show the "Add Row" button.
-     *
-     * @var bool
-     */
-    private $show_add = \true;
-    /**
-     * If we should show the "Remove Row" button.
-     *
-     * @var bool
-     */
-    private $show_remove = \true;
-    /**
-     * If we should show the order of the fields.
-     *
-     * @var bool
-     */
-    private $show_order = \true;
-    /**
      * Constructs the ACF_Repeater_Table class.
      *
      * @param array $field The main field array for the repeater being rendered.
      */
     public function __construct($field)
-    {
-    }
-    /**
-     * Sets up the field for rendering.
-     *
-     * @since 6.0.0
-     *
-     * @return void
-     */
-    private function setup()
-    {
-    }
-    /**
-     * Prepares the repeater values for rendering.
-     *
-     * @since 6.0.0
-     *
-     * @return array
-     */
-    private function prepare_value()
     {
     }
     /**

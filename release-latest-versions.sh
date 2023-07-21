@@ -17,8 +17,12 @@ Get_versions()
 mkdir -p advanced-custom-fields
 
 while read -r VERSION; do
-    # Process 5.6+ versions only
-    if dpkg --compare-versions "${VERSION}" lt "5.6.0"; then
+    ## Process 5.6+ versions only
+    #if dpkg --compare-versions "${VERSION}" lt "5.6.0"; then
+    #    continue
+    #fi
+    # Process 6.0+ versions only
+    if dpkg --compare-versions "${VERSION}" lt "6.0.0"; then
         continue
     fi
 
