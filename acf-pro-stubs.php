@@ -16,7 +16,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.1.5';
+    public $version = '6.1.6';
     /**
      * The plugin settings array.
      *
@@ -1395,7 +1395,7 @@ class ACF_Admin
      * @param   string $classes Space-separated list of CSS classes.
      * @return  string
      */
-    function admin_body_class($classes)
+    public function admin_body_class($classes)
     {
     }
     /**
