@@ -16,6 +16,7 @@ fi
 
 "$(dirname "$0")/vendor/bin/generate-stubs" \
     --force \
+    --visitor=visitor.php \
     --finder=finder.php \
     --header="$HEADER" \
     --functions \
