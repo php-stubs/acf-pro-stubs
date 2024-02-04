@@ -16,7 +16,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.2.1';
+    public $version = '6.2.1.1';
     /**
      * The plugin settings array.
      *
