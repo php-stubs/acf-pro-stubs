@@ -16,7 +16,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.2.3';
+    public $version = '6.2.4';
     /**
      * The plugin settings array.
      *
@@ -1303,7 +1303,7 @@ class ACF_Admin_Upgrade
     /**
      * Checks if an ACF database upgrade is required on any site in the
      * multisite network.
-     * 
+     *
      * Stores the result in `$this->network_upgrade_needed_transient`,
      * which is version-linked to ACF_UPGRADE_VERSION: the highest ACF
      * version that requires an upgrade function to run. Bumping
@@ -12672,268 +12672,71 @@ class acf_revisions
     {
     }
 }
+/**
+ * ACF 3rd Party Compatibility Class
+ */
 class acf_third_party
 {
     /**
-     *  __construct
+     * This function will setup the class functionality
      *
-     *  This function will setup the class functionality
-     *
-     *  @type    function
-     *  @date    5/03/2014
-     *  @since   5.0.0
-     *
-     *  @param   void
-     *  @return  void
+     * @since   5.0.0
      */
-    function __construct()
+    public function __construct()
     {
     }
     /**
-     *  acf_get_post_types
+     * Event Espresso post types do not use the native post.php edit page, but instead render their own.
+     * Show the EE post types in lists where 'show_ui' is used.
      *
-     *  EE post types do not use the native post.php edit page, but instead render their own.
-     *  Show the EE post types in lists where 'show_ui' is used.
+     * @date    24/2/18
+     * @since   5.6.9
      *
-     *  @date    24/2/18
-     *  @since   5.6.9
-     *
-     *  @param   array $post_types
-     *  @param   array $args
-     *  @return  array
+     * @param   array $post_types Post types array.
+     * @param   array $args       Other arguments array.
+     * @return  array
      */
-    function ee_get_post_types($post_types, $args)
+    public function ee_get_post_types($post_types, $args)
     {
     }
     /**
-     *  tabify_posttypes
+     * This function removes ACF post types from the tabify edit screen (post type selection sidebar)
      *
-     *  This function removes ACF post types from the tabify edit screen (post type selection sidebar)
+     * @since   3.5.1
      *
-     *  @type    function
-     *  @date    9/10/12
-     *  @since   3.5.1
-     *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     * @param   array $posttypes An array of post types supported by tabify.
+     * @return  array
      */
-    function tabify_posttypes($posttypes)
+    public function tabify_posttypes($posttypes)
     {
     }
     /**
-     *  tabify_add_meta_boxes
+     * This function creates dummy metaboxes on the tabify edit screen page
      *
-     *  This function creates dummy metaboxes on the tabify edit screen page
+     * @since 3.5.1
      *
-     *  @type    function
-     *  @date    9/10/12
-     *  @since   3.5.1
-     *
-     *  @param   string $post_type
-     *  @return  void
+     * @param string $post_type The name of the displayed post type.
      */
-    function tabify_add_meta_boxes($post_type)
+    public function tabify_add_meta_boxes($post_type)
     {
     }
     /**
-     *  pts_allowed_pages
+     * This filter will prevent PTS from running on the field group page
      *
-     *  This filter will prevent PTS from running on the field group page!
+     * @since   5.0.0
      *
-     *  @type    function
-     *  @date    25/09/2014
-     *  @since   5.0.0
-     *
-     *  @param   array $pages
-     *  @return  $pages
+     * @param   array $pages An array of pages PTS should run on.
+     * @return  array
      */
-    function pts_allowed_pages($pages)
+    public function pts_allowed_pages($pages)
     {
     }
     /**
-     *  doing_dark_mode
+     * Runs during 'admin_enqueue_scripts' if dark mode is enabled
      *
-     *  Runs during 'admin_enqueue_scripts' if dark mode is enabled
-     *
-     *  @date    13/8/18
-     *  @since   5.7.3
-     *
-     *  @param   void
-     *  @return  void
+     * @since   5.7.3
      */
-    function doing_dark_mode()
-    {
-    }
-}
-class ACF_Updates
-{
-    /** @var string The ACF_Updates version */
-    var $version = '2.4';
-    /** @var array The array of registered plugins */
-    var $plugins = array();
-    /** @var int Counts the number of plugin update checks */
-    var $checked = 0;
-    /**
-     *  __construct
-     *
-     *  Sets up the class functionality.
-     *
-     *  @date    5/03/2014
-     *  @since   5.0.0
-     *
-     *  @param   void
-     *  @return  void
-     */
-    function __construct()
-    {
-    }
-    /**
-     *  add_plugin
-     *
-     *  Registeres a plugin for updates.
-     *
-     *  @date    8/4/17
-     *  @since   5.5.10
-     *
-     *  @param   array $plugin The plugin array.
-     *  @return  void
-     */
-    function add_plugin($plugin)
-    {
-    }
-    /**
-     *  get_plugin_by
-     *
-     *  Returns a registered plugin for the give key and value.
-     *
-     *  @date    3/8/18
-     *  @since   5.7.2
-     *
-     *  @param   string $key The array key to compare
-     *  @param   string $value The value to compare against
-     *  @return  array|false
-     */
-    function get_plugin_by($key = '', $value = \null)
-    {
-    }
-    /**
-     * request
-     *
-     * Makes a request to the ACF connect server.
-     *
-     * @date    8/4/17
-     * @since   5.5.10
-     *
-     * @param   string $endpoint The API endpoint.
-     * @param   array $body The body to post.
-     * @return  array|string|WP_Error
-     */
-    function request($endpoint = '', $body = \null)
-    {
-    }
-    /**
-     *  Returns update information for the given plugin id.
-     *
-     *  @since   5.5.10
-     *
-     *  @param   string  $id The plugin id such as 'pro'.
-     *  @param   boolean $force_check Bypasses cached result. Defaults to false.
-     *  @return  array|WP_Error
-     */
-    public function get_plugin_info($id = '', $force_check = \false)
-    {
-    }
-    /**
-     * Returns specific data from the 'update-check' response.
-     *
-     * @since   5.7.2
-     *
-     * @param string  $basename The plugin basename.
-     * @param boolean $force_check Bypasses cached result. Defaults to false.
-     * @return array|false
-     */
-    public function get_plugin_update($basename = '', $force_check = \false)
-    {
-    }
-    /**
-     * Checks if an update is available, but can't be updated to.
-     *
-     * @since   6.2.1
-     *
-     * @param string  $basename The plugin basename.
-     * @param boolean $force_check Bypasses cached result. Defaults to false.
-     * @return array|false
-     */
-    public function get_no_update($basename = '', $force_check = \false)
-    {
-    }
-    /**
-     *  get_plugin_updates
-     *
-     *  Checks for plugin updates.
-     *
-     *  @date    8/7/18
-     *  @since   5.6.9
-     *  @since   5.7.2 Added 'checked' comparison
-     *
-     *  @param   boolean $force_check Bypasses cached result. Defaults to false.
-     *  @return  array|WP_Error.
-     */
-    function get_plugin_updates($force_check = \false)
-    {
-    }
-    /**
-     *  This function safely gets the expiration value from a response.
-     *
-     *  @since   5.6.9
-     *
-     *  @param   mixed $response The response from the server. Default false.
-     *  @param   int   $min The minimum expiration limit. Default 0.
-     *  @param   int   $max The maximum expiration limit. Default 0.
-     *  @return  int
-     */
-    public function get_expiration($response = \false, $min = 0, $max = 0)
-    {
-    }
-    /**
-     *  refresh_plugins_transient
-     *
-     *  Deletes transients and allows a fresh lookup.
-     *
-     *  @date    11/4/17
-     *  @since   5.5.10
-     *
-     *  @param   void
-     *  @return  void
-     */
-    function refresh_plugins_transient()
-    {
-    }
-    /**
-     *  Called when WP updates the 'update_plugins' site transient. Used to inject ACF plugin update info.
-     *
-     *  @since   5.0.0
-     *
-     *  @param object $transient The current transient value.
-     *  @return object $transient The modified transient value.
-     */
-    public function modify_plugins_transient($transient)
-    {
-    }
-    /**
-     *  modify_plugin_details
-     *
-     *  Returns the plugin data visible in the 'View details' popup
-     *
-     *  @date    17/01/2014
-     *  @since   5.0.0
-     *
-     *  @param   object $result
-     *  @param   string $action
-     *  @param   object $args
-     *  @return  $result
-     */
-    function modify_plugin_details($result, $action = \null, $args = \null)
+    public function doing_dark_mode()
     {
     }
 }
@@ -13544,7 +13347,7 @@ class ACF_Admin_Updates
      * @since   5.7.10
      *
      * @param   string $changelog The changelog text.
-     * @param   string $version The version to find.
+     * @param   string $version   The version to find.
      * @return  string
      */
     function get_changelog_changes($changelog = '', $version = '')
@@ -13635,7 +13438,7 @@ class ACF_Admin_UI_Options_Page extends \ACF_Admin_Internal_Post_Type
     /**
      * This function will customize the message shown when editing a post type.
      *
-     * @since 5.0.0
+     * @since 6.2
      *
      * @param array $messages Post type messages.
      * @return array
@@ -13648,18 +13451,24 @@ class ACF_Admin_UI_Options_Page extends \ACF_Admin_Internal_Post_Type
      *
      * @since 6.1
      *
-     * @param bool $created True if the options page was just created.
+     * @param boolean $created True if the options page was just created.
      * @return string
      */
     public function options_page_created_message($created = \false)
     {
     }
     /**
+     * Allow other pages to get available option page parents.
+     *
+     * @since 6.2
+     */
+    public function add_js_parent_choices()
+    {
+    }
+    /**
      * Enqueues any scripts necessary for internal post type.
      *
-     * @since 5.0.0
-     *
-     * @return void
+     * @since 6.2
      */
     public function admin_enqueue_scripts()
     {
@@ -13728,9 +13537,9 @@ class ACF_Admin_UI_Options_Page extends \ACF_Admin_Internal_Post_Type
     /**
      * Sets the "Edit Post Type" screen to use a one-column layout.
      *
-     * @param int $columns Number of columns for layout.
+     * @param integer $columns Number of columns for layout.
      *
-     * @return int
+     * @return integer
      */
     public function screen_layout($columns = 0)
     {
@@ -13770,10 +13579,10 @@ class ACF_Admin_UI_Options_Page extends \ACF_Admin_Internal_Post_Type
      *
      * @since 1.0.0
      *
-     * @param int     $post_id The post ID.
+     * @param integer $post_id The post ID.
      * @param WP_Post $post    The post object.
      *
-     * @return int $post_id
+     * @return integer $post_id
      */
     public function save_post($post_id, $post)
     {
@@ -13781,7 +13590,7 @@ class ACF_Admin_UI_Options_Page extends \ACF_Admin_Internal_Post_Type
     /**
      * Renders HTML for the basic settings metabox.
      *
-     * @since 5.0.0
+     * @since 6.2
      *
      * @return void
      */
@@ -13791,7 +13600,7 @@ class ACF_Admin_UI_Options_Page extends \ACF_Admin_Internal_Post_Type
     /**
      * Renders the HTML for the advanced settings metabox.
      *
-     * @since 5.0.0
+     * @since 6.2
      *
      * @return void
      */
@@ -13803,10 +13612,10 @@ class ACF_Admin_UI_Options_Page extends \ACF_Admin_Internal_Post_Type
      *
      * @since 6.2
      *
-     * @param string $menu_slug Optional menu_slug of an existing options page.
+     * @param integer $post_id The post ID of a current ACF UI options page used to prevent selection of itself as a child.
      * @return array
      */
-    public static function get_parent_page_choices($current_slug = '')
+    public function get_parent_page_choices(int $post_id = 0)
     {
     }
     /**
@@ -13916,6 +13725,166 @@ class ACF_Admin_UI_Options_Pages extends \ACF_Admin_Internal_Post_Type_List
      * @return string
      */
     public function get_action_notice_text($action, $count = 1)
+    {
+    }
+}
+/**
+ * class for handling API services.
+ */
+class ACF_Updates
+{
+    /**
+     * The ACF_Updates version
+     *
+     * @var string
+     */
+    public $version = '2.4';
+    /**
+     * The array of registered plugins
+     *
+     * @var array
+     */
+    public $plugins = array();
+    /**
+     * Counts the number of plugin update checks
+     *
+     * @var integer
+     */
+    public $checked = 0;
+    /**
+     * Sets up the class functionality.
+     *
+     * @since   5.0.0
+     */
+    public function __construct()
+    {
+    }
+    /**
+     * Registeres a plugin for updates.
+     *
+     * @since   5.5.10
+     *
+     * @param   array $plugin The plugin array.
+     * @return  void
+     */
+    public function add_plugin($plugin)
+    {
+    }
+    /**
+     * Returns a registered plugin for the give key and value.
+     *
+     * @since   5.7.2
+     *
+     * @param   string $key   The array key to compare.
+     * @param   string $value The value to compare against.
+     * @return  array|false
+     */
+    public function get_plugin_by($key = '', $value = \null)
+    {
+    }
+    /**
+     * Makes a request to the ACF connect server.
+     *
+     * @since   5.5.10
+     *
+     * @param   string $endpoint The API endpoint.
+     * @param   array  $body     The body to post.
+     * @return  array|string|WP_Error
+     */
+    public function request($endpoint = '', $body = \null)
+    {
+    }
+    /**
+     * Returns update information for the given plugin id.
+     *
+     * @since   5.5.10
+     *
+     * @param   string  $id          The plugin id such as 'pro'.
+     * @param   boolean $force_check Bypasses cached result. Defaults to false.
+     * @return  array|WP_Error
+     */
+    public function get_plugin_info($id = '', $force_check = \false)
+    {
+    }
+    /**
+     * Returns specific data from the 'update-check' response.
+     *
+     * @since   5.7.2
+     *
+     * @param string  $basename    The plugin basename.
+     * @param boolean $force_check Bypasses cached result. Defaults to false.
+     * @return array|false
+     */
+    public function get_plugin_update($basename = '', $force_check = \false)
+    {
+    }
+    /**
+     * Checks if an update is available, but can't be updated to.
+     *
+     * @since   6.2.1
+     *
+     * @param string  $basename    The plugin basename.
+     * @param boolean $force_check Bypasses cached result. Defaults to false.
+     * @return array|false
+     */
+    public function get_no_update($basename = '', $force_check = \false)
+    {
+    }
+    /**
+     * Checks for plugin updates.
+     *
+     * @since   5.6.9
+     * @since   5.7.2 Added 'checked' comparison
+     *
+     * @param   boolean $force_check Bypasses cached result. Defaults to false.
+     * @return  array|WP_Error.
+     */
+    public function get_plugin_updates($force_check = \false)
+    {
+    }
+    /**
+     * This function safely gets the expiration value from a response.
+     *
+     * @since   5.6.9
+     *
+     * @param   mixed   $response The response from the server. Default false.
+     * @param   integer $min      The minimum expiration limit. Default 0.
+     * @param   integer $max      The maximum expiration limit. Default 0.
+     * @return  integer
+     */
+    public function get_expiration($response = \false, $min = 0, $max = 0)
+    {
+    }
+    /**
+     * Deletes transients and allows a fresh lookup.
+     *
+     * @since   5.5.10
+     */
+    public function refresh_plugins_transient()
+    {
+    }
+    /**
+     * Called when WP updates the 'update_plugins' site transient. Used to inject ACF plugin update info.
+     *
+     * @since   5.0.0
+     *
+     * @param object $transient The current transient value.
+     * @return object $transient The modified transient value.
+     */
+    public function modify_plugins_transient($transient)
+    {
+    }
+    /**
+     * Returns the plugin data visible in the 'View details' popup
+     *
+     * @since   5.0.0
+     *
+     * @param   object $result The current result of plugin data.
+     * @param   string $action The action being performed.
+     * @param   object $args   Data about the plugin being retried.
+     * @return  $result
+     */
+    public function modify_plugin_details($result, $action = \null, $args = \null)
     {
     }
 }
@@ -15651,7 +15620,7 @@ class ACF_UI_Options_Page extends \ACF_Internal_Post_Type
     /**
      * Constructs the class and any parent classes.
      *
-     * @since 5.0.0
+     * @since 6.2
      */
     public function __construct()
     {
@@ -15765,8 +15734,7 @@ class acf_pro_updates
     /**
      * Initializes the ACF PRO updates functionality.
      *
-     *  @date    10/4/17
-     *  @since   5.5.10
+     * @since 5.5.10
      * @phpstan-return void
      */
     public function init()
@@ -15811,10 +15779,10 @@ function acf()
  *
  * @since 6.2
  *
- * @param array        $target_item_ids The post, user or term IDs which should be updated with the origin item ID.
- * @param int|string   $post_id The ACF encoded origin post, user or term ID.
- * @param array        $field The field being updated on the origin post, user or term ID.
- * @param string|false $target_prefix The ACF prefix for a post, user or term ID required for the update_field call for this field type.
+ * @param array          $target_item_ids The post, user or term IDs which should be updated with the origin item ID.
+ * @param integer|string $post_id         The ACF encoded origin post, user or term ID.
+ * @param array          $field           The field being updated on the origin post, user or term ID.
+ * @param string|false   $target_prefix   The ACF prefix for a post, user or term ID required for the update_field call for this field type.
  */
 function acf_update_bidirectional_values($target_item_ids, $post_id, $field, $target_prefix = \false)
 {
@@ -15825,6 +15793,7 @@ function acf_update_bidirectional_values($target_item_ids, $post_id, $field, $ta
  * @since 6.2
  *
  * @param string $object_type The object type that will be updated on the target field, such as 'term', 'user' or 'post'.
+ *
  * @return array An array of valid field type names (slugs) for the target of the bidirectional field.
  */
 function acf_get_valid_bidirectional_target_types($object_type)
@@ -19244,67 +19213,63 @@ function acf_print_menu_section($menu_items, $section = '')
 {
 }
 /**
- *  This function will return true for a non empty array
+ * This function will return true for a non empty array
  *
- *  @since   5.4.0
+ * @since   5.4.0
  *
- *  @param   mixed $array The variable to test.
- *  @return  boolean
+ * @param   mixed $array The variable to test.
+ * @return  boolean
  */
 function acf_is_array($array)
 {
 }
 /**
- *  Alias of acf()->has_setting()
+ * Alias of acf()->has_setting()
  *
- *  @since   5.6.5
+ * @since   5.6.5
  *
- *  @param   string $name Name of the setting to check for.
- *  @return  boolean
+ * @param   string $name Name of the setting to check for.
+ * @return  boolean
  */
 function acf_has_setting($name = '')
 {
 }
 /**
- *  acf_raw_setting
+ * acf_raw_setting
  *
- *  alias of acf()->get_setting()
+ * alias of acf()->get_setting()
  *
- *  @date    2/2/18
- *  @since   5.6.5
+ * @since   5.6.5
  *
- *  @param   void
- *  @return  void
+ * @param   void
+ * @return  void
  */
 function acf_raw_setting($name = '')
 {
 }
 /**
-*  acf_update_setting
-*
-*  alias of acf()->update_setting()
-*
-*  @type    function
-*  @date    28/09/13
-*  @since   5.0.0
-*
-*  @param   string $name
-*  @param   mixed $value
-*  @return  void
-*/
+ * acf_update_setting
+ *
+ * alias of acf()->update_setting()
+ *
+ * @since   5.0.0
+ *
+ * @param   string $name
+ * @param   mixed $value
+ * @return  void
+ */
 function acf_update_setting($name, $value)
 {
 }
 /**
- *  acf_validate_setting
+ * acf_validate_setting
  *
- *  Returns the changed setting name if available.
+ * Returns the changed setting name if available.
  *
- *  @date    2/2/18
- *  @since   5.6.5
+ * @since   5.6.5
  *
- *  @param   void
- *  @return  void
+ * @param   void
+ * @return  void
  */
 function acf_validate_setting($name = '')
 {
@@ -19314,7 +19279,7 @@ function acf_validate_setting($name = '')
  *
  * @since   5.0.0
  *
- * @param   string $name The name of the setting to test.
+ * @param   string $name  The name of the setting to test.
  * @param string $value An optional default value for the setting if it doesn't exist.
  * @return  void
  */
@@ -19331,46 +19296,42 @@ function acf_get_internal_post_types()
 {
 }
 /**
-*  acf_append_setting
-*
-*  This function will add a value into the settings array found in the acf object
-*
-*  @type    function
-*  @date    28/09/13
-*  @since   5.0.0
-*
-*  @param   string $name
-*  @param   mixed $value
-*  @return  void
-*/
+ * acf_append_setting
+ *
+ * This function will add a value into the settings array found in the acf object
+ *
+ * @since   5.0.0
+ *
+ * @param   string $name
+ * @param   mixed $value
+ * @return  void
+ */
 function acf_append_setting($name, $value)
 {
 }
 /**
- *  acf_get_data
+ * acf_get_data
  *
- *  Returns data.
+ * Returns data.
  *
- *  @date    28/09/13
- *  @since   5.0.0
+ * @since   5.0.0
  *
- *  @param   string $name
- *  @return  mixed
+ * @param   string $name
+ * @return  mixed
  */
 function acf_get_data($name)
 {
 }
 /**
- *  acf_set_data
+ * acf_set_data
  *
- *  Sets data.
+ * Sets data.
  *
- *  @date    28/09/13
- *  @since   5.0.0
+ * @since   5.0.0
  *
- *  @param   string $name
- *  @param   mixed  $value
- *  @return  void
+ * @param   string $name
+ * @param   mixed  $value
+ * @return  void
  */
 function acf_set_data($name, $value)
 {
@@ -19382,42 +19343,39 @@ function acf_set_data($name, $value)
  *
  * @param string $name The data name.
  * @param mixed  $data The data to append to name.
- * @return void
  */
 function acf_append_data($name, $data)
 {
 }
 /**
- *  Alias of acf()->init() - the core ACF init function.
+ * Alias of acf()->init() - the core ACF init function.
  *
- *  @since   5.0.0
+ * @since   5.0.0
  */
 function acf_init()
 {
 }
 /**
-*  acf_has_done
-*
-*  This function will return true if this action has already been done
-*
-*  @type    function
-*  @date    16/12/2015
-*  @since   5.3.2
-*
-*  @param   string $name
-*  @return  boolean
-*/
+ * acf_has_done
+ *
+ * This function will return true if this action has already been done
+ *
+ * @since   5.3.2
+ *
+ * @param   string $name
+ * @return  boolean
+ */
 function acf_has_done($name)
 {
 }
 /**
  * This function will return the path to a file within an external folder
  *
- *  @since   5.5.8
+ * @since   5.5.8
  *
- *  @param   string $file Directory path.
- *  @param   string $path Optional file path.
- *  @return  string File path.
+ * @param   string $file Directory path.
+ * @param   string $path Optional file path.
+ * @return  string File path.
  */
 function acf_get_external_path($file, $path = '')
 {
@@ -19425,106 +19383,95 @@ function acf_get_external_path($file, $path = '')
 /**
  * This function will return the url to a file within an internal ACF folder
  *
- *  @since   5.5.8
+ * @since   5.5.8
  *
- *  @param   string $file Directory path.
- *  @param   string $path Optional file path.
- *  @return  string File path.
+ * @param   string $file Directory path.
+ * @param   string $path Optional file path.
+ * @return  string File path.
  */
 function acf_get_external_dir($file, $path = '')
 {
 }
 /**
- *  This function will calculate the url to a plugin folder.
- *  Different to the WP plugin_dir_url(), this function can calculate for urls outside of the plugins folder (theme include).
+ * This function will calculate the url to a plugin folder.
+ * Different to the WP plugin_dir_url(), this function can calculate for urls outside of the plugins folder (theme include).
  *
- *  @date    13/12/17
- *  @since   5.6.8
+ * @since   5.6.8
  *
- *  @param   string $file A file path inside the ACF plugin to get the plugin directory path from.
- *  @return  string The plugin directory path.
+ * @param   string $file A file path inside the ACF plugin to get the plugin directory path from.
+ * @return  string The plugin directory path.
  */
 function acf_plugin_dir_url($file)
 {
 }
 /**
- *  This function will merge together 2 arrays and also convert any numeric values to ints
+ * This function will merge together 2 arrays and also convert any numeric values to ints
  *
- *  @since   5.0.0
+ * @since   5.0.0
  *
- *  @param   array $args The configured arguments array.
- *  @param   array $defaults The default properties for the passed args to inherit.
- *  @return  array $args Parsed arguments with defaults applied.
+ * @param   array $args     The configured arguments array.
+ * @param   array $defaults The default properties for the passed args to inherit.
+ * @return  array $args Parsed arguments with defaults applied.
  */
 function acf_parse_args($args, $defaults = array())
 {
 }
 /**
-*  acf_parse_types
-*
-*  This function will convert any numeric values to int and trim strings
-*
-*  @type    function
-*  @date    18/10/13
-*  @since   5.0.0
-*
-*  @param   mixed $var
-*  @return  mixed $var
-*/
+ * acf_parse_types
+ *
+ * This function will convert any numeric values to int and trim strings
+ *
+ * @since   5.0.0
+ *
+ * @param   mixed $var
+ * @return  mixed $var
+ */
 function acf_parse_types($array)
 {
 }
 /**
-*  acf_parse_type
-*
-*  description
-*
-*  @type    function
-*  @date    11/11/2014
-*  @since   5.0.9
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * acf_parse_type
+ *
+ * description
+ *
+ * @since   5.0.9
+ *
+ * @param   int $post_id
+ * @return  int $post_id
+ */
 function acf_parse_type($v)
 {
 }
 /**
- *  This function will load in a file from the 'admin/views' folder and allow variables to be passed through
+ * This function will load in a file from the 'admin/views' folder and allow variables to be passed through
  *
- *  @date    28/09/13
- *  @since   5.0.0
+ * @since   5.0.0
  *
- *  @param string $view_path
- *  @param array  $view_args
- *
- *  @return void
+ * @param string $view_path
+ * @param array  $view_args
  */
 function acf_get_view($view_path = '', $view_args = array())
 {
 }
 /**
-*  acf_merge_atts
-*
-*  description
-*
-*  @type    function
-*  @date    2/11/2014
-*  @since   5.0.9
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * acf_merge_atts
+ *
+ * description
+ *
+ * @since   5.0.9
+ *
+ * @param   int $post_id
+ * @return  int $post_id
+ */
 function acf_merge_atts($atts, $extra = array())
 {
 }
 /**
  * This function will create and echo a basic nonce input
  *
- *  @since   5.6.0
+ * @since   5.6.0
  *
- *  @param string $nonce The nonce parameter string.
- *  @return void
+ * @param string $nonce The nonce parameter string.
  */
 function acf_nonce_input($nonce = '')
 {
@@ -19535,7 +19482,7 @@ function acf_nonce_input($nonce = '')
  * @since   5.0.0
  *
  * @param array  $extract_array an array passed as reference to be extracted.
- * @param string $key The key to extract from the array.
+ * @param string $key           The key to extract from the array.
  * @param mixed  $default_value The default value if it doesn't exist in the extract array.
  * @return mixed Extracted var or default.
  */
@@ -19548,35 +19495,32 @@ function acf_extract_var(&$extract_array, $key, $default_value = \null)
  * @since   5.0.0
  *
  * @param array $extract_array an array passed as reference to be extracted.
- * @param array $keys An array of keys to extract from the original array.
+ * @param array $keys          An array of keys to extract from the original array.
  * @return array An array of extracted values.
  */
 function acf_extract_vars(&$extract_array, $keys)
 {
 }
 /**
-*  acf_get_sub_array
-*
-*  This function will return a sub array of data
-*
-*  @type    function
-*  @date    15/03/2016
-*  @since   5.3.2
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * acf_get_sub_array
+ *
+ * This function will return a sub array of data
+ *
+ * @since   5.3.2
+ *
+ * @param   int $post_id
+ * @return  int $post_id
+ */
 function acf_get_sub_array($array, $keys)
 {
 }
 /**
- *  Returns an array of post type names.
+ * Returns an array of post type names.
  *
- *  @date    7/10/13
- *  @since   5.0.0
+ * @since   5.0.0
  *
- *  @param array $args Optional. An array of key => value arguments to match against the post type objects. Default empty array.
- *  @return array A list of post type names.
+ * @param array $args Optional. An array of key => value arguments to match against the post type objects. Default empty array.
+ * @return array A list of post type names.
  */
 function acf_get_post_types($args = array())
 {
@@ -19585,106 +19529,94 @@ function acf_get_pretty_post_types($post_types = array())
 {
 }
 /**
- *  Function acf_get_post_stati()
+ * Function acf_get_post_stati()
  *
- *  Returns an array of post status names.
+ * Returns an array of post status names.
  *
- *  @date    01/24/23
- *  @since   6.1.0
+ * @since   6.1.0
  *
- *  @param   array $args Optional. An array of key => value arguments to match against the post status objects. Default empty array.
- *  @return  array A list of post status names.
+ * @param   array $args Optional. An array of key => value arguments to match against the post status objects. Default empty array.
+ * @return  array A list of post status names.
  */
 function acf_get_post_stati($args = array())
 {
 }
 /**
- *  Function acf_get_pretty_post_statuses()
+ * Function acf_get_pretty_post_statuses()
  *
- *  Returns a clean array of post status names.
+ * Returns a clean array of post status names.
  *
- *  @date    02/16/23
- *  @since   6.1.0
+ * @since   6.1.0
  *
- *  @param   array $post_statuses Optional. An array of post status objects. Default empty array.
- *  @return  array An array of post status names.
+ * @param   array $post_statuses Optional. An array of post status objects. Default empty array.
+ * @return  array An array of post status names.
  */
 function acf_get_pretty_post_statuses($post_statuses = array())
 {
 }
 /**
-*  acf_get_post_type_label
-*
-*  This function will return a pretty label for a specific post_type
-*
-*  @type    function
-*  @date    5/07/2016
-*  @since   5.4.0
-*
-*  @param   string $post_type
-*  @return  string
-*/
+ * acf_get_post_type_label
+ *
+ * This function will return a pretty label for a specific post_type
+ *
+ * @since   5.4.0
+ *
+ * @param   string $post_type
+ * @return  string
+ */
 function acf_get_post_type_label($post_type)
 {
 }
 /**
- *  Function acf_get_post_status_label()
+ * Function acf_get_post_status_label()
  *
- *  This function will return a pretty label for a specific post_status
+ * This function will return a pretty label for a specific post_status
  *
- *  @type    function
- *  @date    01/24/2023
- *  @since   6.1.0
+ * @since   6.1.0
  *
- *  @param   string $post_status The post status.
- *  @return  string The post status label.
+ * @param   string $post_status The post status.
+ * @return  string The post status label.
  */
 function acf_get_post_status_label($post_status)
 {
 }
 /**
-*  acf_verify_nonce
-*
-*  This function will look at the $_POST['_acf_nonce'] value and return true or false
-*
-*  @type    function
-*  @date    15/10/13
-*  @since   5.0.0
-*
-*  @param   string $nonce
-*  @return  boolean
-*/
+ * acf_verify_nonce
+ *
+ * This function will look at the $_POST['_acf_nonce'] value and return true or false
+ *
+ * @since   5.0.0
+ *
+ * @param   string $nonce
+ * @return  boolean
+ */
 function acf_verify_nonce($value)
 {
 }
 /**
-*  acf_verify_ajax
-*
-*  This function will return true if the current AJAX request is valid
-*  It's action will also allow WPML to set the lang and avoid AJAX get_posts issues
-*
-*  @type    function
-*  @date    7/08/2015
-*  @since   5.2.3
-*
-*  @param   void
-*  @return  boolean
-*/
+ * acf_verify_ajax
+ *
+ * This function will return true if the current AJAX request is valid
+ * It's action will also allow WPML to set the lang and avoid AJAX get_posts issues
+ *
+ * @since   5.2.3
+ *
+ * @param   void
+ * @return  boolean
+ */
 function acf_verify_ajax()
 {
 }
 /**
-*  acf_get_image_sizes
-*
-*  This function will return an array of available image sizes
-*
-*  @type    function
-*  @date    23/10/13
-*  @since   5.0.0
-*
-*  @param   void
-*  @return  array
-*/
+ * acf_get_image_sizes
+ *
+ * This function will return an array of available image sizes
+ *
+ * @since   5.0.0
+ *
+ * @param   void
+ * @return  array
+ */
 function acf_get_image_sizes()
 {
 }
@@ -19696,89 +19628,78 @@ function acf_get_image_size($s = '')
  *
  * Similar to the version_compare() function but with extra functionality.
  *
- * @date    21/11/16
  * @since   5.5.0
  *
- * @param   string $left The left version number.
+ * @param   string $left    The left version number.
  * @param   string $compare The compare operator.
- * @param   string $right The right version number.
- * @return  bool
+ * @param   string $right   The right version number.
+ * @return  boolean
  */
 function acf_version_compare($left = '', $compare = '>', $right = '')
 {
 }
 /**
-*  acf_get_full_version
-*
-*  This function will remove any '-beta1' or '-RC1' strings from a version
-*
-*  @type    function
-*  @date    24/11/16
-*  @since   5.5.0
-*
-*  @param   string $version
-*  @return  string
-*/
+ * acf_get_full_version
+ *
+ * This function will remove any '-beta1' or '-RC1' strings from a version
+ *
+ * @since   5.5.0
+ *
+ * @param   string $version
+ * @return  string
+ */
 function acf_get_full_version($version = '1')
 {
 }
 /**
-*  acf_get_terms
-*
-*  This function is a wrapper for the get_terms() function
-*
-*  @type    function
-*  @date    28/09/2016
-*  @since   5.4.0
-*
-*  @param   array $args
-*  @return  array
-*/
+ * acf_get_terms
+ *
+ * This function is a wrapper for the get_terms() function
+ *
+ * @since   5.4.0
+ *
+ * @param   array $args
+ * @return  array
+ */
 function acf_get_terms($args)
 {
 }
 /**
-*  acf_get_taxonomy_terms
-*
-*  This function will return an array of available taxonomy terms
-*
-*  @type    function
-*  @date    7/10/13
-*  @since   5.0.0
-*
-*  @param   array $taxonomies
-*  @return  array
-*/
+ * acf_get_taxonomy_terms
+ *
+ * This function will return an array of available taxonomy terms
+ *
+ * @since   5.0.0
+ *
+ * @param   array $taxonomies
+ * @return  array
+ */
 function acf_get_taxonomy_terms($taxonomies = array())
 {
 }
 /**
-*  acf_decode_taxonomy_terms
-*
-*  This function decodes the $taxonomy:$term strings into a nested array
-*
-*  @type    function
-*  @date    27/02/2014
-*  @since   5.0.0
-*
-*  @param   array $terms
-*  @return  array
-*/
+ * acf_decode_taxonomy_terms
+ *
+ * This function decodes the $taxonomy:$term strings into a nested array
+ *
+ * @since   5.0.0
+ *
+ * @param   array $terms
+ * @return  array
+ */
 function acf_decode_taxonomy_terms($strings = \false)
 {
 }
 /**
-*  acf_decode_taxonomy_term
-*
-*  This function will return the taxonomy and term slug for a given value
-*
-*  @type    function
-*  @date    31/03/2014
-*  @since   5.0.0
-*
-*  @param   string $string
-*  @return  array
-*/
+ * acf_decode_taxonomy_term
+ *
+ * This function will return the taxonomy and term slug for a given value
+ *
+ * @since   5.0.0
+ *
+ * @param   string $string
+ * @return  array
+ */
 function acf_decode_taxonomy_term($value)
 {
 }
@@ -19787,7 +19708,6 @@ function acf_decode_taxonomy_term($value)
  *
  * Casts the value into an array.
  *
- * @date    9/1/19
  * @since   5.7.10
  *
  * @param   mixed $val The value to cast.
@@ -19799,7 +19719,6 @@ function acf_array($val = array())
 /**
  * Returns a non-array value.
  *
- * @date    11/05/2020
  * @since   5.8.10
  *
  * @param   mixed $val The value to review.
@@ -19809,32 +19728,28 @@ function acf_unarray($val)
 {
 }
 /**
-*  acf_get_array
-*
-*  This function will force a variable to become an array
-*
-*  @type    function
-*  @date    4/02/2014
-*  @since   5.0.0
-*
-*  @param   mixed $var
-*  @return  array
-*/
+ * acf_get_array
+ *
+ * This function will force a variable to become an array
+ *
+ * @since   5.0.0
+ *
+ * @param   mixed $var
+ * @return  array
+ */
 function acf_get_array($var = \false, $delimiter = '')
 {
 }
 /**
-*  acf_get_numeric
-*
-*  This function will return numeric values
-*
-*  @type    function
-*  @date    15/07/2016
-*  @since   5.4.0
-*
-*  @param   mixed $value
-*  @return  mixed
-*/
+ * acf_get_numeric
+ *
+ * This function will return numeric values
+ *
+ * @since   5.4.0
+ *
+ * @param   mixed $value
+ * @return  mixed
+ */
 function acf_get_numeric($value = '')
 {
 }
@@ -19843,7 +19758,6 @@ function acf_get_numeric($value = '')
  *
  * Similar to the get_posts() function but with extra functionality.
  *
- * @date    3/03/15
  * @since   5.1.5
  *
  * @param   array $args The query args.
@@ -19853,34 +19767,30 @@ function acf_get_posts($args = array())
 {
 }
 /**
-*  _acf_query_remove_post_type
-*
-*  This function will remove the 'wp_posts.post_type' WHERE clause completely
-*  When using 'post__in', this clause is unneccessary and slow.
-*
-*  @type    function
-*  @date    4/03/2015
-*  @since   5.1.5
-*
-*  @param   string $sql
-*  @return  $sql
-*/
+ * _acf_query_remove_post_type
+ *
+ * This function will remove the 'wp_posts.post_type' WHERE clause completely
+ * When using 'post__in', this clause is unneccessary and slow.
+ *
+ * @since   5.1.5
+ *
+ * @param   string $sql
+ * @return  $sql
+ */
 function _acf_query_remove_post_type($sql)
 {
 }
 /**
-*  acf_get_grouped_posts
-*
-*  This function will return all posts grouped by post_type
-*  This is handy for select settings
-*
-*  @type    function
-*  @date    27/02/2014
-*  @since   5.0.0
-*
-*  @param   array $args
-*  @return  array
-*/
+ * acf_get_grouped_posts
+ *
+ * This function will return all posts grouped by post_type
+ * This is handy for select settings
+ *
+ * @since   5.0.0
+ *
+ * @param   array $args
+ * @return  array
+ */
 function acf_get_grouped_posts($args)
 {
 }
@@ -19894,33 +19804,29 @@ function acf_order_by_search($array, $search)
 {
 }
 /**
-*  acf_get_pretty_user_roles
-*
-*  description
-*
-*  @type    function
-*  @date    23/02/2016
-*  @since   5.3.2
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * acf_get_pretty_user_roles
+ *
+ * description
+ *
+ * @since   5.3.2
+ *
+ * @param   int $post_id
+ * @return  int $post_id
+ */
 function acf_get_pretty_user_roles($allowed = \false)
 {
 }
 /**
-*  acf_get_grouped_users
-*
-*  This function will return all users grouped by role
-*  This is handy for select settings
-*
-*  @type    function
-*  @date    27/02/2014
-*  @since   5.0.0
-*
-*  @param   array $args
-*  @return  array
-*/
+ * acf_get_grouped_users
+ *
+ * This function will return all users grouped by role
+ * This is handy for select settings
+ *
+ * @since   5.0.0
+ *
+ * @param   array $args
+ * @return  array
+ */
 function acf_get_grouped_users($args = array())
 {
 }
@@ -19929,7 +19835,6 @@ function acf_get_grouped_users($args = array())
  *
  * Returns json_encode() ready for file / database use.
  *
- * @date    29/4/19
  * @since   5.0.0
  *
  * @param   array $json The array of data to encode.
@@ -19939,33 +19844,29 @@ function acf_json_encode($json)
 {
 }
 /**
-*  acf_str_exists
-*
-*  This function will return true if a sub string is found
-*
-*  @type    function
-*  @date    1/05/2014
-*  @since   5.0.0
-*
-*  @param   string $needle
-*  @param   string $haystack
-*  @return  boolean
-*/
+ * acf_str_exists
+ *
+ * This function will return true if a sub string is found
+ *
+ * @since   5.0.0
+ *
+ * @param   string $needle
+ * @param   string $haystack
+ * @return  boolean
+ */
 function acf_str_exists($needle, $haystack)
 {
 }
 /**
-*  acf_debug
-*
-*  description
-*
-*  @type    function
-*  @date    2/05/2014
-*  @since   5.0.0
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * acf_debug
+ *
+ * description
+ *
+ * @since   5.0.0
+ *
+ * @param   int $post_id
+ * @return  int $post_id
+ */
 function acf_debug()
 {
 }
@@ -19976,17 +19877,15 @@ function acf_debug_end()
 {
 }
 /**
-*  acf_encode_choices
-*
-*  description
-*
-*  @type    function
-*  @date    4/06/2014
-*  @since   5.0.0
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * acf_encode_choices
+ *
+ * description
+ *
+ * @since   5.0.0
+ *
+ * @param   int $post_id
+ * @return  int $post_id
+ */
 function acf_encode_choices($array = array(), $show_keys = \true)
 {
 }
@@ -19994,256 +19893,213 @@ function acf_decode_choices($string = '', $array_keys = \false)
 {
 }
 /**
-*  acf_str_replace
-*
-*  This function will replace an array of strings much like str_replace
-*  The difference is the extra logic to avoid replacing a string that has alread been replaced
-*  This is very useful for replacing date characters as they overlap with eachother
-*
-*  @type    function
-*  @date    21/06/2016
-*  @since   5.3.8
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * acf_str_replace
+ *
+ * This function will replace an array of strings much like str_replace
+ * The difference is the extra logic to avoid replacing a string that has alread been replaced
+ * This is very useful for replacing date characters as they overlap with eachother
+ *
+ * @since   5.3.8
+ *
+ * @param   int $post_id
+ * @return  int $post_id
+ */
 function acf_str_replace($string = '', $search_replace = array())
 {
 }
 /**
-*  acf_split_date_time
-*
-*  This function will split a format string into seperate date and time
-*
-*  @type    function
-*  @date    26/05/2016
-*  @since   5.3.8
-*
-*  @param   string $date_time
-*  @return  array $formats
-*/
+ * acf_split_date_time
+ *
+ * This function will split a format string into seperate date and time
+ *
+ * @since   5.3.8
+ *
+ * @param   string $date_time
+ * @return  array $formats
+ */
 function acf_split_date_time($date_time = '')
 {
 }
 /**
-*  acf_convert_date_to_php
-*
-*  This fucntion converts a date format string from JS to PHP
-*
-*  @type    function
-*  @date    20/06/2014
-*  @since   5.0.0
-*
-*  @param   string $date
-*  @return  string
-*/
+ * acf_convert_date_to_php
+ *
+ * This fucntion converts a date format string from JS to PHP
+ *
+ * @since   5.0.0
+ *
+ * @param   string $date
+ * @return  string
+ */
 function acf_convert_date_to_php($date = '')
 {
 }
 /**
-*  acf_convert_date_to_js
-*
-*  This fucntion converts a date format string from PHP to JS
-*
-*  @type    function
-*  @date    20/06/2014
-*  @since   5.0.0
-*
-*  @param   string $date
-*  @return  string
-*/
+ * acf_convert_date_to_js
+ *
+ * This fucntion converts a date format string from PHP to JS
+ *
+ * @since   5.0.0
+ *
+ * @param   string $date
+ * @return  string
+ */
 function acf_convert_date_to_js($date = '')
 {
 }
 /**
-*  acf_convert_time_to_php
-*
-*  This fucntion converts a time format string from JS to PHP
-*
-*  @type    function
-*  @date    20/06/2014
-*  @since   5.0.0
-*
-*  @param   string $time
-*  @return  string
-*/
+ * acf_convert_time_to_php
+ *
+ * This fucntion converts a time format string from JS to PHP
+ *
+ * @since   5.0.0
+ *
+ * @param   string $time
+ * @return  string
+ */
 function acf_convert_time_to_php($time = '')
 {
 }
 /**
-*  acf_convert_time_to_js
-*
-*  This fucntion converts a date format string from PHP to JS
-*
-*  @type    function
-*  @date    20/06/2014
-*  @since   5.0.0
-*
-*  @param   string $time
-*  @return  string
-*/
+ * acf_convert_time_to_js
+ *
+ * This fucntion converts a date format string from PHP to JS
+ *
+ * @since   5.0.0
+ *
+ * @param   string $time
+ * @return  string
+ */
 function acf_convert_time_to_js($time = '')
 {
 }
 /**
-*  acf_update_user_setting
-*
-*  description
-*
-*  @type    function
-*  @date    15/07/2014
-*  @since   5.0.0
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * acf_update_user_setting
+ *
+ * description
+ *
+ * @since   5.0.0
+ *
+ * @param   int $post_id
+ * @return  int $post_id
+ */
 function acf_update_user_setting($name, $value)
 {
 }
 /**
-*  acf_get_user_setting
-*
-*  description
-*
-*  @type    function
-*  @date    15/07/2014
-*  @since   5.0.0
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * acf_get_user_setting
+ *
+ * description
+ *
+ * @since   5.0.0
+ *
+ * @param   int $post_id
+ * @return  int $post_id
+ */
 function acf_get_user_setting($name = '', $default = \false)
 {
 }
 /**
-*  acf_in_array
-*
-*  description
-*
-*  @type    function
-*  @date    22/07/2014
-*  @since   5.0.0
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * acf_in_array
+ *
+ * description
+ *
+ * @since   5.0.0
+ *
+ * @param   int $post_id
+ * @return  int $post_id
+ */
 function acf_in_array($value = '', $array = \false)
 {
 }
 /**
-*  acf_get_valid_post_id
-*
-*  This function will return a valid post_id based on the current screen / parameter
-*
-*  @type    function
-*  @date    8/12/2013
-*  @since   5.0.0
-*
-*  @param   mixed $post_id
-*  @return  mixed $post_id
-*/
+ * acf_get_valid_post_id
+ *
+ * This function will return a valid post_id based on the current screen / parameter
+ *
+ * @since   5.0.0
+ *
+ * @param   mixed $post_id
+ * @return  mixed $post_id
+ */
 function acf_get_valid_post_id($post_id = 0)
 {
 }
 /**
-*  acf_get_post_id_info
-*
-*  This function will return the type and id for a given $post_id string
-*
-*  @type    function
-*  @date    2/07/2016
-*  @since   5.4.0
-*
-*  @param   mixed $post_id
-*  @return  array $info
-*/
+ * acf_get_post_id_info
+ *
+ * This function will return the type and id for a given $post_id string
+ *
+ * @since   5.4.0
+ *
+ * @param   mixed $post_id
+ * @return  array $info
+ */
 function acf_get_post_id_info($post_id = 0)
 {
 }
 /**
-acf_log( acf_get_post_id_info(4) );
-acf_log( acf_get_post_id_info('post_4') );
-acf_log( acf_get_post_id_info('user_123') );
-acf_log( acf_get_post_id_info('term_567') );
-acf_log( acf_get_post_id_info('category_204') );
-acf_log( acf_get_post_id_info('comment_6') );
-acf_log( acf_get_post_id_info('options_lol!') );
-acf_log( acf_get_post_id_info('option') );
-acf_log( acf_get_post_id_info('options') );
-*/
-/**
-*  acf_isset_termmeta
-*
-*  This function will return true if the termmeta table exists
-*  https://developer.wordpress.org/reference/functions/get_term_meta/
-*
-*  @type    function
-*  @date    3/09/2016
-*  @since   5.4.0
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * acf_isset_termmeta
+ *
+ * This function will return true if the termmeta table exists
+ * https://developer.wordpress.org/reference/functions/get_term_meta/
+ *
+ * @since   5.4.0
+ *
+ * @param   int $post_id
+ * @return  int $post_id
+ */
 function acf_isset_termmeta($taxonomy = '')
 {
 }
 /**
  * This function will walk through the $_FILES data and upload each found.
  *
- * @date    25/10/2014
  * @since   5.0.9
  *
  * @param array $ancestors An internal parameter, not required.
- * @return void
  * @phpstan-return void
  */
 function acf_upload_files($ancestors = array())
 {
 }
 /**
-*  acf_upload_file
-*
-*  This function will uploade a $_FILE
-*
-*  @type    function
-*  @date    27/10/2014
-*  @since   5.0.9
-*
-*  @param   array $uploaded_file array found from $_FILE data
-*  @return  int $id new attachment ID
-*/
+ * acf_upload_file
+ *
+ * This function will uploade a $_FILE
+ *
+ * @since   5.0.9
+ *
+ * @param   array $uploaded_file array found from $_FILE data
+ * @return  int $id new attachment ID
+ */
 function acf_upload_file($uploaded_file)
 {
 }
 /**
-*  acf_update_nested_array
-*
-*  This function will update a nested array value. Useful for modifying the $_POST array
-*
-*  @type    function
-*  @date    27/10/2014
-*  @since   5.0.9
-*
-*  @param   array $array target array to be updated
-*  @param   array $ancestors array of keys to navigate through to find the child
-*  @param   mixed $value The new value
-*  @return  boolean
-*/
+ * acf_update_nested_array
+ *
+ * This function will update a nested array value. Useful for modifying the $_POST array
+ *
+ * @since   5.0.9
+ *
+ * @param   array $array target array to be updated
+ * @param   array $ancestors array of keys to navigate through to find the child
+ * @param   mixed $value The new value
+ * @return  boolean
+ */
 function acf_update_nested_array(&$array, $ancestors, $value)
 {
 }
 /**
-*  acf_is_screen
-*
-*  This function will return true if all args are matched for the current screen
-*
-*  @type    function
-*  @date    9/12/2014
-*  @since   5.1.5
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * acf_is_screen
+ *
+ * This function will return true if all args are matched for the current screen
+ *
+ * @since   5.1.5
+ *
+ * @param   int $post_id
+ * @return  int $post_id
+ */
 function acf_is_screen($id = '')
 {
 }
@@ -20258,19 +20114,17 @@ function acf_is_acf_admin_screen()
 {
 }
 /**
-*  acf_maybe_get
-*
-*  This function will return a var if it exists in an array
-*
-*  @type    function
-*  @date    9/12/2014
-*  @since   5.1.5
-*
-*  @param   array $array the array to look within
-*  @param   key $key the array key to look for. Nested values may be found using '/'
-*  @param   mixed $default the value returned if not found
-*  @return  int $post_id
-*/
+ * acf_maybe_get
+ *
+ * This function will return a var if it exists in an array
+ *
+ * @since   5.1.5
+ *
+ * @param   array $array the array to look within
+ * @param   key $key the array key to look for. Nested values may be found using '/'
+ * @param   mixed $default the value returned if not found
+ * @return  int $post_id
+ */
 function acf_maybe_get($array = array(), $key = 0, $default = \null)
 {
 }
@@ -20283,104 +20137,92 @@ function acf_maybe_get_GET($key = '', $default = \null)
 /**
  * Returns an array of attachment data.
  *
- * @date    05/01/2015
  * @since   5.1.5
  *
- * @param   int|WP_Post The attachment ID or object.
+ * @param   integer|WP_Post The attachment ID or object
  * @return  array|false
  */
 function acf_get_attachment($attachment)
 {
 }
 /**
- *  This function will truncate and return a string
+ * This function will truncate and return a string
  *
- *  @date    8/08/2014
- *  @since   5.0.0
+ * @since   5.0.0
  *
- *  @param string $text   The text to truncate.
- *  @param int    $length The number of characters to allow in the string.
+ * @param string  $text   The text to truncate.
+ * @param integer $length The number of characters to allow in the string.
  *
- *  @return  string
+ * @return  string
  */
 function acf_get_truncated($text, $length = 64)
 {
 }
 /**
-*  acf_current_user_can_admin
-*
-*  This function will return true if the current user can administrate the ACF field groups
-*
-*  @type    function
-*  @date    9/02/2015
-*  @since   5.1.5
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * acf_current_user_can_admin
+ *
+ * This function will return true if the current user can administrate the ACF field groups
+ *
+ * @since   5.1.5
+ *
+ * @param   int $post_id
+ * @return  int $post_id
+ */
 function acf_current_user_can_admin()
 {
 }
 /**
-*  acf_get_filesize
-*
-*  This function will return a numeric value of bytes for a given filesize string
-*
-*  @type    function
-*  @date    18/02/2015
-*  @since   5.1.5
-*
-*  @param   mixed $size
-*  @return  int
-*/
+ * acf_get_filesize
+ *
+ * This function will return a numeric value of bytes for a given filesize string
+ *
+ * @since   5.1.5
+ *
+ * @param   mixed $size
+ * @return  int
+ */
 function acf_get_filesize($size = 1)
 {
 }
 /**
-*  acf_format_filesize
-*
-*  This function will return a formatted string containing the filesize and unit
-*
-*  @type    function
-*  @date    18/02/2015
-*  @since   5.1.5
-*
-*  @param   mixed $size
-*  @return  int
-*/
+ * acf_format_filesize
+ *
+ * This function will return a formatted string containing the filesize and unit
+ *
+ * @since   5.1.5
+ *
+ * @param   mixed $size
+ * @return  int
+ */
 function acf_format_filesize($size = 1)
 {
 }
 /**
-*  acf_get_valid_terms
-*
-*  This function will replace old terms with new split term ids
-*
-*  @type    function
-*  @date    27/02/2015
-*  @since   5.1.5
-*
-*  @param   int|array $terms
-*  @param   string $taxonomy
-*  @return  $terms
-*/
+ * acf_get_valid_terms
+ *
+ * This function will replace old terms with new split term ids
+ *
+ * @since   5.1.5
+ *
+ * @param   int|array $terms
+ * @param   string $taxonomy
+ * @return  $terms
+ */
 function acf_get_valid_terms($terms = \false, $taxonomy = 'category')
 {
 }
 /**
-*  acf_validate_attachment
-*
-*  This function will validate an attachment based on a field's restrictions and return an array of errors
-*
-*  @type    function
-*  @date    3/07/2015
-*  @since   5.2.3
-*
-*  @param   array $attachment attachment data. Changes based on context
-*  @param   array $field field settings containing restrictions
-*  @param   string $context $file is different when uploading / preparing
-*  @return  array $errors
-*/
+ * acf_validate_attachment
+ *
+ * This function will validate an attachment based on a field's restrictions and return an array of errors
+ *
+ * @since   5.2.3
+ *
+ * @param   array $attachment attachment data. Changes based on context
+ * @param   array $field field settings containing restrictions
+ * @param   context (string)                                     $file is different when uploading / preparing
+ * @return  array $errors
+ */
 function acf_validate_attachment($attachment, $field, $context = 'prepare')
 {
 }
@@ -20388,116 +20230,69 @@ function _acf_settings_uploader($uploader)
 {
 }
 /**
-*  acf_translate_keys
-*
-*  description
-*
-*  @type    function
-*  @date    7/12/2015
-*  @since   5.3.2
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
-/**
-function acf_translate_keys( $array, $keys ) {
-
-	// bail early if no keys
-	if( empty($keys) ) return $array;
-
-
-	// translate
-	foreach( $keys as $k ) {
-
-		// bail early if not exists
-		if( !isset($array[ $k ]) ) continue;
-
-
-		// translate
-		$array[ $k ] = acf_translate( $array[ $k ] );
-
-	}
-
-
-	// return
-	return $array;
-
-}
-*/
-/**
-*  acf_translate
-*
-*  This function will translate a string using the new 'l10n_textdomain' setting
-*  Also works for arrays which is great for fields - select -> choices
-*
-*  @type    function
-*  @date    4/12/2015
-*  @since   5.3.2
-*
-*  @param   mixed $string string or array containins strings to be translated
-*  @return  $string
-*/
+ * acf_translate
+ *
+ * This function will translate a string using the new 'l10n_textdomain' setting
+ * Also works for arrays which is great for fields - select -> choices
+ *
+ * @since   5.3.2
+ *
+ * @param   mixed $string string or array containins strings to be translated
+ * @return  $string
+ */
 function acf_translate($string)
 {
 }
 /**
-*  acf_maybe_add_action
-*
-*  This function will determine if the action has already run before adding / calling the function
-*
-*  @type    function
-*  @date    13/01/2016
-*  @since   5.3.2
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * acf_maybe_add_action
+ *
+ * This function will determine if the action has already run before adding / calling the function
+ *
+ * @since   5.3.2
+ *
+ * @param   int $post_id
+ * @return  int $post_id
+ */
 function acf_maybe_add_action($tag, $function_to_add, $priority = 10, $accepted_args = 1)
 {
 }
 /**
-*  acf_is_row_collapsed
-*
-*  This function will return true if the field's row is collapsed
-*
-*  @type    function
-*  @date    2/03/2016
-*  @since   5.3.2
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * acf_is_row_collapsed
+ *
+ * This function will return true if the field's row is collapsed
+ *
+ * @since   5.3.2
+ *
+ * @param   int $post_id
+ * @return  int $post_id
+ */
 function acf_is_row_collapsed($field_key = '', $row_index = 0)
 {
 }
 /**
-*  acf_get_attachment_image
-*
-*  description
-*
-*  @type    function
-*  @date    24/10/16
-*  @since   5.5.0
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * acf_get_attachment_image
+ *
+ * description
+ *
+ * @since   5.5.0
+ *
+ * @param   int $post_id
+ * @return  int $post_id
+ */
 function acf_get_attachment_image($attachment_id = 0, $size = 'thumbnail')
 {
 }
 /**
-*  acf_get_post_thumbnail
-*
-*  This function will return a thumbail image url for a given post
-*
-*  @type    function
-*  @date    3/05/2016
-*  @since   5.3.8
-*
-*  @param   obj $post
-*  @param   mixed $size
-*  @return  string
-*/
+ * acf_get_post_thumbnail
+ *
+ * This function will return a thumbail image url for a given post
+ *
+ * @since   5.3.8
+ *
+ * @param   obj $post
+ * @param   mixed $size
+ * @return  string
+ */
 function acf_get_post_thumbnail($post = \null, $size = 'thumbnail')
 {
 }
@@ -20506,7 +20301,6 @@ function acf_get_post_thumbnail($post = \null, $size = 'thumbnail')
  *
  * Returns the name of the current browser.
  *
- * @date    17/01/2014
  * @since   5.0.0
  *
  * @param   void
@@ -20516,17 +20310,15 @@ function acf_get_browser()
 {
 }
 /**
-*  acf_is_ajax
-*
-*  This function will reutrn true if performing a wp ajax call
-*
-*  @type    function
-*  @date    7/06/2016
-*  @since   5.3.8
-*
-*  @param   void
-*  @return  boolean
-*/
+ * acf_is_ajax
+ *
+ * This function will reutrn true if performing a wp ajax call
+ *
+ * @since   5.3.8
+ *
+ * @param   void
+ * @return  boolean
+ */
 function acf_is_ajax($action = '')
 {
 }
@@ -20547,7 +20339,6 @@ function acf_format_date($value, $format)
  *
  * Deletes the debug.log file.
  *
- * @date    21/1/19
  * @since   5.7.10
  *
  * @param   type $var Description. Default.
@@ -20557,314 +20348,279 @@ function acf_clear_log()
 {
 }
 /**
-*  acf_log
-*
-*  description
-*
-*  @type    function
-*  @date    24/06/2016
-*  @since   5.3.8
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * acf_log
+ *
+ * description
+ *
+ * @since   5.3.8
+ *
+ * @param   int $post_id
+ * @return  int $post_id
+ */
 function acf_log()
 {
 }
 /**
- *  acf_dev_log
+ * acf_dev_log
  *
- *  Used to log variables only if ACF_DEV is defined
+ * Used to log variables only if ACF_DEV is defined
  *
- *  @date    25/8/18
- *  @since   5.7.4
+ * @since   5.7.4
  *
- *  @param   mixed
- *  @return  void
+ * @param   mixed
+ * @return  void
  */
 function acf_dev_log()
 {
 }
 /**
-*  acf_doing
-*
-*  This function will tell ACF what task it is doing
-*
-*  @type    function
-*  @date    28/06/2016
-*  @since   5.3.8
-*
-*  @param   string $event
-*  @param   context (string)
-*  @return  void
-*/
+ * acf_doing
+ *
+ * This function will tell ACF what task it is doing
+ *
+ * @since   5.3.8
+ *
+ * @param   string $event
+ * @param   context (string)
+ * @return  void
+ */
 function acf_doing($event = '', $context = '')
 {
 }
 /**
-*  acf_is_doing
-*
-*  This function can be used to state what ACF is doing, or to check
-*
-*  @type    function
-*  @date    28/06/2016
-*  @since   5.3.8
-*
-*  @param   string $event
-*  @param   context (string)
-*  @return  boolean
-*/
+ * acf_is_doing
+ *
+ * This function can be used to state what ACF is doing, or to check
+ *
+ * @since   5.3.8
+ *
+ * @param   string $event
+ * @param   context (string)
+ * @return  boolean
+ */
 function acf_is_doing($event = '', $context = '')
 {
 }
 /**
-*  acf_is_plugin_active
-*
-*  This function will return true if the ACF plugin is active
-*  - May be included within a theme or other plugin
-*
-*  @type    function
-*  @date    13/07/2016
-*  @since   5.4.0
-*
-*  @param   int $basename
-*  @return  int $post_id
-*/
+ * acf_is_plugin_active
+ *
+ * This function will return true if the ACF plugin is active
+ * - May be included within a theme or other plugin
+ *
+ * @since   5.4.0
+ *
+ * @param   int $basename
+ * @return  int $post_id
+ */
 function acf_is_plugin_active()
 {
 }
 /**
-*  acf_send_ajax_results
-*
-*  This function will print JSON data for a Select2 AJAX query
-*
-*  @type    function
-*  @date    19/07/2016
-*  @since   5.4.0
-*
-*  @param   array $response
-*  @return  void
-*/
+ * acf_send_ajax_results
+ *
+ * This function will print JSON data for a Select2 AJAX query
+ *
+ * @since   5.4.0
+ *
+ * @param   array $response
+ * @return  void
+ * @phpstan-return never
+ */
 function acf_send_ajax_results($response)
 {
 }
 /**
-*  acf_is_sequential_array
-*
-*  This function will return true if the array contains only numeric keys
-*
-*  @source  http://stackoverflow.com/questions/173400/how-to-check-if-php-array-is-associative-or-sequential
-*  @type    function
-*  @date    9/09/2016
-*  @since   5.4.0
-*
-*  @param   array $array
-*  @return  boolean
-*/
+ * acf_is_sequential_array
+ *
+ * This function will return true if the array contains only numeric keys
+ *
+ * @source  http://stackoverflow.com/questions/173400/how-to-check-if-php-array-is-associative-or-sequential
+ *
+ * @since   5.4.0
+ *
+ * @param   array $array
+ * @return  boolean
+ */
 function acf_is_sequential_array($array)
 {
 }
 /**
-*  acf_is_associative_array
-*
-*  This function will return true if the array contains one or more string keys
-*
-*  @source  http://stackoverflow.com/questions/173400/how-to-check-if-php-array-is-associative-or-sequential
-*  @type    function
-*  @date    9/09/2016
-*  @since   5.4.0
-*
-*  @param   array $array
-*  @return  boolean
-*/
+ * acf_is_associative_array
+ *
+ * This function will return true if the array contains one or more string keys
+ *
+ * @source  http://stackoverflow.com/questions/173400/how-to-check-if-php-array-is-associative-or-sequential
+ *
+ * @since   5.4.0
+ *
+ * @param   array $array
+ * @return  boolean
+ */
 function acf_is_associative_array($array)
 {
 }
 /**
-*  acf_add_array_key_prefix
-*
-*  This function will add a prefix to all array keys
-*  Useful to preserve numeric keys when performing array_multisort
-*
-*  @type    function
-*  @date    15/09/2016
-*  @since   5.4.0
-*
-*  @param   array $array
-*  @param   string $prefix
-*  @return  array
-*/
+ * acf_add_array_key_prefix
+ *
+ * This function will add a prefix to all array keys
+ * Useful to preserve numeric keys when performing array_multisort
+ *
+ * @since   5.4.0
+ *
+ * @param   array $array
+ * @param   string $prefix
+ * @return  array
+ */
 function acf_add_array_key_prefix($array, $prefix)
 {
 }
 /**
-*  acf_remove_array_key_prefix
-*
-*  This function will remove a prefix to all array keys
-*  Useful to preserve numeric keys when performing array_multisort
-*
-*  @type    function
-*  @date    15/09/2016
-*  @since   5.4.0
-*
-*  @param   array $array
-*  @param   string $prefix
-*  @return  array
-*/
+ * acf_remove_array_key_prefix
+ *
+ * This function will remove a prefix to all array keys
+ * Useful to preserve numeric keys when performing array_multisort
+ *
+ * @since   5.4.0
+ *
+ * @param   array $array
+ * @param   string $prefix
+ * @return  array
+ */
 function acf_remove_array_key_prefix($array, $prefix)
 {
 }
 /**
-*  acf_strip_protocol
-*
-*  This function will remove the proticol from a url
-*  Used to allow licenses to remain active if a site is switched to https
-*
-*  @type    function
-*  @date    10/01/2017
-*  @since   5.5.4
-*  @author  Aaron
-*
-*  @param   string $url
-*  @return  string
-*/
+ * This function will remove the proticol from a url
+ * Used to allow licenses to remain active if a site is switched to https
+ *
+ * @since   5.5.4
+ *
+ * @param   string $url The URL to strip the protocol from.
+ * @return  string
+ */
 function acf_strip_protocol($url)
 {
 }
 /**
-*  acf_connect_attachment_to_post
-*
-*  This function will connect an attacment (image etc) to the post
-*  Used to connect attachements uploaded directly to media that have not been attaced to a post
-*
-*  @type    function
-*  @date    11/01/2017
-*  @since   5.8.0 Added filter to prevent connection.
-*  @since   5.5.4
-*
-*  @param   int $attachment_id The attachment ID.
-*  @param   int $post_id The post ID.
-*  @return  bool True if attachment was connected.
-*/
+ * This function will connect an attacment (image etc) to the post
+ * Used to connect attachements uploaded directly to media that have not been attaced to a post
+ *
+ * @since   5.8.0 Added filter to prevent connection.
+ * @since   5.5.4
+ *
+ * @param   integer $attachment_id The attachment ID.
+ * @param   integer $post_id       The post ID.
+ * @return  boolean True if attachment was connected.
+ */
 function acf_connect_attachment_to_post($attachment_id = 0, $post_id = 0)
 {
 }
 /**
-*  acf_encrypt
-*
-*  This function will encrypt a string using PHP
-*  https://bhoover.com/using-php-openssl_encrypt-openssl_decrypt-encrypt-decrypt-data/
-*
-*  @type    function
-*  @date    27/2/17
-*  @since   5.5.8
-*
-*  @param   string $data
-*  @return  string
-*/
+ * acf_encrypt
+ *
+ * This function will encrypt a string using PHP
+ * https://bhoover.com/using-php-openssl_encrypt-openssl_decrypt-encrypt-decrypt-data/
+ *
+ * @since   5.5.8
+ *
+ * @param   string $data
+ * @return  string
+ */
 function acf_encrypt($data = '')
 {
 }
 /**
-*  acf_decrypt
-*
-*  This function will decrypt an encrypted string using PHP
-*  https://bhoover.com/using-php-openssl_encrypt-openssl_decrypt-encrypt-decrypt-data/
-*
-*  @type    function
-*  @date    27/2/17
-*  @since   5.5.8
-*
-*  @param   string $data
-*  @return  string
-*/
+ * acf_decrypt
+ *
+ * This function will decrypt an encrypted string using PHP
+ * https://bhoover.com/using-php-openssl_encrypt-openssl_decrypt-encrypt-decrypt-data/
+ *
+ * @since   5.5.8
+ *
+ * @param   string $data
+ * @return  string
+ */
 function acf_decrypt($data = '')
 {
 }
 /**
- *  acf_parse_markdown
+ * acf_parse_markdown
  *
- *  A very basic regex-based Markdown parser function based off [slimdown](https://gist.github.com/jbroadway/2836900).
+ * A very basic regex-based Markdown parser function based off [slimdown](https://gist.github.com/jbroadway/2836900).
  *
- *  @date    6/8/18
- *  @since   5.7.2
+ * @since   5.7.2
  *
- *  @param   string $text The string to parse.
- *  @return  string
+ * @param   string $text The string to parse.
+ * @return  string
  */
 function acf_parse_markdown($text = '')
 {
 }
 /**
- *  acf_get_sites
+ * acf_get_sites
  *
- *  Returns an array of sites for a network.
+ * Returns an array of sites for a network.
  *
- *  @date    29/08/2016
- *  @since   5.4.0
+ * @since   5.4.0
  *
- *  @param   void
- *  @return  array
+ * @param   void
+ * @return  array
  */
 function acf_get_sites()
 {
 }
 /**
- *  acf_convert_rules_to_groups
+ * acf_convert_rules_to_groups
  *
- *  Converts an array of rules from ACF4 to an array of groups for ACF5
+ * Converts an array of rules from ACF4 to an array of groups for ACF5
  *
- *  @date    25/8/18
- *  @since   5.7.4
+ * @since   5.7.4
  *
- *  @param   array  $rules An array of rules.
- *  @param   string $anyorall The anyorall setting used in ACF4. Defaults to 'any'.
- *  @return  array
+ * @param   array  $rules    An array of rules.
+ * @param   string $anyorall The anyorall setting used in ACF4. Defaults to 'any'.
+ * @return  array
  */
 function acf_convert_rules_to_groups($rules, $anyorall = 'any')
 {
 }
 /**
- *  acf_register_ajax
+ * acf_register_ajax
  *
- *  Regsiters an ajax callback.
+ * Regsiters an ajax callback.
  *
- *  @date    5/10/18
- *  @since   5.7.7
+ * @since   5.7.7
  *
- *  @param   string $name The ajax action name.
- *  @param   array  $callback The callback function or array.
- *  @param   bool   $public Whether to allow access to non logged in users.
- *  @return  void
+ * @param   string  $name     The ajax action name.
+ * @param   array   $callback The callback function or array.
+ * @param   boolean $public   Whether to allow access to non logged in users.
+ * @return  void
  */
 function acf_register_ajax($name = '', $callback = \false, $public = \false)
 {
 }
 /**
- *  acf_str_camel_case
+ * acf_str_camel_case
  *
- *  Converts a string into camelCase.
- *  Thanks to https://stackoverflow.com/questions/31274782/convert-array-keys-from-underscore-case-to-camelcase-recursively
+ * Converts a string into camelCase.
+ * Thanks to https://stackoverflow.com/questions/31274782/convert-array-keys-from-underscore-case-to-camelcase-recursively
  *
- *  @date    24/10/18
- *  @since   5.8.0
+ * @since   5.8.0
  *
- *  @param   string $string The string ot convert.
- *  @return  string
+ * @param   string $string The string ot convert.
+ * @return  string
  */
 function acf_str_camel_case($string = '')
 {
 }
 /**
- *  acf_array_camel_case
+ * acf_array_camel_case
  *
- *  Converts all aray keys to camelCase.
+ * Converts all aray keys to camelCase.
  *
- *  @date    24/10/18
- *  @since   5.8.0
+ * @since   5.8.0
  *
- *  @param   array $array The array to convert.
- *  @return  array
+ * @param   array $array The array to convert.
+ * @return  array
  */
 function acf_array_camel_case($array = array())
 {
@@ -20872,10 +20628,9 @@ function acf_array_camel_case($array = array())
 /**
  * Returns true if the current screen is using the block editor.
  *
- * @date 13/12/18
  * @since 5.8.0
  *
- * @return bool
+ * @return boolean
  */
 function acf_is_block_editor()
 {
@@ -20888,6 +20643,26 @@ function acf_is_block_editor()
  * @return array The WordPress reserved terms list.
  */
 function acf_get_wp_reserved_terms()
+{
+}
+/**
+ * Detect if we're on a multisite subsite.
+ *
+ * @since 6.2.4
+ *
+ * @return boolean true if we're in a multisite install and not on the main site
+ */
+function acf_is_multisite_sub_site()
+{
+}
+/**
+ * Detect if we're on a multisite main site.
+ *
+ * @since 6.2.4
+ *
+ * @return boolean true if we're in a multisite install and on the main site
+ */
+function acf_is_multisite_main_site()
 {
 }
 /**
@@ -22853,38 +22628,6 @@ function acf_get_post_latest_revision($post_id)
 {
 }
 /**
- *  acf_updates
- *
- *  The main function responsible for returning the one true acf_updates instance to functions everywhere.
- *  Use this function like you would a global variable, except without needing to declare the global.
- *
- *  Example: <?php $acf_updates = acf_updates(); ?>
- *
- *  @date    9/4/17
- *  @since   5.5.12
- *
- *  @param   void
- *  @return  object
- */
-function acf_updates()
-{
-}
-/**
- *  acf_register_plugin_update
- *
- *  Alias of acf_updates()->add_plugin().
- *
- *  @type    function
- *  @date    12/4/17
- *  @since   5.5.10
- *
- *  @param   array $plugin
- *  @return  void
- */
-function acf_register_plugin_update($plugin)
-{
-}
-/**
  *  acf_has_upgrade
  *
  *  Returns true if this site has an upgrade avaialble.
@@ -23766,6 +23509,29 @@ function acf_reset_media_enqueue_after_rest($response)
 {
 }
 /**
+ * The main function responsible for returning the acf_updates singleton.
+ * Use this function like you would a global variable, except without needing to declare the global.
+ *
+ * Example: <?php $acf_updates = acf_updates(); ?>
+ *
+ * @since   5.5.12
+ *
+ * @return ACF_Updates The singleton instance of ACF_Updates.
+ */
+function acf_updates()
+{
+}
+/**
+ * Alias of acf_updates()->add_plugin().
+ *
+ * @since   5.5.10
+ *
+ * @param   array $plugin Plugin data array.
+ */
+function acf_register_plugin_update($plugin)
+{
+}
+/**
  *  acf_options_page
  *
  *  This function will return the options page instance
@@ -23897,6 +23663,16 @@ function acf_get_home_url()
  * @return string $url
  */
 function acf_license_ml_intercept($home_url, $url)
+{
+}
+/**
+ * Is the updates page visible.
+ *
+ * @since 6.2.4
+ *
+ * @return boolean true if the updates page should be hidden as we're not the primary multisite site.
+ */
+function acf_is_updates_page_visible()
 {
 }
 /**
