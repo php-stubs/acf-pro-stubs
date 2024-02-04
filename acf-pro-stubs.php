@@ -16,7 +16,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.2.1.1';
+    public $version = '6.2.2';
     /**
      * The plugin settings array.
      *
@@ -1040,6 +1040,53 @@ class ACF_Admin_Notice extends \ACF_Data
      *  @return  void
      */
     function render()
+    {
+    }
+}
+class ACF_Admin_Options_Preview
+{
+    /**
+     * Constructor.
+     *
+     * @since   6.2.2
+     */
+    public function __construct()
+    {
+    }
+    /**
+     * Adds the Options Pages menu item to the admin menu.
+     *
+     * @since   6.2.2
+     * @phpstan-return void
+     */
+    public function admin_menu()
+    {
+    }
+    /**
+     * Load the body class and scripts.
+     *
+     * @since 6.2.2
+     */
+    public function load()
+    {
+    }
+    /**
+     * Modifies the admin body class.
+     *
+     * @since 6.2.2
+     *
+     * @param string $classes Space-separated list of CSS classes.
+     * @return string
+     */
+    public function admin_body_class($classes)
+    {
+    }
+    /**
+     * The render for the options page preview view.
+     *
+     * @since 6.2.2
+     */
+    public function render()
     {
     }
 }
@@ -12184,10 +12231,11 @@ class ACF_Post_Type extends \ACF_Internal_Post_Type
      *
      * @since 6.1
      *
-     * @param array $post The main ACF post type settings array.
+     * @param  array   $post The main ACF post type settings array.
+     * @param  boolean $escape_labels Determines if the label values should be escaped.
      * @return array
      */
-    public function get_post_type_args($post)
+    public function get_post_type_args($post, $escape_labels = \true)
     {
     }
     /**
@@ -12329,10 +12377,11 @@ class ACF_Taxonomy extends \ACF_Internal_Post_Type
      *
      * @since 6.1
      *
-     * @param array $post The main ACF taxonomy settings array.
+     * @param  array   $post The main ACF taxonomy settings array.
+     * @param  boolean $escape_labels Determines if the label values should be escaped.
      * @return array
      */
-    public function get_taxonomy_args($post)
+    public function get_taxonomy_args($post, $escape_labels = \true)
     {
     }
     /**
@@ -13309,6 +13358,16 @@ class acf_pro
      *  @return  int $post_id
      */
     function field_group_admin_enqueue_scripts()
+    {
+    }
+    /**
+     * Checks for a license status error and renders it if necessary.
+     *
+     * @since 6.2.1
+     *
+     * @return void
+     */
+    public function maybe_show_license_status_error()
     {
     }
     /**
@@ -15695,45 +15754,36 @@ class ACF_UI_Options_Page extends \ACF_Internal_Post_Type
 class acf_pro_updates
 {
     /**
-     *  __construct
+     * Initialize filters, action, variables and includes
      *
-     *  Initialize filters, action, variables and includes
-     *
-     *  @type    function
-     *  @date    23/06/12
-     *  @since   5.0.0
+     * @date  23/06/12
+     * @since 5.0.0
      */
-    function __construct()
+    public function __construct()
     {
     }
     /**
-     *  init
+     * Initializes the ACF PRO updates functionality.
      *
-     *  description
-     *
-     *  @type    function
      *  @date    10/4/17
      *  @since   5.5.10
      * @phpstan-return void
      */
-    function init()
+    public function init()
     {
     }
     /**
-     *  modify_plugin_update_message
+     * Displays an update message for plugin list screens.
      *
-     *  Displays an update message for plugin list screens.
+     * @date    14/06/2016
+     * @since   5.3.8
      *
-     *  @type    function
-     *  @date    14/06/2016
-     *  @since   5.3.8
-     *
-     *  @param   string $message
-     *  @param   array $plugin_data
-     *  @param   object $r
-     *  @return  $message
+     * @param array  $plugin_data An array of plugin metadata.
+     * @param object $response    An object of metadata about the available plugin update.
+     * @return void
+     * @phpstan-return void
      */
-    function modify_plugin_update_message($plugin_data, $response)
+    public function modify_plugin_update_message($plugin_data, $response)
     {
     }
 }
@@ -19194,30 +19244,23 @@ function acf_print_menu_section($menu_items, $section = '')
 {
 }
 /**
-*  acf_is_array
-*
-*  This function will return true for a non empty array
-*
-*  @type    function
-*  @date    6/07/2016
-*  @since   5.4.0
-*
-*  @param   array $array
-*  @return  boolean
-*/
+ *  This function will return true for a non empty array
+ *
+ *  @since   5.4.0
+ *
+ *  @param   mixed $array The variable to test.
+ *  @return  boolean
+ */
 function acf_is_array($array)
 {
 }
 /**
- *  acf_has_setting
+ *  Alias of acf()->has_setting()
  *
- *  alias of acf()->has_setting()
- *
- *  @date    2/2/18
  *  @since   5.6.5
  *
- *  @param   void
- *  @return  void
+ *  @param   string $name Name of the setting to check for.
+ *  @return  boolean
  */
 function acf_has_setting($name = '')
 {
@@ -19267,17 +19310,14 @@ function acf_validate_setting($name = '')
 {
 }
 /**
-*  acf_get_setting
-*
-*  alias of acf()->get_setting()
-*
-*  @type    function
-*  @date    28/09/13
-*  @since   5.0.0
-*
-*  @param   void
-*  @return  void
-*/
+ * Alias of acf()->get_setting()
+ *
+ * @since   5.0.0
+ *
+ * @param   string $name The name of the setting to test.
+ * @param string $value An optional default value for the setting if it doesn't exist.
+ * @return  void
+ */
 function acf_get_setting($name, $value = \null)
 {
 }
@@ -19338,27 +19378,20 @@ function acf_set_data($name, $value)
 /**
  * Appends data to an existing key.
  *
- * @date    11/06/2020
  * @since   5.9.0
  *
- * @param   string $name The data name.
- * @return  array $data The data array.
+ * @param string $name The data name.
+ * @param mixed  $data The data to append to name.
+ * @return void
  */
 function acf_append_data($name, $data)
 {
 }
 /**
-*  acf_init
-*
-*  alias of acf()->init()
-*
-*  @type    function
-*  @date    28/09/13
-*  @since   5.0.0
-*
-*  @param   void
-*  @return  void
-*/
+ *  Alias of acf()->init() - the core ACF init function.
+ *
+ *  @since   5.0.0
+ */
 function acf_init()
 {
 }
@@ -19378,65 +19411,51 @@ function acf_has_done($name)
 {
 }
 /**
-*  acf_get_external_path
-*
-*  This function will return the path to a file within an external folder
-*
-*  @type    function
-*  @date    22/2/17
-*  @since   5.5.8
-*
-*  @param   string $file
-*  @param   string $path
-*  @return  string
-*/
+ * This function will return the path to a file within an external folder
+ *
+ *  @since   5.5.8
+ *
+ *  @param   string $file Directory path.
+ *  @param   string $path Optional file path.
+ *  @return  string File path.
+ */
 function acf_get_external_path($file, $path = '')
 {
 }
 /**
-*  acf_get_external_dir
-*
-*  This function will return the url to a file within an external folder
-*
-*  @type    function
-*  @date    22/2/17
-*  @since   5.5.8
-*
-*  @param   string $file
-*  @param   string $path
-*  @return  string
-*/
+ * This function will return the url to a file within an internal ACF folder
+ *
+ *  @since   5.5.8
+ *
+ *  @param   string $file Directory path.
+ *  @param   string $path Optional file path.
+ *  @return  string File path.
+ */
 function acf_get_external_dir($file, $path = '')
 {
 }
 /**
- *  acf_plugin_dir_url
- *
  *  This function will calculate the url to a plugin folder.
  *  Different to the WP plugin_dir_url(), this function can calculate for urls outside of the plugins folder (theme include).
  *
  *  @date    13/12/17
  *  @since   5.6.8
  *
- *  @param   type $var Description. Default.
- *  @return  type Description.
+ *  @param   string $file A file path inside the ACF plugin to get the plugin directory path from.
+ *  @return  string The plugin directory path.
  */
 function acf_plugin_dir_url($file)
 {
 }
 /**
-*  acf_parse_args
-*
-*  This function will merge together 2 arrays and also convert any numeric values to ints
-*
-*  @type    function
-*  @date    18/10/13
-*  @since   5.0.0
-*
-*  @param   array $args
-*  @param   array $defaults
-*  @return  array $args
-*/
+ *  This function will merge together 2 arrays and also convert any numeric values to ints
+ *
+ *  @since   5.0.0
+ *
+ *  @param   array $args The configured arguments array.
+ *  @param   array $defaults The default properties for the passed args to inherit.
+ *  @return  array $args Parsed arguments with defaults applied.
+ */
 function acf_parse_args($args, $defaults = array())
 {
 }
@@ -19500,49 +19519,39 @@ function acf_merge_atts($atts, $extra = array())
 {
 }
 /**
-*  acf_nonce_input
-*
-*  This function will create a basic nonce input
-*
-*  @type    function
-*  @date    24/5/17
-*  @since   5.6.0
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
+ * This function will create and echo a basic nonce input
+ *
+ *  @since   5.6.0
+ *
+ *  @param string $nonce The nonce parameter string.
+ *  @return void
+ */
 function acf_nonce_input($nonce = '')
 {
 }
 /**
-*  acf_extract_var
-*
-*  This function will remove the var from the array, and return the var
-*
-*  @type    function
-*  @date    2/10/13
-*  @since   5.0.0
-*
-*  @param   array $array
-*  @param   string $key
-*  @return  mixed
-*/
-function acf_extract_var(&$array, $key, $default = \null)
+ * This function will remove the var from the array, and return the var
+ *
+ * @since   5.0.0
+ *
+ * @param array  $extract_array an array passed as reference to be extracted.
+ * @param string $key The key to extract from the array.
+ * @param mixed  $default_value The default value if it doesn't exist in the extract array.
+ * @return mixed Extracted var or default.
+ */
+function acf_extract_var(&$extract_array, $key, $default_value = \null)
 {
 }
 /**
-*  acf_extract_vars
-*
-*  This function will remove the vars from the array, and return the vars
-*
-*  @type    function
-*  @date    8/10/13
-*  @since   5.0.0
-*
-*  @param   int $post_id
-*  @return  int $post_id
-*/
-function acf_extract_vars(&$array, $keys)
+ * This function will remove the vars from the array, and return the vars
+ *
+ * @since   5.0.0
+ *
+ * @param array $extract_array an array passed as reference to be extracted.
+ * @param array $keys An array of keys to extract from the original array.
+ * @return array An array of extracted values.
+ */
+function acf_extract_vars(&$extract_array, $keys)
 {
 }
 /**
@@ -20932,7 +20941,7 @@ function get_field_object($selector, $post_id = \false, $format_value = \true, $
 *  @date    4/08/2015
 *  @since   5.2.3
 *
-*  @param   mixed $selector identifyer of field. Can be an ID, key, name or post object
+*  @param   mixed $selector identifier of field. Can be an ID, key, name or post object
 *  @param   mixed $post_id the post_id of which the value is saved against
 *  @param   boolean $strict if true, return a field only when a field key is found.
 *  @return  array $field
@@ -23369,6 +23378,30 @@ function acf_import_ui_options_page(array $ui_options_page)
 {
 }
 /**
+ * Renders the license status table.
+ *
+ * @since 6.?
+ *
+ * @param array $status The current license status array.
+ * @return void
+ * @phpstan-return void
+ */
+function acf_pro_render_license_status_table($status)
+{
+}
+/**
+ * Renders the "Manage License"/"Renew Subscription" button.
+ *
+ * @since 6.?
+ *
+ * @param array $status The current license status.
+ * @return void
+ * @phpstan-return void
+ */
+function acf_pro_render_manage_license_button($status)
+{
+}
+/**
  * Prefix block names for ACF blocks registered through block.json
  *
  * @since 6.0.0
@@ -23919,5 +23952,81 @@ function acf_pro_deactivate_license($silent = \false)
  * @phpstan-return void
  */
 function display_wp_activation_error($wp_error)
+{
+}
+/**
+ * Returns the status of the current ACF PRO license.
+ *
+ * @since 6.2.2
+ *
+ * @param bool $force_check If we should force a call to the API.
+ * @return array
+ */
+function acf_pro_get_license_status($force_check = \false)
+{
+}
+/**
+ * Makes sure the ACF PRO license status is in a format we expect.
+ *
+ * @since 6.2.2
+ *
+ * @param array $status The license status.
+ * @return array
+ */
+function acf_pro_parse_license_status($status = array())
+{
+}
+/**
+ * Updates the ACF PRO license status.
+ *
+ * @since 6.2.2
+ *
+ * @param array $status The current license status.
+ * @return bool True if the value was set, false otherwise.
+ */
+function acf_pro_update_license_status($status)
+{
+}
+/**
+ * Removes the ACF PRO license status.
+ *
+ * @since 6.2
+ *
+ * @return bool True if the transient was deleted, false otherwise.
+ */
+function acf_pro_remove_license_status()
+{
+}
+/**
+ * Checks if the current license is active.
+ *
+ * @since 6.2.2
+ *
+ * @param array $status Optional license status array.
+ * @return bool True if active, false if not.
+ */
+function acf_pro_is_license_active($status = array())
+{
+}
+/**
+ * Checks if the current license is expired.
+ *
+ * @since 6.2.2
+ *
+ * @param array $status Optional license status array.
+ * @return bool True if expired, false if not.
+ */
+function acf_pro_is_license_expired($status = array())
+{
+}
+/**
+ * Checks if the current license was refunded.
+ *
+ * @since 6.2.2
+ *
+ * @param array $status Optional license status array.
+ * @return bool True if refunded, false if not.
+ */
+function acf_pro_was_license_refunded($status = array())
 {
 }
