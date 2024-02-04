@@ -16,7 +16,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.1.7';
+    public $version = '6.1.8';
     /**
      * The plugin settings array.
      *
@@ -64,6 +64,7 @@ class ACF
      * @since   5.0.0
      *
      * @return  void
+     * @phpstan-return void
      */
     public function init()
     {
@@ -95,12 +96,14 @@ class ACF
      * Hooked on `activated_plugin` so other plugin is deactivated when current plugin is activated.
      *
      * @param string $plugin The plugin being activated.
+     * @phpstan-return void
      */
     public function deactivate_other_instances($plugin)
     {
     }
     /**
      * Displays a notice when either ACF or ACF PRO is automatically deactivated.
+     * @phpstan-return void
      */
     public function plugin_deactivated_notice()
     {
@@ -323,6 +326,7 @@ class ACF_Admin_Internal_Post_Type_List
      * @since   5.0.0
      *
      * @return  void
+     * @phpstan-return void
      */
     public function current_screen()
     {
@@ -507,6 +511,7 @@ class ACF_Admin_Internal_Post_Type_List
      * Checks for the custom "Activate" bulk action.
      *
      * @since 6.0
+     * @phpstan-return void
      */
     public function check_activate()
     {
@@ -515,6 +520,7 @@ class ACF_Admin_Internal_Post_Type_List
      * Checks for the custom "Deactivate" bulk action.
      *
      * @since 6.0
+     * @phpstan-return void
      */
     public function check_deactivate()
     {
@@ -526,6 +532,7 @@ class ACF_Admin_Internal_Post_Type_List
      * @since   5.9.0
      *
      * @return  void
+     * @phpstan-return void
      */
     public function check_duplicate()
     {
@@ -537,6 +544,7 @@ class ACF_Admin_Internal_Post_Type_List
      * @since   5.9.0
      *
      * @return  void
+     * @phpstan-return void
      */
     public function check_sync()
     {
@@ -668,6 +676,7 @@ class ACF_Admin_Internal_Post_Type
      * @since 5.0.0
      *
      * @return void
+     * @phpstan-return void
      */
     public function current_screen()
     {
@@ -754,6 +763,7 @@ class ACF_Admin_Internal_Post_Type
      * @since 6.1
      *
      * @return void
+     * @phpstan-return never
      */
     public function ajax_link_field_groups()
     {
@@ -993,6 +1003,7 @@ class ACF_Data
      * @param   int                           $site_id New blog ID.
      * @param   int prev_blog_id Prev blog ID.
      * @return  void
+     * @phpstan-return void
      */
     function switch_site($site_id, $prev_site_id)
     {
@@ -1232,6 +1243,7 @@ class ACF_Admin_Upgrade
      * @since   6.0.0 Reduce memory usage, cache network upgrade checks.
      *
      * @return  void
+     * @phpstan-return void
      */
     function network_admin_menu()
     {
@@ -1370,6 +1382,7 @@ class ACF_Admin
      *
      * @date    28/09/13
      * @since   5.0.0
+     * @phpstan-return void
      */
     public function admin_menu()
     {
@@ -1426,6 +1439,7 @@ class ACF_Admin
      * Shows a notice to import post types and taxonomies from CPTUI if that plugin is active.
      *
      * @since 6.1
+     * @phpstan-return void
      */
     public function maybe_show_import_from_cptui_notice()
     {
@@ -1581,6 +1595,7 @@ class acf_admin_field_group extends \ACF_Admin_Internal_Post_Type
      * Renders HTML for the ACF PRO features upgrade notice.
      *
      * @return void
+     * @phpstan-return void
      */
     public function include_pro_features()
     {
@@ -1665,6 +1680,7 @@ class acf_admin_field_group extends \ACF_Admin_Internal_Post_Type
      * @since   5.0.0
      *
      * @return void
+     * @phpstan-return never
      */
     public function ajax_render_location_rule()
     {
@@ -1675,6 +1691,7 @@ class acf_admin_field_group extends \ACF_Admin_Internal_Post_Type
      * @since   5.0.0
      *
      * @return void
+     * @phpstan-return never
      */
     public function ajax_render_field_settings()
     {
@@ -1685,6 +1702,7 @@ class acf_admin_field_group extends \ACF_Admin_Internal_Post_Type
      * @since   5.0.0
      *
      * @return void No return, HTML output for AJAX consumption.
+     * @phpstan-return never
      */
     public function ajax_move_field()
     {
@@ -1728,6 +1746,7 @@ class ACF_Admin_Field_Groups extends \ACF_Admin_Internal_Post_Type_List
      * Renders HTML for the ACF PRO features upgrade notice.
      *
      * @return void
+     * @phpstan-return void
      */
     public function include_pro_features()
     {
@@ -1795,6 +1814,7 @@ class ACF_Admin_Field_Groups extends \ACF_Admin_Internal_Post_Type_List
      *
      * @param array $field_group The main field group array.
      * @return void
+     * @phpstan-return void
      */
     public function render_admin_table_column_num_fields($field_group)
     {
@@ -2077,6 +2097,7 @@ class ACF_Admin_Post_Types extends \ACF_Admin_Internal_Post_Type_List
      * Renders HTML for the ACF PRO features upgrade notice.
      *
      * @return void
+     * @phpstan-return void
      */
     public function include_pro_features()
     {
@@ -2087,6 +2108,7 @@ class ACF_Admin_Post_Types extends \ACF_Admin_Internal_Post_Type_List
      * @since   6.1
      *
      * @return  void
+     * @phpstan-return void
      */
     public function current_screen()
     {
@@ -2131,6 +2153,7 @@ class ACF_Admin_Post_Types extends \ACF_Admin_Internal_Post_Type_List
      *
      * @param array $post_type The main post type array.
      * @return void
+     * @phpstan-return void
      */
     public function render_admin_table_column_field_groups($post_type)
     {
@@ -2142,6 +2165,7 @@ class ACF_Admin_Post_Types extends \ACF_Admin_Internal_Post_Type_List
      *
      * @param array $post_type The main post type array.
      * @return void
+     * @phpstan-return void
      */
     public function render_admin_table_column_taxonomies($post_type)
     {
@@ -2153,6 +2177,7 @@ class ACF_Admin_Post_Types extends \ACF_Admin_Internal_Post_Type_List
      *
      * @param array $post_type The main post type array.
      * @return void
+     * @phpstan-return void
      */
     public function render_admin_table_column_num_posts($post_type)
     {
@@ -2221,6 +2246,7 @@ class ACF_Admin_Taxonomies extends \ACF_Admin_Internal_Post_Type_List
      * Renders HTML for the ACF PRO features upgrade notice.
      *
      * @return void
+     * @phpstan-return void
      */
     public function include_pro_features()
     {
@@ -2231,6 +2257,7 @@ class ACF_Admin_Taxonomies extends \ACF_Admin_Internal_Post_Type_List
      * @since   6.1
      *
      * @return  void
+     * @phpstan-return void
      */
     public function current_screen()
     {
@@ -2275,6 +2302,7 @@ class ACF_Admin_Taxonomies extends \ACF_Admin_Internal_Post_Type_List
      *
      * @param array $taxonomy The main taxonomy array.
      * @return void
+     * @phpstan-return void
      */
     public function render_admin_table_column_field_groups($taxonomy)
     {
@@ -2286,6 +2314,7 @@ class ACF_Admin_Taxonomies extends \ACF_Admin_Internal_Post_Type_List
      *
      * @param array $taxonomy The main taxonomy array.
      * @return void
+     * @phpstan-return void
      */
     public function render_admin_table_column_post_types($taxonomy)
     {
@@ -2297,6 +2326,7 @@ class ACF_Admin_Taxonomies extends \ACF_Admin_Internal_Post_Type_List
      *
      * @param array $taxonomy The main taxonomy array.
      * @return void
+     * @phpstan-return void
      */
     public function render_admin_table_column_num_terms($taxonomy)
     {
@@ -3041,6 +3071,7 @@ class ACF_Ajax
      *
      * @param   WP_Error error The error object.
      * @return  void
+     * @phpstan-return never
      */
     function send_error($error)
     {
@@ -3450,6 +3481,7 @@ class ACF_Assets
      *
      * @param   void
      * @return  void
+     * @phpstan-return void
      */
     public function enqueue_uploader()
     {
@@ -3486,6 +3518,7 @@ class ACF_Assets
      *
      * @param   void
      * @return  void
+     * @phpstan-return void
      */
     public function print_footer_scripts()
     {
@@ -4464,6 +4497,7 @@ class acf_field_button_group extends \acf_field
      *
      *  @param   array $field The field settings array
      *  @return  void
+     * @phpstan-return void
      */
     function render_field($field)
     {
@@ -9587,6 +9621,7 @@ class ACF_Form_Post
      *
      *  @param   void
      *  @return  void
+     * @phpstan-return void
      */
     function initialize()
     {
@@ -9837,6 +9872,7 @@ class ACF_Form_User
      *
      *  @param   void
      *  @return  void
+     * @phpstan-return void
      */
     function admin_enqueue_scripts()
     {
@@ -12098,6 +12134,7 @@ class ACF_Post_Type extends \ACF_Internal_Post_Type
      * @since 6.1
      *
      * @param array $post The main post type array.
+     * @phpstan-return void
      */
     public function flush_post_cache($post)
     {
@@ -12242,6 +12279,7 @@ class ACF_Taxonomy extends \ACF_Internal_Post_Type
      * @since 6.1
      *
      * @param array $post The main post type array.
+     * @phpstan-return void
      */
     public function flush_post_cache($post)
     {
@@ -12279,6 +12317,7 @@ class ACF_Rest_Api
     }
     /**
      * Register our custom property as a REST field.
+     * @phpstan-return void
      */
     public function register_field()
     {
@@ -12344,6 +12383,7 @@ class ACF_Rest_Embed_Links
      *
      * @param       $post_id
      * @param array   $field
+     * @phpstan-return void
      */
     public function prepare_links($post_id, array $field)
     {
@@ -12870,6 +12910,7 @@ class acf_validation
      * @since   5.4.0
      *
      * @return  void
+     * @phpstan-return void
      */
     public function acf_validate_save_post()
     {
@@ -13047,6 +13088,7 @@ class ACF_WPML_Compatibility
      *  @param   array  $field_group The new field group array.
      *  @param   object $ofg The old field group WP_Post object.
      *  @return  void
+     * @phpstan-return void
      */
     function upgrade_500_field_group($field_group, $ofg)
     {
@@ -13089,6 +13131,7 @@ class ACF_WPML_Compatibility
      *
      *  @param   void
      *  @return  void
+     * @phpstan-return void
      */
     function icl_make_duplicate($master_post_id, $lang, $postarr, $id)
     {
@@ -13358,6 +13401,7 @@ class ACF_Admin_Updates
      *
      * @param   WP_Error $wp_error The error to display.
      * @return  void
+     * @phpstan-return void
      */
     function display_wp_error($wp_error)
     {
@@ -13387,6 +13431,7 @@ class ACF_Admin_Updates
      *
      * @param   void
      * @return  void
+     * @phpstan-return void
      */
     function admin_menu()
     {
@@ -14668,6 +14713,7 @@ class acf_field_repeater extends \acf_field
      *
      * @param array $field The main field array.
      * @return void
+     * @phpstan-return void
      */
     function delete_field($field)
     {
@@ -14682,6 +14728,7 @@ class acf_field_repeater extends \acf_field
      * @param string $key     The meta name/key (unused).
      * @param array  $field   The main field array.
      * @return void
+     * @phpstan-return void
      */
     function delete_value($post_id, $key, $field)
     {
@@ -14808,6 +14855,7 @@ class acf_field_repeater extends \acf_field
      * @since 6.0.0
      *
      * @return void|WP_Error
+     * @phpstan-return never
      */
     public function ajax_get_rows()
     {
@@ -14847,6 +14895,7 @@ class ACF_Repeater_Table
      * @since 6.0.0
      *
      * @return void
+     * @phpstan-return void
      */
     public function thead()
     {
@@ -14882,6 +14931,7 @@ class ACF_Repeater_Table
      *
      * @param int $i The current row number.
      * @return void
+     * @phpstan-return void
      */
     public function row_handle($i)
     {
@@ -14892,6 +14942,7 @@ class ACF_Repeater_Table
      * @since 6.0.0
      *
      * @return void
+     * @phpstan-return void
      */
     public function row_actions()
     {
@@ -14902,6 +14953,7 @@ class ACF_Repeater_Table
      * @since 6.0.0
      *
      * @return void
+     * @phpstan-return void
      */
     public function table_actions()
     {
@@ -14913,6 +14965,7 @@ class ACF_Repeater_Table
      * @since 6.0.0
      *
      * @return void
+     * @phpstan-return void
      */
     public function pagination()
     {
@@ -15130,6 +15183,7 @@ class acf_pro_updates
      *  @type    function
      *  @date    10/4/17
      *  @since   5.5.10
+     * @phpstan-return void
      */
     function init()
     {
@@ -15363,6 +15417,7 @@ function acf_render_fields($fields, $post_id = 0, $el = 'div', $instruction = 'l
  * @param   string $instruction   The instruction render position (label|field).
  * @param   bool   $field_setting If a field setting is being rendered.
  * @return  void
+ * @phpstan-return void
  */
 function acf_render_field_wrap($field, $element = 'div', $instruction = 'label', $field_setting = \false)
 {
@@ -15377,6 +15432,7 @@ function acf_render_field_wrap($field, $element = 'div', $instruction = 'label',
  *
  * @param   array $field The field array.
  * @return  void
+ * @phpstan-return void
  */
 function acf_render_field($field)
 {
@@ -18331,6 +18387,7 @@ function acf_preview_value($value, $post_id, $field)
  * @param string $function The function that noticed the problem.
  *
  * @return void
+ * @phpstan-return void
  */
 function acf_log_invalid_field_notice($field, $function)
 {
@@ -19466,6 +19523,7 @@ function acf_isset_termmeta($taxonomy = '')
  *
  * @param array $ancestors An internal parameter, not required.
  * @return void
+ * @phpstan-return void
  */
 function acf_upload_files($ancestors = array())
 {
@@ -20281,6 +20339,8 @@ function get_field_objects($post_id = \false, $format_value = \true, $load_value
  * @param   string $selector The field name or field key.
  * @param   mixed  $post_id The post ID where the value is saved. Defaults to the current post.
  * @return  bool
+ * @phpstan-impure
+ * @phpstan-return bool
  */
 function have_rows($selector, $post_id = \false)
 {
@@ -22291,6 +22351,7 @@ function acf_upgrade_550()
  *
  *  @param   void
  *  @return  void
+ * @phpstan-return void
  */
 function acf_upgrade_550_termmeta()
 {
@@ -22648,6 +22709,7 @@ function acf_enqueue_block_type_assets($block_type)
  * @since   5.7.13
  *
  * @return  void
+ * @phpstan-return never
  */
 function acf_ajax_fetch_block()
 {
@@ -22834,6 +22896,7 @@ function acf_pro_get_activation_failure_transient()
  *
  * @date    11/10/2021
  * @since   5.11.0
+ * @phpstan-return void
  */
 function acf_pro_display_activation_error()
 {
@@ -22941,6 +23004,7 @@ function acf_pro_deactivate_license($silent = \false)
  * @since   5.7.10
  *
  * @param   WP_Error $wp_error The error to display.
+ * @phpstan-return void
  */
 function display_wp_activation_error($wp_error)
 {
