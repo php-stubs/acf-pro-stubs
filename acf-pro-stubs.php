@@ -16,7 +16,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.2.2';
+    public $version = '6.2.3';
     /**
      * The plugin settings array.
      *
@@ -1236,17 +1236,16 @@ class acf_admin_tools
     {
     }
     /**
-     *  meta_box_html
+     * Output the metabox HTML for specific tools
      *
-     *  description
+     * @since 5.6.3
      *
-     *  @date    10/10/17
-     *  @since   5.6.3
+     * @param mixed $post    The post this metabox is being displayed on, should be an empty string always for us on a tools page.
+     * @param array $metabox An array of the metabox attributes.
      *
-     *  @param   void
-     *  @return  void
+     * @return void
      */
-    function metabox_html($post, $metabox)
+    public function metabox_html($post, $metabox)
     {
     }
 }
@@ -13366,6 +13365,7 @@ class acf_pro
      * @since 6.2.1
      *
      * @return void
+     * @phpstan-return void
      */
     public function maybe_show_license_status_error()
     {
@@ -20248,6 +20248,16 @@ function acf_is_screen($id = '')
 {
 }
 /**
+ * Check if we're in an ACF admin screen
+ *
+ * @since  6.2.2
+ *
+ * @return boolean Returns true if the current screen is an ACF admin screen.
+ */
+function acf_is_acf_admin_screen()
+{
+}
+/**
 *  acf_maybe_get
 *
 *  This function will return a var if it exists in an array
@@ -20521,17 +20531,14 @@ function acf_is_ajax($action = '')
 {
 }
 /**
-*  acf_format_date
-*
-*  This function will accept a date value and return it in a formatted string
-*
-*  @type    function
-*  @date    16/06/2016
-*  @since   5.3.8
-*
-*  @param   string $value
-*  @return  string $format
-*/
+ * Returns a date value in a formatted string.
+ *
+ * @since 5.3.8
+ *
+ * @param string $value  The date value to format.
+ * @param string $format The format to use.
+ * @return string
+ */
 function acf_format_date($value, $format)
 {
 }
@@ -23812,6 +23819,17 @@ function acf_pro_check_defined_license()
 {
 }
 /**
+ * Get translated upstream message
+ *
+ * @since   6.2.3
+ * @param   string $text server side message string.
+ *
+ * @return  string a translated (or original, if unavailable), message string.
+ */
+function acf_pro_get_translated_connect_message($text)
+{
+}
+/**
  *  Set the automatic activation failure transient
  *
  *  @date    11/10/2021
@@ -23843,7 +23861,7 @@ function acf_pro_get_activation_failure_transient()
  * @since   5.11.0
  * @phpstan-return void
  */
-function acf_pro_display_activation_error()
+function acf_pro_display_activation_error($screen)
 {
 }
 /**
@@ -23859,11 +23877,11 @@ function acf_pro_get_license()
 {
 }
 /**
- * An ACF specific getter to replace `home_url` in our licence checks to ensure we can avoid third party filters.
+ * An ACF specific getter to replace `home_url` in our license checks to ensure we can avoid third party filters.
  *
  * @since 6.0.1
  *
- * @return string $home_url The output from home_url, sans known third party filters which cause licence activation issues.
+ * @return string $home_url The output from home_url, sans known third party filters which cause license activation issues.
  */
 function acf_get_home_url()
 {
@@ -23873,23 +23891,21 @@ function acf_get_home_url()
  *
  * @since 6.0.1
  *
- * @param string $home_url the WPML converted home URL.
+ * @param string $home_url the multilingual plugin converted home URL.
  * @param string $url the original home URL.
  *
  * @return string $url
  */
-function acf_licence_wpml_intercept($home_url, $url)
+function acf_license_ml_intercept($home_url, $url)
 {
 }
 /**
- *  This function will return the license key
+ * Returns the license key.
  *
- *  @type    function
- *  @date    20/09/2016
- *  @since   5.4.0
+ * @since 5.4.0
  *
- *  @param   boolean $skip_url_check Skip the check of the current site url.
- *  @return  string $license_key
+ * @param boolean $skip_url_check Skip the check of the current site url.
+ * @return string|bool License key on success, or false on failure.
  */
 function acf_pro_get_license_key($skip_url_check = \false)
 {
@@ -23919,14 +23935,14 @@ function acf_pro_get_registered_block_count()
  * Activates the submitted license key
  * Formally ACF_Admin_Updates::activate_pro_licence since 5.0.0
  *
- * @date    30/09/2021
  * @since   5.11.0
  *
- * @param   string  $license_key    License key to activate
- * @param   boolean $silent         Return errors rather than displaying them
- * @return  mixed   $response       A wp-error instance, or an array with a boolean success key, and string message key
+ * @param   string  $license_key    License key to activate.
+ * @param   boolean $silent         Return errors rather than displaying them.
+ * @param   boolean $automatic      True if this activation is happening automatically.
+ * @return  mixed   $response       A wp-error instance, or an array with a boolean success key, and string message key.
  */
-function acf_pro_activate_license($license_key, $silent = \false)
+function acf_pro_activate_license($license_key, $silent = \false, $automatic = \false)
 {
 }
 /**
@@ -24028,5 +24044,39 @@ function acf_pro_is_license_expired($status = array())
  * @return bool True if refunded, false if not.
  */
 function acf_pro_was_license_refunded($status = array())
+{
+}
+/**
+ * Checks if the `home_url` has changed since license activation.
+ *
+ * @since 6.2.2
+ *
+ * @param array  $license Optional ACF license array.
+ * @param string $url     An optional URL to provide.
+ * @return bool           True if the URL has changed, false otherwise.
+ */
+function acf_pro_has_license_url_changed($license = array(), $url = '')
+{
+}
+/**
+ * Attempts to reactivate the license if the URL has changed.
+ *
+ * @since 6.2.3
+ *
+ * @return void
+ * @phpstan-return void
+ */
+function acf_pro_maybe_reactivate_license()
+{
+}
+/**
+ * Gets the URL to the "My Account" section for an ACF license.
+ *
+ * @since 6.2.3
+ *
+ * @param array $status Optional license status array.
+ * @return string
+ */
+function acf_pro_get_manage_license_url($status = array())
 {
 }
