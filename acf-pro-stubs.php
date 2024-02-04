@@ -16,7 +16,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.1.8';
+    public $version = '6.2.0';
     /**
      * The plugin settings array.
      *
@@ -281,6 +281,12 @@ class ACF_Admin_Internal_Post_Type_List
      * @var string
      */
     public $store = '';
+    /**
+     * If this is a pro feature or not.
+     *
+     * @var bool
+     */
+    public $is_pro_feature = \false;
     /**
      * Constructs the class.
      */
@@ -1462,10 +1468,21 @@ class ACF_Admin
      * @date    7/4/20
      * @since   5.9.0
      *
-     * @param   string $text The admin footer text.
+     * @param   string $text The current admin footer text.
      * @return  string
      */
-    function admin_footer_text($text)
+    public function admin_footer_text($text)
+    {
+    }
+    /**
+     * Modifies the admin footer version text.
+     *
+     * @since 6.2
+     *
+     * @param   string $text The current admin footer version text.
+     * @return  string
+     */
+    public function admin_footer_version_text($text)
     {
     }
     /**
@@ -6691,18 +6708,13 @@ class acf_field_password extends \acf_field
 class acf_field_post_object extends \acf_field
 {
     /**
-     *  __construct
-     *
      *  This function will setup the field type data
      *
      *  @type    function
      *  @date    5/03/2014
      *  @since   5.0.0
-     *
-     *  @param   void
-     *  @return  void
      */
-    function initialize()
+    public function initialize()
     {
     }
     /**
@@ -6809,6 +6821,17 @@ class acf_field_post_object extends \acf_field
     {
     }
     /**
+     * Renders the field settings used in the "Advanced" tab.
+     *
+     * @since 6.2
+     *
+     * @param array $field The field settings array.
+     * @return void
+     */
+    public function render_field_advanced_settings($field)
+    {
+    }
+    /**
      *  load_value()
      *
      *  This filter is applied to the $value after it is loaded from the db
@@ -6844,21 +6867,17 @@ class acf_field_post_object extends \acf_field
     {
     }
     /**
-     *  update_value()
+     * Filters the field value before it is saved into the database.
      *
-     *  This filter is appied to the $value before it is updated in the db
+     * @since 3.6
      *
-     *  @type    filter
-     *  @since   3.6
-     *  @date    23/01/13
+     * @param mixed $value The value which will be saved in the database.
+     * @param int   $post_id The post_id of which the value will be saved.
+     * @param array $field The field array holding all the field options.
      *
-     *  @param   $value - the value which will be saved in the database
-     *  @param   $post_id - the $post_id of which the value will be saved
-     *  @param   $field - the field array holding all the field options
-     *
-     *  @return  $value - the modified value
+     * @return mixed $value The modified value.
      */
-    function update_value($value, $post_id, $field)
+    public function update_value($value, $post_id, $field)
     {
     }
     /**
@@ -7179,18 +7198,13 @@ class acf_field_range extends \acf_field_number
 class acf_field_relationship extends \acf_field
 {
     /**
-     *  __construct
-     *
      *  This function will setup the field type data
      *
      *  @type    function
      *  @date    5/03/2014
      *  @since   5.0.0
-     *
-     *  @param   void
-     *  @return  void
      */
-    function initialize()
+    public function initialize()
     {
     }
     /**
@@ -7323,6 +7337,17 @@ class acf_field_relationship extends \acf_field
     {
     }
     /**
+     * Renders the field settings used in the "Advanced" tab.
+     *
+     * @since 6.2
+     *
+     * @param array $field The field settings array.
+     * @return void
+     */
+    public function render_field_advanced_settings($field)
+    {
+    }
+    /**
      *  format_value()
      *
      *  This filter is applied to the $value after it is loaded from the db and before it is returned to the template
@@ -7356,21 +7381,17 @@ class acf_field_relationship extends \acf_field
     {
     }
     /**
-     *  update_value()
+     * Filters the field value before it is saved into the database.
      *
-     *  This filter is applied to the $value before it is updated in the db
+     * @since 3.6
      *
-     *  @type    filter
-     *  @since   3.6
-     *  @date    23/01/13
+     * @param mixed $value The value which will be saved in the database.
+     * @param int   $post_id The post_id of which the value will be saved.
+     * @param array $field The field array holding all the field options.
      *
-     *  @param   $value - the value which will be saved in the database
-     *  @param   $post_id - the post_id of which the value will be saved
-     *  @param   $field - the field array holding all the field options
-     *
-     *  @return  $value - the modified value
+     * @return mixed $value The modified value.
      */
-    function update_value($value, $post_id, $field)
+    public function update_value($value, $post_id, $field)
     {
     }
     /**
@@ -7464,18 +7485,14 @@ class acf_field_select extends \acf_field
     {
     }
     /**
-     *  get_ajax_query
+     * This function will return an array of data formatted for use in a select2 AJAX response
      *
-     *  This function will return an array of data formatted for use in a select2 AJAX response
+     * @since   5.0.9
      *
-     *  @type    function
-     *  @date    15/10/2014
-     *  @since   5.0.9
-     *
-     *  @param   array $options
-     *  @return  array
+     * @param array $options An array of options.
+     * @return array A select2 compatible array of options.
      */
-    function get_ajax_query($options = array())
+    public function get_ajax_query($options = array())
     {
     }
     /**
@@ -7630,9 +7647,20 @@ class acf_field_select extends \acf_field
     {
     }
     /**
+     * Formats the choices available for the REST API.
+     *
+     * @since 6.2
+     *
+     * @param array $choices The choices for the field.
+     * @return array
+     */
+    public function format_rest_choices($choices)
+    {
+    }
+    /**
      * Return the schema array for the REST API.
      *
-     * @param array $field
+     * @param array $field The main field array.
      * @return array
      */
     public function get_rest_schema(array $field)
@@ -7756,18 +7784,13 @@ class acf_field_taxonomy extends \acf_field
     // vars
     var $save_post_terms = array();
     /**
-     *  __construct
-     *
      *  This function will setup the field type data
      *
      *  @type    function
      *  @date    5/03/2014
      *  @since   5.0.0
-     *
-     *  @param   void
-     *  @return  void
      */
-    function initialize()
+    public function initialize()
     {
     }
     /**
@@ -7848,21 +7871,17 @@ class acf_field_taxonomy extends \acf_field
     {
     }
     /**
-     *  update_value()
+     * Filters the field value before it is saved into the database.
      *
-     *  This filter is appied to the $value before it is updated in the db
+     * @since 3.6
      *
-     *  @type    filter
-     *  @since   3.6
-     *  @date    23/01/13
+     * @param mixed $value The value which will be saved in the database.
+     * @param int   $post_id The post_id of which the value will be saved.
+     * @param array $field The field array holding all the field options.
      *
-     *  @param   $value - the value which will be saved in the database
-     *  @param   $field - the field array holding all the field options
-     *  @param   $post_id - the $post_id of which the value will be saved
-     *
-     *  @return  $value - the modified value
+     * @return mixed $value The modified value.
      */
-    function update_value($value, $post_id, $field)
+    public function update_value($value, $post_id, $field)
     {
     }
     /**
@@ -7947,6 +7966,17 @@ class acf_field_taxonomy extends \acf_field
      *  @param   $field  - an array holding all the field's data
      */
     function render_field_settings($field)
+    {
+    }
+    /**
+     * Renders the field settings used in the "Advanced" tab.
+     *
+     * @since 6.2
+     *
+     * @param array $field The field settings array.
+     * @return void
+     */
+    public function render_field_advanced_settings($field)
     {
     }
     /**
@@ -8496,9 +8526,6 @@ class ACF_Field_User extends \ACF_Field
      *
      * @date    5/03/2014
      * @since   5.0.0
-     *
-     * @param   void
-     * @return  void
      */
     function initialize()
     {
@@ -8524,6 +8551,17 @@ class ACF_Field_User extends \ACF_Field
      * @return void
      */
     function render_field_validation_settings($field)
+    {
+    }
+    /**
+     * Renders the field settings used in the "Advanced" tab.
+     *
+     * @since 6.2
+     *
+     * @param array $field The field settings array.
+     * @return void
+     */
+    public function render_field_advanced_settings($field)
     {
     }
     /**
@@ -8583,15 +8621,15 @@ class ACF_Field_User extends \ACF_Field
     /**
      * Filters the field value before it is saved into the database.
      *
-     * @date    23/01/13
      * @since   3.6.0
      *
      * @param   mixed $value The field value.
      * @param   mixed $post_id The post ID where the value is saved.
      * @param   array $field The field array containing all settings.
-     * @return  mixed
+     *
+     * @return mixed $value The modified value.
      */
-    function update_value($value, $post_id, $field)
+    public function update_value($value, $post_id, $field)
     {
     }
     /**
@@ -10183,6 +10221,28 @@ class ACF_Local_JSON
     {
     }
     /**
+     * Gets the path(s) to load JSON from.
+     *
+     * @since 6.2
+     *
+     * @return array
+     */
+    public function get_load_paths()
+    {
+    }
+    /**
+     * Gets the path(s) to save JSON to.
+     *
+     * @since 6.2
+     *
+     * @param string $key  The key to get paths for (optional).
+     * @param array  $post The main ACF post array (optional).
+     * @return array
+     */
+    public function get_save_paths($key = '', $post = array())
+    {
+    }
+    /**
      * Writes field group data to JSON file.
      *
      * @date    14/4/20
@@ -10313,10 +10373,11 @@ class ACF_Local_JSON
      * @date 17/4/20
      * @since 5.9.0
      *
-     * @param string $key The ACF post key.
-     * @return bool True on success.
+     * @param string $key  The ACF post key.
+     * @param array  $post The main ACF post array.
+     * @return bool
      */
-    public function delete_file($key)
+    public function delete_file($key, $post = array())
     {
     }
     /**
@@ -13185,6 +13246,25 @@ class acf_pro
     {
     }
     /**
+     * Registers the `acf-ui-options-page` post type and initializes the UI.
+     *
+     * @since 6.2
+     *
+     * @return void
+     * @phpstan-return void
+     */
+    public function register_ui_options_pages()
+    {
+    }
+    /**
+     * Action to include JSON options pages.
+     *
+     * @since 6.2
+     */
+    public function include_options_pages()
+    {
+    }
+    /**
      * Includes any files necessary for field types.
      *
      * @date  21/10/2015
@@ -13209,18 +13289,13 @@ class acf_pro
     {
     }
     /**
-     *  register_assets
+     * Registers styles and scripts used by ACF PRO.
      *
-     *  description
+     * @since 5.0.0
      *
-     *  @type    function
-     *  @date    4/11/2013
-     *  @since   5.0.0
-     *
-     *  @param   int $post_id
-     *  @return  int $post_id
+     * @return void
      */
-    function register_assets()
+    public function register_assets()
     {
     }
     /**
@@ -13251,6 +13326,18 @@ class acf_pro
      *  @return  int $post_id
      */
     function field_group_admin_enqueue_scripts()
+    {
+    }
+    /**
+     * Filters the $where clause allowing for custom WP_Query args.
+     *
+     * @since 6.2
+     *
+     * @param  string   $where    The WHERE clause.
+     * @param  WP_Query $wp_query The query object.
+     * @return string
+     */
+    public function posts_where($where, $wp_query)
     {
     }
 }
@@ -13473,6 +13560,320 @@ class ACF_Admin_Updates
      * @return  void
      */
     function html()
+    {
+    }
+}
+/**
+ * ACF Admin UI Options Page Class
+ *
+ * All the logic for editing an options page in the UI.
+ */
+class ACF_Admin_UI_Options_Page extends \ACF_Admin_Internal_Post_Type
+{
+    /**
+     * The slug for the internal post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $post_type = 'acf-ui-options-page';
+    /**
+     * The admin body class used for the post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $admin_body_class = 'acf-admin-single-options-page';
+    /**
+     * Constructs the class.
+     */
+    public function __construct()
+    {
+    }
+    /**
+     * This function will customize the message shown when editing a post type.
+     *
+     * @since 5.0.0
+     *
+     * @param array $messages Post type messages.
+     * @return array
+     */
+    public function post_updated_messages($messages)
+    {
+    }
+    /**
+     * Renders the options page created message.
+     *
+     * @since 6.1
+     *
+     * @param bool $created True if the options page was just created.
+     * @return string
+     */
+    public function options_page_created_message($created = \false)
+    {
+    }
+    /**
+     * Enqueues any scripts necessary for internal post type.
+     *
+     * @since 5.0.0
+     *
+     * @return void
+     */
+    public function admin_enqueue_scripts()
+    {
+    }
+    /**
+     * Sets up all functionality for the post type edit page to work.
+     *
+     * @since   3.1.8
+     *
+     * @return  void
+     */
+    public function admin_head()
+    {
+    }
+    /**
+     * This action will allow ACF to render metaboxes after the title.
+     *
+     * @return void
+     */
+    public function edit_form_after_title()
+    {
+    }
+    /**
+     * This function will add extra HTML to the acf form data element
+     *
+     *  @since   5.3.8
+     *
+     *  @param array $args Arguments array to pass through to action.
+     *  @return void
+     */
+    public function form_data($args)
+    {
+    }
+    /**
+     * This function will append extra l10n strings to the acf JS object
+     *
+     * @since   5.3.8
+     *
+     * @param array $l10n The array of translated strings.
+     * @return array $l10n
+     */
+    public function admin_l10n($l10n)
+    {
+    }
+    /**
+     * Admin footer third party hook support
+     *
+     * @since   5.3.2
+     *
+     * @return void
+     */
+    public function admin_footer()
+    {
+    }
+    /**
+     * Screen settings html output
+     *
+     * @since   3.6.0
+     *
+     * @param string $html Current screen settings HTML.
+     * @return string $html
+     */
+    public function screen_settings($html)
+    {
+    }
+    /**
+     * Sets the "Edit Post Type" screen to use a one-column layout.
+     *
+     * @param int $columns Number of columns for layout.
+     *
+     * @return int
+     */
+    public function screen_layout($columns = 0)
+    {
+    }
+    /**
+     * Force basic settings to always be visible
+     *
+     * @param array $hidden_metaboxes The metaboxes hidden on this page.
+     *
+     * @return array
+     */
+    public function force_basic_settings($hidden_metaboxes)
+    {
+    }
+    /**
+     * Force advanced settings to be visible
+     *
+     * @param array $hidden_metaboxes The metaboxes hidden on this page.
+     *
+     * @return array
+     */
+    public function force_advanced_settings($hidden_metaboxes)
+    {
+    }
+    /**
+     * This function will customize the publish metabox
+     *
+     * @since   5.2.9
+     *
+     * @return void
+     */
+    public function post_submitbox_misc_actions()
+    {
+    }
+    /**
+     * Saves post type data.
+     *
+     * @since 1.0.0
+     *
+     * @param int     $post_id The post ID.
+     * @param WP_Post $post    The post object.
+     *
+     * @return int $post_id
+     */
+    public function save_post($post_id, $post)
+    {
+    }
+    /**
+     * Renders HTML for the basic settings metabox.
+     *
+     * @since 5.0.0
+     *
+     * @return void
+     */
+    public function mb_basic_settings()
+    {
+    }
+    /**
+     * Renders the HTML for the advanced settings metabox.
+     *
+     * @since 5.0.0
+     *
+     * @return void
+     */
+    public function mb_advanced_settings()
+    {
+    }
+    /**
+     * Iterates through the registered options pages and finds eligible parent pages.
+     *
+     * @since 6.2
+     *
+     * @param string $menu_slug Optional menu_slug of an existing options page.
+     * @return array
+     */
+    public static function get_parent_page_choices($menu_slug = '')
+    {
+    }
+    /**
+     * Creates a simple options page over AJAX.
+     *
+     * @since 6.2
+     * @return void
+     * @phpstan-return never
+     */
+    public function ajax_create_options_page()
+    {
+    }
+}
+/**
+ * The ACF Post Types admin controller class
+ */
+#[\AllowDynamicProperties]
+class ACF_Admin_UI_Options_Pages extends \ACF_Admin_Internal_Post_Type_List
+{
+    /**
+     * The slug for the internal post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $post_type = 'acf-ui-options-page';
+    /**
+     * The admin body class used for the post type.
+     *
+     * @since 6.1
+     * @var string
+     */
+    public $admin_body_class = 'acf-admin-options-pages';
+    /**
+     * The name of the store used for the post type.
+     *
+     * @var string
+     */
+    public $store = 'options-pages';
+    /**
+     * If this is a pro feature or not.
+     *
+     * @var bool
+     */
+    public $is_pro_feature = \true;
+    /**
+     * Constructor.
+     *
+     * @since   6.2
+     *
+     * @return  void
+     */
+    public function __construct()
+    {
+    }
+    /**
+     * Current screen actions for the post types list admin page.
+     *
+     * @since   6.1
+     *
+     * @return  void
+     * @phpstan-return void
+     */
+    public function current_screen()
+    {
+    }
+    /**
+     * Add any menu items required for post types.
+     *
+     * @since 6.1
+     */
+    public function admin_menu()
+    {
+    }
+    /**
+     * Customizes the admin table columns.
+     *
+     * @date    1/4/20
+     * @since   5.9.0
+     *
+     * @param array $_columns The columns array.
+     * @return array
+     */
+    public function admin_table_columns($_columns)
+    {
+    }
+    /**
+     * Renders a specific admin table column.
+     *
+     * @date    17/4/20
+     * @since   5.9.0
+     *
+     * @param string $column_name The name of the column to display.
+     * @param array  $post        The main ACF post array.
+     * @return void
+     */
+    public function render_admin_table_column($column_name, $post)
+    {
+    }
+    /**
+     * Gets the translated action notice text for list table actions (activate, deactivate, sync, etc.).
+     *
+     * @since 6.1
+     *
+     * @param string $action The action being performed.
+     * @param int    $count  The number of items the action was performed on.
+     * @return string
+     */
+    public function get_action_notice_text($action, $count = 1)
     {
     }
 }
@@ -15161,6 +15562,153 @@ class acf_options_page
     {
     }
 }
+class ACF_UI_Options_Page extends \ACF_Internal_Post_Type
+{
+    /**
+     * The ACF internal post type name.
+     *
+     * @var string
+     */
+    public $post_type = 'acf-ui-options-page';
+    /**
+     * The prefix for the key used in the main post array.
+     *
+     * @var string
+     */
+    public $post_key_prefix = 'ui_options_page_';
+    /**
+     * The cache key for a singular post.
+     *
+     * @var string
+     */
+    public $cache_key = 'acf_get_ui_options_page_post:key:';
+    /**
+     * The cache key for a collection of posts.
+     *
+     * @var string
+     */
+    public $cache_key_plural = 'acf_get_ui_options_page_posts';
+    /**
+     * The hook name for a singular post.
+     *
+     * @var string
+     */
+    public $hook_name = 'ui_options_page';
+    /**
+     * The hook name for a collection of posts.
+     *
+     * @var string
+     */
+    public $hook_name_plural = 'ui_options_pages';
+    /**
+     * The name of the store used for the post type.
+     *
+     * @var string
+     */
+    public $store = 'ui-options-pages';
+    /**
+     * Constructs the class and any parent classes.
+     *
+     * @since 5.0.0
+     */
+    public function __construct()
+    {
+    }
+    /**
+     * Registers the acf-ui-options-page custom post type with WordPress.
+     *
+     * @since 6.2
+     */
+    public function register_post_type()
+    {
+    }
+    /**
+     * Register activated options pages.
+     *
+     * @since 6.2
+     */
+    public function register_ui_options_pages()
+    {
+    }
+    /**
+     * Gets the default settings array for an ACF options page.
+     *
+     * @return array
+     */
+    public function get_settings_array()
+    {
+    }
+    /**
+     * Validates options page values before allowing save from the global $_POST object.
+     * Errors are added to the form using acf_add_internal_post_type_validation_error().
+     *
+     * @since 6.2
+     *
+     * @return bool validity status
+     */
+    public function ajax_validate_values()
+    {
+    }
+    /**
+     * Updates the settings for ACF UI options pages.
+     *
+     * @since 6.2
+     *
+     * @param array $post The ACF post to update.
+     * @return array
+     */
+    public function update_post($post)
+    {
+    }
+    /**
+     * Sets up the local JSON functionality for options pages.
+     *
+     * @since 6.2
+     *
+     * @param ACF_Local_JSON $local_json The ACF_Local_JSON object.
+     * @return void
+     */
+    public function setup_local_json()
+    {
+    }
+    /**
+     * Includes all local JSON options pages.
+     *
+     * @since 6.1
+     *
+     * @return void
+     * @phpstan-return void
+     */
+    public function include_json_options_pages()
+    {
+    }
+    /**
+     * Returns a string that can be used to create an options page with PHP.
+     *
+     * @since 6.2
+     *
+     * @param array $post The main options page array.
+     * @return string
+     */
+    public function export_post_as_php($post = array())
+    {
+    }
+    /**
+     * Parses ACF options page settings and returns an array of args
+     * to be handled by `acf_add_options_page()`.
+     *
+     * Omits settings that line up with the defaults to reduce the size
+     * of the array passed to `acf_add_options_page()`, which might be exported.
+     *
+     * @since 6.2
+     *
+     * @param array $post The main ACF options page settings array.
+     * @return array
+     */
+    public function get_options_page_args($post)
+    {
+    }
+}
 class acf_pro_updates
 {
     /**
@@ -15218,6 +15766,81 @@ class acf_pro_updates
  * @return  ACF
  */
 function acf()
+{
+}
+/**
+ * General functions relating to the bidirectional feature of some fields.
+ *
+ * @package ACF
+ */
+/**
+ * Process updating bidirectional fields.
+ *
+ * @since 6.2
+ *
+ * @param array        $target_item_ids The post, user or term IDs which should be updated with the origin item ID.
+ * @param int|string   $post_id The ACF encoded origin post, user or term ID.
+ * @param array        $field The field being updated on the origin post, user or term ID.
+ * @param string|false $target_prefix The ACF prefix for a post, user or term ID required for the update_field call for this field type.
+ */
+function acf_update_bidirectional_values($target_item_ids, $post_id, $field, $target_prefix = \false)
+{
+}
+/**
+ * Allows third party fields to enable support as a target field type for a particular object type
+ *
+ * @since 6.2
+ *
+ * @param string $object_type The object type that will be updated on the target field, such as 'term', 'user' or 'post'.
+ * @return array An array of valid field type names (slugs) for the target of the bidirectional field.
+ */
+function acf_get_valid_bidirectional_target_types($object_type)
+{
+}
+/**
+ * Build the complete choices argument for rendering the select2 field for bidirectional target based on the currently selected choices
+ *
+ * @since 6.2
+ *
+ * @param array $choices The currently selected choices (as an array of field keys).
+ *
+ * @return array
+ */
+function acf_build_bidirectional_target_current_choices($choices)
+{
+}
+/**
+ * Build valid fields for a bidirectional relationship for select2 display
+ *
+ * @since 6.2
+ *
+ * @param array $results The original results array.
+ * @param array $options The options provided to the select2 AJAX search.
+ *
+ * @return array
+ */
+function acf_build_bidirectional_relationship_field_target_args($results, $options)
+{
+}
+/**
+ * Renders the field settings required for bidirectional fields
+ *
+ * @since 6.2
+ *
+ * @param array $field The field object passed into field setting functions.
+ * @phpstan-return void
+ */
+function acf_render_bidirectional_field_settings($field)
+{
+}
+/**
+ * Returns the translated instructional text for the message field for the bidirectional field settings.
+ *
+ * @since 6.2
+ *
+ * @return string The html containing the instructional message.
+ */
+function acf_get_bidirectional_field_settings_instruction_text()
 {
 }
 /**
@@ -16632,6 +17255,16 @@ function acf_maybe_unserialize($data)
 {
 }
 /**
+ * Check if current install is ACF PRO
+ *
+ * @since 6.2
+ *
+ * @return boolean True if the current install is ACF PRO
+ */
+function acf_is_pro()
+{
+}
+/**
  * acf_add_filter_variations
  *
  * Registers variations for the given filter.
@@ -17381,6 +18014,16 @@ function acf_get_combined_taxonomy_settings_tabs()
 {
 }
 /**
+ * Returns an array of tabs for the options page advanced settings
+ *
+ * @since 6.2
+ *
+ * @return array
+ */
+function acf_get_combined_options_page_settings_tabs()
+{
+}
+/**
  * Converts an _acf_screen or hook value into a post type.
  *
  * @since 6.1
@@ -17407,11 +18050,12 @@ function acf_validate_internal_post_type_values($post_type)
  *
  * @since 6.1
  *
- * @param string $name    The name of the input.
- * @param string $message An optional error message to display.
+ * @param string $name      The name of the input.
+ * @param string $message   An optional error message to display.
+ * @param string $post_type Optional post type the error message is for.
  * @return void
  */
-function acf_add_internal_post_type_validation_error($name, $message = '')
+function acf_add_internal_post_type_validation_error($name, $message = '', $post_type = '')
 {
 }
 /**
@@ -17434,6 +18078,17 @@ function acf_get_post_type_from_request_args($action = '')
  * @return array|bool
  */
 function acf_get_taxonomy_from_request_args($action = '')
+{
+}
+/**
+ * Gets an ACF options page from request args and verifies nonce based on action.
+ *
+ * @since 6.2
+ *
+ * @param string $action The action being performed.
+ * @return array|bool
+ */
+function acf_get_ui_options_page_from_request_args($action = '')
 {
 }
 /**
@@ -18528,6 +19183,20 @@ function acf_get_admin_tools_url()
 *  @return  void
 */
 function acf_get_admin_tool_url($tool = '')
+{
+}
+/**
+ * Helper function for looping over the provided menu items
+ * and echoing out the necessary markup.
+ *
+ * @since 6.2
+ *
+ * @param array  $menu_items An array of menu items to print.
+ * @param string $section    The section being printed.
+ * @return void
+ * @phpstan-return void
+ */
+function acf_print_menu_section($menu_items, $section = '')
 {
 }
 /**
@@ -22454,6 +23123,255 @@ function acf_validate_values($values, $input_prefix = '')
 *  @return  void
 */
 function acf_validate_value($value, $field, $input)
+{
+}
+/**
+ * Helper/wrapper Functions for ACF UI Options pages.
+ *
+ * @package ACF
+ */
+/**
+ * Get an ACF UI options page as an array
+ *
+ * @since 6.2
+ *
+ * @param int|string $id The post ID being queried.
+ * @return array|false The UI options page array.
+ */
+function acf_get_ui_options_page($id)
+{
+}
+/**
+ * Retrieves a raw ACF UI options page.
+ *
+ * @since   6.2
+ *
+ * @param int|string $id The post ID.
+ * @return array|false The UI options page array.
+ */
+function acf_get_raw_ui_options_page($id)
+{
+}
+/**
+ * Gets a post object for an ACF UI options page.
+ *
+ * @since 6.2
+ *
+ * @param int|string $id The post ID, key, or name.
+ * @return object|bool The post object, or false on failure.
+ */
+function acf_get_ui_options_page_post($id)
+{
+}
+/**
+ * Returns true if the given identifier is an ACF UI options page key.
+ *
+ * @since 6.2
+ *
+ * @param string $id The identifier.
+ * @return bool
+ */
+function acf_is_ui_options_page_key($id)
+{
+}
+/**
+ * Validates an ACF UI options page.
+ *
+ * @since 6.2
+ *
+ * @param array $ui_options_page The ACF UI options page array to validate.
+ * @return array|bool
+ */
+function acf_validate_ui_options_page(array $ui_options_page = array())
+{
+}
+/**
+ * Translates the settings for an ACF UI options page.
+ *
+ * @since 6.2
+ *
+ * @param array $ui_options_page The ACF UI options page array.
+ * @return array
+ */
+function acf_translate_ui_options_page(array $ui_options_page)
+{
+}
+/**
+ * Returns and array of ACF UI options pages for the given $filter.
+ *
+ * @since 6.2
+ *
+ * @param array $filter An array of args to filter results by.
+ * @return array
+ */
+function acf_get_ui_options_pages(array $filter = array())
+{
+}
+/**
+ * Returns an array of raw ACF UI options pages.
+ *
+ * @since 6.2
+ *
+ * @return array
+ */
+function acf_get_raw_ui_options_pages()
+{
+}
+/**
+ * Returns a filtered array of ACF UI options pages based on the given $args.
+ *
+ * @since 6.2
+ *
+ * @param array $ui_options_pages An array of ACF UI options pages.
+ * @param array $args             An array of args to filter by.
+ * @return array
+ */
+function acf_filter_ui_options_pages(array $ui_options_pages, array $args = array())
+{
+}
+/**
+ * Updates an ACF UI options page in the database.
+ *
+ * @since 6.2
+ *
+ * @param array $ui_options_page The main ACF UI options page array.
+ * @return array
+ */
+function acf_update_ui_options_page(array $ui_options_page)
+{
+}
+/**
+ * Deletes all caches for the provided ACF UI options page.
+ *
+ * @since 6.2
+ *
+ * @param array $ui_options_page The ACF UI options page array.
+ * @return void
+ */
+function acf_flush_ui_options_page_cache(array $ui_options_page)
+{
+}
+/**
+ * Deletes an ACF UI options page from the database.
+ *
+ * @since 6.2
+ *
+ * @param int|string $id The ACF UI options page ID, key or name.
+ * @return bool True if the options page was deleted.
+ */
+function acf_delete_ui_options_page($id = 0)
+{
+}
+/**
+ * Trashes an ACF UI options page.
+ *
+ * @since 6.2
+ *
+ * @param int|string $id The UI options page ID, key, or name.
+ * @return bool True if the options page was trashed.
+ */
+function acf_trash_ui_options_page($id = 0)
+{
+}
+/**
+ * Restores an ACF UI options page from the trash.
+ *
+ * @since 6.2
+ *
+ * @param int|string $id The UI options page ID, key, or name.
+ * @return bool True if the options page was untrashed.
+ */
+function acf_untrash_ui_options_page($id = 0)
+{
+}
+/**
+ * Returns true if the given params match an ACF UI options page.
+ *
+ * @since 6.2
+ *
+ * @param array $ui_options_page The ACF UI options page array.
+ * @return bool
+ */
+function acf_is_ui_options_page($ui_options_page)
+{
+}
+/**
+ * Duplicates an ACF UI options page.
+ *
+ * @since 6.2
+ *
+ * @param int|string $id          The ACF UI options page ID, key or name.
+ * @param int        $new_post_id Optional ID to override.
+ * @return array|bool The new ACF UI options page, or false on failure.
+ */
+function acf_duplicate_ui_options_page($id = 0, $new_post_id = 0)
+{
+}
+/**
+ * Activates or deactivates an ACF UI options page.
+ *
+ * @since 6.2
+ *
+ * @param int|string $id        The ACF UI options page ID, key or name.
+ * @param bool       $activate  True if the UI options page should be activated.
+ * @return bool
+ */
+function acf_update_ui_options_page_active_status($id, $activate = \true)
+{
+}
+/**
+ * Checks if the current user can edit the UI options page and returns the edit URL.
+ *
+ * @since 6.2
+ *
+ * @param int $post_id The ACF UI options page ID.
+ * @return string
+ */
+function acf_get_ui_options_page_edit_link($post_id)
+{
+}
+/**
+ * Returns a modified ACF UI options page ready for export.
+ *
+ * @since 6.2
+ *
+ * @param array $ui_options_page The ACF UI options page array.
+ * @return array
+ */
+function acf_prepare_ui_options_page_for_export(array $ui_options_page = array())
+{
+}
+/**
+ * Exports an ACF UI options page as PHP.
+ *
+ * @since 6.2
+ *
+ * @param array $ui_options_page The ACF UI options page array.
+ * @return string|bool
+ */
+function acf_export_ui_options_page_as_php(array $ui_options_page)
+{
+}
+/**
+ * Prepares an ACF UI options page for the import process.
+ *
+ * @since 6.2
+ *
+ * @param array $ui_options_page The ACF UI options page array.
+ * @return array
+ */
+function acf_prepare_ui_options_page_for_import(array $ui_options_page = array())
+{
+}
+/**
+ * Imports an ACF UI options page into the database.
+ *
+ * @since 6.2
+ *
+ * @param array $ui_options_page The ACF UI options page array.
+ * @return array The imported options page.
+ */
+function acf_import_ui_options_page(array $ui_options_page)
 {
 }
 /**
