@@ -16,7 +16,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.2.0';
+    public $version = '6.2.1';
     /**
      * The plugin settings array.
      *
@@ -12134,6 +12134,18 @@ class ACF_Post_Type extends \ACF_Internal_Post_Type
     {
     }
     /**
+     * Filters the "Add title" text for ACF post types.
+     *
+     * @since 6.2.1
+     *
+     * @param string  $default The default text.
+     * @param WP_Post $post    The WP_Post object.
+     * @return string
+     */
+    public function enter_title_here($default, $post)
+    {
+    }
+    /**
      * Gets the default settings array for an ACF post type.
      *
      * @return array
@@ -12784,18 +12796,27 @@ class ACF_Updates
     {
     }
     /**
-     *  get_plugin_update
+     * Returns specific data from the 'update-check' response.
      *
-     *  Returns specific data from the 'update-check' response.
+     * @since   5.7.2
      *
-     *  @date    3/8/18
-     *  @since   5.7.2
-     *
-     *  @param   string  $basename The plugin basename.
-     *  @param   boolean $force_check Bypasses cached result. Defaults to false
-     *  @return  array
+     * @param string  $basename The plugin basename.
+     * @param boolean $force_check Bypasses cached result. Defaults to false.
+     * @return array|false
      */
-    function get_plugin_update($basename = '', $force_check = \false)
+    public function get_plugin_update($basename = '', $force_check = \false)
+    {
+    }
+    /**
+     * Checks if an update is available, but can't be updated to.
+     *
+     * @since   6.2.1
+     *
+     * @param string  $basename The plugin basename.
+     * @param boolean $force_check Bypasses cached result. Defaults to false.
+     * @return array|false
+     */
+    public function get_no_update($basename = '', $force_check = \false)
     {
     }
     /**
@@ -12841,17 +12862,14 @@ class ACF_Updates
     {
     }
     /**
-     *  modify_plugins_transient
-     *
      *  Called when WP updates the 'update_plugins' site transient. Used to inject ACF plugin update info.
      *
-     *  @date    16/01/2014
      *  @since   5.0.0
      *
-     *  @param   object $transient
-     *  @return  $transient
+     *  @param object $transient The current transient value.
+     *  @return object $transient The modified transient value.
      */
-    function modify_plugins_transient($transient)
+    public function modify_plugins_transient($transient)
     {
     }
     /**
@@ -12974,41 +12992,6 @@ class acf_validation
      * @phpstan-return void
      */
     public function acf_validate_save_post()
-    {
-    }
-}
-class ACF_Walker_Nav_Menu_Edit extends \Walker_Nav_Menu_Edit
-{
-    /**
-     * Starts the element output.
-     *
-     * Calls the Walker_Nav_Menu_Edit start_el function and then injects the custom field HTML
-     *
-     * @since 5.0.0
-     * @since 5.7.2 Added preg_replace based on https://github.com/ineagu/wp-menu-item-custom-fields
-     *
-     * @param string   $output Used to append additional content (passed by reference).
-     * @param WP_Post  $item   Menu item data object.
-     * @param int      $depth  Depth of menu item. Used for padding.
-     * @param stdClass $args   An object of wp_nav_menu() arguments.
-     * @param int      $id     Current item ID.
-     */
-    function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0)
-    {
-    }
-    /**
-     * Get custom fields HTML
-     *
-     * @since 5.0.0
-     * @since 5.7.2 Added action based on https://github.com/ineagu/wp-menu-item-custom-fields
-     *
-     * @param object $item   Menu item data object.
-     * @param int    $depth  Depth of menu item. Used for padding.
-     * @param array  $args   Menu item args.
-     * @param int    $id     Nav menu ID.
-     * @return string
-     */
-    function get_fields($item, $depth, $args = array(), $id = 0)
     {
     }
 }
@@ -13764,7 +13747,7 @@ class ACF_Admin_UI_Options_Page extends \ACF_Admin_Internal_Post_Type
      * @param string $menu_slug Optional menu_slug of an existing options page.
      * @return array
      */
-    public static function get_parent_page_choices($menu_slug = '')
+    public static function get_parent_page_choices($current_slug = '')
     {
     }
     /**
@@ -18498,6 +18481,17 @@ function acf_prepare_post_type_for_import(array $post_type = array())
  * @return array The imported post type.
  */
 function acf_import_post_type(array $post_type)
+{
+}
+/**
+ * Exports the "Enter Title Here" text for the provided ACF post types.
+ *
+ * @since 6.2.1
+ *
+ * @param array $post_types The post types being exported.
+ * @return string
+ */
+function acf_export_enter_title_here(array $post_types)
 {
 }
 /**
