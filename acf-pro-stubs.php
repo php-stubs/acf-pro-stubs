@@ -15,7 +15,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.0.6';
+    public $version = '6.0.7';
     /**
      * The plugin settings array.
      *
@@ -414,7 +414,7 @@ class acf_admin_field_group
     {
     }
     /**
-     *  This function will render the HTML for the medtabox 'acf-field-group-fields'
+     *  This function will render the HTML for the metabox 'acf-field-group-fields'
      *
      *  @since   5.0.0
      *
