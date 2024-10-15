@@ -16,7 +16,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.1.1';
+    public $version = '6.1.3';
     /**
      * The plugin settings array.
      *
@@ -78,16 +78,6 @@ class ACF
      * @return  void
      */
     public function register_post_types()
-    {
-    }
-    /**
-     * Loads and instantiates the enabled additional custom post types.
-     *
-     * @since 6.1
-     *
-     * @return void
-     */
-    public function init_post_types()
     {
     }
     /**
@@ -2063,7 +2053,7 @@ class ACF_Admin_Post_Types extends \ACF_Admin_Internal_Post_Type_List
      */
     public $store = 'post-types';
     /**
-     * Constructor for the post types list admin page.
+     * Current screen actions for the post types list admin page.
      *
      * @since   6.1
      *
@@ -2191,7 +2181,7 @@ class ACF_Admin_Taxonomies extends \ACF_Admin_Internal_Post_Type_List
      */
     public $store = 'taxonomies';
     /**
-     * Constructor for the taxonomies list admin page.
+     * Current screen actions for the taxonomies list admin page.
      *
      * @since   6.1
      *
@@ -3522,14 +3512,6 @@ abstract class ACF_Internal_Post_Type
      * Constructs the class.
      */
     public function __construct()
-    {
-    }
-    /**
-     * Register post type to WordPress if required for this post type
-     *
-     * @since 6.1
-     */
-    public function register_post_type()
     {
     }
     /**
@@ -11829,14 +11811,6 @@ class ACF_Field_Group extends \ACF_Internal_Post_Type
     {
     }
     /**
-     * Register the field-group custom post type with WordPress
-     *
-     * @since 6.1
-     */
-    public function register_post_type()
-    {
-    }
-    /**
      * Get an ACF CPT object as an array.
      *
      * @since 6.1
@@ -12011,6 +11985,14 @@ class ACF_Post_Type extends \ACF_Internal_Post_Type
     {
     }
     /**
+     * Registers the acf-post-type custom post type with WordPress.
+     *
+     * @since 6.1
+     */
+    public function register_post_type()
+    {
+    }
+    /**
      * Register activated post types with WordPress
      *
      * @since 6.1
@@ -12061,12 +12043,6 @@ class ACF_Post_Type extends \ACF_Internal_Post_Type
      * @return array
      */
     public function get_post_type_args($post)
-    {
-    }
-    /**
-     * Register the CPT required for ACF post types.
-     */
-    public function register_post_type()
     {
     }
     /**
@@ -12165,6 +12141,14 @@ class ACF_Taxonomy extends \ACF_Internal_Post_Type
     {
     }
     /**
+     * Registers the acf-taxonomy custom post type with WordPress.
+     *
+     * @since 6.1
+     */
+    public function register_post_type()
+    {
+    }
+    /**
      * Register activated taxonomies with WordPress
      *
      * @since 6.1
@@ -12178,12 +12162,6 @@ class ACF_Taxonomy extends \ACF_Internal_Post_Type
      * @return array
      */
     public function get_settings_array()
-    {
-    }
-    /**
-     * Register the CPT required for ACF taxonomies.
-     */
-    public function register_post_type()
     {
     }
     /**
