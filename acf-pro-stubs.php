@@ -17,7 +17,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.3.4';
+        public $version = '6.3.5';
         /**
          * The plugin settings array.
          *
@@ -16878,11 +16878,10 @@ namespace {
      *
      * This function emulates `wp_kses_post()` with a context of "acf" for extensibility.
      *
-     * @date    16/4/21
-     * @since   5.9.6
+     * @since  5.9.6
      *
-     * @param   string $string
-     * @return  string
+     * @param  string $string The string to be escaped
+     * @return string|false
      */
     function acf_esc_html($string = '')
     {
@@ -16890,12 +16889,11 @@ namespace {
     /**
      * Private callback for the "wp_kses_allowed_html" filter used to return allowed HTML for "acf" context.
      *
-     * @date    16/4/21
      * @since   5.9.6
      *
-     * @param   array  $tags    An array of allowed tags.
-     * @param   string $context The context name.
-     * @return  array.
+     * @param  array  $tags    An array of allowed tags.
+     * @param  string $context The context name.
+     * @return array
      */
     function _acf_kses_allowed_html($tags, $context)
     {
@@ -22956,17 +22954,18 @@ namespace {
     /**
      * Handle validating a block's fields and return the validity, and any errors.
      *
-     * This function uses the values loaded into Local Meta, which means they have to be
-     * converted back to the data format because they can be validated.
+     * This function can use values loaded into Local Meta, which means they have to be
+     * converted back to the data format before they can be validated.
      *
      * @since 6.3
      *
      * @param array   $block          An array of the block's data attribute.
      * @param boolean $using_defaults True if the block is currently being generated with default values. Default false.
      * @param boolean $use_post_data  True if we should validate the POSTed data rather than local meta values. Default false.
+     * @param boolean $on_load        True if we're validating as part of a render. This is essentially the same as a first load. Default false.
      * @return array An array containing a valid boolean, and an errors array.
      */
-    function acf_get_block_validation_state($block, $using_defaults = \false, $use_post_data = \false)
+    function acf_get_block_validation_state($block, $using_defaults = \false, $use_post_data = \false, $on_load = \false)
     {
     }
     /**
@@ -22988,11 +22987,12 @@ namespace {
      *
      * @since 6.3.1
      *
-     * @param string $block_id      The block ID
-     * @param array  $field_objects The field objects in local meta to be validated.
+     * @param string  $block_id       The block ID.
+     * @param array   $field_objects  The field objects in local meta to be validated.
+     * @param boolean $using_defaults True if this is the first load of the block, when special validation may apply.
      * @return array|boolean An array containing the validation errors, or false if there are no errors.
      */
-    function acf_validate_block_from_local_meta($block_id, $field_objects)
+    function acf_validate_block_from_local_meta($block_id, $field_objects, $using_defaults = \false)
     {
     }
     /**
