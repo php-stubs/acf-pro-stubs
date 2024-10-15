@@ -17,7 +17,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.3.1.2';
+        public $version = '6.3.2';
         /**
          * The plugin settings array.
          *
@@ -3045,17 +3045,14 @@ namespace {
         /** @var boolean Prevents access for non-logged in users. */
         var $public = \false;
         /**
-         * get_response
-         *
          * Returns the response data to sent back.
          *
-         * @date    31/7/18
-         * @since   5.7.2
+         * @since 5.7.2
          *
-         * @param   array $request The request args.
-         * @return  mixed The response data or WP_Error.
+         * @param array $request The request args.
+         * @return array|WP_Error The response data or WP_Error.
          */
-        function get_response($request)
+        public function get_response($request)
         {
         }
     }
@@ -3180,6 +3177,17 @@ namespace {
         /** @var string The AJAX action name. */
         var $action = 'acf/ajax/query_users';
         /**
+         * Verifies the request.
+         *
+         * @since 6.3.2
+         *
+         * @param array $request The request args.
+         * @return  bool|WP_Error True on success, WP_Error on fail.
+         */
+        public function verify_request($request)
+        {
+        }
+        /**
          * init_request
          *
          * Called at the beginning of a request to setup properties.
@@ -3267,26 +3275,31 @@ namespace {
         /** @var string The AJAX action name */
         var $action = 'acf/ajax/upgrade';
         /**
-         * get_response
-         *
          * Returns the response data to sent back.
          *
-         * @date    31/7/18
-         * @since   5.7.2
+         * @since 5.7.2
          *
-         * @param   array $request The request args.
-         * @return  mixed The response data or WP_Error.
+         * @param array $request The request args.
+         * @return boolean|WP_Error True if successful, or WP_Error on failure.
          */
-        function get_response($request)
+        public function get_response($request)
         {
         }
     }
     class ACF_Ajax_User_Setting extends \ACF_Ajax
     {
-        /** @var string The AJAX action name. */
-        var $action = 'acf/ajax/user_setting';
-        /** @var boolean Prevents access for non-logged in users. */
-        var $public = \true;
+        /**
+         * The AJAX action name.
+         *
+         * @var string
+         */
+        public $action = 'acf/ajax/user_setting';
+        /**
+         * Prevents access for non-logged in users.
+         *
+         * @var boolean
+         */
+        public $public = \false;
         /**
          * get_response
          *
@@ -3298,7 +3311,7 @@ namespace {
          * @param   array $request The request args.
          * @return  mixed The response data or WP_Error.
          */
-        function get_response($request)
+        public function get_response($request)
         {
         }
     }
@@ -6287,17 +6300,14 @@ namespace {
         {
         }
         /**
-         * description
+         * Returns AJAX results for the oEmbed field.
          *
-         * @type    function
-         * @date    24/10/13
-         * @since   5.0.0
+         * @since 5.0.0
          *
-         * @param   int $post_id
-         * @return  int $post_id
+         * @return void
          * @phpstan-return never
          */
-        function ajax_query()
+        public function ajax_query()
         {
         }
         /**
@@ -6314,17 +6324,14 @@ namespace {
         {
         }
         /**
-         * render_field()
+         * Renders the oEmbed field.
          *
-         * Create the HTML interface for your field
+         * @since 3.6
          *
-         * @param   $field - an array holding all the field's data
-         *
-         * @type    action
-         * @since   3.6
-         * @date    23/01/13
+         * @param array $field The field settings array.
+         * @return void
          */
-        function render_field($field)
+        public function render_field($field)
         {
         }
         /**
@@ -6364,35 +6371,26 @@ namespace {
         {
         }
     }
+    /**
+     * This class and field type has been deprecated since ACF 6.3.2 and will not output anything.
+     */
     class acf_field_output extends \acf_field
     {
         /**
          * This function will setup the field type data
          *
-         * @type    function
-         * @date    5/03/2014
          * @since   5.0.0
-         *
-         * @param   void
-         * @return  void
          */
-        function initialize()
+        public function initialize()
         {
         }
         /**
-         * Create the HTML interface for your field
+         * The render field call. Deprecated since ACF 6.3.2.
          *
-         * @param   array $field the $field being rendered
-         *
-         * @type    action
-         * @since   3.6
-         * @date    23/01/13
-         *
-         * @param   array $field the $field being edited
-         * @return  void
-         * @phpstan-return void
+         * @param   array $field The $field being edited
+         * @return  false
          */
-        function render_field($field)
+        public function render_field($field)
         {
         }
     }
@@ -6425,16 +6423,13 @@ namespace {
         {
         }
         /**
-         * description
+         * Returns AJAX results for the Page Link field.
          *
-         * @type    function
-         * @date    24/10/13
-         * @since   5.0.0
+         * @since 5.0.0
          *
-         * @param   int $post_id
-         * @return  int $post_id
+         * @return void
          */
-        function ajax_query()
+        public function ajax_query()
         {
         }
         /**
@@ -6480,15 +6475,14 @@ namespace {
         {
         }
         /**
-         * Create the HTML interface for your field
+         * Renders the Page Link field.
          *
-         * @param   $field - an array holding all the field's data
+         * @since 3.6
          *
-         * @type    action
-         * @since   3.6
-         * @date    23/01/13
+         * @param array $field The field settings array.
+         * @return void
          */
-        function render_field($field)
+        public function render_field($field)
         {
         }
         /**
@@ -6668,6 +6662,8 @@ namespace {
          * AJAX query handler for post object fields.
          *
          * @since   5.0.0
+         *
+         * @return void
          */
         public function ajax_query()
         {
@@ -6675,10 +6671,10 @@ namespace {
         /**
          * This function will return an array of data formatted for use in a select2 AJAX response
          *
-         * @since   5.0.9
+         * @since 5.0.9
          *
-         * @param   array $options The options being queried for the ajax request.
-         * @return  array The AJAX response array.
+         * @param array $options The options being queried for the ajax request.
+         * @return array|boolean The AJAX response array, or false on failure.
          */
         public function get_ajax_query($options = array())
         {
@@ -6716,6 +6712,7 @@ namespace {
          * @since 3.6
          *
          * @param array $field An array holding all the field's data.
+         * @return void
          */
         public function render_field($field)
         {
@@ -7131,29 +7128,24 @@ namespace {
         {
         }
         /**
-         * description
+         * Returns AJAX results for the Relationship field.
          *
-         * @type    function
-         * @date    24/10/13
-         * @since   5.0.0
+         * @since 5.0.0
          *
-         * @param   int $post_id
-         * @return  int $post_id
+         * @return void
          */
-        function ajax_query()
+        public function ajax_query()
         {
         }
         /**
          * This function will return an array of data formatted for use in a select2 AJAX response
          *
-         * @type    function
-         * @date    15/10/2014
          * @since   5.0.9
          *
-         * @param   array $options
-         * @return  array
+         * @param array $options An array of options for the query.
+         * @return array
          */
-        function get_ajax_query($options = array())
+        public function get_ajax_query($options = array())
         {
         }
         /**
@@ -7358,16 +7350,13 @@ namespace {
         {
         }
         /**
-         * description
+         * AJAX handler for getting Select field choices.
          *
-         * @type    function
-         * @date    24/10/13
-         * @since   5.0.0
+         * @since 5.0.0
          *
-         * @param   int $post_id
-         * @return  int $post_id
+         * @return void
          */
-        function ajax_query()
+        public function ajax_query()
         {
         }
         /**
@@ -7650,16 +7639,13 @@ namespace {
         {
         }
         /**
-         * description
+         * Returns AJAX results for the Taxonomy field.
          *
-         * @type    function
-         * @date    24/10/13
-         * @since   5.0.0
+         * @since 5.0.0
          *
-         * @param   int $post_id
-         * @return  int $post_id
+         * @return void
          */
-        function ajax_query()
+        public function ajax_query()
         {
         }
         /**
@@ -7759,16 +7745,15 @@ namespace {
         {
         }
         /**
-         * Create the HTML interface for your field
+         * Renders the Taxonomy field.
          *
-         * @type    action
-         * @since   3.6
-         * @date    23/01/13
+         * @since 3.6
          *
-         * @param   $field - an array holding all the field's data
+         * @param array $field The field settings array.
+         * @return void
          * @phpstan-return void
          */
-        function render_field($field)
+        public function render_field($field)
         {
         }
         /**
@@ -7831,17 +7816,14 @@ namespace {
         {
         }
         /**
-         * ajax_add_term
+         * AJAX handler for adding Taxonomy field terms.
          *
-         * @since  5.2.3
-         *
-         * @type   function
-         * @date   17/04/2015
+         * @since 5.2.3
          *
          * @return void
          * @phpstan-return never
          */
-        function ajax_add_term()
+        public function ajax_add_term()
         {
         }
         /**
@@ -8394,13 +8376,12 @@ namespace {
         /**
          * Renders the field input HTML.
          *
-         * @date    23/01/13
          * @since   3.6.0
          *
          * @param   array $field The ACF field.
          * @return  void
          */
-        function render_field($field)
+        public function render_field($field)
         {
         }
         /**
@@ -13767,16 +13748,13 @@ namespace {
         {
         }
         /**
-         * description
+         * AJAX handler for getting potential fields to clone.
          *
-         * @type    function
-         * @date    17/06/2016
-         * @since   5.3.8
+         * @since 5.3.8
          *
-         * @param   int $post_id
-         * @return  int $post_id
+         * @return void
          */
-        function ajax_query()
+        public function ajax_query()
         {
         }
         /**
@@ -14231,45 +14209,36 @@ namespace {
         {
         }
         /**
-         * description
+         * AJAX handler for retrieving and rendering an attachment.
          *
-         * @type    function
-         * @date    13/12/2013
-         * @since   5.0.0
+         * @since 5.0.0
          *
-         * @param   int $post_id
-         * @return  int $post_id
+         * @return void
          * @phpstan-return never
          */
-        function ajax_get_attachment()
+        public function ajax_get_attachment()
         {
         }
         /**
-         * description
+         * AJAX handler for updating an attachment.
          *
-         * @type    function
-         * @date    13/12/2013
          * @since   5.0.0
          *
-         * @param   int $post_id
-         * @return  int $post_id
+         * @return void
          * @phpstan-return never
          */
-        function ajax_update_attachment()
+        public function ajax_update_attachment()
         {
         }
         /**
-         * description
+         * AJAX handler for getting the attachment sort order.
          *
-         * @type    function
-         * @date    13/12/2013
-         * @since   5.0.0
+         * @since 5.0.0
          *
-         * @param   int $post_id
-         * @return  int $post_id
+         * @return void
          * @phpstan-return never
          */
-        function ajax_get_sort_order()
+        public function ajax_get_sort_order()
         {
         }
         /**
@@ -19124,17 +19093,16 @@ namespace {
     {
     }
     /**
-     * acf_verify_ajax
-     *
-     * This function will return true if the current AJAX request is valid
+     * Returns true if the current AJAX request is valid.
      * It's action will also allow WPML to set the lang and avoid AJAX get_posts issues
      *
      * @since   5.2.3
      *
-     * @param   void
-     * @return  boolean
+     * @param string $nonce  The nonce to check.
+     * @param string $action The action of the nonce.
+     * @return boolean
      */
-    function acf_verify_ajax()
+    function acf_verify_ajax($nonce = '', $action = '')
     {
     }
     /**
@@ -19324,7 +19292,14 @@ namespace {
     function acf_get_grouped_posts($args)
     {
     }
-    function _acf_orderby_post_type($ordeby, $wp_query)
+    /**
+     * The internal ACF function to add order by post types for use in `acf_get_grouped_posts`
+     *
+     * @param string $orderby  The current orderby value for a query.
+     * @param object $wp_query The WP_Query.
+     * @return string The potentially modified orderby string.
+     */
+    function _acf_orderby_post_type($orderby, $wp_query)
     {
     }
     function acf_get_post_title($post = 0, $is_search = \false)
@@ -19814,14 +19789,14 @@ namespace {
     {
     }
     /**
-     * acf_get_attachment_image
+     * Return an image tag for the provided attachment ID
      *
-     * description
+     * @since 5.5.0
+     * @deprecated 6.3.2
      *
-     * @since   5.5.0
-     *
-     * @param   int $post_id
-     * @return  int $post_id
+     * @param integer $attachment_id The attachment ID
+     * @param string  $size          The image size to use in the image tag.
+     * @return false
      */
     function acf_get_attachment_image($attachment_id = 0, $size = 'thumbnail')
     {
