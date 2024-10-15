@@ -17,7 +17,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.3.0.1';
+        public $version = '6.3.1';
         /**
          * The plugin settings array.
          *
@@ -1756,9 +1756,11 @@ namespace {
         {
         }
         /**
-         * Move field AJAX function
+         * Moves fields between field groups via AJAX.
          *
          * @since 5.0.0
+         *
+         * @return void
          * @phpstan-return never
          */
         public function ajax_move_field()
@@ -7676,15 +7678,15 @@ namespace {
         /**
          * Returns the Term's title displayed in the field UI.
          *
-         * @date    1/11/2013
          * @since   5.0.0
          *
-         * @param   WP_Term $term    The term object.
-         * @param   array   $field   The field settings.
-         * @param   mixed   $post_id The post_id being edited.
+         * @param   WP_Term $term     The term object.
+         * @param   array   $field    The field settings.
+         * @param   mixed   $post_id  The post_id being edited.
+         * @param   boolean $unescape Should we return an unescaped post title.
          * @return  string
          */
-        function get_term_title($term, $field, $post_id = 0)
+        function get_term_title($term, $field, $post_id = 0, $unescape = \false)
         {
         }
         /**
@@ -22975,9 +22977,36 @@ namespace {
      *
      * @param array   $block          An array of the block's data attribute.
      * @param boolean $using_defaults True if the block is currently being generated with default values. Default false.
+     * @param boolean $use_post_data  True if we should validate the POSTed data rather than local meta values. Default false.
      * @return array An array containing a valid boolean, and an errors array.
      */
-    function acf_get_block_validation_state($block, $using_defaults = \false)
+    function acf_get_block_validation_state($block, $using_defaults = \false, $use_post_data = \false)
+    {
+    }
+    /**
+     * Handle the specific validation for a block from POSTed values.
+     *
+     * @since 6.3.1
+     *
+     * @param array $block The block object containing the POSTed values and other block data
+     * @return array|boolean An array containing the validation errors, or false if there are no errors.
+     */
+    function acf_validate_block_from_post_data($block)
+    {
+    }
+    /**
+     * Handle the specific validation for a block from local meta.
+     *
+     * This function uses the values loaded into Local Meta, which means they have to be
+     * converted back to the data format because they can be validated.
+     *
+     * @since 6.3.1
+     *
+     * @param string $block_id      The block ID
+     * @param array  $field_objects The field objects in local meta to be validated.
+     * @return array|boolean An array containing the validation errors, or false if there are no errors.
+     */
+    function acf_validate_block_from_local_meta($block_id, $field_objects)
     {
     }
     /**
