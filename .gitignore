@@ -1,3 +1,4 @@
 /vendor/
 /composer.lock
 /advanced-custom-fields/
+auth.json
