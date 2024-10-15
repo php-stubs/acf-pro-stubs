@@ -1,6 +1,6 @@
 # ACF Pro Stubs
 
-It provides stub declarations for [ACF Pro](https://https://www.advancedcustomfields.com/)
+It provides stub declarations for [ACF Pro](https://advancedcustomfields.com/)
 core functions, classes and interfaces.
 These stubs can help plugin and theme developers leverage static analysis tools
 like [PHPStan](https://github.com/phpstan/phpstan).
@@ -10,7 +10,7 @@ using [php-stubs/generator](https://github.com/php-stubs/generator).
 
 ## Requirements
 
--   PHP 8.0
+-   PHP ^8.0
 
 ## Installation
 
