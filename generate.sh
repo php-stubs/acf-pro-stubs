@@ -26,7 +26,7 @@ fi
     --out="$FILE"
 
 # Remove determine_locale function
-sed -i -e 's#^function determine_locale()$#//&#' "$FILE"
+sed -i -e 's#^\s*function determine_locale()$#//&#' "$FILE"
 
 # - Make docblocks start with "/**"
 # - Fix type and variable name order for @param
