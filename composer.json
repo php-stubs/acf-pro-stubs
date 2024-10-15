@@ -10,7 +10,8 @@
     "homepage": "https://github.com/php-stubs/acf-pro-stubs",
     "license": "MIT",
     "require": {
-        "php-stubs/wordpress-stubs": "^4.7 || ^5.0 || ^6.0"
+        "php-stubs/wordpress-stubs": "^4.7 || ^5.0 || ^6.0",
+        "wpengine/advanced-custom-fields-pro": "6.3.8"
     },
     "require-dev": {
         "php": "~7.1 || ^8.0",
@@ -21,5 +22,23 @@
         "symfony/polyfill-php73": "Symfony polyfill backporting some PHP 7.3+ features to lower PHP versions",
         "szepeviktor/phpstan-wordpress": "WordPress extensions for PHPStan"
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://connect.advancedcustomfields.com"
+        }
+    ],
+    "extra": {
+        "installer-paths": {
+            "source/{$name}/": [
+                "type:wordpress-plugin"
+            ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
 }
