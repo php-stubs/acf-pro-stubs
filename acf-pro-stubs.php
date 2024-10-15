@@ -17,7 +17,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.3.5';
+        public $version = '6.3.6';
         /**
          * The plugin settings array.
          *
@@ -272,7 +272,7 @@ namespace ACF\Blocks {
          * @param array     $source_attrs   An array of the source attributes requested.
          * @param \WP_Block $block_instance The block instance.
          * @param string    $attribute_name The block's bound attribute name.
-         * @return string The block binding value.
+         * @return string|null The block binding value or an empty string on failure.
          */
         public function get_value(array $source_attrs, \WP_Block $block_instance, string $attribute_name)
         {
@@ -4454,6 +4454,18 @@ namespace {
         public function render_required_setting($field)
         {
         }
+        /**
+         * Renders the "Allow in Bindings" setting on the field type "Presentation" settings tab.
+         *
+         * @since 6.3.6
+         *
+         * @param array $field The field type being rendered.
+         * @return void
+         * @phpstan-return void
+         */
+        public function render_bindings_setting($field)
+        {
+        }
     }
     class acf_field__accordion extends \acf_field
     {
@@ -7336,17 +7348,14 @@ namespace {
         {
         }
         /**
-         * description
+         * Enqueues admin scripts for the Select field.
          *
-         * @type    function
-         * @date    16/12/2015
-         * @since   5.3.2
+         * @since 5.3.2
          *
-         * @param   int $post_id
-         * @return  int $post_id
+         * @return void
          * @phpstan-return void
          */
-        function input_admin_enqueue_scripts()
+        public function input_admin_enqueue_scripts()
         {
         }
         /**
@@ -12454,17 +12463,14 @@ namespace {
         {
         }
         /**
-         * This function will validate the $_POST data via AJAX
+         * Validates $_POST data via AJAX prior to save.
          *
-         * @type    function
-         * @date    27/10/2014
          * @since   5.0.9
          *
-         * @param   void
-         * @return  void
+         * @return void
          * @phpstan-return never
          */
-        function ajax_validate_save_post()
+        public function ajax_validate_save_post()
         {
         }
         /**
