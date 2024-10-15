@@ -15,7 +15,7 @@ class ACF
      *
      * @var string
      */
-    public $version = '6.0.4';
+    public $version = '6.0.5';
     /**
      * The plugin settings array.
      *
@@ -14627,12 +14627,28 @@ function acf_sanitize_request_args($args = array())
 }
 /**
  * Sanitizes file upload arrays.
- * 
+ *
+ * @since 6.0.4
+ *
  * @param array $args The file array.
  *
  * @return array
  */
 function acf_sanitize_files_array(array $args = array())
+{
+}
+/**
+ * Sanitizes file upload values within the array.
+ *
+ * This addresses nested file fields within repeaters and groups.
+ *
+ * @since 6.0.5
+ *
+ * @param array  $array The file upload array.
+ * @param string $sanitize_function Callback used to sanitize array value.
+ * @return array
+ */
+function acf_sanitize_files_value_array($array, $sanitize_function)
 {
 }
 /**
