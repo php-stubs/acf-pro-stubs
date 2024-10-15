@@ -17,7 +17,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.3.3';
+        public $version = '6.3.4';
         /**
          * The plugin settings array.
          *
@@ -19688,6 +19688,17 @@ namespace {
      * @return  int $post_id
      */
     function acf_current_user_can_admin()
+    {
+    }
+    /**
+     * Wrapper function for current_user_can( 'edit_post', $post_id ).
+     *
+     * @since 6.3.4
+     *
+     * @param integer $post_id The post ID to check.
+     * @return boolean
+     */
+    function acf_current_user_can_edit_post(int $post_id) : bool
     {
     }
     /**
