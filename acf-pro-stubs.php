@@ -17,7 +17,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.3.7';
+        public $version = '6.3.8';
         /**
          * The plugin settings array.
          *
@@ -11930,6 +11930,17 @@ namespace {
         {
         }
         /**
+         * Ensure the metabox being called does not perform any unsafe operations.
+         *
+         * @since 6.3.8
+         *
+         * @param WP_Post $post The post being rendered.
+         * @return mixed The callback result.
+         */
+        public function build_safe_context_for_metabox_cb($post)
+        {
+        }
+        /**
          * Returns a string that can be used to create a post type in PHP.
          *
          * @since 6.1
@@ -12073,6 +12084,18 @@ namespace {
          * @return array
          */
         public function get_taxonomy_args($post, $escape_labels = \true)
+        {
+        }
+        /**
+         * Ensure the metabox being called does not perform any unsafe operations.
+         *
+         * @since 6.3.8
+         *
+         * @param WP_Post $post The post being rendered.
+         * @param array   $tax  The provided taxonomy information required for callback render.
+         * @return mixed The callback result.
+         */
+        public function build_safe_context_for_metabox_cb($post, $tax)
         {
         }
         /**
