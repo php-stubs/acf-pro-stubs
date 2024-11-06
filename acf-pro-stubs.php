@@ -17,7 +17,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.3.8';
+        public $version = '6.3.9';
         /**
          * The plugin settings array.
          *
@@ -22372,6 +22372,16 @@ namespace {
      * @return  void
      */
     function acf_upgrade_550_taxonomy($taxonomy)
+    {
+    }
+    /**
+     * Unsets ACF from reporting back to the WP.org API.
+     *
+     * @param array  $args An array of HTTP request arguments.
+     * @param string $url  The request URL.
+     * @return array|mixed
+     */
+    function acf_unset_plugin_from_org_reporting($args, $url)
     {
     }
     // class_exists check
