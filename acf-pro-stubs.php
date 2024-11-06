@@ -17,7 +17,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.3.6';
+        public $version = '6.3.7';
         /**
          * The plugin settings array.
          *
@@ -3510,6 +3510,66 @@ namespace {
         {
         }
     }
+}
+namespace ACF\Upgrades {
+    /**
+     * The PluginUpdater class which can be used to pull plugin updates from a new location.
+     */
+    class PluginUpdater
+    {
+        /**
+         * Get the class constructed.
+         *
+         * @param Properties $properties These properties are passed in when instantiating to identify the plugin and it's update location.
+         * @phpstan-return void
+         */
+        public function __construct($properties)
+        {
+        }
+        /**
+         * Get the full plugin properties, including the directory name, version, basename, and add a transient name.
+         *
+         * @param Properties $properties These properties are passed in when instantiating to identify the plugin and it's update location.
+         * @param ApiUrl     $api_url    The URL where the api is located.
+         */
+        public function get_full_plugin_properties($properties, $api_url)
+        {
+        }
+        /**
+         * Register hooks.
+         *
+         * @return void
+         */
+        public function register()
+        {
+        }
+        /**
+         * Filter the plugin update transient to take over update notifications.
+         *
+         * @param object $transient The site_transient_update_plugins transient.
+         *
+         * @handles site_transient_update_plugins
+         * @return object
+         */
+        public function filter_plugin_update_transient($transient)
+        {
+        }
+        /**
+         * Filters the plugin update information.
+         *
+         * @param object $res    The response to be modified for the plugin in question.
+         * @param string $action The action in question.
+         * @param object $args   The arguments for the plugin in question.
+         *
+         * @handles plugins_api
+         * @return object
+         */
+        public function filter_plugin_update_info($res, $action, $args)
+        {
+        }
+    }
+}
+namespace {
     abstract class ACF_Internal_Post_Type
     {
         /**
@@ -15221,6 +15281,14 @@ namespace {
         public function modify_plugin_update_message($plugin_data, $response)
         {
         }
+    }
+}
+namespace ACF\Upgrades {
+    /**
+     * Initialize the checking for plugin updates for ACF non-PRO.
+     */
+    function check_for_acf_upgrades()
+    {
     }
 }
 namespace {
