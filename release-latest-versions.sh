@@ -17,10 +17,6 @@ Get_versions()
 mkdir -p advanced-custom-fields
 
 while read -r VERSION; do
-    ## Process 5.6+ versions only
-    #if dpkg --compare-versions "${VERSION}" lt "5.6.0"; then
-    #    continue
-    #fi
     # Process 6.0+ versions only
     if dpkg --compare-versions "${VERSION}" lt "6.0.0"; then
         continue
@@ -33,25 +29,19 @@ while read -r VERSION; do
         continue
     fi
 
-    # Download release
-    RELEASE="advanced-custom-fields/acf-pro-${VERSION}.zip"
-    wget -nv -O "${RELEASE}" \
-        "https://connect.advancedcustomfields.com/index.php?p=pro&a=download&t=${VERSION}&k=${ACF_PRO_KEY}"
-
-    if [ "$(file --brief --mime "${RELEASE}")" != "application/zip; charset=binary" ]; then
-        echo "Skipping ${VERSION} ..."
-        continue
-    fi
-
-    # Extract release
+    # Clear previous source
     rm -f -r source/advanced-custom-fields-pro
-    unzip -q "${RELEASE}" -d source
+
+    # Download release using Composer
+    composer require --dev wpengine/advanced-custom-fields-pro:${VERSION} --ignore-platform-reqs
 
     # Generate stubs
     echo "Generating stubs ..."
     ./generate.sh
 
+    composer remove --dev wpengine/advanced-custom-fields-pro
+
     # Tag version
-    git commit --all -m "Generate stubs for ACF PRO ${VERSION}"
+    git commit acf-pro-stubs.php -m "Generate stubs for ACF PRO ${VERSION}"
     git tag "v${VERSION}"
 done < <(Get_versions | tac)
