@@ -17,7 +17,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.3.9';
+        public $version = '6.3.10';
         /**
          * The plugin settings array.
          *
@@ -275,6 +275,169 @@ namespace ACF\Blocks {
          * @return string|null The block binding value or an empty string on failure.
          */
         public function get_value(array $source_attrs, \WP_Block $block_instance, string $attribute_name)
+        {
+        }
+    }
+}
+namespace ACF {
+    /**
+     * class for handling API services.
+     */
+    class Updater
+    {
+        /**
+         * The Updater version
+         *
+         * @var string
+         */
+        public $version = '3.0';
+        /**
+         * The array of registered plugins
+         *
+         * @var array
+         */
+        public $plugins = array();
+        /**
+         * Counts the number of plugin update checks
+         *
+         * @var integer
+         */
+        public $checked = 0;
+        /**
+         * Sets up the class functionality.
+         *
+         * @since   5.0.0
+         * @phpstan-return void
+         */
+        public function __construct()
+        {
+        }
+        /**
+         * Registeres a plugin for updates.
+         *
+         * @since   5.5.10
+         *
+         * @param   array $plugin The plugin array.
+         * @return  void
+         */
+        public function add_plugin($plugin)
+        {
+        }
+        /**
+         * Returns a registered plugin for the give key and value.
+         *
+         * @since   5.7.2
+         *
+         * @param   string $key   The array key to compare.
+         * @param   string $value The value to compare against.
+         * @return  array|false
+         */
+        public function get_plugin_by($key = '', $value = null)
+        {
+        }
+        /**
+         * Makes a request to the ACF connect server.
+         *
+         * @since   5.5.10
+         *
+         * @param   string $endpoint The API endpoint.
+         * @param   array  $body     The body to post.
+         * @return  array|string|WP_Error
+         */
+        public function request($endpoint = '', $body = null)
+        {
+        }
+        /**
+         * Returns update information for the given plugin id.
+         *
+         * @since   5.5.10
+         *
+         * @param   string  $id          The plugin id such as 'pro'.
+         * @param   boolean $force_check Bypasses cached result. Defaults to false.
+         * @return  array|WP_Error
+         */
+        public function get_plugin_info($id = '', $force_check = false)
+        {
+        }
+        /**
+         * Returns specific data from the 'update-check' response.
+         *
+         * @since   5.7.2
+         *
+         * @param string  $basename    The plugin basename.
+         * @param boolean $force_check Bypasses cached result. Defaults to false.
+         * @return array|false
+         */
+        public function get_plugin_update($basename = '', $force_check = false)
+        {
+        }
+        /**
+         * Checks if an update is available, but can't be updated to.
+         *
+         * @since   6.2.1
+         *
+         * @param string  $basename    The plugin basename.
+         * @param boolean $force_check Bypasses cached result. Defaults to false.
+         * @return array|false
+         */
+        public function get_no_update($basename = '', $force_check = false)
+        {
+        }
+        /**
+         * Checks for plugin updates.
+         *
+         * @since   5.6.9
+         * @since   5.7.2 Added 'checked' comparison
+         *
+         * @param   boolean $force_check Bypasses cached result. Defaults to false.
+         * @return  array|WP_Error.
+         */
+        public function get_plugin_updates($force_check = false)
+        {
+        }
+        /**
+         * This function safely gets the expiration value from a response.
+         *
+         * @since   5.6.9
+         *
+         * @param   mixed   $response The response from the server. Default false.
+         * @param   integer $min      The minimum expiration limit. Default 3 hours.
+         * @param   integer $max      The maximum expiration limit. Default 7 days.
+         * @return  integer
+         */
+        public function get_expiration($response = false, $min = 10800, $max = 604800)
+        {
+        }
+        /**
+         * Deletes transients and allows a fresh lookup.
+         *
+         * @since   5.5.10
+         */
+        public function refresh_plugins_transient()
+        {
+        }
+        /**
+         * Called when WP updates the 'update_plugins' site transient. Used to inject ACF plugin update info.
+         *
+         * @since   5.0.0
+         *
+         * @param object $transient The current transient value.
+         * @return object $transient The modified transient value.
+         */
+        public function modify_plugins_transient($transient)
+        {
+        }
+        /**
+         * Returns the plugin data visible in the 'View details' popup
+         *
+         * @since   5.0.0
+         *
+         * @param   object $result The current result of plugin data.
+         * @param   string $action The action being performed.
+         * @param   object $args   Data about the plugin being retried.
+         * @return  $result
+         */
+        public function modify_plugin_details($result, $action = null, $args = null)
         {
         }
     }
@@ -3510,66 +3673,6 @@ namespace {
         {
         }
     }
-}
-namespace ACF\Upgrades {
-    /**
-     * The PluginUpdater class which can be used to pull plugin updates from a new location.
-     */
-    class PluginUpdater
-    {
-        /**
-         * Get the class constructed.
-         *
-         * @param Properties $properties These properties are passed in when instantiating to identify the plugin and it's update location.
-         * @phpstan-return void
-         */
-        public function __construct($properties)
-        {
-        }
-        /**
-         * Get the full plugin properties, including the directory name, version, basename, and add a transient name.
-         *
-         * @param Properties $properties These properties are passed in when instantiating to identify the plugin and it's update location.
-         * @param ApiUrl     $api_url    The URL where the api is located.
-         */
-        public function get_full_plugin_properties($properties, $api_url)
-        {
-        }
-        /**
-         * Register hooks.
-         *
-         * @return void
-         */
-        public function register()
-        {
-        }
-        /**
-         * Filter the plugin update transient to take over update notifications.
-         *
-         * @param object $transient The site_transient_update_plugins transient.
-         *
-         * @handles site_transient_update_plugins
-         * @return object
-         */
-        public function filter_plugin_update_transient($transient)
-        {
-        }
-        /**
-         * Filters the plugin update information.
-         *
-         * @param object $res    The response to be modified for the plugin in question.
-         * @param string $action The action in question.
-         * @param object $args   The arguments for the plugin in question.
-         *
-         * @handles plugins_api
-         * @return object
-         */
-        public function filter_plugin_update_info($res, $action, $args)
-        {
-        }
-    }
-}
-namespace {
     abstract class ACF_Internal_Post_Type
     {
         /**
@@ -7834,7 +7937,7 @@ namespace {
          *
          * @param   $field - an array holding all the field's data
          */
-        function render_field_select($field)
+        function render_field_select($field, $nonce)
         {
         }
         /**
@@ -11974,6 +12077,17 @@ namespace {
         {
         }
         /**
+         * Prepares an ACF post type for import.
+         *
+         * @since 6.3.10
+         *
+         * @param array $post The ACF post array.
+         * @return array
+         */
+        public function prepare_post_for_import($post)
+        {
+        }
+        /**
          * Imports a post type from CPTUI.
          *
          * @since 6.1
@@ -12129,6 +12243,17 @@ namespace {
          * @return array
          */
         public function translate_post($post = array())
+        {
+        }
+        /**
+         * Prepares an ACF taxonomy for import.
+         *
+         * @since 6.3.10
+         *
+         * @param array $post The ACF post array.
+         * @return array
+         */
+        public function prepare_post_for_import($post)
         {
         }
         /**
@@ -13397,167 +13522,6 @@ namespace {
          * @return string
          */
         public function get_action_notice_text($action, $count = 1)
-        {
-        }
-    }
-    /**
-     * class for handling API services.
-     */
-    class ACF_Updates
-    {
-        /**
-         * The ACF_Updates version
-         *
-         * @var string
-         */
-        public $version = '2.4';
-        /**
-         * The array of registered plugins
-         *
-         * @var array
-         */
-        public $plugins = array();
-        /**
-         * Counts the number of plugin update checks
-         *
-         * @var integer
-         */
-        public $checked = 0;
-        /**
-         * Sets up the class functionality.
-         *
-         * @since   5.0.0
-         * @phpstan-return void
-         */
-        public function __construct()
-        {
-        }
-        /**
-         * Registeres a plugin for updates.
-         *
-         * @since   5.5.10
-         *
-         * @param   array $plugin The plugin array.
-         * @return  void
-         */
-        public function add_plugin($plugin)
-        {
-        }
-        /**
-         * Returns a registered plugin for the give key and value.
-         *
-         * @since   5.7.2
-         *
-         * @param   string $key   The array key to compare.
-         * @param   string $value The value to compare against.
-         * @return  array|false
-         */
-        public function get_plugin_by($key = '', $value = \null)
-        {
-        }
-        /**
-         * Makes a request to the ACF connect server.
-         *
-         * @since   5.5.10
-         *
-         * @param   string $endpoint The API endpoint.
-         * @param   array  $body     The body to post.
-         * @return  array|string|WP_Error
-         */
-        public function request($endpoint = '', $body = \null)
-        {
-        }
-        /**
-         * Returns update information for the given plugin id.
-         *
-         * @since   5.5.10
-         *
-         * @param   string  $id          The plugin id such as 'pro'.
-         * @param   boolean $force_check Bypasses cached result. Defaults to false.
-         * @return  array|WP_Error
-         */
-        public function get_plugin_info($id = '', $force_check = \false)
-        {
-        }
-        /**
-         * Returns specific data from the 'update-check' response.
-         *
-         * @since   5.7.2
-         *
-         * @param string  $basename    The plugin basename.
-         * @param boolean $force_check Bypasses cached result. Defaults to false.
-         * @return array|false
-         */
-        public function get_plugin_update($basename = '', $force_check = \false)
-        {
-        }
-        /**
-         * Checks if an update is available, but can't be updated to.
-         *
-         * @since   6.2.1
-         *
-         * @param string  $basename    The plugin basename.
-         * @param boolean $force_check Bypasses cached result. Defaults to false.
-         * @return array|false
-         */
-        public function get_no_update($basename = '', $force_check = \false)
-        {
-        }
-        /**
-         * Checks for plugin updates.
-         *
-         * @since   5.6.9
-         * @since   5.7.2 Added 'checked' comparison
-         *
-         * @param   boolean $force_check Bypasses cached result. Defaults to false.
-         * @return  array|WP_Error.
-         */
-        public function get_plugin_updates($force_check = \false)
-        {
-        }
-        /**
-         * This function safely gets the expiration value from a response.
-         *
-         * @since   5.6.9
-         *
-         * @param   mixed   $response The response from the server. Default false.
-         * @param   integer $min      The minimum expiration limit. Default 3 hours.
-         * @param   integer $max      The maximum expiration limit. Default 7 days.
-         * @return  integer
-         */
-        public function get_expiration($response = \false, $min = 10800, $max = 604800)
-        {
-        }
-        /**
-         * Deletes transients and allows a fresh lookup.
-         *
-         * @since   5.5.10
-         */
-        public function refresh_plugins_transient()
-        {
-        }
-        /**
-         * Called when WP updates the 'update_plugins' site transient. Used to inject ACF plugin update info.
-         *
-         * @since   5.0.0
-         *
-         * @param object $transient The current transient value.
-         * @return object $transient The modified transient value.
-         */
-        public function modify_plugins_transient($transient)
-        {
-        }
-        /**
-         * Returns the plugin data visible in the 'View details' popup
-         *
-         * @since   5.0.0
-         *
-         * @param   object $result The current result of plugin data.
-         * @param   string $action The action being performed.
-         * @param   object $args   Data about the plugin being retried.
-         * @return  $result
-         */
-        public function modify_plugin_details($result, $action = \null, $args = \null)
         {
         }
     }
@@ -15306,15 +15270,42 @@ namespace {
         }
     }
 }
-namespace ACF\Upgrades {
+namespace {
     /**
-     * Initialize the checking for plugin updates for ACF non-PRO.
+     * The main function responsible for returning the acf_updates singleton.
+     * Use this function like you would a global variable, except without needing to declare the global.
+     *
+     * Example: <?php $acf_updates = acf_updates(); ?>
+     *
+     * @since   5.5.12
+     *
+     * @return ACF\Updater The singleton instance of Updater.
      */
-    function check_for_acf_upgrades()
+    function acf_updates()
     {
     }
-}
-namespace {
+    /**
+     * Alias of acf_updates()->add_plugin().
+     *
+     * @since   5.5.10
+     *
+     * @param   array $plugin Plugin data array.
+     */
+    function acf_register_plugin_update($plugin)
+    {
+    }
+    /**
+     * An ACF specific getter to replace `home_url` in our license checks to ensure we can avoid third party filters.
+     *
+     * @since 6.0.1
+     * @since 6.2.8 - Renamed to acf_pro_get_home_url to match pro exclusive function naming.
+     * @since 6.3.10 - Renamed to acf_get_home_url now updater logic applies to free.
+     *
+     * @return string $home_url The output from home_url, sans known third party filters which cause license activation issues.
+     */
+    function acf_get_home_url()
+    {
+    }
     /**
      * The main function responsible for returning the one true acf Instance to functions everywhere.
      * Use this function like you would a global variable, except without needing to declare the global.
@@ -19193,11 +19184,12 @@ namespace {
      *
      * @since   5.2.3
      *
-     * @param string $nonce  The nonce to check.
-     * @param string $action The action of the nonce.
+     * @param string  $nonce           The nonce to check.
+     * @param string  $action          The action of the nonce.
+     * @param boolean $action_is_field If the action is a field, modify the action to match validate the field type.
      * @return boolean
      */
-    function acf_verify_ajax($nonce = '', $action = '')
+    function acf_verify_ajax($nonce = '', $action = '', $action_is_field = \false)
     {
     }
     /**
@@ -20284,6 +20276,17 @@ namespace {
      * @return boolean true if we're in a multisite install and on the main site
      */
     function acf_is_multisite_main_site()
+    {
+    }
+    /**
+     * Allow filterable permissions metabox callbacks.
+     *
+     * @since   6.3.10
+     *
+     * @param   boolean $enable_meta_box_cb_edit Can the current user edit metabox callbacks.
+     * @return  boolean
+     */
+    function acf_settings_enable_meta_box_cb_edit($enable_meta_box_cb_edit) : bool
     {
     }
     /**
@@ -23175,29 +23178,6 @@ namespace {
     {
     }
     /**
-     * The main function responsible for returning the acf_updates singleton.
-     * Use this function like you would a global variable, except without needing to declare the global.
-     *
-     * Example: <?php $acf_updates = acf_updates(); ?>
-     *
-     * @since   5.5.12
-     *
-     * @return ACF_Updates The singleton instance of ACF_Updates.
-     */
-    function acf_updates()
-    {
-    }
-    /**
-     * Alias of acf_updates()->add_plugin().
-     *
-     * @since   5.5.10
-     *
-     * @param   array $plugin Plugin data array.
-     */
-    function acf_register_plugin_update($plugin)
-    {
-    }
-    /**
      * acf_options_page
      *
      * This function will return the options page instance
@@ -23300,17 +23280,6 @@ namespace {
      * @return array|boolean $license  The ACF PRO license array on success, or false on failure.
      */
     function acf_pro_get_license()
-    {
-    }
-    /**
-     * An ACF specific getter to replace `home_url` in our license checks to ensure we can avoid third party filters.
-     *
-     * @since 6.0.1
-     * @since 6.2.8 - Renamed to acf_pro_get_home_url to match pro exclusive function naming.
-     *
-     * @return string $home_url The output from home_url, sans known third party filters which cause license activation issues.
-     */
-    function acf_pro_get_home_url()
     {
     }
     /**
