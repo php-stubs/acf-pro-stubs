@@ -17,7 +17,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.2.9';
+        public $version = '6.3.0';
         /**
          * The plugin settings array.
          *
@@ -1501,12 +1501,21 @@ namespace {
         {
         }
         /**
-         * Dismisses the escaped unsafe HTML notice by clearing the stored log.
+         * Dismisses the escaped unsafe HTML notice.
          *
          * @since 6.2.5
          * @phpstan-return void
          */
         public function dismiss_escaped_html_notice()
+        {
+        }
+        /**
+         * Clear the escaped unsafe HTML log.
+         *
+         * @since 6.2.5
+         * @phpstan-return void
+         */
+        public function clear_escaped_html_log()
         {
         }
         /**
@@ -3136,21 +3145,21 @@ namespace {
         {
         }
         /**
-         * get_items
+         * get_results
          *
          * Returns an array of results for the given args.
          *
          * @date    31/7/18
          * @since   5.7.2
          *
-         * @param   array args The query args.
+         * @param   array $args The query args.
          * @return  array
          */
         function get_results($args)
         {
         }
         /**
-         * get_item
+         * get_result
          *
          * Returns a single result for the given item object.
          *
@@ -3850,6 +3859,111 @@ namespace {
         {
         }
     }
+    /**
+     * The ACF Site Health class responsible for populating ACF debug information in WordPress Site Health.
+     */
+    class ACF_Site_Health
+    {
+        /**
+         * The option name used to store site health data.
+         *
+         * @var string
+         */
+        public string $option_name = 'acf_site_health';
+        /**
+         * Constructs the ACF_Site_Health class.
+         *
+         * @since 6.3
+         */
+        public function __construct()
+        {
+        }
+        /**
+         * Gets the stored site health information.
+         *
+         * @since 6.3
+         *
+         * @return array
+         */
+        public function get_site_health() : array
+        {
+        }
+        /**
+         * Updates the site health information.
+         *
+         * @since 6.3
+         *
+         * @param array $data An array of site health information to update.
+         * @return boolean
+         */
+        public function update_site_health(array $data = array()) : bool
+        {
+        }
+        /**
+         * Stores debug data in the ACF site health option.
+         *
+         * @since 6.3
+         *
+         * @param array $data Data to update with (optional).
+         * @return boolean
+         */
+        public function update_site_health_data(array $data = array()) : bool
+        {
+        }
+        /**
+         * Pushes an event to the ACF site health option.
+         *
+         * @since 6.3
+         *
+         * @param string $event_name The name of the event to push.
+         * @return boolean
+         */
+        public function add_site_health_event(string $event_name = '') : bool
+        {
+        }
+        /**
+         * Logs activation events for free/pro.
+         *
+         * @since 6.3
+         *
+         * @return boolean
+         */
+        public function add_activation_event()
+        {
+        }
+        /**
+         * Adds events when ACF internal post types are created.
+         *
+         * @since 6.3
+         *
+         * @param array $post The post about to be updated.
+         * @return array
+         */
+        public function pre_update_acf_internal_cpt(array $post = array()) : array
+        {
+        }
+        /**
+         * Appends the ACF section to the "Info" tab of the WordPress Site Health screen.
+         *
+         * @since 6.3
+         *
+         * @param array $debug_info The current debug info for site health.
+         * @return array The debug info appended with the ACF section.
+         */
+        public function render_tab_content(array $debug_info) : array
+        {
+        }
+        /**
+         * Gets the values for all data in the ACF site health section.
+         *
+         * @since 6.3
+         *
+         * @return array
+         */
+        public function get_site_health_values() : array
+        {
+        }
+    }
     class ACF_Compatibility
     {
         /**
@@ -4067,16 +4181,15 @@ namespace {
         {
         }
         /**
-         * This function will register a field type instance
+         * This function will register a field type instance based on a class name or instance.
+         * It will return the instance for further use.
          *
-         * @type    function
-         * @date    6/07/2016
-         * @since   5.4.0
+         * @since 5.4.0
          *
-         * @param   string $class
-         * @return  void
+         * @param   mixed $field_class Either a class name (string) or instance of acf_field.
+         * @return  acf_field The instance of acf_field.
          */
-        function register_field_type($class)
+        public function register_field_type($field_class)
         {
         }
         /**
@@ -5550,6 +5663,129 @@ namespace {
         {
         }
     }
+    /**
+     * Class acf_field_icon_picker.
+     */
+    class acf_field_icon_picker extends \acf_field
+    {
+        /**
+         * Initialize icon picker field
+         *
+         * @since 6.3
+         *
+         * @return void
+         */
+        public function initialize()
+        {
+        }
+        /**
+         * Gets the available tabs for the icon picker field.
+         *
+         * @since 6.3
+         *
+         * @return array
+         */
+        public function get_tabs()
+        {
+        }
+        /**
+         * Renders icon picker field
+         *
+         * @since 6.3
+         *
+         * @param object $field The ACF Field
+         * @return void
+         */
+        public function render_field($field)
+        {
+        }
+        /**
+         * Renders field settings for the icon picker field.
+         *
+         * @since 6.3
+         *
+         * @param array $field The icon picker field object.
+         * @return void
+         */
+        public function render_field_settings($field)
+        {
+        }
+        /**
+         * Localizes text for Icon Picker
+         *
+         * @since 6.3
+         *
+         * @return void
+         */
+        public function input_admin_enqueue_scripts()
+        {
+        }
+        /**
+         * Validates the field value before it is saved into the database.
+         *
+         * @since 6.3
+         *
+         * @param  integer $valid The current validation status.
+         * @param  mixed   $value The value of the field.
+         * @param  array   $field The field array holding all the field options.
+         * @param  string  $input The corresponding input name for $_POST value.
+         * @return boolean true If the value is valid, false if not.
+         */
+        public function validate_value($valid, $value, $field, $input)
+        {
+        }
+        /**
+         * format_value()
+         *
+         * This filter is appied to the $value after it is loaded from the db and before it is returned to the template
+         *
+         * @since 6.3
+         *
+         * @param  mixed   $value   The value which was loaded from the database.
+         * @param  integer $post_id The $post_id from which the value was loaded.
+         * @param  array   $field   The field array holding all the field options.
+         * @return mixed   $value   The modified value.
+         */
+        public function format_value($value, $post_id, $field)
+        {
+        }
+        /**
+         * get_dashicons()
+         *
+         * This function will return an array of dashicons.
+         *
+         * @since 6.3
+         *
+         * @return  array $dashicons an array of dashicons.
+         */
+        public function get_dashicons()
+        {
+        }
+        /**
+         * Returns the schema used by the REST API.
+         *
+         * @since 6.3
+         *
+         * @param array $field The main field array.
+         * @return array
+         */
+        public function get_rest_schema(array $field) : array
+        {
+        }
+        /**
+         * Validates a value sent via the REST API.
+         *
+         * @since 6.3
+         *
+         * @param boolean    $valid The current validity boolean.
+         * @param array|null $value The value of the field.
+         * @param array      $field The main field array.
+         * @return boolean|WP_Error
+         */
+        public function validate_rest_value($valid, $value, $field)
+        {
+        }
+    }
     class acf_field_image extends \acf_field
     {
         /**
@@ -6174,6 +6410,19 @@ namespace {
         {
         }
         /**
+         * Filters choices in page link conditions.
+         *
+         * @since 6.3
+         *
+         * @param array  $choices           The selected choice.
+         * @param array  $conditional_field The conditional field settings object.
+         * @param string $rule_value        The rule value.
+         * @return array
+         */
+        public function render_field_page_link_conditional_choices($choices, $conditional_field, $rule_value)
+        {
+        }
+        /**
          * description
          *
          * @type    function
@@ -6395,91 +6644,89 @@ namespace {
         /**
          * This function will setup the field type data
          *
-         * @type    function
-         * @date    5/03/2014
          * @since   5.0.0
          */
         public function initialize()
         {
         }
         /**
-         * description
+         * Filters choices in post object conditions.
          *
-         * @type    function
-         * @date    24/10/13
-         * @since   5.0.0
+         * @since 6.3
          *
-         * @param   int $post_id
-         * @return  int $post_id
+         * @param array  $choices           The selected choice.
+         * @param array  $conditional_field The conditional field settings object.
+         * @param string $rule_value        The rule value.
+         * @return array
          */
-        function ajax_query()
+        public function render_field_post_object_conditional_choices($choices, $conditional_field, $rule_value)
+        {
+        }
+        /**
+         * AJAX query handler for post object fields.
+         *
+         * @since   5.0.0
+         */
+        public function ajax_query()
         {
         }
         /**
          * This function will return an array of data formatted for use in a select2 AJAX response
          *
-         * @type    function
-         * @date    15/10/2014
          * @since   5.0.9
          *
-         * @param   array $options
-         * @return  array
+         * @param   array $options The options being queried for the ajax request.
+         * @return  array The AJAX response array.
          */
-        function get_ajax_query($options = array())
+        public function get_ajax_query($options = array())
         {
         }
         /**
          * This function will return an array containing id, text and maybe description data
          *
-         * @type    function
-         * @date    7/07/2016
          * @since   5.4.0
          *
-         * @param   mixed $id
-         * @param   string $text
-         * @return  array
+         * @param   mixed  $id   The ID of the post result.
+         * @param   string $text The text for the response item.
+         * @return  array The combined result array.
          */
-        function get_post_result($id, $text)
+        public function get_post_result($id, $text)
         {
         }
         /**
-         * This function returns the HTML for a result
+         * This function post object's filtered output post title
          *
-         * @type    function
-         * @date    1/11/2013
          * @since   5.0.0
          *
-         * @param   object $post
-         * @param   array $field
-         * @param   int $post_id the post_id to which this value is saved to
-         * @return  string
+         * @param   WP_Post $post      The WordPress post.
+         * @param   array   $field     The field being output.
+         * @param   integer $post_id   The post_id to which this value is saved to.
+         * @param   integer $is_search An int-as-boolean value for whether we're performing a search.
+         * @param   boolean $unescape  Should we return an unescaped post title.
+         * @return  string A potentially user filtered post title for the post, which may contain unsafe HTML.
          */
-        function get_post_title($post, $field, $post_id = 0, $is_search = 0)
+        public function get_post_title($post, $field, $post_id = 0, $is_search = 0, $unescape = \false)
         {
         }
         /**
-         * Create the HTML interface for your field
+         * Create the HTML interface for the post object field.
          *
-         * @param   $field - an array holding all the field's data
+         * @since 3.6
          *
-         * @type    action
-         * @since   3.6
-         * @date    23/01/13
+         * @param array $field An array holding all the field's data.
          */
-        function render_field($field)
+        public function render_field($field)
         {
         }
         /**
-         * Create extra options for your field. This is rendered when editing a field.
-         * The value of $field['name'] can be used (like bellow) to save extra data to the $field
+         * Create extra options for post object field. This is rendered when editing.
+         * The value of $field['name'] can be used (like below) to save extra data to the $field.
          *
-         * @type    action
-         * @since   3.6
-         * @date    23/01/13
+         * @since 3.6
          *
-         * @param   $field  - an array holding all the field's data
+         * @param array $field An array holding all the field's data.
          */
-        function render_field_settings($field)
+        public function render_field_settings($field)
         {
         }
         /**
@@ -6490,7 +6737,7 @@ namespace {
          * @param array $field The field settings array.
          * @return void
          */
-        function render_field_validation_settings($field)
+        public function render_field_validation_settings($field)
         {
         }
         /**
@@ -6507,32 +6754,27 @@ namespace {
         /**
          * This filter is applied to the $value after it is loaded from the db
          *
-         * @type    filter
          * @since   3.6
-         * @date    23/01/13
          *
-         * @param   mixed $value the value found in the database
-         * @param   mixed $post_id the post_id from which the value was loaded
-         * @param   array $field the field array holding all the field options
-         * @return  $value
+         * @param  mixed $value   The value found in the database
+         * @param  mixed $post_id The post_id from which the value was loaded
+         * @param  array $field   The field array holding all the field options
+         * @return mixed $value
          */
-        function load_value($value, $post_id, $field)
+        public function load_value($value, $post_id, $field)
         {
         }
         /**
          * This filter is appied to the $value after it is loaded from the db and before it is returned to the template
          *
-         * @type    filter
-         * @since   3.6
-         * @date    23/01/13
+         * @since 3.6
          *
-         * @param   mixed $value the value which was loaded from the database
-         * @param   mixed $post_id the post_id from which the value was loaded
-         * @param   array $field the field array holding all the field options
-         *
-         * @return  mixed $value the modified value
+         * @param  mixed $value   The value found in the database
+         * @param  mixed $post_id The post_id from which the value was loaded
+         * @param  array $field   The field array holding all the field options
+         * @return mixed $value
          */
-        function format_value($value, $post_id, $field)
+        public function format_value($value, $post_id, $field)
         {
         }
         /**
@@ -6551,18 +6793,19 @@ namespace {
         /**
          * This function will return an array of posts for a given field value
          *
-         * @type    function
-         * @date    13/06/2014
-         * @since   5.0.0
+         * @since 5.0
          *
-         * @param   array $value
-         * @return  $value
+         * @param  mixed $value The value of the field.
+         * @param  array $field The field array holding all the field options.
+         * @return array $value An array of post objects.
          */
-        function get_posts($value, $field)
+        public function get_posts($value, $field)
         {
         }
         /**
          * Validates post object fields updated via the REST API.
+         *
+         * @since 5.11
          *
          * @param  boolean $valid The current validity booleean
          * @param  integer $value The value of the field
@@ -6575,17 +6818,23 @@ namespace {
         /**
          * Return the schema array for the REST API.
          *
-         * @param array $field
+         * @since 5.11
+         *
+         * @param array $field The field array.
          * @return array
          */
         public function get_rest_schema(array $field)
         {
         }
         /**
+         * REST link attributes generator for this field.
+         *
+         * @since 5.11
          * @see \acf_field::get_rest_links()
+         *
          * @param mixed          $value   The raw (unformatted) field value.
-         * @param integer|string $post_id
-         * @param array          $field
+         * @param integer|string $post_id The post ID being queried.
+         * @param array          $field   The field array.
          * @return array
          */
         public function get_rest_links($value, $post_id, array $field)
@@ -6594,9 +6843,11 @@ namespace {
         /**
          * Apply basic formatting to prepare the value for default REST output.
          *
-         * @param mixed          $value
-         * @param string|integer $post_id
-         * @param array          $field
+         * @since 5.11
+         *
+         * @param mixed          $value   The raw (unformatted) field value.
+         * @param integer|string $post_id The post ID being queried.
+         * @param array          $field   The field array.
          * @return mixed
          */
         public function format_value_for_rest($value, $post_id, array $field)
@@ -6849,6 +7100,19 @@ namespace {
          * @since   5.0.0
          */
         public function initialize()
+        {
+        }
+        /**
+         * Filters choices in relation conditions.
+         *
+         * @since 6.3
+         *
+         * @param array  $choices           The selected choice.
+         * @param array  $conditional_field The conditional field settings object.
+         * @param string $rule_value        The rule value.
+         * @return array
+         */
+        public function render_field_relation_conditional_choices($choices, $conditional_field, $rule_value)
         {
         }
         /**
@@ -7332,15 +7596,13 @@ namespace {
         {
         }
         /**
-         * Create the HTML interface for your field
+         * Output the HTML required for a tab.
          *
-         * @param   $field - an array holding all the field's data
+         * @since 3.6
          *
-         * @type    action
-         * @since   3.6
-         * @date    23/01/13
+         * @param array $field An array of the field data.
          */
-        function render_field($field)
+        public function render_field($field)
         {
         }
         /**
@@ -7554,14 +7816,27 @@ namespace {
         {
         }
         /**
-         * description
+         * Filters choices in taxonomy conditions.
          *
-         * @type    function
-         * @date    17/04/2015
-         * @since   5.2.3
+         * @since 6.3
          *
-         * @param   int $post_id
-         * @return  int $post_id
+         * @param array  $choices           The selected choice.
+         * @param array  $conditional_field The conditional field settings object.
+         * @param string $rule_value        The rule value.
+         * @return mixed
+         */
+        public function render_field_taxonomy_conditional_choices($choices, $conditional_field, $rule_value)
+        {
+        }
+        /**
+         * ajax_add_term
+         *
+         * @since  5.2.3
+         *
+         * @type   function
+         * @date   17/04/2015
+         *
+         * @return void
          * @phpstan-return never
          */
         function ajax_add_term()
@@ -8068,6 +8343,19 @@ namespace {
         {
         }
         /**
+         * Filters choices in user conditions.
+         *
+         * @since 6.3
+         *
+         * @param array  $choices           The selected choice.
+         * @param array  $conditional_field The conditional field settings object.
+         * @param string $rule_value        The rule value.
+         * @return array
+         */
+        public function render_field_user_conditional_choices($choices, $conditional_field, $rule_value)
+        {
+        }
+        /**
          * Renders the field settings HTML.
          *
          * @date    23/01/13
@@ -8114,7 +8402,7 @@ namespace {
         {
         }
         /**
-         * Returns the result text for a fiven WP_User object.
+         * Returns the result text for a given WP_User object.
          *
          * @date    1/11/2013
          * @since   5.0.0
@@ -8777,6 +9065,9 @@ namespace {
          * @return  int $post_id
          */
         function get_form($id = '')
+        {
+        }
+        function get_forms()
         {
         }
         /**
@@ -9754,6 +10045,18 @@ namespace {
          * @return array
          */
         public function get_files($post_type = 'acf-field-group')
+        {
+        }
+        /**
+         * Gets the filename for an ACF JSON file.
+         *
+         * @since 6.3
+         *
+         * @param string $key  The ACF post key.
+         * @param array  $post The main ACF post array.
+         * @return string|boolean
+         */
+        public function get_filename($key, $post)
         {
         }
         /**
@@ -11969,9 +12272,9 @@ namespace {
          * @type    filter
          * @date    19/09/13
          *
-         * @param   boolean $return defaults to true
-         * @param   object $last_revision the last revision that WP will compare against
-         * @param   object $post the $post object that WP will compare against
+         * @param   boolean $return        defaults to true
+         * @param   object  $last_revision the last revision that WP will compare against
+         * @param   object  $post          the $post object that WP will compare against
          * @return  boolean $return
          */
         function wp_save_post_revision_check_for_changes($return, $last_revision, $post)
@@ -11992,18 +12295,15 @@ namespace {
         {
         }
         /**
-         * This filter will load the value for the given field and return it for rendering
+         * Load the value for the given field and return it for rendering.
          *
-         * @type    filter
-         * @date    11/08/13
-         *
-         * @param   mixed $value should be false as it has not yet been loaded
-         * @param   string $field_name The name of the field
-         * @param   post (mixed) Holds the $post object to load from - in WP 3.5, this is not passed!
-         * @param   string $direction to / from - not used
-         * @return  string $value
+         * @param mixed  $value      Should be false as it has not yet been loaded.
+         * @param string $field_name The name of the field
+         * @param mixed  $post       Holds the $post object to load from - in WP 3.5, this is not passed!
+         * @param string $direction  To / from - not used.
+         * @return string $value
          */
-        function wp_post_revision_field($value, $field_name, $post = \null, $direction = \false)
+        public function wp_post_revision_field($value, $field_name, $post = \null, $direction = \false)
         {
         }
         /**
@@ -13149,11 +13449,11 @@ namespace {
          * @since   5.6.9
          *
          * @param   mixed   $response The response from the server. Default false.
-         * @param   integer $min      The minimum expiration limit. Default 0.
-         * @param   integer $max      The maximum expiration limit. Default 0.
+         * @param   integer $min      The minimum expiration limit. Default 3 hours.
+         * @param   integer $max      The maximum expiration limit. Default 7 days.
          * @return  integer
          */
-        public function get_expiration($response = \false, $min = 0, $max = 0)
+        public function get_expiration($response = \false, $min = 10800, $max = 604800)
         {
         }
         /**
@@ -14886,6 +15186,17 @@ namespace {
         {
         }
         /**
+         * This function returns whether the value was saved prior to the icon picker field or not.
+         *
+         * @since 6.3
+         *
+         * @param mixed $args The args for the icon field.
+         * @return boolean
+         */
+        public function value_was_saved_prior_to_icon_picker_field($args)
+        {
+        }
+        /**
          * Parses ACF options page settings and returns an array of args
          * to be handled by `acf_add_options_page()`.
          *
@@ -16449,6 +16760,28 @@ namespace {
      * @return boolean True if the current install is ACF PRO
      */
     function acf_is_pro()
+    {
+    }
+    /**
+     * Check if ACF is a beta-like release.
+     *
+     * @since 6.3
+     *
+     * @return boolean True if the current install version contains a dash, indicating a alpha, beta or RC release.
+     */
+    function acf_is_beta()
+    {
+    }
+    /**
+     * Returns the version of ACF when it was first activated.
+     * However, if ACF was first activated prior to the introduction of the acf_first_activated_version option,
+     * this function returns false (boolean) to indicate that the version could not be determined.
+     *
+     * @since 6.3
+     *
+     * @return string|boolean The (string) version of ACF when it was first activated, or false (boolean) if the version could not be determined.
+     */
+    function acf_get_version_when_first_activated()
     {
     }
     /**
@@ -20914,6 +21247,9 @@ namespace {
     function acf_get_form($id = '')
     {
     }
+    function acf_get_forms()
+    {
+    }
     function acf_register_form($args)
     {
     }
@@ -22425,7 +22761,7 @@ namespace {
      * @since   5.8.0
      *
      * @param   array $block The block props.
-     * @return  array
+     * @return  array|boolean
      */
     function acf_prepare_block($block)
     {
@@ -22471,15 +22807,16 @@ namespace {
      * @date    28/2/19
      * @since   5.7.13
      *
-     * @param   array    $attributes The block attributes.
-     * @param   string   $content    The block content.
-     * @param   boolean  $is_preview Whether or not the block is being rendered for editing preview.
-     * @param   integer  $post_id    The current post being edited or viewed.
-     * @param   WP_Block $wp_block   The block instance (since WP 5.5).
-     * @param   array    $context    The block context array.
+     * @param   array    $attributes     The block attributes.
+     * @param   string   $content        The block content.
+     * @param   boolean  $is_preview     Whether or not the block is being rendered for editing preview.
+     * @param   integer  $post_id        The current post being edited or viewed.
+     * @param   WP_Block $wp_block       The block instance (since WP 5.5).
+     * @param   array    $context        The block context array.
+     * @param   boolean  $is_ajax_render Whether or not this is an ACF AJAX render.
      * @return  string   The block HTML.
      */
-    function acf_rendered_block($attributes, $content = '', $is_preview = \false, $post_id = 0, $wp_block = \null, $context = \false)
+    function acf_rendered_block($attributes, $content = '', $is_preview = \false, $post_id = 0, $wp_block = \null, $context = \false, $is_ajax_render = \false)
     {
     }
     /**
@@ -22590,11 +22927,12 @@ namespace {
      *
      * @since 6.0.0
      *
-     * @param array $attributes A block attributes array.
-     * @param array $context    The block context array, defaults to an empty array.
+     * @param array   $attributes A block attributes array.
+     * @param array   $context    The block context array, defaults to an empty array.
+     * @param boolean $force      If we should generate a new block ID even if one exists.
      * @return string A block ID.
      */
-    function acf_get_block_id($attributes, $context = array())
+    function acf_get_block_id($attributes, $context = array(), $force = \false)
     {
     }
     /**
@@ -22628,6 +22966,21 @@ namespace {
     {
     }
     /**
+     * Handle validating a block's fields and return the validity, and any errors.
+     *
+     * This function uses the values loaded into Local Meta, which means they have to be
+     * converted back to the data format because they can be validated.
+     *
+     * @since 6.3
+     *
+     * @param array   $block          An array of the block's data attribute.
+     * @param boolean $using_defaults True if the block is currently being generated with default values. Default false.
+     * @return array An array containing a valid boolean, and an errors array.
+     */
+    function acf_get_block_validation_state($block, $using_defaults = \false)
+    {
+    }
+    /**
      * Set ACF data before a rest call if media scripts have not been enqueued yet for after REST reset.
      *
      * @date    07/06/22
@@ -22649,6 +23002,54 @@ namespace {
      * @return  mixed
      */
     function acf_reset_media_enqueue_after_rest($response)
+    {
+    }
+    /**
+     * Checks if the provided block is configured to save/load post meta.
+     *
+     * @since 6.3
+     *
+     * @param array $block The block to check.
+     * @return boolean
+     */
+    function acf_block_uses_post_meta($block) : bool
+    {
+    }
+    /**
+     * Loads ACF field values from the post meta if the block is configured to do so.
+     *
+     * @since 6.3
+     *
+     * @param array   $block   The block to get values for.
+     * @param integer $post_id The ID of the post to retrieve meta from.
+     * @return array
+     */
+    function acf_add_block_meta_values($block, $post_id)
+    {
+    }
+    /**
+     * Stores ACF field values in post meta for any blocks configured to do so.
+     *
+     * @since 6.3
+     *
+     * @param integer $post_id The ID of the post being saved.
+     * @param WP_Post $post    The post object.
+     * @return void
+     * @phpstan-return void
+     */
+    function acf_save_block_meta_values($post_id, $post)
+    {
+    }
+    /**
+     * Iterates over blocks in post content and retrieves values
+     * that need to be saved to post meta.
+     *
+     * @since 6.3
+     *
+     * @param string $content The content saved for the post.
+     * @return array An array containing the field values that need to be saved.
+     */
+    function acf_get_block_meta_values_to_save($content = '')
     {
     }
     /**
@@ -22730,7 +23131,7 @@ namespace {
      * Get translated upstream message
      *
      * @since   6.2.3
-     * @param   string $text server side message string.
+     * @param   string $text Server side message string.
      *
      * @return  string a translated (or original, if unavailable), message string.
      */
