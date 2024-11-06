@@ -21,5 +21,23 @@
         "symfony/polyfill-php73": "Symfony polyfill backporting some PHP 7.3+ features to lower PHP versions",
         "szepeviktor/phpstan-wordpress": "WordPress extensions for PHPStan"
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://connect.advancedcustomfields.com"
+        }
+    ],
+    "extra": {
+        "installer-paths": {
+            "source/{$name}/": [
+                "type:wordpress-plugin"
+            ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
 }

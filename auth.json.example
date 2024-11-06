@@ -1,0 +1,8 @@
+{
+    "http-basic": {
+        "connect.advancedcustomfields.com": {
+            "username": "xyz",
+            "password": "http://your_password"
+        }
+    }
+}
