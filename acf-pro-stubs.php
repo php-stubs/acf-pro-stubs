@@ -17,7 +17,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.3.10';
+        public $version = '6.3.11';
         /**
          * The plugin settings array.
          *
@@ -4063,7 +4063,7 @@ namespace {
          *
          * @return array
          */
-        public function get_site_health() : array
+        public function get_site_health(): array
         {
         }
         /**
@@ -4074,7 +4074,7 @@ namespace {
          * @param array $data An array of site health information to update.
          * @return boolean
          */
-        public function update_site_health(array $data = array()) : bool
+        public function update_site_health(array $data = array()): bool
         {
         }
         /**
@@ -4085,7 +4085,7 @@ namespace {
          * @param array $data Data to update with (optional).
          * @return boolean
          */
-        public function update_site_health_data(array $data = array()) : bool
+        public function update_site_health_data(array $data = array()): bool
         {
         }
         /**
@@ -4096,7 +4096,7 @@ namespace {
          * @param string $event_name The name of the event to push.
          * @return boolean
          */
-        public function add_site_health_event(string $event_name = '') : bool
+        public function add_site_health_event(string $event_name = ''): bool
         {
         }
         /**
@@ -4117,7 +4117,7 @@ namespace {
          * @param array $post The post about to be updated.
          * @return array
          */
-        public function pre_update_acf_internal_cpt(array $post = array()) : array
+        public function pre_update_acf_internal_cpt(array $post = array()): array
         {
         }
         /**
@@ -4128,7 +4128,7 @@ namespace {
          * @param array $debug_info The current debug info for site health.
          * @return array The debug info appended with the ACF section.
          */
-        public function render_tab_content(array $debug_info) : array
+        public function render_tab_content(array $debug_info): array
         {
         }
         /**
@@ -4138,7 +4138,7 @@ namespace {
          *
          * @return array
          */
-        public function get_site_health_values() : array
+        public function get_site_health_values(): array
         {
         }
     }
@@ -5959,7 +5959,7 @@ namespace {
          * @param array $field The main field array.
          * @return array
          */
-        public function get_rest_schema(array $field) : array
+        public function get_rest_schema(array $field): array
         {
         }
         /**
@@ -15272,29 +15272,6 @@ namespace {
 }
 namespace {
     /**
-     * The main function responsible for returning the acf_updates singleton.
-     * Use this function like you would a global variable, except without needing to declare the global.
-     *
-     * Example: <?php $acf_updates = acf_updates(); ?>
-     *
-     * @since   5.5.12
-     *
-     * @return ACF\Updater The singleton instance of Updater.
-     */
-    function acf_updates()
-    {
-    }
-    /**
-     * Alias of acf_updates()->add_plugin().
-     *
-     * @since   5.5.10
-     *
-     * @param   array $plugin Plugin data array.
-     */
-    function acf_register_plugin_update($plugin)
-    {
-    }
-    /**
      * An ACF specific getter to replace `home_url` in our license checks to ensure we can avoid third party filters.
      *
      * @since 6.0.1
@@ -19785,7 +19762,7 @@ namespace {
      * @param integer $post_id The post ID to check.
      * @return boolean
      */
-    function acf_current_user_can_edit_post(int $post_id) : bool
+    function acf_current_user_can_edit_post(int $post_id): bool
     {
     }
     /**
@@ -20286,7 +20263,7 @@ namespace {
      * @param   boolean $enable_meta_box_cb_edit Can the current user edit metabox callbacks.
      * @return  boolean
      */
-    function acf_settings_enable_meta_box_cb_edit($enable_meta_box_cb_edit) : bool
+    function acf_settings_enable_meta_box_cb_edit($enable_meta_box_cb_edit): bool
     {
     }
     /**
@@ -23137,7 +23114,7 @@ namespace {
      * @param array $block The block to check.
      * @return boolean
      */
-    function acf_block_uses_post_meta($block) : bool
+    function acf_block_uses_post_meta($block): bool
     {
     }
     /**
