@@ -17,7 +17,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.3.11';
+        public $version = '6.3.12';
         /**
          * The plugin settings array.
          *
@@ -443,6 +443,12 @@ namespace ACF {
     }
 }
 namespace {
+    /**
+     * Register a dummy ACF_Updates class for back compat.
+     */
+    class ACF_Updates
+    {
+    }
     class ACF_Admin_Internal_Post_Type_List
     {
         /**
@@ -15298,6 +15304,58 @@ namespace {
     {
     }
     /**
+     * The main function responsible for returning the acf_updates singleton.
+     * Use this function like you would a global variable, except without needing to declare the global.
+     *
+     * Example: <?php $acf_updates = acf_updates(); ?>
+     *
+     * @since   5.5.12
+     *
+     * @return ACF\Updater The singleton instance of Updater.
+     */
+    function acf_updates()
+    {
+    }
+    /**
+     * Alias of acf_updates()->add_plugin().
+     *
+     * @since   5.5.10
+     *
+     * @param   array $plugin Plugin data array.
+     */
+    function acf_register_plugin_update($plugin)
+    {
+    }
+    /**
+     * Registers updates for the free version of ACF hosted on connect.
+     *
+     * @return void
+     */
+    function acf_register_free_updates()
+    {
+    }
+    /**
+     * Filters the "Update Source" param in the ACF site health.
+     *
+     * @since 6.3.11.1
+     *
+     * @param string $update_source The original update source.
+     * @return string
+     */
+    function acf_direct_update_source($update_source)
+    {
+    }
+    /**
+     * Unsets ACF from reporting back to the WP.org API.
+     *
+     * @param array  $args An array of HTTP request arguments.
+     * @param string $url  The request URL.
+     * @return array|mixed
+     */
+    function acf_unset_plugin_from_org_reporting($args, $url)
+    {
+    }
+    /**
      * General functions relating to the bidirectional feature of some fields.
      *
      * @package ACF
@@ -22352,16 +22410,6 @@ namespace {
      * @return  void
      */
     function acf_upgrade_550_taxonomy($taxonomy)
-    {
-    }
-    /**
-     * Unsets ACF from reporting back to the WP.org API.
-     *
-     * @param array  $args An array of HTTP request arguments.
-     * @param string $url  The request URL.
-     * @return array|mixed
-     */
-    function acf_unset_plugin_from_org_reporting($args, $url)
     {
     }
     // class_exists check
