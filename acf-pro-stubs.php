@@ -17,7 +17,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.3.12';
+        public $version = '6.4.0';
         /**
          * The plugin settings array.
          *
@@ -241,40 +241,6 @@ namespace {
          * @since 6.2.6
          */
         public function acf_plugin_activated()
-        {
-        }
-    }
-}
-namespace ACF\Blocks {
-    /**
-     * The core ACF Blocks binding class.
-     */
-    class Bindings
-    {
-        /**
-         * Block Bindings constructor.
-         * @phpstan-return void
-         */
-        public function __construct()
-        {
-        }
-        /**
-         * Hooked to acf/init, register our binding sources.
-         */
-        public function register_binding_sources()
-        {
-        }
-        /**
-         * Handle returing the block binding value for an ACF meta value.
-         *
-         * @since 6.2.8
-         *
-         * @param array     $source_attrs   An array of the source attributes requested.
-         * @param \WP_Block $block_instance The block instance.
-         * @param string    $attribute_name The block's bound attribute name.
-         * @return string|null The block binding value or an empty string on failure.
-         */
-        public function get_value(array $source_attrs, \WP_Block $block_instance, string $attribute_name)
         {
         }
     }
@@ -4040,111 +4006,6 @@ namespace {
          * @return array
          */
         public function import_post($post)
-        {
-        }
-    }
-    /**
-     * The ACF Site Health class responsible for populating ACF debug information in WordPress Site Health.
-     */
-    class ACF_Site_Health
-    {
-        /**
-         * The option name used to store site health data.
-         *
-         * @var string
-         */
-        public string $option_name = 'acf_site_health';
-        /**
-         * Constructs the ACF_Site_Health class.
-         *
-         * @since 6.3
-         */
-        public function __construct()
-        {
-        }
-        /**
-         * Gets the stored site health information.
-         *
-         * @since 6.3
-         *
-         * @return array
-         */
-        public function get_site_health(): array
-        {
-        }
-        /**
-         * Updates the site health information.
-         *
-         * @since 6.3
-         *
-         * @param array $data An array of site health information to update.
-         * @return boolean
-         */
-        public function update_site_health(array $data = array()): bool
-        {
-        }
-        /**
-         * Stores debug data in the ACF site health option.
-         *
-         * @since 6.3
-         *
-         * @param array $data Data to update with (optional).
-         * @return boolean
-         */
-        public function update_site_health_data(array $data = array()): bool
-        {
-        }
-        /**
-         * Pushes an event to the ACF site health option.
-         *
-         * @since 6.3
-         *
-         * @param string $event_name The name of the event to push.
-         * @return boolean
-         */
-        public function add_site_health_event(string $event_name = ''): bool
-        {
-        }
-        /**
-         * Logs activation events for free/pro.
-         *
-         * @since 6.3
-         *
-         * @return boolean
-         */
-        public function add_activation_event()
-        {
-        }
-        /**
-         * Adds events when ACF internal post types are created.
-         *
-         * @since 6.3
-         *
-         * @param array $post The post about to be updated.
-         * @return array
-         */
-        public function pre_update_acf_internal_cpt(array $post = array()): array
-        {
-        }
-        /**
-         * Appends the ACF section to the "Info" tab of the WordPress Site Health screen.
-         *
-         * @since 6.3
-         *
-         * @param array $debug_info The current debug info for site health.
-         * @return array The debug info appended with the ACF section.
-         */
-        public function render_tab_content(array $debug_info): array
-        {
-        }
-        /**
-         * Gets the values for all data in the ACF site health section.
-         *
-         * @since 6.3
-         *
-         * @return array
-         */
-        public function get_site_health_values(): array
         {
         }
     }
@@ -9174,19 +9035,27 @@ namespace {
     #[\AllowDynamicProperties]
     class acf_form_front
     {
-        /** @var array An array of default fields */
+        /**
+         * An array of default fields.
+         * @var array
+         */
         public $fields = array();
         /**
-         * This function will setup the class functionality
+         * Constructs the class.
          *
-         * @type    function
-         * @date    5/03/2014
-         * @since   5.0.0
-         *
-         * @param   void
-         * @return  void
+         * @since 5.0.0
          */
-        function __construct()
+        public function __construct()
+        {
+        }
+        /**
+         * Returns fields used by frontend forms.
+         *
+         * @since 6.4
+         *
+         * @return array
+         */
+        public function get_default_fields(): array
         {
         }
         /**
@@ -12927,6 +12796,26 @@ namespace {
         {
         }
         /**
+         * Updates the plugin name to make it translatable.
+         *
+         * @since 6.4
+         *
+         * @return void
+         */
+        public function update_plugin_name()
+        {
+        }
+        /**
+         * Initializes the ACF WooCommerce HPOS integration.
+         *
+         * @since 6.4
+         *
+         * @return void
+         */
+        public function init_hpos_integration()
+        {
+        }
+        /**
          * Registers the `acf-ui-options-page` post type and initializes the UI.
          *
          * @since 6.2
@@ -15272,6 +15161,646 @@ namespace {
          * @phpstan-return void
          */
         public function modify_plugin_update_message($plugin_data, $response)
+        {
+        }
+    }
+}
+namespace ACF\Blocks {
+    /**
+     * The core ACF Blocks binding class.
+     */
+    class Bindings
+    {
+        /**
+         * Block Bindings constructor.
+         * @phpstan-return void
+         */
+        public function __construct()
+        {
+        }
+        /**
+         * Hooked to acf/init, register our binding sources.
+         */
+        public function register_binding_sources()
+        {
+        }
+        /**
+         * Handle returing the block binding value for an ACF meta value.
+         *
+         * @since 6.2.8
+         *
+         * @param array     $source_attrs   An array of the source attributes requested.
+         * @param \WP_Block $block_instance The block instance.
+         * @param string    $attribute_name The block's bound attribute name.
+         * @return string|null The block binding value or an empty string on failure.
+         */
+        public function get_value(array $source_attrs, \WP_Block $block_instance, string $attribute_name)
+        {
+        }
+    }
+}
+namespace ACF\Meta {
+    /**
+     * The MetaType base class.
+     */
+    class MetaLocation
+    {
+        /**
+         * The unique slug/name of the meta location.
+         *
+         * @var string
+         */
+        public string $location_type = '';
+        /**
+         * The prefix to use for ACF reference keys/hidden meta.
+         *
+         * @var string
+         */
+        public string $reference_prefix = '_';
+        /**
+         * Constructs the location.
+         *
+         * @since 6.4
+         */
+        public function __construct()
+        {
+        }
+        /**
+         * Registers the meta location with ACF, so it can be used by
+         * various CRUD helper functions.
+         *
+         * @since 6.4
+         *
+         * @return void
+         * @phpstan-return void
+         */
+        public function register()
+        {
+        }
+        /**
+         * Retrieves all ACF meta for the provided object ID.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object to get meta from.
+         * @return array
+         */
+        public function get_meta($object_id = 0): array
+        {
+        }
+        /**
+         * Retrieves a field value from the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object the metadata is for.
+         * @param array          $field     The field array.
+         * @return mixed
+         */
+        public function get_value($object_id = 0, array $field = array())
+        {
+        }
+        /**
+         * Gets a reference key for the provided field name.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id  The ID of the object to get the reference key from.
+         * @param string         $field_name The name of the field to get the reference for.
+         * @return string|null
+         */
+        public function get_reference($object_id = 0, string $field_name = '')
+        {
+        }
+        /**
+         * Updates an object ID with the provided meta array.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object the metadata is for.
+         * @param array          $meta      The metadata to save to the object.
+         * @return void
+         */
+        public function update_meta($object_id = 0, array $meta = array())
+        {
+        }
+        /**
+         * Updates a field value in the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object the metadata is for.
+         * @param array          $field     The field array.
+         * @param mixed          $value     The metadata value.
+         * @return integer|boolean
+         */
+        public function update_value($object_id = 0, array $field = array(), $value = '')
+        {
+        }
+        /**
+         * Updates a reference key in the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id  The ID of the object the metadata is for.
+         * @param string         $field_name The name of the field to update the reference for.
+         * @param string         $value      The value of the reference key.
+         * @return integer|boolean
+         */
+        public function update_reference($object_id = 0, string $field_name = '', string $value = '')
+        {
+        }
+        /**
+         * Deletes a field value from the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object the metadata is for.
+         * @param array          $field     The field array.
+         * @return boolean
+         */
+        public function delete_value($object_id = 0, array $field = array()): bool
+        {
+        }
+        /**
+         * Deletes a reference key from the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id  The ID of the object the metadata is for.
+         * @param string         $field_name The name of the field to delete the reference from.
+         * @return boolean
+         */
+        public function delete_reference($object_id = 0, string $field_name = ''): bool
+        {
+        }
+    }
+    /**
+     * A class to add support for saving to comment meta.
+     */
+    class Comment extends \ACF\Meta\MetaLocation
+    {
+        /**
+         * The unique slug/name of the meta location.
+         *
+         * @var string
+         */
+        public string $location_type = 'comment';
+    }
+    /**
+     * A class to add support for saving to standard post meta.
+     */
+    class Post extends \ACF\Meta\MetaLocation
+    {
+        /**
+         * The unique slug/name of the meta location.
+         *
+         * @var string
+         */
+        public string $location_type = 'post';
+    }
+    /**
+     * A class to add support for saving to term meta.
+     */
+    class Term extends \ACF\Meta\MetaLocation
+    {
+        /**
+         * The unique slug/name of the meta location.
+         *
+         * @var string
+         */
+        public string $location_type = 'term';
+    }
+    /**
+     * A class to add support for saving to user meta.
+     */
+    class User extends \ACF\Meta\MetaLocation
+    {
+        /**
+         * The unique slug/name of the meta location.
+         *
+         * @var string
+         */
+        public string $location_type = 'user';
+    }
+}
+namespace ACF\Pro\Forms {
+    /**
+     * Adds ACF metaboxes to the new WooCommerce order screen.
+     */
+    class WC_Order
+    {
+        /**
+         * Constructs the ACF_Form_WC_Order class.
+         *
+         * @since 6.4
+         */
+        public function __construct()
+        {
+        }
+        /**
+         * Enqueues ACF scripts on the WooCommerce order page and
+         * registers actions specific to that page.
+         *
+         * @since 6.4
+         *
+         * @return void
+         */
+        public function initialize()
+        {
+        }
+        /**
+         * Adds ACF metaboxes to the WooCommerce Order pages.
+         *
+         * @since 6.4
+         *
+         * @param string   $post_type The current post type.
+         * @param \WP_Post $post      The WP_Post object or the WC_Order object.
+         * @return void
+         */
+        public function add_meta_boxes($post_type, $post)
+        {
+        }
+        /**
+         * Renders hidden fields.
+         *
+         * @since 6.4
+         *
+         * @param \WC_Order $order The WooCommerce order object.
+         * @return void
+         */
+        public function order_edit_form_top($order)
+        {
+        }
+        /**
+         * Renders the ACF metabox HTML.
+         *
+         * @since 6.4
+         *
+         * @param \WP_Post|\WC_Order $post_or_order Can be a standard \WP_Post object or the \WC_Order object.
+         * @param array              $metabox       The add_meta_box() args.
+         * @return  void
+         */
+        public function render_meta_box($post_or_order, $metabox)
+        {
+        }
+        /**
+         * Saves ACF fields to the current order.
+         *
+         * @since 6.4
+         *
+         * @param integer $order_id The order ID.
+         * @return void
+         */
+        public function save_order(int $order_id)
+        {
+        }
+    }
+}
+namespace ACF\Pro\Meta {
+    /**
+     * A class to add support for saving to options.
+     */
+    class Option extends \ACF\Meta\MetaLocation
+    {
+        /**
+         * The unique slug/name of the meta location.
+         *
+         * @var string
+         */
+        public string $location_type = 'option';
+        /**
+         * Retrieves all ACF meta for the provided object ID.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object to get meta from.
+         * @return array
+         */
+        public function get_meta($object_id = 0): array
+        {
+        }
+        /**
+         * Retrieves a field value from the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object the metadata is for.
+         * @param array          $field     The field array.
+         * @return mixed
+         */
+        public function get_value($object_id = 0, array $field = array())
+        {
+        }
+        /**
+         * Gets a reference key for the provided field name.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id  The ID of the object to get the reference key from.
+         * @param string         $field_name The name of the field to get the reference for.
+         * @return string|boolean
+         */
+        public function get_reference($object_id = '', string $field_name = '')
+        {
+        }
+        /**
+         * Updates an object ID with the provided meta array.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object the metadata is for.
+         * @param array          $meta      The metadata to save to the object.
+         * @return void
+         */
+        public function update_meta($object_id = 0, array $meta = array())
+        {
+        }
+        /**
+         * Updates a field value in the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object the metadata is for.
+         * @param array          $field     The field array.
+         * @param mixed          $value     The metadata value.
+         * @return integer|boolean
+         */
+        public function update_value($object_id = 0, array $field = array(), $value = '')
+        {
+        }
+        /**
+         * Updates a reference key in the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id  The ID of the object the metadata is for.
+         * @param string         $field_name The name of the field to update the reference for.
+         * @param string         $value      The value of the reference key.
+         * @return integer|boolean
+         */
+        public function update_reference($object_id = 0, string $field_name = '', string $value = '')
+        {
+        }
+        /**
+         * Deletes a field value from the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object the metadata is for.
+         * @param array          $field     The field array.
+         * @return boolean
+         */
+        public function delete_value($object_id = 0, array $field = array()): bool
+        {
+        }
+        /**
+         * Deletes a reference key from the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id  The ID of the object the metadata is for.
+         * @param string         $field_name The name of the field to delete the reference from.
+         * @return boolean
+         */
+        public function delete_reference($object_id = 0, string $field_name = ''): bool
+        {
+        }
+    }
+    /**
+     * A class to add support for saving to WooCommerce order meta.
+     */
+    class WooOrder extends \ACF\Meta\MetaLocation
+    {
+        /**
+         * The unique slug/name of the meta location.
+         *
+         * @var string
+         */
+        public string $location_type = 'woo_order';
+        /**
+         * Constructs the location.
+         *
+         * @since 6.4
+         */
+        public function __construct()
+        {
+        }
+        /**
+         * Checks numerical post IDs to see if they belong to a WC order.
+         *
+         * @since 6.4
+         *
+         * @param array          $decoded The decoded post ID props.
+         * @param integer|string $post_id The original post ID.
+         * @return array
+         */
+        public function decode_woo_order_id($decoded, $post_id)
+        {
+        }
+        /**
+         * Retrieves all ACF meta for the provided object ID.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object to get meta from.
+         * @return array
+         */
+        public function get_meta($object_id = 0): array
+        {
+        }
+        /**
+         * Retrieves a field value from the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object the metadata is for.
+         * @param array          $field     The field array.
+         * @return mixed
+         */
+        public function get_value($object_id = 0, array $field = array())
+        {
+        }
+        /**
+         * Gets a reference key for the provided field name.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id  The ID of the object to get the reference key from.
+         * @param string         $field_name The name of the field to get the reference for.
+         * @return string|null
+         */
+        public function get_reference($object_id = 0, string $field_name = '')
+        {
+        }
+        /**
+         * Updates an object ID with the provided meta array.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object the metadata is for.
+         * @param array          $meta      The metadata to save to the object.
+         * @return void
+         * @phpstan-return void
+         */
+        public function update_meta($object_id = 0, array $meta = array())
+        {
+        }
+        /**
+         * Updates a field value in the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object the metadata is for.
+         * @param array          $field     The field array.
+         * @param mixed          $value     The metadata value.
+         * @return integer|boolean
+         */
+        public function update_value($object_id = 0, array $field = array(), $value = '')
+        {
+        }
+        /**
+         * Updates a reference key in the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id  The ID of the object the metadata is for.
+         * @param string         $field_name The name of the field to update the reference for.
+         * @param string         $value      The value of the reference key.
+         * @return integer|boolean
+         */
+        public function update_reference($object_id = 0, string $field_name = '', string $value = '')
+        {
+        }
+        /**
+         * Deletes a field value from the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object the metadata is for.
+         * @param array          $field     The field array.
+         * @return boolean
+         */
+        public function delete_value($object_id = 0, array $field = array()): bool
+        {
+        }
+        /**
+         * Deletes a reference key from the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id  The ID of the object the metadata is for.
+         * @param string         $field_name The name of the field to delete the reference from.
+         * @return boolean
+         */
+        public function delete_reference($object_id = 0, string $field_name = ''): bool
+        {
+        }
+    }
+}
+namespace ACF\Site_Health {
+    /**
+     * The ACF Site Health class responsible for populating ACF debug information in WordPress Site Health.
+     */
+    class Site_Health
+    {
+        /**
+         * The option name used to store site health data.
+         *
+         * @var string
+         */
+        public string $option_name = 'acf_site_health';
+        /**
+         * Constructs the ACF_Site_Health class.
+         *
+         * @since 6.3
+         */
+        public function __construct()
+        {
+        }
+        /**
+         * Gets the stored site health information.
+         *
+         * @since 6.3
+         *
+         * @return array
+         */
+        public function get_site_health(): array
+        {
+        }
+        /**
+         * Updates the site health information.
+         *
+         * @since 6.3
+         *
+         * @param array $data An array of site health information to update.
+         * @return boolean
+         */
+        public function update_site_health(array $data = array()): bool
+        {
+        }
+        /**
+         * Stores debug data in the ACF site health option.
+         *
+         * @since 6.3
+         *
+         * @param array $data Data to update with (optional).
+         * @return boolean
+         */
+        public function update_site_health_data(array $data = array()): bool
+        {
+        }
+        /**
+         * Pushes an event to the ACF site health option.
+         *
+         * @since 6.3
+         *
+         * @param string $event_name The name of the event to push.
+         * @return boolean
+         */
+        public function add_site_health_event(string $event_name = ''): bool
+        {
+        }
+        /**
+         * Logs activation events for free/pro.
+         *
+         * @since 6.3
+         *
+         * @return boolean
+         */
+        public function add_activation_event()
+        {
+        }
+        /**
+         * Adds events when ACF internal post types are created.
+         *
+         * @since 6.3
+         *
+         * @param array $post The post about to be updated.
+         * @return array
+         */
+        public function pre_update_acf_internal_cpt(array $post = array()): array
+        {
+        }
+        /**
+         * Appends the ACF section to the "Info" tab of the WordPress Site Health screen.
+         *
+         * @since 6.3
+         *
+         * @param array $debug_info The current debug info for site health.
+         * @return array The debug info appended with the ACF section.
+         */
+        public function render_tab_content(array $debug_info): array
+        {
+        }
+        /**
+         * Gets the values for all data in the ACF site health section.
+         *
+         * @since 6.3
+         *
+         * @return array
+         */
+        public function get_site_health_values(): array
         {
         }
     }
@@ -17796,16 +18325,13 @@ namespace {
     {
     }
     /**
-     * acf_copy_postmeta
-     *
      * Copies meta from one post to another. Useful for saving and restoring revisions.
      *
-     * @date    25/06/2016
      * @since   5.3.8
      *
-     * @param   int|string $from_post_id The post id to copy from.
-     * @param   int|string $to_post_id   The post id to paste to.
-     * @return  void
+     * @param integer|string $from_post_id The post id to copy from.
+     * @param integer|string $to_post_id   The post id to paste to.
+     * @return void
      */
     function acf_copy_metadata($from_post_id = 0, $to_post_id = 0)
     {
@@ -17872,6 +18398,57 @@ namespace {
      * @return  int|bool Meta ID if the key didn't exist, true on successful update, false on failure.
      */
     function acf_update_metaref($post_id = 0, $type = 'fields', $references = array())
+    {
+    }
+    /**
+     * Retrieves an ACF meta instance for the provided meta type.
+     *
+     * @since 6.4
+     *
+     * @param string $type The meta type as decoded from the post ID.
+     * @return object|null
+     */
+    function acf_get_meta_instance(string $type): ?object
+    {
+    }
+    /**
+     * Gets metadata from the database.
+     *
+     * @since 6.4
+     *
+     * @param integer|string $post_id The post id.
+     * @param array          $field   The field array.
+     * @param boolean        $hidden  True if we should return the reference key.
+     * @return mixed
+     */
+    function acf_get_metadata_by_field($post_id = 0, $field = array(), bool $hidden = \false)
+    {
+    }
+    /**
+     * Updates metadata in the database.
+     *
+     * @since 6.4
+     *
+     * @param integer|string $post_id The post id.
+     * @param array          $field   The field array.
+     * @param mixed          $value   The meta value.
+     * @param boolean        $hidden  True if we should update the reference key.
+     * @return integer|boolean Meta ID if the key didn't exist, true on successful update, false on failure.
+     */
+    function acf_update_metadata_by_field($post_id = 0, $field = array(), $value = '', bool $hidden = \false)
+    {
+    }
+    /**
+     * Deletes metadata from the database.
+     *
+     * @since 6.4
+     *
+     * @param integer|string $post_id The post id.
+     * @param array          $field   The field array.
+     * @param boolean        $hidden  True if we should update the reference key.
+     * @return boolean
+     */
+    function acf_delete_metadata_by_field($post_id = 0, $field = array(), bool $hidden = \false)
     {
     }
     /**
@@ -18564,7 +19141,7 @@ namespace {
      *
      * @param   string $field_name The name of the field. eg 'sub_heading'.
      * @param   mixed  $post_id    The post_id of which the value is saved against.
-     * @return  string The field key.
+     * @return  string|null The field key, or null on failure.
      */
     function acf_get_reference($field_name, $post_id)
     {
