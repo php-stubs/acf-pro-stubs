@@ -17,7 +17,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.4.1';
+        public $version = '6.4.2';
         /**
          * The plugin settings array.
          *
@@ -15556,12 +15556,23 @@ namespace ACF\Pro\Forms {
         {
         }
         /**
+         * Checks if WooCommerce HPOS is enabled.
+         *
+         * @since 6.4.2
+         *
+         * @return boolean
+         */
+        public function is_hpos_enabled(): bool
+        {
+        }
+        /**
          * Saves ACF fields to the current order.
          *
          * @since 6.4
          *
          * @param integer $order_id The order ID.
          * @return void
+         * @phpstan-return void
          */
         public function save_order(int $order_id)
         {
