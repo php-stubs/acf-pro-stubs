@@ -17,7 +17,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.4.0.1';
+        public $version = '6.4.1';
         /**
          * The plugin settings array.
          *
@@ -5746,6 +5746,17 @@ namespace {
         {
         }
         /**
+         * Renders an icon list tab (i.e. dashicons, custom icons).
+         *
+         * @since 6.4
+         *
+         * @param string $tab_name The name of the tab being rendered.
+         * @return void
+         */
+        public function render_icon_list_tab($tab_name)
+        {
+        }
+        /**
          * Renders icon picker field
          *
          * @since 6.3
@@ -7365,16 +7376,13 @@ namespace {
     class acf_field_select extends \acf_field
     {
         /**
-         * This function will setup the field type data
+         * Sets up the field type data.
          *
-         * @type    function
-         * @date    5/03/2014
          * @since   5.0.0
          *
-         * @param   void
-         * @return  void
+         * @return void
          */
-        function initialize()
+        public function initialize()
         {
         }
         /**
@@ -7410,28 +7418,25 @@ namespace {
         {
         }
         /**
-         * Create the HTML interface for your field
+         * Creates the HTML interface for the field.
          *
-         * @param   $field - an array holding all the field's data
+         * @since 3.6
          *
-         * @type    action
-         * @since   3.6
-         * @date    23/01/13
+         * @param array $field An array holding all the field's data.
+         * @return void
          */
-        function render_field($field)
+        public function render_field($field)
         {
         }
         /**
-         * Create extra options for your field. This is rendered when editing a field.
-         * The value of $field['name'] can be used (like bellow) to save extra data to the $field
+         * Renders the field settings used in the "General" tab.
          *
-         * @type    action
-         * @since   3.6
-         * @date    23/01/13
+         * @since 3.6
          *
-         * @param   $field  - an array holding all the field's data
+         * @param array $field An array holding all the field's data.
+         * @return void
          */
-        function render_field_settings($field)
+        public function render_field_settings($field)
         {
         }
         /**
@@ -7442,7 +7447,7 @@ namespace {
          * @param array $field The field settings array.
          * @return void
          */
-        function render_field_validation_settings($field)
+        public function render_field_validation_settings($field)
         {
         }
         /**
@@ -7453,86 +7458,83 @@ namespace {
          * @param array $field The field settings array.
          * @return void
          */
-        function render_field_presentation_settings($field)
+        public function render_field_presentation_settings($field)
         {
         }
         /**
-         * This filter is applied to the $value after it is loaded from the db
+         * Filters the $value after it is loaded from the db.
          *
-         * @type    filter
          * @since   3.6
-         * @date    23/01/13
          *
-         * @param   mixed $value the value found in the database
-         * @param   mixed $post_id the post_id from which the value was loaded
-         * @param   array $field the field array holding all the field options
-         * @return  $value
+         * @param mixed          $value   The value found in the database.
+         * @param integer|string $post_id The post_id from which the value was loaded.
+         * @param array          $field   The field array holding all the field options.
+         * @return mixed
          */
-        function load_value($value, $post_id, $field)
+        public function load_value($value, $post_id, $field)
         {
         }
         /**
+         * Filters the $field before it is saved to the database.
          *
-         * This filter is appied to the $field before it is saved to the database
+         * @since 3.6
          *
-         * @type    filter
+         * @param array $field The field array holding all the field options.
+         * @return array
+         */
+        public function update_field($field)
+        {
+        }
+        /**
+         * Filters the $value before it is updated in the db.
+         *
+         * @since 3.6
+         *
+         * @param mixed          $value   The value which will be saved in the database.
+         * @param integer|string $post_id The post_id of which the value will be saved.
+         * @param array          $field   The field array holding all the field options.
+         *
+         * @return mixed
+         */
+        public function update_value($value, $post_id, $field)
+        {
+        }
+        /**
+         * Translates the field settings.
+         *
+         * @since 5.3.2
+         *
+         * @param array $field The main field array.
+         * @return array
+         */
+        public function translate_field($field)
+        {
+        }
+        /**
+         * Filters the $value after it is loaded from the db, and before it is returned to the template.
+         *
          * @since   3.6
-         * @date    23/01/13
          *
-         * @param   $field - the field array holding all the field options
-         * @param   $post_id - the field group ID (post_type = acf)
+         * @param mixed          $value   The value which was loaded from the database.
+         * @param integer|string $post_id The post_id from which the value was loaded.
+         * @param array          $field   The field array holding all the field options.
          *
-         * @return  $field - the modified field
+         * @return mixed
          */
-        function update_field($field)
+        public function format_value($value, $post_id, $field)
         {
         }
         /**
-         * This filter is appied to the $value before it is updated in the db
+         * Formats the value when the select is not a multi-select.
          *
-         * @type    filter
-         * @since   3.6
-         * @date    23/01/13
+         * @since 3.6
          *
-         * @param   $value - the value which will be saved in the database
-         * @param   $post_id - the post_id of which the value will be saved
-         * @param   $field - the field array holding all the field options
-         *
-         * @return  $value - the modified value
+         * @param mixed          $value   The value to format.
+         * @param integer|string $post_id The post_id from which the value was loaded.
+         * @param array          $field   The field array holding all the field options.
+         * @return mixed
          */
-        function update_value($value, $post_id, $field)
-        {
-        }
-        /**
-         * This function will translate field settings
-         *
-         * @type    function
-         * @date    8/03/2016
-         * @since   5.3.2
-         *
-         * @param   array $field
-         * @return  $field
-         */
-        function translate_field($field)
-        {
-        }
-        /**
-         * This filter is appied to the $value after it is loaded from the db and before it is returned to the template
-         *
-         * @type    filter
-         * @since   3.6
-         * @date    23/01/13
-         *
-         * @param   mixed $value the value which was loaded from the database
-         * @param   mixed $post_id the post_id from which the value was loaded
-         * @param   array $field the field array holding all the field options
-         *
-         * @return  mixed $value the modified value
-         */
-        function format_value($value, $post_id, $field)
-        {
-        }
-        function format_value_single($value, $post_id, $field)
+        public function format_value_single($value, $post_id, $field)
         {
         }
         /**
@@ -15348,6 +15350,115 @@ namespace ACF\Meta {
         public string $location_type = 'comment';
     }
     /**
+     * A class to add support for saving to options.
+     */
+    class Option extends \ACF\Meta\MetaLocation
+    {
+        /**
+         * The unique slug/name of the meta location.
+         *
+         * @var string
+         */
+        public string $location_type = 'option';
+        /**
+         * Retrieves all ACF meta for the provided object ID.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object to get meta from.
+         * @return array
+         */
+        public function get_meta($object_id = 0): array
+        {
+        }
+        /**
+         * Retrieves a field value from the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object the metadata is for.
+         * @param array          $field     The field array.
+         * @return mixed
+         */
+        public function get_value($object_id = 0, array $field = array())
+        {
+        }
+        /**
+         * Gets a reference key for the provided field name.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id  The ID of the object to get the reference key from.
+         * @param string         $field_name The name of the field to get the reference for.
+         * @return string|boolean
+         */
+        public function get_reference($object_id = '', $field_name = '')
+        {
+        }
+        /**
+         * Updates an object ID with the provided meta array.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object the metadata is for.
+         * @param array          $meta      The metadata to save to the object.
+         * @return void
+         */
+        public function update_meta($object_id = 0, array $meta = array())
+        {
+        }
+        /**
+         * Updates a field value in the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object the metadata is for.
+         * @param array          $field     The field array.
+         * @param mixed          $value     The metadata value.
+         * @return integer|boolean
+         */
+        public function update_value($object_id = 0, array $field = array(), $value = '')
+        {
+        }
+        /**
+         * Updates a reference key in the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id  The ID of the object the metadata is for.
+         * @param string         $field_name The name of the field to update the reference for.
+         * @param string         $value      The value of the reference key.
+         * @return integer|boolean
+         */
+        public function update_reference($object_id = 0, string $field_name = '', string $value = '')
+        {
+        }
+        /**
+         * Deletes a field value from the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id The ID of the object the metadata is for.
+         * @param array          $field     The field array.
+         * @return boolean
+         */
+        public function delete_value($object_id = 0, array $field = array()): bool
+        {
+        }
+        /**
+         * Deletes a reference key from the database.
+         *
+         * @since 6.4
+         *
+         * @param integer|string $object_id  The ID of the object the metadata is for.
+         * @param string         $field_name The name of the field to delete the reference from.
+         * @return boolean
+         */
+        public function delete_reference($object_id = 0, string $field_name = ''): bool
+        {
+        }
+    }
+    /**
      * A class to add support for saving to standard post meta.
      */
     class Post extends \ACF\Meta\MetaLocation
@@ -15458,115 +15569,6 @@ namespace ACF\Pro\Forms {
     }
 }
 namespace ACF\Pro\Meta {
-    /**
-     * A class to add support for saving to options.
-     */
-    class Option extends \ACF\Meta\MetaLocation
-    {
-        /**
-         * The unique slug/name of the meta location.
-         *
-         * @var string
-         */
-        public string $location_type = 'option';
-        /**
-         * Retrieves all ACF meta for the provided object ID.
-         *
-         * @since 6.4
-         *
-         * @param integer|string $object_id The ID of the object to get meta from.
-         * @return array
-         */
-        public function get_meta($object_id = 0): array
-        {
-        }
-        /**
-         * Retrieves a field value from the database.
-         *
-         * @since 6.4
-         *
-         * @param integer|string $object_id The ID of the object the metadata is for.
-         * @param array          $field     The field array.
-         * @return mixed
-         */
-        public function get_value($object_id = 0, array $field = array())
-        {
-        }
-        /**
-         * Gets a reference key for the provided field name.
-         *
-         * @since 6.4
-         *
-         * @param integer|string $object_id  The ID of the object to get the reference key from.
-         * @param string         $field_name The name of the field to get the reference for.
-         * @return string|boolean
-         */
-        public function get_reference($object_id = '', $field_name = '')
-        {
-        }
-        /**
-         * Updates an object ID with the provided meta array.
-         *
-         * @since 6.4
-         *
-         * @param integer|string $object_id The ID of the object the metadata is for.
-         * @param array          $meta      The metadata to save to the object.
-         * @return void
-         */
-        public function update_meta($object_id = 0, array $meta = array())
-        {
-        }
-        /**
-         * Updates a field value in the database.
-         *
-         * @since 6.4
-         *
-         * @param integer|string $object_id The ID of the object the metadata is for.
-         * @param array          $field     The field array.
-         * @param mixed          $value     The metadata value.
-         * @return integer|boolean
-         */
-        public function update_value($object_id = 0, array $field = array(), $value = '')
-        {
-        }
-        /**
-         * Updates a reference key in the database.
-         *
-         * @since 6.4
-         *
-         * @param integer|string $object_id  The ID of the object the metadata is for.
-         * @param string         $field_name The name of the field to update the reference for.
-         * @param string         $value      The value of the reference key.
-         * @return integer|boolean
-         */
-        public function update_reference($object_id = 0, string $field_name = '', string $value = '')
-        {
-        }
-        /**
-         * Deletes a field value from the database.
-         *
-         * @since 6.4
-         *
-         * @param integer|string $object_id The ID of the object the metadata is for.
-         * @param array          $field     The field array.
-         * @return boolean
-         */
-        public function delete_value($object_id = 0, array $field = array()): bool
-        {
-        }
-        /**
-         * Deletes a reference key from the database.
-         *
-         * @since 6.4
-         *
-         * @param integer|string $object_id  The ID of the object the metadata is for.
-         * @param string         $field_name The name of the field to delete the reference from.
-         * @return boolean
-         */
-        public function delete_reference($object_id = 0, string $field_name = ''): bool
-        {
-        }
-    }
     /**
      * A class to add support for saving to WooCommerce order meta.
      */
