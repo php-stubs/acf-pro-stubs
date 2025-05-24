@@ -17,7 +17,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.4.0';
+        public $version = '6.4.0.1';
         /**
          * The plugin settings array.
          *
@@ -15269,7 +15269,7 @@ namespace ACF\Meta {
          * @param string         $field_name The name of the field to get the reference for.
          * @return string|null
          */
-        public function get_reference($object_id = 0, string $field_name = '')
+        public function get_reference($object_id = 0, $field_name = '')
         {
         }
         /**
@@ -15501,7 +15501,7 @@ namespace ACF\Pro\Meta {
          * @param string         $field_name The name of the field to get the reference for.
          * @return string|boolean
          */
-        public function get_reference($object_id = '', string $field_name = '')
+        public function get_reference($object_id = '', $field_name = '')
         {
         }
         /**
@@ -15630,7 +15630,7 @@ namespace ACF\Pro\Meta {
          * @param string         $field_name The name of the field to get the reference for.
          * @return string|null
          */
-        public function get_reference($object_id = 0, string $field_name = '')
+        public function get_reference($object_id = 0, $field_name = '')
         {
         }
         /**
