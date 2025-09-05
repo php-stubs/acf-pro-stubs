@@ -17,7 +17,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.4.2';
+        public $version = '6.4.3';
         /**
          * The plugin settings array.
          *
@@ -1651,6 +1651,17 @@ namespace {
          * @phpstan-return void
          */
         public function clear_escaped_html_log()
+        {
+        }
+        /**
+         * Notifies the user that Select2 v3 has been deprecated and will be removed.
+         *
+         * @since 6.4.3
+         *
+         * @return void
+         * @phpstan-return void
+         */
+        public function maybe_show_select2_v3_deprecation_notice()
         {
         }
         /**
