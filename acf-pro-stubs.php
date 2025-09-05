@@ -9,7 +9,6 @@ namespace {
     /**
      * The main ACF class
      */
-    #[\AllowDynamicProperties]
     class ACF
     {
         /**
@@ -17,7 +16,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.4.3';
+        public $version = '6.5.0';
         /**
          * The plugin settings array.
          *
@@ -36,6 +35,42 @@ namespace {
          * @var array
          */
         public $instances = array();
+        /**
+         * The loop instance.
+         *
+         * @var acf_loop
+         */
+        public $loop;
+        /**
+         * The revisions instance.
+         *
+         * @var acf_revisions
+         */
+        public $revisions;
+        /**
+         * The fields instance.
+         *
+         * @var acf_fields
+         */
+        public $fields;
+        /**
+         * The form front instance.
+         *
+         * @var acf_form_front
+         */
+        public $form_front;
+        /**
+         * The validation instance.
+         *
+         * @var acf_validation
+         */
+        public $validation;
+        /**
+         * The admin tools instance.
+         *
+         * @var acf_admin_tools
+         */
+        public $admin_tools;
         /**
          * A dummy constructor to ensure ACF is only setup once.
          *
@@ -918,17 +953,38 @@ namespace {
         {
         }
     }
-    #[\AllowDynamicProperties]
     class ACF_Data
     {
-        /** @var string Unique identifier. */
-        var $cid = '';
-        /** @var array Storage for data. */
-        var $data = array();
-        /** @var array Storage for data aliases. */
-        var $aliases = array();
-        /** @var boolean Enables unique data per site. */
-        var $multisite = \false;
+        /**
+         * Unique identifier.
+         * @var string
+         */
+        public $cid = '';
+        /**
+         * Storage for data.
+         * @var array
+         */
+        public $data = array();
+        /**
+         * Storage for data aliases.
+         * @var array
+         */
+        public $aliases = array();
+        /**
+         * Enables unique data per site.
+         * @var boolean
+         */
+        public $multisite = \false;
+        /**
+         * Storage for multisite data.
+         * @var array
+         */
+        public $site_data = array();
+        /**
+         * Storage for multisite aliases.
+         * @var array
+         */
+        public $site_aliases = array();
         /**
          * __construct
          *
@@ -1233,13 +1289,20 @@ namespace {
         {
         }
     }
-    #[\AllowDynamicProperties]
     class acf_admin_tools
     {
-        /** @var array Contains an array of admin tool instances */
-        var $tools = array();
-        /** @var string The active tool */
-        var $active = '';
+        /**
+         * Contains an array of admin tool instances.
+         *
+         * @var array
+         */
+        public $tools = array();
+        /**
+         * The active tool.
+         *
+         * @var string
+         */
+        public $active = '';
         /**
          * __construct
          *
@@ -1913,20 +1976,17 @@ namespace {
         {
         }
     }
-    #[\AllowDynamicProperties]
     class ACF_Admin_Field_Groups extends \ACF_Admin_Internal_Post_Type_List
     {
         /**
          * The slug for the internal post type.
          *
-         * @since 6.1
          * @var string
          */
         public $post_type = 'acf-field-group';
         /**
          * The admin body class used for the post type.
          *
-         * @since 6.1
          * @var string
          */
         public $admin_body_class = 'acf-admin-field-groups';
@@ -2244,20 +2304,17 @@ namespace {
     /**
      * The ACF Post Types admin controller class
      */
-    #[\AllowDynamicProperties]
     class ACF_Admin_Post_Types extends \ACF_Admin_Internal_Post_Type_List
     {
         /**
          * The slug for the internal post type.
          *
-         * @since 6.1
          * @var string
          */
         public $post_type = 'acf-post-type';
         /**
          * The admin body class used for the post type.
          *
-         * @since 6.1
          * @var string
          */
         public $admin_body_class = 'acf-admin-post-types';
@@ -2379,20 +2436,17 @@ namespace {
     /**
      * The ACF Post Types admin controller class
      */
-    #[\AllowDynamicProperties]
     class ACF_Admin_Taxonomies extends \ACF_Admin_Internal_Post_Type_List
     {
         /**
          * The slug for the internal post type.
          *
-         * @since 6.1
          * @var string
          */
         public $post_type = 'acf-taxonomy';
         /**
          * The admin body class used for the post type.
          *
-         * @since 6.1
          * @var string
          */
         public $admin_body_class = 'acf-admin-taxonomies';
@@ -3609,11 +3663,9 @@ namespace {
         /**
          * Enqueues and localizes scripts.
          *
-         * @date    27/4/20
-         * @since   5.9.0
+         * @since 5.9.0
          *
-         * @param   void
-         * @return  void
+         * @return void
          */
         public function enqueue_scripts()
         {
@@ -4218,11 +4270,13 @@ namespace {
         {
         }
     }
-    #[\AllowDynamicProperties]
     class acf_fields
     {
-        /** @var array Contains an array of field type instances */
-        var $types = array();
+        /**
+         * Contains an array of field type instances.
+         * @var array
+         */
+        public $types = array();
         /**
          * This function will setup the class functionality
          *
@@ -4302,7 +4356,6 @@ namespace {
         {
         }
     }
-    #[\AllowDynamicProperties]
     class acf_field
     {
         // field information properties.
@@ -4323,6 +4376,11 @@ namespace {
             // Set true when a field handles its own HTML escaping in format_value
             'required' => \true,
         );
+        // Additional properties used by field types
+        public $default_values = array();
+        public $have_rows = '';
+        public $width = '';
+        public $height = '';
         /**
          * Initializes the `acf_field` class. To initialize a field type that is
          * extending this class, use the `initialize()` method in the child class instead.
@@ -4694,6 +4752,7 @@ namespace {
     }
     class acf_field_checkbox extends \acf_field
     {
+        //phpcs:ignore PSR2.Classes.PropertyDeclaration.Underscore -- backwards compatibility.
         /**
          * This function will setup the field type data
          *
@@ -5378,7 +5437,6 @@ namespace {
         {
         }
     }
-    #[\AllowDynamicProperties]
     class acf_field_google_map extends \acf_field
     {
         /**
@@ -5486,7 +5544,6 @@ namespace {
         {
         }
     }
-    #[\AllowDynamicProperties]
     class acf_field__group extends \acf_field
     {
         /**
@@ -5762,9 +5819,11 @@ namespace {
          * @since 6.4
          *
          * @param string $tab_name The name of the tab being rendered.
+         * @param array  $field    The Icon Picker field being rendered.
          * @return void
+         * @phpstan-return void
          */
-        public function render_icon_list_tab($tab_name)
+        public function render_icon_list_tab($tab_name, $field)
         {
         }
         /**
@@ -6320,7 +6379,6 @@ namespace {
         {
         }
     }
-    #[\AllowDynamicProperties]
     class acf_field_oembed extends \acf_field
     {
         /**
@@ -8900,9 +8958,23 @@ namespace {
         {
         }
     }
-    #[\AllowDynamicProperties]
     class acf_form_customizer
     {
+        /**
+         * Preview values.
+         * @var array
+         */
+        public $preview_values = array();
+        /**
+         * Preview fields.
+         * @var array
+         */
+        public $preview_fields = array();
+        /**
+         * Preview errors.
+         * @var array
+         */
+        public $preview_errors = array();
         /**
          * This function will setup the class functionality
          *
@@ -9045,7 +9117,6 @@ namespace {
         {
         }
     }
-    #[\AllowDynamicProperties]
     class acf_form_front
     {
         /**
@@ -9808,9 +9879,23 @@ namespace {
         {
         }
     }
-    #[\AllowDynamicProperties]
     class acf_form_widget
     {
+        /**
+         * Preview values.
+         * @var array
+         */
+        public $preview_values = array();
+        /**
+         * Preview reference.
+         * @var array
+         */
+        public $preview_reference = array();
+        /**
+         * Preview errors.
+         * @var array
+         */
+        public $preview_errors = array();
         /**
          * This function will setup the class functionality
          *
@@ -11400,22 +11485,13 @@ namespace {
         {
         }
     }
-    #[\AllowDynamicProperties]
     class acf_loop
     {
         /**
-         * This function will setup the class functionality
-         *
-         * @type    function
-         * @date    5/03/2014
-         * @since   5.0.0
-         *
-         * @param   void
-         * @return  void
+         * An array of loops.
+         * @var array
          */
-        function __construct()
-        {
-        }
+        public $loops = array();
         /**
          * This function will return true if no loops exist
          *
@@ -12279,11 +12355,13 @@ namespace {
         {
         }
     }
-    #[\AllowDynamicProperties]
     class acf_revisions
     {
-        // vars
-        var $cache = array();
+        /**
+         * An array to cache post IDs for revisions.
+         * @var array
+         */
+        public $cache = array();
         /**
          * Constructs the acf_revisions class.
          */
@@ -12489,9 +12567,13 @@ namespace {
         {
         }
     }
-    #[\AllowDynamicProperties]
     class acf_validation
     {
+        /**
+         * An array of validation errors.
+         * @var array
+         */
+        public $errors = array();
         /**
          * This function will setup the class functionality
          *
@@ -13341,20 +13423,17 @@ namespace {
     /**
      * The ACF Post Types admin controller class
      */
-    #[\AllowDynamicProperties]
     class ACF_Admin_UI_Options_Pages extends \ACF_Admin_Internal_Post_Type_List
     {
         /**
          * The slug for the internal post type.
          *
-         * @since 6.1
          * @var string
          */
         public $post_type = 'acf-ui-options-page';
         /**
          * The admin body class used for the post type.
          *
-         * @since 6.1
          * @var string
          */
         public $admin_body_class = 'acf-admin-options-pages';
@@ -13435,6 +13514,11 @@ namespace {
     }
     class acf_field_clone extends \acf_field
     {
+        /**
+         * Array of fields being cloned.
+         * @var array
+         */
+        public $cloning = array();
         /**
          * This function will setup the field type data
          *
@@ -13757,6 +13841,18 @@ namespace {
     class acf_field_flexible_content extends \acf_field
     {
         /**
+         * The post/page ID that we're rendering for.
+         *
+         * @var mixed
+         */
+        public $post_id = \false;
+        /**
+         * An array of layout meta for the current field.
+         *
+         * @var array
+         */
+        public $layout_meta = array();
+        /**
          * This function will setup the field type data
          *
          * @type    function
@@ -13772,12 +13868,9 @@ namespace {
         /**
          * Admin scripts enqueue for field.
          *
-         * @type    function
-         * @date    16/12/2015
-         * @since   5.3.2
+         * @since 5.3.2
          *
-         * @param   int $post_id
-         * @return  int $post_id
+         * @return void
          */
         public function input_admin_enqueue_scripts()
         {
@@ -13825,28 +13918,41 @@ namespace {
         {
         }
         /**
-         * Create the HTML interface for your field
+         * Runs on the "acf/pre_render_fields" filter. Used to signify
+         * that we're currently rendering a Flexible Content field.
          *
-         * @param   $field - an array holding all the field's data
+         * @since 6.5
          *
-         * @type    action
-         * @since   3.6
-         * @date    23/01/13
+         * @param array $fields  The main field array.
+         * @param mixed $post_id The post ID for the field being rendered.
+         * @return array
          */
-        function render_field($field)
+        public function pre_render_fields($fields, $post_id = \false)
         {
         }
         /**
-         * description
+         * Renders the Flexible Content field.
          *
-         * @type    function
-         * @date    19/11/2013
+         * @since 3.6
+         *
+         * @param array $field An array holding all the field's data.
+         * @return void
+         */
+        public function render_field($field)
+        {
+        }
+        /**
+         * Renders a single layout in a Flexible Content field.
+         *
          * @since   5.0.0
          *
-         * @param   int $post_id
-         * @return  int $post_id
+         * @param array          $field  The field array.
+         * @param array          $layout The layout to render
+         * @param integer|string $i      The order of the layout being rendered.
+         * @param mixed          $value  The value of the layout.
+         * @return void
          */
-        function render_layout($field, $layout, $i, $value)
+        public function render_layout($field, $layout, $i, $value)
         {
         }
         /**
@@ -13872,9 +13978,8 @@ namespace {
         {
         }
         /**
-         * This filter is applied to the $value after it is loaded from the db
+         * Filters the $value after it is loaded from the database.
          *
-         * @type    filter
          * @since   3.6
          *
          * @param  mixed $value   The value found in the database
@@ -13926,6 +14031,42 @@ namespace {
         {
         }
         /**
+         * Retrieves layout meta for the Flexible Content field saved to the provided post.
+         *
+         * @since 6.5
+         *
+         * @param integer|string $post_id The ID of the post being edited.
+         * @param array          $field   The Flexible Content field array.
+         * @return array
+         */
+        public function get_layout_meta($post_id, $field)
+        {
+        }
+        /**
+         * Returns an array of layouts that have been disabled for the current field.
+         *
+         * @since 6.5
+         *
+         * @param integer|string $post_id The ID of the post being edited.
+         * @param array          $field   The Flexible Content field array.
+         * @return array
+         */
+        public function get_disabled_layouts($post_id, $field): array
+        {
+        }
+        /**
+         * Returns an array of layouts that have been renamed for the current field.
+         *
+         * @since 6.5
+         *
+         * @param integer|string $post_id The ID of the post being edited.
+         * @param array          $field   The Flexible Content field array.
+         * @return array
+         */
+        public function get_renamed_layouts($post_id, $field): array
+        {
+        }
+        /**
          * This function will delete a value row
          *
          * @date    15/2/17
@@ -13955,10 +14096,9 @@ namespace {
         {
         }
         /**
-         * This filter is appied to the $value before it is updated in the db
+         * Filters the $value before it is updated in the database.
          *
-         * @type    filter
-         * @since   3.6
+         * @since 3.6
          *
          * @param   mixed $value   The value which will be saved in the database
          * @param   mixed $post_id The post_id of which the value will be saved
@@ -15504,6 +15644,71 @@ namespace ACF\Meta {
          * @var string
          */
         public string $location_type = 'user';
+    }
+}
+namespace ACF\Pro\Fields\FlexibleContent {
+    class Layout
+    {
+        /**
+         * Constructs the class.
+         *
+         * @since 6.5
+         *
+         * @param array          $field    The Flexible Content field the layout belongs to.
+         * @param array          $layout   The layout to render.
+         * @param integer|string $order    The order of the layout.
+         * @param mixed          $value    The value of the layout.
+         * @param boolean        $disabled If the layout is disabled.
+         * @param string         $renamed  If the layout has been renamed, the new name of the layout.
+         */
+        public function __construct($field, $layout, $order, $value, $disabled = false, $renamed = '')
+        {
+        }
+        /**
+         * Renders the layout.
+         *
+         * @since 6.5
+         *
+         * @return void
+         */
+        public function render()
+        {
+        }
+        /**
+         * Returns the filtered layout title.
+         *
+         * @since 6.5
+         *
+         * @return string
+         */
+        public function get_title()
+        {
+        }
+    }
+    class Render
+    {
+        /**
+         * Constructs the class.
+         *
+         * @since 6.5
+         *
+         * @param array $field       The flexible content field being rendered.
+         * @param array $layout_meta An array of meta for the layouts being rendered.
+         * @return void
+         */
+        public function __construct($field, $layout_meta)
+        {
+        }
+        /**
+         * Renders the Flexible Content field.
+         *
+         * @since 6.5
+         *
+         * @return void
+         */
+        public function render()
+        {
+        }
     }
 }
 namespace ACF\Pro\Forms {
