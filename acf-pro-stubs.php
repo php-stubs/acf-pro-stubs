@@ -16,7 +16,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.8.0';
+        public $version = '6.8.0.1';
         /**
          * The plugin settings array.
          *
