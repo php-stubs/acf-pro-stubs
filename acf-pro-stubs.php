@@ -16,7 +16,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.5.0';
+        public $version = '6.5.0.1';
         /**
          * The plugin settings array.
          *
@@ -5907,7 +5907,7 @@ namespace {
          * @param array $field The main field array.
          * @return array
          */
-        public function get_rest_schema(array $field): array
+        public function get_rest_schema(array $field) : array
         {
         }
         /**
@@ -9139,7 +9139,7 @@ namespace {
          *
          * @return array
          */
-        public function get_default_fields(): array
+        public function get_default_fields() : array
         {
         }
         /**
@@ -14051,7 +14051,7 @@ namespace {
          * @param array          $field   The Flexible Content field array.
          * @return array
          */
-        public function get_disabled_layouts($post_id, $field): array
+        public function get_disabled_layouts($post_id, $field) : array
         {
         }
         /**
@@ -14063,7 +14063,7 @@ namespace {
          * @param array          $field   The Flexible Content field array.
          * @return array
          */
-        public function get_renamed_layouts($post_id, $field): array
+        public function get_renamed_layouts($post_id, $field) : array
         {
         }
         /**
@@ -15398,7 +15398,7 @@ namespace ACF\Meta {
          * @param integer|string $object_id The ID of the object to get meta from.
          * @return array
          */
-        public function get_meta($object_id = 0): array
+        public function get_meta($object_id = 0) : array
         {
         }
         /**
@@ -15472,7 +15472,7 @@ namespace ACF\Meta {
          * @param array          $field     The field array.
          * @return boolean
          */
-        public function delete_value($object_id = 0, array $field = array()): bool
+        public function delete_value($object_id = 0, array $field = array()) : bool
         {
         }
         /**
@@ -15484,7 +15484,7 @@ namespace ACF\Meta {
          * @param string         $field_name The name of the field to delete the reference from.
          * @return boolean
          */
-        public function delete_reference($object_id = 0, string $field_name = ''): bool
+        public function delete_reference($object_id = 0, string $field_name = '') : bool
         {
         }
     }
@@ -15519,7 +15519,7 @@ namespace ACF\Meta {
          * @param integer|string $object_id The ID of the object to get meta from.
          * @return array
          */
-        public function get_meta($object_id = 0): array
+        public function get_meta($object_id = 0) : array
         {
         }
         /**
@@ -15593,7 +15593,7 @@ namespace ACF\Meta {
          * @param array          $field     The field array.
          * @return boolean
          */
-        public function delete_value($object_id = 0, array $field = array()): bool
+        public function delete_value($object_id = 0, array $field = array()) : bool
         {
         }
         /**
@@ -15605,7 +15605,7 @@ namespace ACF\Meta {
          * @param string         $field_name The name of the field to delete the reference from.
          * @return boolean
          */
-        public function delete_reference($object_id = 0, string $field_name = ''): bool
+        public function delete_reference($object_id = 0, string $field_name = '') : bool
         {
         }
     }
@@ -15778,7 +15778,7 @@ namespace ACF\Pro\Forms {
          *
          * @return boolean
          */
-        public function is_hpos_enabled(): bool
+        public function is_hpos_enabled() : bool
         {
         }
         /**
@@ -15835,7 +15835,7 @@ namespace ACF\Pro\Meta {
          * @param integer|string $object_id The ID of the object to get meta from.
          * @return array
          */
-        public function get_meta($object_id = 0): array
+        public function get_meta($object_id = 0) : array
         {
         }
         /**
@@ -15910,7 +15910,7 @@ namespace ACF\Pro\Meta {
          * @param array          $field     The field array.
          * @return boolean
          */
-        public function delete_value($object_id = 0, array $field = array()): bool
+        public function delete_value($object_id = 0, array $field = array()) : bool
         {
         }
         /**
@@ -15922,7 +15922,7 @@ namespace ACF\Pro\Meta {
          * @param string         $field_name The name of the field to delete the reference from.
          * @return boolean
          */
-        public function delete_reference($object_id = 0, string $field_name = ''): bool
+        public function delete_reference($object_id = 0, string $field_name = '') : bool
         {
         }
     }
@@ -15954,7 +15954,7 @@ namespace ACF\Site_Health {
          *
          * @return array
          */
-        public function get_site_health(): array
+        public function get_site_health() : array
         {
         }
         /**
@@ -15965,7 +15965,7 @@ namespace ACF\Site_Health {
          * @param array $data An array of site health information to update.
          * @return boolean
          */
-        public function update_site_health(array $data = array()): bool
+        public function update_site_health(array $data = array()) : bool
         {
         }
         /**
@@ -15976,7 +15976,7 @@ namespace ACF\Site_Health {
          * @param array $data Data to update with (optional).
          * @return boolean
          */
-        public function update_site_health_data(array $data = array()): bool
+        public function update_site_health_data(array $data = array()) : bool
         {
         }
         /**
@@ -15987,7 +15987,7 @@ namespace ACF\Site_Health {
          * @param string $event_name The name of the event to push.
          * @return boolean
          */
-        public function add_site_health_event(string $event_name = ''): bool
+        public function add_site_health_event(string $event_name = '') : bool
         {
         }
         /**
@@ -16008,7 +16008,7 @@ namespace ACF\Site_Health {
          * @param array $post The post about to be updated.
          * @return array
          */
-        public function pre_update_acf_internal_cpt(array $post = array()): array
+        public function pre_update_acf_internal_cpt(array $post = array()) : array
         {
         }
         /**
@@ -16019,7 +16019,7 @@ namespace ACF\Site_Health {
          * @param array $debug_info The current debug info for site health.
          * @return array The debug info appended with the ACF section.
          */
-        public function render_tab_content(array $debug_info): array
+        public function render_tab_content(array $debug_info) : array
         {
         }
         /**
@@ -16029,7 +16029,7 @@ namespace ACF\Site_Health {
          *
          * @return array
          */
-        public function get_site_health_values(): array
+        public function get_site_health_values() : array
         {
         }
     }
@@ -18637,7 +18637,7 @@ namespace {
      * @param string $type The meta type as decoded from the post ID.
      * @return object|null
      */
-    function acf_get_meta_instance(string $type): ?object
+    function acf_get_meta_instance(string $type) : ?object
     {
     }
     /**
@@ -20626,7 +20626,7 @@ namespace {
      * @param integer $post_id The post ID to check.
      * @return boolean
      */
-    function acf_current_user_can_edit_post(int $post_id): bool
+    function acf_current_user_can_edit_post(int $post_id) : bool
     {
     }
     /**
@@ -21127,7 +21127,7 @@ namespace {
      * @param   boolean $enable_meta_box_cb_edit Can the current user edit metabox callbacks.
      * @return  boolean
      */
-    function acf_settings_enable_meta_box_cb_edit($enable_meta_box_cb_edit): bool
+    function acf_settings_enable_meta_box_cb_edit($enable_meta_box_cb_edit) : bool
     {
     }
     /**
@@ -23968,7 +23968,7 @@ namespace {
      * @param array $block The block to check.
      * @return boolean
      */
-    function acf_block_uses_post_meta($block): bool
+    function acf_block_uses_post_meta($block) : bool
     {
     }
     /**
