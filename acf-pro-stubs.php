@@ -16,7 +16,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.8.1';
+        public $version = '6.8.2';
         /**
          * The plugin settings array.
          *
@@ -9777,14 +9777,48 @@ namespace {
         {
         }
         /**
-         * description
+         * Returns the fields a given form configuration will expose, mirroring the
+         * selection logic used by render_form().
          *
-         * @type    function
-         * @date    7/09/2016
-         * @since   5.4.0
+         * Used by render_form() to discover what to render, and by submit_form() to
+         * derive the set of $_POST['acf'] keys the save path will accept.
          *
-         * @param   int $post_id
-         * @return  int $post_id
+         * @since 6.8.2
+         *
+         * @param array $args The validated form configuration.
+         * @return array
+         */
+        protected function get_form_fields(array $args) : array
+        {
+        }
+        /**
+         * Returns the top-level $_POST['acf'] keys a given form configuration will accept on save.
+         *
+         * Derived from the same field discovery render_form() uses, so the set of save-acceptable
+         * keys matches the set of keys the form actually rendered. For seamless clone fields whose
+         * subfield input names nest under the parent clone's key (e.g. acf[clone_key][subkey]),
+         * the parent's top-level key is what gets returned.
+         *
+         * @since 6.8.2
+         *
+         * @param array $form The validated form configuration.
+         * @return array
+         */
+        public function get_allowed_field_keys(array $form) : array
+        {
+        }
+        /**
+         * Renders a front-end ACF form.
+         *
+         * Accepts either an array of form configuration (validated via validate_form()) or the
+         * string id of a form previously registered with acf_register_form(). Outputs the form
+         * HTML directly.
+         *
+         * @since 5.4.0
+         *
+         * @param array|string $args Form configuration array, or the id of a registered form.
+         * @return false|void False if a registered form id was passed and no matching form exists;
+         *                    otherwise outputs the form and returns no value.
          */
         function render_form($args = array())
         {
