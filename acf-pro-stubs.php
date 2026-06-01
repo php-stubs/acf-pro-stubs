@@ -16,7 +16,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.8.0.1';
+        public $version = '6.8.1';
         /**
          * The plugin settings array.
          *
@@ -10573,6 +10573,39 @@ namespace {
         {
         }
         /**
+         * Returns true if a Local JSON save failure has been recorded for this request.
+         *
+         * @since 6.8.1
+         *
+         * @return boolean
+         */
+        public function has_save_file_failure()
+        {
+        }
+        /**
+         * Appends a Local JSON save failure query arg to the post save redirect.
+         *
+         * @since 6.8.1
+         *
+         * @param string $location The redirect location.
+         * @return string
+         */
+        public function redirect_post_location($location)
+        {
+        }
+        /**
+         * Adds an admin notice when a Local JSON save failure is present in the request.
+         *
+         * @since 6.8.1
+         *
+         * @param WP_Screen $current_screen The current WP_Screen object.
+         * @return void
+         * @phpstan-return void
+         */
+        public function maybe_show_save_failure_notice($current_screen)
+        {
+        }
+        /**
          * Gets the path(s) to load JSON from.
          *
          * @since 6.2
@@ -17461,6 +17494,418 @@ namespace ACF\Pro\AI\GEO\Outputs {
          * @phpstan-return void
          */
         public function output_block_jsonld_data($block, $content, $is_preview, $post_id, $wp_block, $context)
+        {
+        }
+    }
+}
+namespace ACF\Pro\Blocks {
+    /**
+     * Enqueues the JS layer that powers ACF block bindings in the block editor.
+     *
+     * The JS bindings layer registers a block binding source via the stable
+     * registerBlockBindingsSource API (WP 6.7+), enabling live preview and
+     * editing of ACF field values bound to block attributes. It runs alongside
+     * the shared server-side ACF\Blocks\Bindings class.
+     */
+    class Bindings_Editor
+    {
+        /**
+         * Constructor.
+         * @phpstan-return void
+         */
+        public function __construct()
+        {
+        }
+        /**
+         * Enqueues the JS block bindings source script on block editor screens.
+         *
+         * @return void
+         * @phpstan-return void
+         */
+        public function enqueue_block_editor_assets()
+        {
+        }
+    }
+}
+namespace ACF\Pro\Datastore {
+    /**
+     * Attaches datastore field data to the acf/ajax/check_screen response.
+     *
+     * The check_screen AJAX endpoint runs when WordPress loads metaboxes
+     * dynamically (the meta-box-loader path). When new field groups appear
+     * on screen, the JS-side datastore needs to know about their fields and
+     * values. This class collects that data and merges it into the response
+     * as `storeData` for groups that were not already on the page.
+     */
+    class Check_Screen
+    {
+        /**
+         * Constructor.
+         *
+         * @since 6.8.1
+         */
+        public function __construct()
+        {
+        }
+        /**
+         * Attaches datastore data for newly-loaded field groups to the response.
+         *
+         * @since 6.8.1
+         *
+         * @param array $response     The check_screen response array.
+         * @param array $field_groups The field groups returned for this screen.
+         * @param array $args         The check_screen request args (post_id, screen, exists, ...).
+         * @return array
+         */
+        public function attach_store_data($response, $field_groups, $args)
+        {
+        }
+    }
+    /**
+     * Enqueues the ACF datastore script and localizes field group definitions
+     * and values for the @wordpress/data store consumed by the JS datastore.
+     *
+     * Independently listens to the same enqueue_block_editor_assets WP action
+     * the free ACF_Form_Gutenberg uses, so no free-side touchpoint is required.
+     */
+    class Localization
+    {
+        /**
+         * Constructor.
+         *
+         * @since 6.8.1
+         */
+        public function __construct()
+        {
+        }
+        /**
+         * Allows the JS datastore to look up specific users by ID via the user
+         * query endpoint, so revision restores and programmatic acf.store.set()
+         * calls can render user labels for values not in the page-rendered options.
+         *
+         * @since 6.8.1
+         *
+         * @param array           $args    The query args.
+         * @param array           $request The query request.
+         * @param \ACF_Ajax_Query $query   The query object.
+         * @return array
+         */
+        public function add_user_query_include($args, $request, $query)
+        {
+        }
+        /**
+         * Enqueues the datastore script and localizes the field store data
+         * when the datastore is enabled.
+         *
+         * @since 6.8.1
+         *
+         * @return void
+         * @phpstan-return void
+         */
+        public function enqueue()
+        {
+        }
+        /**
+         * Recursively collects field definitions and values for the store.
+         *
+         * Processes an array of fields, loading each field's value and adding
+         * it to the store data structure. For complex fields (repeater, group,
+         * flexible content), recurses into sub-fields to build nested values.
+         *
+         * @since 6.8.1
+         *
+         * @param array   $fields          Array of field arrays.
+         * @param integer $post_id         The post ID to load values for.
+         * @param string  $field_group_key The parent field group's key.
+         * @param array   $store_data      Reference to the store data being built.
+         * @return void
+         */
+        public function collect_field_data($fields, $post_id, $field_group_key, &$store_data)
+        {
+        }
+        /**
+         * Registers sub-field definitions in the store (without loading values).
+         *
+         * Sub-field values are stored as part of their parent's value structure,
+         * but their definitions need to be in the store for metadata access.
+         *
+         * @since 6.8.1
+         *
+         * @param array  $sub_fields      Array of sub-field arrays.
+         * @param string $field_group_key The parent field group's key.
+         * @param array  $store_data      Reference to the store data being built.
+         * @return void
+         */
+        public function register_sub_fields($sub_fields, $field_group_key, &$store_data)
+        {
+        }
+        /**
+         * Serializes a field value into the structure expected by the JS store.
+         *
+         * For simple fields, returns the raw value. For complex fields (repeater,
+         * group, flexible content), builds a nested structure matching the ACF
+         * REST API format.
+         *
+         * @since 6.8.1
+         *
+         * @param array   $field   The field array.
+         * @param mixed   $value   The raw field value.
+         * @param integer $post_id The post ID.
+         * @return mixed The serialized value.
+         */
+        public function serialize_field_value($field, $value, $post_id)
+        {
+        }
+        /**
+         * Serializes a repeater field value.
+         *
+         * acf_get_value() returns the loaded value from the repeater's load_value()
+         * method -- an array of rows keyed by sub-field key, not the raw row count
+         * stored in the database.
+         *
+         * @since 6.8.1
+         *
+         * @param array   $field   The repeater field array.
+         * @param mixed   $value   The loaded value (array of rows from load_value).
+         * @param integer $post_id The post ID.
+         * @return array Array of row objects.
+         */
+        public function serialize_repeater_value($field, $value, $post_id)
+        {
+        }
+        /**
+         * Serializes a group field value.
+         *
+         * When called from a parent complex field (repeater, flex content), $value
+         * is the already-loaded array from load_value() keyed by sub-field key.
+         * For top-level groups, $value may also be a loaded array. Falls back to
+         * loading from the database when the loaded value is not available.
+         *
+         * @since 6.8.1
+         *
+         * @param array   $field   The group field array.
+         * @param mixed   $value   The loaded value (array of sub-field values, or raw).
+         * @param integer $post_id The post ID.
+         * @return array|\stdClass Associative array of sub-field values keyed by field key.
+         */
+        public function serialize_group_value($field, $value, $post_id)
+        {
+        }
+        /**
+         * Serializes a flexible content field value.
+         *
+         * acf_get_value() returns the loaded value from the flex content's
+         * load_value() method -- an array of layout row objects, each containing
+         * an 'acf_fc_layout' key and sub-field values keyed by field key.
+         *
+         * @since 6.8.1
+         *
+         * @param array   $field   The flexible content field array.
+         * @param mixed   $value   The loaded value (array of layout rows from load_value).
+         * @param integer $post_id The post ID.
+         * @return array Array of layout objects.
+         */
+        public function serialize_flexible_content_value($field, $value, $post_id)
+        {
+        }
+    }
+    /**
+     * Handles ACF datastore saves during Gutenberg / REST post requests.
+     *
+     * Decodes the _acf transport meta included on REST post requests, writes
+     * individual field meta to the post and (when applicable) to the revision,
+     * then cleans up the transport blob. Also strips the transport blob from
+     * REST responses so it never leaks to clients.
+     */
+    class REST_Save
+    {
+        /**
+         * Constructor.
+         *
+         * Defers hook registration to rest_api_init so the
+         * acf/settings/enable_datastore filter is available to themes
+         * and plugins by the time the gate is evaluated.
+         *
+         * @since 6.8.1
+         */
+        public function __construct()
+        {
+        }
+        /**
+         * Returns true when the current request is the meta-box-loader AJAX
+         * and the datastore is enabled.
+         *
+         * @since 6.8.1
+         *
+         * @param boolean $skip    Whether the save should be skipped.
+         * @param integer $post_id The post ID being saved.
+         * @param mixed   $post    The post being saved.
+         * @return boolean
+         */
+        public function skip_metabox_loader_save($skip, $post_id, $post)
+        {
+        }
+        /**
+         * Conditionally registers REST save hooks for all public post types.
+         *
+         * @since 6.8.1
+         *
+         * @return void
+         * @phpstan-return void
+         */
+        public function maybe_register_rest_save_hooks()
+        {
+        }
+        /**
+         * Writes ACF field values to the revision after WordPress creates it.
+         *
+         * Called via _wp_put_post_revision, which fires AFTER rest_after_insert
+         * (where save_post_rest writes values to the post). At this point the
+         * decoded values are available in $this->current_acf_values.
+         *
+         * @since 6.8.1
+         *
+         * @param integer $revision_id The revision ID.
+         * @param integer $post_id     The parent post ID.
+         * @return void
+         * @phpstan-return void
+         */
+        public function save_revision_meta($revision_id, $post_id)
+        {
+        }
+        /**
+         * Processes ACF field values from the REST request.
+         * Decodes the _acf blob and saves individual meta keys to the post.
+         *
+         * Revision meta is handled separately by save_revision_meta(), which
+         * fires later via _wp_put_post_revision after WordPress creates the
+         * revision inside wp_after_insert_post().
+         *
+         * @since 6.8.1
+         *
+         * @param \WP_Post         $post    The post object.
+         * @param \WP_REST_Request $request The REST request.
+         * @return void
+         * @phpstan-return void
+         */
+        public function save_post_rest($post, $request)
+        {
+        }
+        /**
+         * Handles ACF values during autosave REST requests.
+         *
+         * @since 6.8.1
+         *
+         * @param \WP_REST_Response $response The response object.
+         * @param \WP_Post          $post     The post object.
+         * @param \WP_REST_Request  $request  The REST request.
+         * @return \WP_REST_Response
+         */
+        public function save_autosave_rest($response, $post, $request)
+        {
+        }
+        /**
+         * Cleans up the transport-only _acf meta after the revision system finishes.
+         *
+         * Hooked to wp_after_insert_post at priority 20, which runs after
+         * wp_save_post_revision_on_insert (priority 9). This catches orphaned
+         * _acf when no revision is created (e.g., post type doesn't support
+         * revisions). When a revision IS created, save_revision_meta() already
+         * deleted _acf, so this is a harmless no-op.
+         *
+         * @since 6.8.1
+         *
+         * @param integer $post_id The post ID.
+         * @return void
+         * @phpstan-return void
+         */
+        public function cleanup_acf_transport_meta($post_id)
+        {
+        }
+        /**
+         * Strips _acf from post REST responses.
+         *
+         * The _acf meta is transport-only and should not appear in post
+         * responses. Revision responses use rest_prepare_revision instead,
+         * so _acf passes through for the revision viewer.
+         *
+         * @since 6.8.1
+         *
+         * @param \WP_REST_Response $response The response object.
+         * @return \WP_REST_Response
+         */
+        public function strip_acf_transport_meta($response)
+        {
+        }
+    }
+    /**
+     * ACF datastore integration with the WordPress revisions system.
+     *
+     * Registers the _acf transport meta as a revisioned key so changes to ACF
+     * field values trigger revision creation, and short-circuits the legacy
+     * metabox-AJAX-driven revision path during REST requests (where REST_Save
+     * is in charge instead).
+     */
+    class Revisions
+    {
+        /**
+         * Constructor.
+         *
+         * register_meta is deferred to the `init` hook so themes and plugins
+         * have a chance to filter `acf/settings/enable_datastore` before the
+         * gate is evaluated.
+         *
+         * @since 6.8.1
+         */
+        public function __construct()
+        {
+        }
+        /**
+         * Registers the _acf transport meta when the datastore is enabled.
+         *
+         * _acf carries field values in the REST request. revisions_enabled is
+         * false here -- _acf is conditionally added to wp_post_revision_meta_keys
+         * only during REST requests so it triggers revision creation without
+         * causing duplicate revisions from the metabox AJAX (meta-box-loader)
+         * that follows each REST save. _acf is stripped from non-revision REST
+         * responses via rest_prepare_{post_type} in REST_Save.
+         *
+         * @since 6.8.1
+         *
+         * @return void
+         */
+        public function register_meta()
+        {
+        }
+        /**
+         * Adds _acf to the list of revisioned meta keys during REST requests.
+         *
+         * _acf triggers revision creation when ACF values change. During the
+         * metabox AJAX (meta-box-loader) that follows each Gutenberg REST save,
+         * _acf must not be compared -- wp_update_post() fires again for metabox
+         * re-rendering and would create a duplicate revision.
+         *
+         * @since 6.8.1
+         *
+         * @param array $keys The meta keys that should be revisioned.
+         * @return array
+         */
+        public function add_acf_to_revision_meta_keys($keys)
+        {
+        }
+        /**
+         * Tells acf_revisions to skip the legacy metabox handling on REST requests.
+         *
+         * Hooked to the acf/revisions/skip_legacy_metabox_handling filter. During
+         * a REST save, REST_Save copies field values to the post and revision,
+         * so the legacy metabox-AJAX-driven path in acf_revisions must not run.
+         *
+         * @since 6.8.1
+         *
+         * @param boolean $skip Whether to skip the legacy handling.
+         * @return boolean
+         */
+        public function skip_during_rest($skip)
         {
         }
     }
@@ -25766,6 +26211,41 @@ namespace {
     {
     }
     /**
+     * Recursively ensures every field in a set of block-inlined fields has a key,
+     * generating `field_{block_slug}_{parent_path}_{name}` for any that don't.
+     * The parent path scopes sub-field keys under their ancestor names so that two
+     * fields with the same `name` at different depths (e.g. a top-level `title`
+     * and a repeater sub-field `title`) don't end up with the same field key and
+     * overwrite each other in the local fields store. Invalid field definitions
+     * (missing a name) are skipped and reported via _doing_it_wrong().
+     *
+     * @since 6.8.1
+     *
+     * @param array  $fields      The fields to process.
+     * @param string $block_slug  The sanitized block slug used to build keys.
+     * @param string $block_name  The original block name (used for error messages).
+     * @param string $parent_path Internal. Underscore-joined ancestor names for the current nesting level.
+     * @return array The processed fields, with keys filled in and invalid entries removed.
+     */
+    function acf_block_json_process_fields($fields, $block_slug, $block_name = '', $parent_path = '')
+    {
+    }
+    /**
+     * Registers a local field group for a block from an inline fields array,
+     * as used by `acf.fields` in block.json and `fields` in acf_register_block_type().
+     *
+     * @since 6.8.1
+     *
+     * @param string $block_name        The full block name (e.g. 'acf/my-block').
+     * @param string $block_title       The block's display title, used in the default group title.
+     * @param array  $fields            The fields defined inline on the block.
+     * @param string $field_group_title Optional. Overrides the auto-generated "Block: {title}" group title.
+     * @return boolean True if the field group was registered, false otherwise.
+     */
+    function acf_register_block_field_group_from_fields($block_name, $block_title, $fields, $field_group_title = '')
+    {
+    }
+    /**
      * Registers a block type.
      *
      * @date    18/2/19
@@ -26295,6 +26775,19 @@ namespace {
      * @return boolean True if the field is empty, false if it has a value.
      */
     function acf_inline_editing_field_is_empty($field_name)
+    {
+    }
+    /**
+     * Whether the ACF datastore is enabled.
+     *
+     * The datastore requires WordPress 6.7+ and can be enabled via the
+     * `acf/settings/enable_datastore` filter.
+     *
+     * @since 6.8.1
+     *
+     * @return boolean
+     */
+    function acf_is_using_datastore()
     {
     }
     /**
