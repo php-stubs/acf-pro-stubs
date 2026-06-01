@@ -16,7 +16,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.5.0.1';
+        public $version = '6.5.1';
         /**
          * The plugin settings array.
          *
@@ -314,6 +314,24 @@ namespace ACF {
         {
         }
         /**
+         * Clears ACF plugin update transients when ACF is updated.
+         *
+         * This method is hooked to the 'upgrader_process_complete' action and will
+         * delete the 'acf_plugin_updates' transient when the ACF plugin is updated,
+         * ensuring fresh update data is fetched on the next check.
+         *
+         * @since 6.5.1
+         *
+         * @param WP_Upgrader $upgrader_object The upgrader instance.
+         * @param array       $options         Array of update details including:
+         *                                     - 'action' (string) The action performed (e.g., 'update').
+         *                                     - 'type' (string) The type of update (e.g., 'plugin').
+         *                                     - 'plugins' (array) Array of plugin basenames that were updated.
+         */
+        public function clear_transients_on_upgrade($upgrader_object, $options)
+        {
+        }
+        /**
          * Registeres a plugin for updates.
          *
          * @since   5.5.10
@@ -410,11 +428,15 @@ namespace ACF {
         {
         }
         /**
-         * Deletes transients and allows a fresh lookup.
+         * Deletes cached ACF plugin update transients and allows a fresh lookup.
          *
          * @since   5.5.10
+         *
+         * @param   string|false $id Optional. The plugin ID to clear specific plugin info transient.
+         *                           If provided, will delete the 'acf_plugin_info_{id}' transient.
+         *                           Defaults to false.
          */
-        public function refresh_plugins_transient()
+        public function refresh_plugins_transient($id = false)
         {
         }
         /**
