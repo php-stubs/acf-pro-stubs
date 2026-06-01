@@ -16,7 +16,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.7.1';
+        public $version = '6.7.2';
         /**
          * The plugin settings array.
          *
@@ -20814,6 +20814,20 @@ namespace {
      * @return boolean
      */
     function acf_current_user_can_edit_post(int $post_id) : bool
+    {
+    }
+    /**
+     * Checks if the current user can edit a given ACF context.
+     *
+     * Handles post, user, term, comment, woo_order, block, and option contexts returned by acf_decode_post_id().
+     *
+     * @since 6.7.2
+     *
+     * @param array  $post_id_info      The result of acf_decode_post_id(), containing 'type' and 'id'.
+     * @param string $options_page_slug Optional. The options page menu slug, used to look up the page's capability.
+     * @return boolean
+     */
+    function acf_current_user_can_edit_in_context(array $post_id_info, string $options_page_slug = '') : bool
     {
     }
     /**
