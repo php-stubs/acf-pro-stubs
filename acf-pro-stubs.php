@@ -16,7 +16,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.5.1';
+        public $version = '6.6.0';
         /**
          * The plugin settings array.
          *
@@ -3808,7 +3808,7 @@ namespace {
          * @since 6.1
          *
          * @param integer|string $id The post ID, key, or name.
-         * @return WP_Post|bool The post object, or false on failure.
+         * @return WP_Post|boolean The post object, or false on failure.
          */
         public function get_post_object($id = 0)
         {
@@ -5001,7 +5001,7 @@ namespace {
          * @since   3.6
          * @date    23/01/13
          */
-        function render_field($field)
+        public function render_field($field)
         {
         }
         /**
@@ -5015,6 +5015,17 @@ namespace {
          * @param   $field  - an array holding all the field's data
          */
         function render_field_settings($field)
+        {
+        }
+        /**
+         * Renders the field settings used in the "Presentation" tab.
+         *
+         * @since 6.0
+         *
+         * @param array $field The field settings array.
+         * @return void
+         */
+        public function render_field_presentation_settings($field)
         {
         }
         /**
@@ -14852,6 +14863,15 @@ namespace {
         }
     }
     /**
+     * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
+     */
+    /**
      * ACF_Repeater_Table
      *
      * Helper class for rendering repeater tables.
@@ -16136,9 +16156,13 @@ namespace {
     {
     }
     /**
-     * General functions relating to the bidirectional feature of some fields.
-     *
      * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
      */
     /**
      * Process updating bidirectional fields.
@@ -16751,6 +16775,15 @@ namespace {
     {
     }
     /**
+     * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
+     */
+    /**
      * acf_get_field_group
      *
      * Retrieves a field group for the given identifier.
@@ -17143,6 +17176,17 @@ namespace {
     {
     }
     /**
+     * Retrieves the field group title, or display title if set.
+     *
+     * @since 6.6
+     *
+     * @param array|integer $field_group The field group array or ID.
+     * @return string The field group title.
+     */
+    function acf_get_field_group_title($field_group) : string
+    {
+    }
+    /**
      * acf_set_form_data
      *
      * Sets data about the current form.
@@ -17215,6 +17259,15 @@ namespace {
     function _acf_do_save_post($post_id = 0)
     {
     }
+    /**
+     * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
+     */
     /**
      * Returns true if the value provided is considered "empty". Allows numbers such as 0.
      *
@@ -17749,6 +17802,15 @@ namespace {
     {
     }
     /**
+     * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
+     */
+    /**
      * acf_filter_attrs
      *
      * Filters out empty attrs from the provided array.
@@ -18098,15 +18160,19 @@ namespace {
     {
     }
     /**
-     * Generic functions for accessing ACF objects stored as WordPress post types which aren't handled by type specific functions.
-     *
      * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
      */
     /**
      * Gets an instance of an ACF_Internal_Post_Type.
      *
      * @param string $post_type The ACF internal post type to get the instance for.
-     * @return ACF_Internal_Post_Type|bool The internal post type class instance, or false on failure.
+     * @return ACF_Internal_Post_Type|boolean The internal post type class instance, or false on failure.
      */
     function acf_get_internal_post_type_instance($post_type = 'acf-field-group')
     {
@@ -18503,6 +18569,15 @@ namespace {
     {
     }
     /**
+     * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
+     */
+    /**
      * Returns an array of "ACF only" meta for the given post_id.
      *
      * @date    9/10/18
@@ -18703,6 +18778,15 @@ namespace {
     {
     }
     /**
+     * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
+     */
+    /**
      * Returns available templates for each post type.
      *
      * @date    29/8/17
@@ -18715,9 +18799,13 @@ namespace {
     {
     }
     /**
-     * Functions for ACF post type objects.
-     *
      * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
      */
     /**
      * Get an ACF CPT as an array
@@ -18971,9 +19059,13 @@ namespace {
     {
     }
     /**
-     * Functions for ACF taxonomy objects.
-     *
      * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
      */
     /**
      * Get an ACF taxonomy as an array
@@ -19215,6 +19307,15 @@ namespace {
     function acf_import_taxonomy(array $taxonomy)
     {
     }
+    /**
+     * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
+     */
     /**
      * acf_get_users
      *
@@ -19515,6 +19616,15 @@ namespace {
     {
     }
     /**
+     * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
+     */
+    /**
      * Returns a WordPress object type.
      *
      * @date    1/4/20
@@ -19660,6 +19770,15 @@ namespace {
     function acf_print_menu_section($menu_items, $section = '')
     {
     }
+    /**
+     * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
+     */
     /**
      * This function will return true for a non empty array
      *
@@ -21153,6 +21272,15 @@ namespace {
     {
     }
     /**
+     * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
+     */
+    /**
      * This function will return a custom field value for a specific field name/key + post_id.
      * There is a 3rd parameter to turn on/off formating. This means that an image field will not use
      * its 'return option' to format the value but return only what was saved in the database
@@ -21620,6 +21748,15 @@ namespace {
     function acf_filter_post_id($post_id)
     {
     }
+    /**
+     * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
+     */
     /**
      * Returns an array of taxonomy names.
      *
@@ -23002,6 +23139,15 @@ namespace {
     {
     }
     /**
+     * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
+     */
+    /**
      * Get the REST API schema for a given field.
      *
      * @param array $field
@@ -23064,6 +23210,15 @@ namespace {
     function acf_get_post_latest_revision($post_id)
     {
     }
+    /**
+     * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
+     */
     /**
      * acf_has_upgrade
      *
@@ -23307,9 +23462,13 @@ namespace {
     {
     }
     /**
-     * Helper/wrapper Functions for ACF UI Options pages.
-     *
      * @package ACF
+     * @author  WP Engine
+     *
+     * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+     * "ACF" is a trademark of WP Engine.
+     * Licensed under the GNU General Public License v2 or later.
+     * https://www.gnu.org/licenses/gpl-2.0.html
      */
     /**
      * Get an ACF UI options page as an array
