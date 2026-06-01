@@ -16,7 +16,7 @@ namespace {
          *
          * @var string
          */
-        public $version = '6.6.2';
+        public $version = '6.7.0';
         /**
          * The plugin settings array.
          *
@@ -16076,6 +16076,62 @@ namespace ACF\Site_Health {
         }
     }
 }
+/**
+ * @package ACF
+ * @author  WP Engine
+ *
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
+ */
+/**
+ * Applying auto inline editing to ACF blocks.
+ *
+ * @package ACF
+ */
+namespace ACF\Blocks\AutoInlineEditing {
+    /**
+     * Returns an array of field type names which support contenteditable (allows typing text) attribute.
+     *
+     * @return array
+     */
+    function get_allowed_contenteditable_fields() : array
+    {
+    }
+    /**
+     * Returns an array of field type names will be ignored by the automatic application of inline editing attributes.
+     *
+     * @return array
+     */
+    function get_non_auto_inline_editing_fields() : array
+    {
+    }
+    /**
+     * This function populates a global variable called acf_fields_used_in_block_render_template, which is an array
+     * where each key is the value entered for the field, and the value is the field data, including the current value.
+     *
+     * @param mixed  $field_value The field_value.
+     * @param string $post_id     The post ID for this value.
+     * @param array  $field       The field array.
+     *
+     * @return mixed
+     */
+    function populate_auto_inline_editing_values($field_value, $post_id, $field)
+    {
+    }
+    /**
+     * Applies inline editing attributes to dom elements if they contain field values.
+     *
+     * @param string  $path       The path to the render template for this block.
+     * @param array   $block      The block data.
+     * @param boolean $is_preview Whether we are in the block editor or not.
+     * @return string
+     */
+    function apply_inline_editing_attributes_to_render_template($path, $block, $is_preview) : string
+    {
+    }
+}
 namespace {
     /**
      * An ACF specific getter to replace `home_url` in our license checks to ensure we can avoid third party filters.
@@ -23976,6 +24032,15 @@ namespace {
     {
     }
     /**
+     * Enqueues scripts and styles to load inside the block editor iframe.
+     * This allows us to do things like style contenteditable, and other inline editing elements.
+     *
+     * @since   6.7
+     */
+    function acf_enqueue_in_iframe_styles()
+    {
+    }
+    /**
      * Enqueues scripts and styles for a specific block type.
      *
      * @since   5.7.13
@@ -24187,6 +24252,85 @@ namespace {
      * @return array An array containing the field values that need to be saved.
      */
     function acf_get_block_meta_values_to_save($content = '')
+    {
+    }
+    /**
+     * Helper function that returns the HTML attributes required for toolbar inline editing as a string, escaped and ready for output.
+     *
+     * @param array $fields Array {
+     * Required. A list of the fields, each of which which will be displayed in the popup toolbar.
+     *
+     * Each field can be passed as:
+     *
+     * - A string (e.g. `'my_field_name'`)
+     * - An associative array with specific keys:
+     * @type string  $field_name  The name of the field to display in the toolbar.
+     * @type string  $field_icon  An html tag, can be an svg, to be used as the toolbar icon. If not passed, the icon of the first field will be used.
+     * @type string  $field_label A string to use as the label for the button in the toolbar.
+     * @type boolean $use_expanded_editor Default is false, which opens the field in the popover. Set to true to open in the expanded editor.
+     * @type string  $popover_min_width Enter the CSS width value to use for the popover. Default is "300px".
+     * }
+     *
+     * @param array $args   Array {
+     * Optional. An array of additional args which can control how the toolbar is displayed and used.
+     *
+     * @type string $toolbar_icon  Optional. An html tag, can be an svg, to be used as the toolbar icon. If not passed, the icon of the first field will be used.
+     * @type string $toolbar_title Optional. A string to be used as the toolbar title. If not passed, the name of the first field will be used.
+     * @type string $uid           Optional. A unique identifier that isn't used by any other inline fields in this block. Pass if you have 2 elements that conflict.
+     * }
+     *
+     * @return string A string containing the attributes.
+     */
+    function acf_inline_toolbar_editing_attrs($fields, $args = array()) : string
+    {
+    }
+    /**
+     * Helper function that returns the HTML attributes required for inline text editing as a string, escaped and ready for output.
+     *
+     * @param string $field_name A string which is the name of the field to update when the user types into the HTML element.
+     *
+     * @param array  $args       Array {
+     * Optional. An array of additional args which can control how the popover identifier is displayed.
+     *
+     * @type string $toolbar_icon  Optional. An html tag, can be an svg, to be used as the toolbar icon. If not passed, the icon of the first field will be used.
+     * @type string $toolbar_title Optional. A string to be used as the toolbar title. If not passed, the name of the first field will be used.
+     * @type string $placeholder   Optional. Optional. A string which will be used as the placeholder in the typable text area.
+     * }
+     *
+     * @return string A string containing the attributes.
+     */
+    function acf_inline_text_editing_attrs($field_name, $args = array()) : string
+    {
+    }
+    /**
+     * This function prepares a fields array for being localized and used on the frontend as block toolbar fields.
+     *
+     * @param array $fields Array {
+     * Required. A list of the fields, each of which which will be displayed in the popup toolbar.
+     *
+     * Each field can be passed as:
+     *
+     * - A string (e.g. `'my_field_name'`)
+     * - An associative array with specific keys:
+     * @type string $field_name  The name of the field to display in the toolbar.
+     * @type string $field_icon  An html tag, can be an svg, to be used as the toolbar icon. If not passed, the icon of the first field will be used.
+     * @type string $field_label A string to use as the label for the button in the toolbar.
+     * }
+     *
+     * @return array The array of fields, prepared for JS localization.
+     */
+    function acf_process_block_toolbar_fields($fields)
+    {
+    }
+    /**
+     * Helper function for block render templates to check if an acf field has a value.
+     * This is relevant when autoInlineEditing is enabled for a block, because empty fields
+     * will have acf_auto_inline_editing_field_name_ + field_name as their value if they are empty.
+     *
+     * @param  string $field_name True if the field is empty, false if it has a value.
+     * @return boolean True if the field is empty, false if it has a value.
+     */
+    function acf_inline_editing_field_is_empty($field_name)
     {
     }
     /**
