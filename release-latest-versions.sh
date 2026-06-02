@@ -5,6 +5,7 @@
 # apt-get install wget xmlstarlet unzip git
 #
 # Start: ACF_PRO_KEY="Your ACF PRO license key here" ./release-latest-versions.sh
+# Use remote as source of truth for existing tags: REMOTE_CHECK=1 ACF_PRO_KEY="..." ./release-latest-versions.sh
 
 Get_versions()
 {
@@ -24,7 +25,12 @@ while read -r VERSION; do
 
     echo "Releasing ${VERSION} version ..."
 
-    if git rev-parse "refs/tags/v${VERSION}" >/dev/null 2>&1; then
+    if [ "${REMOTE_CHECK:-0}" = "1" ]; then
+        if git ls-remote --exit-code origin "refs/tags/v${VERSION}" >/dev/null 2>&1; then
+            echo "Tag exists on remote!"
+            continue
+        fi
+    elif git rev-parse "refs/tags/v${VERSION}" >/dev/null 2>&1; then
         echo "Tag exists!"
         continue
     fi

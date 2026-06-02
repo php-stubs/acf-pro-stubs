@@ -35,4 +35,20 @@ This package is versioned to match the ACF Pro version from which the stubs are 
 5. Install operating system level packages `apt-get install xmlstarlet unzip git`
 6. Run `./release-latest-versions.sh`
 
-This will update `acf-pro-stubs.php` per version, tag and commit it.
+This will update `acf-pro-stubs.php` per version, tag and commit.
+
+After the script finishes, push the commits and tags manually:
+
+```bash
+git push --tags && git push
+```
+
+Pushing tags trigger automated GitHub releases.
+
+Commits are intentionally left for a manual push so you can review before they go public.
+
+To use the remote as the source of truth for existing tags (e.g. after a fresh clone or interrupted run):
+
+```bash
+REMOTE_CHECK=1 ACF_PRO_KEY="..." ./release-latest-versions.sh
+```
